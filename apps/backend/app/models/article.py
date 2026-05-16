@@ -41,3 +41,6 @@ class Article(Base):
     keywords = relationship(
         "ArticleKeyword", back_populates="article", cascade="all, delete-orphan"
     )
+    summaries = relationship(
+        "ArticleSummary", back_populates="article", cascade="all, delete-orphan"
+    )

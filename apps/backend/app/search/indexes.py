@@ -24,6 +24,9 @@ ARTICLES_INDEX_SETTINGS = {
             "sourceSlug": {"type": "keyword"},
             "publishedAt": {"type": "date"},
             "summary": {"type": "text"},
+            "caseSummary": {"type": "text"},
+            "caseProblem": {"type": "text"},
+            "caseSolution": {"type": "text"},
             "content": {"type": "text"},
             "technologies": {"type": "keyword", "normalizer": "lowercase_normalizer"},
             "architectureKeywords": {"type": "keyword", "normalizer": "lowercase_normalizer"},
@@ -31,4 +34,3 @@ ARTICLES_INDEX_SETTINGS = {
         },
     },
 }
-

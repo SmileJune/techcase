@@ -780,3 +780,49 @@ average ndcg@10 = 0.738
 ```
 
 글 수가 크게 늘면서 검색 결과 후보는 풍부해졌지만, 일부 query에서는 기존 정답 문서의 순위가 밀리는 현상이 생겼습니다. 다음 작업에서는 기술 키워드와 문제 키워드가 함께 매칭되는 글에 더 높은 가중치를 주는 ranking 개선이 필요합니다.
+
+## 25. LLM 기반 사례 요약 파이프라인 골격 추가
+
+RSS 요약과 rule-based 발췌만으로는 TechCase가 원하는 사례 중심 정보를 충분히 제공하기 어렵다고 판단했습니다.
+
+따라서 `display_summary` 방식은 중단하고, 별도 `article_summaries` 테이블에 LLM이 생성한 사례 요약을 저장하는 방향으로 전환했습니다.
+
+추가한 구조:
+
+```text
+article_summaries
+- article_id
+- summary_type
+- language
+- model
+- prompt_version
+- case_summary
+- problem
+- solution
+- technologies
+- architecture_keywords
+- problem_keywords
+- confidence
+- raw_response
+```
+
+추가 명령:
+
+```bash
+npm run llm:summarize -- --limit 3 --dry-run
+npm run llm:summarize -- --source woowa-tech-blog --limit 10
+```
+
+요약 생성은 검색 요청 시점에 LLM을 호출하는 RAG 방식이 아니라, 미리 article을 enrich하는 offline batch 방식입니다.
+
+이렇게 처리한 이유:
+
+```text
+검색 응답 속도 유지
+LLM 비용 제어
+요약 품질 검수 가능
+프롬프트/모델 버전 관리 가능
+장애 시에도 기존 검색 기능 유지
+```
+
+검색 문서에는 최신 `case_summary`를 `caseSummary`로 투영하고, 검색 결과 카드에서는 `caseSummary`를 RSS summary보다 우선 표시합니다.

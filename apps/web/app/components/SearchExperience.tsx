@@ -20,6 +20,9 @@ type SearchResultItem = {
   sourceSlug: string;
   publishedAt?: string | null;
   summary?: string | null;
+  caseSummary?: string | null;
+  caseProblem?: string | null;
+  caseSolution?: string | null;
   score: number;
   technologies: string[];
   architectureKeywords: string[];
@@ -52,14 +55,21 @@ function formatDate(value?: string | null): string {
 }
 
 function bestSnippet(item: SearchResultItem): string {
+  if (item.caseSummary) {
+    return item.caseSummary;
+  }
+
   const highlight =
-    item.highlights.summary?.[0] ?? item.highlights.content?.[0] ?? item.highlights.title?.[0];
+    item.highlights.caseSummary?.[0] ??
+    item.highlights.summary?.[0] ??
+    item.highlights.content?.[0] ??
+    item.highlights.title?.[0];
 
   if (highlight) {
     return stripHighlightTags(highlight);
   }
 
-  return item.summary ?? "요약 정보가 아직 없습니다.";
+  return item.caseSummary ?? item.summary ?? "요약 정보가 아직 없습니다.";
 }
 
 export function SearchExperience() {
@@ -208,4 +218,3 @@ function KeywordList({ item }: { item: SearchResultItem }) {
     </div>
   );
 }
-

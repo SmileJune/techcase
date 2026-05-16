@@ -11,6 +11,7 @@
     "db:seed": "cd apps/backend && uv run python -m app.seeds.seed_sources",
     "crawl:rss": "cd apps/backend && uv run python -m app.crawler.rss",
     "keywords:extract": "cd apps/backend && uv run python -m app.keywords.extractor",
+    "llm:summarize": "cd apps/backend && uv run python -m app.summaries.generator",
     "search:reindex": "cd apps/backend && uv run python -m app.search.indexer",
     "search:evaluate": "cd apps/backend && uv run python -m app.search.evaluation.evaluator",
     "infra:up": "docker compose -f infra/docker-compose.yml up -d",

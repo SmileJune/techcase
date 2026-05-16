@@ -14,6 +14,10 @@ from app.search.indexes import ARTICLES_INDEX, ARTICLES_INDEX_SETTINGS
 def ensure_articles_index() -> None:
     client = get_elasticsearch_client()
     if client.indices.exists(index=ARTICLES_INDEX):
+        client.indices.put_mapping(
+            index=ARTICLES_INDEX,
+            properties=ARTICLES_INDEX_SETTINGS["mappings"]["properties"],
+        )
         return
 
     client.indices.create(index=ARTICLES_INDEX, **ARTICLES_INDEX_SETTINGS)
@@ -39,7 +43,11 @@ def reindex_articles() -> int:
         articles = list(
             db.scalars(
                 select(Article)
-                .options(joinedload(Article.source), joinedload(Article.keywords))
+                .options(
+                    joinedload(Article.source),
+                    joinedload(Article.keywords),
+                    joinedload(Article.summaries),
+                )
                 .order_by(Article.published_at.desc().nullslast())
             )
             .unique()
@@ -66,4 +74,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

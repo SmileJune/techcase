@@ -8,8 +8,11 @@ from app.search.indexes import ARTICLES_INDEX
 SEARCH_FIELDS = [
     "technologies^5",
     "title^4",
+    "caseSummary^4",
     "architectureKeywords^3",
     "problemKeywords^3",
+    "caseProblem^3",
+    "caseSolution^3",
     "summary^2",
     "content",
 ]
@@ -29,6 +32,9 @@ def search_articles(query: str, size: int = 20) -> dict[str, Any]:
         highlight={
             "fields": {
                 "title": {},
+                "caseSummary": {},
+                "caseProblem": {},
+                "caseSolution": {},
                 "summary": {},
                 "content": {"fragment_size": 160, "number_of_fragments": 2},
             }
@@ -138,6 +144,9 @@ def hit_to_item(hit: dict[str, Any]) -> dict[str, Any]:
         "sourceSlug": source["sourceSlug"],
         "publishedAt": source.get("publishedAt"),
         "summary": source.get("summary"),
+        "caseSummary": source.get("caseSummary"),
+        "caseProblem": source.get("caseProblem"),
+        "caseSolution": source.get("caseSolution"),
         "score": hit["_score"],
         "technologies": source.get("technologies", []),
         "architectureKeywords": source.get("architectureKeywords", []),

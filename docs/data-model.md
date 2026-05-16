@@ -21,6 +21,7 @@ Source
 Article
 CrawlRun
 ArticleKeyword
+ArticleSummary
 ```
 
 ## Source
@@ -176,6 +177,49 @@ matched_by: dictionary
 
 초기에는 사전 기반 추출을 우선하고, 이후 LLM 또는 embedding 기반 추출을 추가합니다.
 
+## ArticleSummary
+
+LLM이 생성한 TechCase용 사례 요약을 나타냅니다.
+
+RSS summary나 본문 발췌는 `Article`에 보존하고, LLM 요약은 별도 테이블에서 버전 관리합니다.
+
+필드 초안:
+
+```text
+id
+article_id
+summary_type
+language
+model
+prompt_version
+case_summary
+problem
+solution
+technologies
+architecture_keywords
+problem_keywords
+confidence
+raw_response
+created_at
+updated_at
+```
+
+summary_type 후보:
+
+```text
+case_summary
+detail_summary
+comparison_summary
+```
+
+이 엔티티가 필요한 이유는 다음과 같습니다.
+
+- 프롬프트 버전을 바꿔 요약을 재생성할 수 있습니다.
+- 모델별 결과를 비교할 수 있습니다.
+- 원본 LLM 응답을 보존해 디버깅할 수 있습니다.
+- 검색 카드용 짧은 요약과 상세 페이지용 긴 요약을 분리할 수 있습니다.
+- 검색 시점에 LLM을 호출하지 않고 미리 생성된 요약을 사용할 수 있습니다.
+
 ## 이후 확장 엔티티
 
 MVP 이후에는 다음 엔티티를 분리할 수 있습니다.
@@ -186,7 +230,6 @@ Technology
 ArticleTechnology
 ProblemCategory
 ArchitectureKeyword
-ArticleSummary
 SearchQueryLog
 ```
 
