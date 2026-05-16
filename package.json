@@ -15,6 +15,7 @@
     "llm:summarize": "cd apps/backend && uv run python -m app.summaries.generator",
     "search:reindex": "cd apps/backend && uv run python -m app.search.indexer",
     "suggest:reindex": "cd apps/backend && uv run python -m app.search.suggestions",
+    "suggest:audit": "cd apps/backend && uv run python -m app.search.suggestion_audit",
     "search:evaluate": "cd apps/backend && uv run python -m app.search.evaluation.evaluator",
     "infra:up": "docker compose -f infra/docker-compose.yml up -d",
     "infra:down": "docker compose -f infra/docker-compose.yml down"

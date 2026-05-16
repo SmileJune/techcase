@@ -1459,3 +1459,63 @@ uv run python -c 'from fastapi.testclient import TestClient; from app.main impor
 npm run build:web
 git diff --check
 ```
+
+## 37. 자동완성 누락 후보 점검 스크립트 추가
+
+MQTT처럼 검색 결과에는 존재하지만 자동완성 후보에는 빠지는 기술을 찾기 위해 `suggest:audit` 명령을 추가했습니다.
+
+명령:
+
+```bash
+npm run suggest:audit
+```
+
+목표:
+
+```text
+article 제목/RSS 요약/본문/LLM 요약 technologies에서 반복 등장하는 기술 후보 수집
+이미 KEYWORD_RULES 또는 source/company 후보에 등록된 항목 제외
+후보별 article 수와 예시 글 제목 출력
+```
+
+기본 실행 기준:
+
+```text
+min_articles = 3
+limit = 30
+```
+
+샘플 실행:
+
+```bash
+npm run suggest:audit -- --min-articles 3 --limit 20
+```
+
+주요 후보 예:
+
+```text
+IAM
+EC2
+Java
+React
+LLM
+Spring Boot
+JPA
+VPC
+Node.js
+Kotlin
+```
+
+이 결과는 자동으로 사전에 반영하지 않습니다. `IAM`, `EC2`, `Java`, `React`처럼 실제로 자동완성 후보로 넣을 가치가 있는 항목과, 너무 일반적이거나 맥락 의존적인 항목을 사람이 한 번 검토한 뒤 `KEYWORD_RULES`에 추가합니다.
+
+스케줄러 후처리도 보강했습니다.
+
+```text
+crawl
+keyword extraction
+LLM summary
+articles reindex
+suggestions reindex
+```
+
+이제 신규 글이 수집되면 검색 인덱스뿐 아니라 자동완성 인덱스도 함께 갱신됩니다.

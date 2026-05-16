@@ -8,6 +8,7 @@ from app.config import get_settings
 from app.crawler.rss import CrawlSummary, crawl_enabled_sources
 from app.keywords.extractor import extract_all_keywords
 from app.search.indexer import reindex_articles
+from app.search.suggestions import reindex_suggestions
 from app.summaries.generator import DEFAULT_PROMPT_VERSION, generate_summaries
 
 
@@ -20,6 +21,7 @@ class ScheduledIngestResult:
     generated_summary_count: int
     failed_summary_count: int
     indexed_count: int
+    suggestion_indexed_count: int
 
 
 def run_scheduled_ingest(
@@ -46,6 +48,7 @@ def run_scheduled_ingest(
             generated_summary_count=0,
             failed_summary_count=0,
             indexed_count=0,
+            suggestion_indexed_count=0,
         )
 
     keyword_article_count, keyword_count = extract_all_keywords()
@@ -69,6 +72,7 @@ def run_scheduled_ingest(
         )
 
     indexed_count = reindex_articles()
+    suggestion_indexed_count = reindex_suggestions()
 
     return ScheduledIngestResult(
         crawl_summaries=crawl_summaries,
@@ -78,6 +82,7 @@ def run_scheduled_ingest(
         generated_summary_count=generated_summary_count,
         failed_summary_count=failed_summary_count,
         indexed_count=indexed_count,
+        suggestion_indexed_count=suggestion_indexed_count,
     )
 
 
@@ -121,7 +126,8 @@ def print_result(result: ScheduledIngestResult) -> None:
         f"summary_selected={result.selected_summary_count}, "
         f"summary_generated={result.generated_summary_count}, "
         f"summary_failed={result.failed_summary_count}, "
-        f"indexed={result.indexed_count}"
+        f"indexed={result.indexed_count}, "
+        f"suggestions_indexed={result.suggestion_indexed_count}"
     )
 
 

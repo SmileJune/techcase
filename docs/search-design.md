@@ -322,6 +322,14 @@ GET /api/suggest?q=ka
 npm run suggest:reindex
 ```
 
+사전 누락 후보 점검:
+
+```bash
+npm run suggest:audit
+```
+
+`suggest:audit`은 article 제목, RSS 요약, 본문, LLM 요약의 `technologies`에서 반복적으로 등장하지만 아직 `KEYWORD_RULES`에 등록되지 않은 기술 후보를 찾습니다. MQTT처럼 검색 결과에는 존재하지만 자동완성 후보에는 빠져 있는 항목을 운영 중에 발견하기 위한 도구입니다.
+
 초기 weight 정책:
 
 ```text
