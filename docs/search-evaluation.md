@@ -384,3 +384,14 @@ ko-problem-jvm-latency
 ko-deployment-canary
 ko-event-driven-commerce
 ```
+
+신규 한국어 source 19개 글에 LLM 요약을 생성하고 재색인한 뒤의 점수는 다음과 같습니다.
+
+```text
+average precision@5 = 0.375
+average recall@10 = 0.825
+average mrr = 0.792
+average ndcg@10 = 0.716
+```
+
+LLM 요약은 평가 지표를 크게 끌어올리기보다는, 검색 결과 카드에서 `caseSummary`, `caseProblem`, `caseSolution`을 보여주어 사용자가 글의 문제/해결 맥락을 더 빨리 판단하게 만드는 효과가 큽니다.

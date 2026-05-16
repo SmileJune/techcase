@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -52,6 +53,7 @@ def select_target_articles(
     source_slug: str | None,
     prompt_version: str,
     force: bool,
+    created_after: datetime | None = None,
 ) -> list[Article]:
     statement = (
         select(Article)
@@ -66,6 +68,9 @@ def select_target_articles(
 
     if source_slug:
         statement = statement.where(Source.slug == source_slug)
+
+    if created_after:
+        statement = statement.where(Article.created_at >= created_after)
 
     articles = list(db.scalars(statement).unique().all())
     if not force:
@@ -223,6 +228,7 @@ def generate_summaries(
     force: bool,
     prompt_version: str,
     model: str,
+    created_after: datetime | None = None,
 ) -> tuple[int, int, int]:
     system_prompt = load_prompt()
     generated_count = 0
@@ -235,6 +241,7 @@ def generate_summaries(
             source_slug=source_slug,
             prompt_version=prompt_version,
             force=force,
+            created_after=created_after,
         )
 
         for article in articles:
@@ -255,11 +262,11 @@ def generate_summaries(
                 )
                 db.commit()
                 generated_count += 1
-                print(f"Generated summary: {article.title}")
+                print(f"Generated summary: {article.title}", flush=True)
             except Exception as exc:
                 db.rollback()
                 failed_count += 1
-                print(f"Failed summary: {article.title} ({exc})")
+                print(f"Failed summary: {article.title} ({exc})", flush=True)
 
     return len(articles), generated_count, failed_count
 
@@ -282,7 +289,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--prompt-version", default=DEFAULT_PROMPT_VERSION)
     parser.add_argument("--model", default=get_settings().openai_model)
+    parser.add_argument(
+        "--created-after",
+        type=parse_datetime,
+        help="Only summarize articles created at or after the given ISO datetime.",
+    )
     return parser.parse_args()
+
+
+def parse_datetime(value: str) -> datetime:
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
 def main() -> None:
@@ -294,6 +310,7 @@ def main() -> None:
         force=args.force,
         prompt_version=args.prompt_version,
         model=args.model,
+        created_after=args.created_after,
     )
     print(
         "LLM summaries: "

@@ -77,6 +77,27 @@ Private EC2 - Crawler Cron
     +--> Local Elasticsearch
 ```
 
+## 스케줄러 흐름
+
+새 글 수집과 후처리는 `ingest:scheduled` 명령으로 실행합니다.
+
+```text
+1. 스케줄러 실행 시작 시각을 기록한다.
+2. enabled RSS source를 수집한다.
+3. 새 article이 없으면 후처리를 건너뛴다.
+4. 새 article 또는 업데이트 article이 있으면 키워드를 재추출한다.
+5. 이번 실행 중 새로 생성된 article만 LLM 요약 대상으로 선택한다.
+6. 요약 생성 후 Elasticsearch를 재색인한다.
+```
+
+핵심 기준:
+
+```text
+Article.created_at >= scheduler started_at
+```
+
+이 기준을 사용해 기존 미요약 글이 아니라, 새로 올라온 글만 자동 요약합니다.
+
 ## 요청 흐름
 
 사용자가 검색할 때의 흐름은 다음과 같습니다.
@@ -210,3 +231,4 @@ apps/backend/
 - [AWS 인프라](./aws-infra.md)
 - [개발 계획](./development.md)
 - [기술 블로그 수집 전략](./source-collection-strategy.md)
+- [스케줄러 운영 설계](./scheduler.md)

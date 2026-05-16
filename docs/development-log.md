@@ -1168,3 +1168,130 @@ average ndcg@10     0.714
 ```
 
 이번 개선으로 모든 평균 지표가 상승했습니다. 다만 `검색 개선`, `로그 플랫폼`처럼 일반 명사 조합이 포함된 쿼리는 검색 후보가 여전히 넓으므로, 다음 단계에서는 LLM 요약 필드와 문제상황 키워드의 품질을 더 높이는 작업이 필요합니다.
+
+## 32. 신규 한국어 source LLM 요약 샘플 생성
+
+신규 한국어 기술 블로그 source에 대해 LLM 기반 사례 요약을 샘플 생성했습니다.
+
+대상 source:
+
+```text
+kakaopay-tech-blog       3
+kurly-tech-blog          3
+devsisters-tech-blog     3
+ly-corporation-tech-blog 3
+daangn-tech-blog         3
+gc-company-tech-blog     2
+socar-tech-blog          2
+```
+
+총 19개 article 요약을 생성했습니다.
+
+content_type 분포:
+
+```text
+technical_case 18
+other           1
+```
+
+좋았던 샘플:
+
+```text
+당근 PyPI 공급망 공격 대응
+여기어때 옵저버빌리티 Right-Sizing
+여기어때 Argo Rollouts 카나리 배포
+쏘카 로그 파이프라인 개선
+쏘카 Node.js 컨테이너 graceful shutdown
+데브시스터즈 게임 서버 돌아보기
+```
+
+요약 품질 관찰:
+
+- `case_summary`, `problem`, `solution`이 실제 사례 탐색에 사용할 만큼 구체적으로 생성됐습니다.
+- RSS summary보다 검색 결과 카드에서 보여주기 적합합니다.
+- 최신순으로 생성하면 이벤트성 글도 포함되므로, 대량 생성 전에는 기술 사례 우선순위 선정 기준이 필요합니다.
+
+후속 처리:
+
+```text
+search:reindex
+search:evaluate
+```
+
+평가 결과:
+
+```text
+average precision@5 0.375
+average recall@10   0.825
+average mrr         0.792
+average ndcg@10     0.716
+```
+
+LLM 요약 반영 전과 비교하면 MRR/NDCG가 소폭 상승했습니다. 수치 개선보다 더 중요한 변화는 검색 결과 카드에서 문제/해결 맥락을 바로 보여줄 수 있게 됐다는 점입니다.
+
+## 33. 신규 글 자동 후처리 스케줄러 명령 추가
+
+새 글이 올라왔을 때 신규 article만 LLM 요약하고 검색 색인에 반영하는 스케줄러용 명령을 추가했습니다.
+
+명령:
+
+```bash
+npm run ingest:scheduled
+```
+
+트리거 구조:
+
+```text
+systemd timer
+-> systemd service
+-> npm run ingest:scheduled
+```
+
+초기 AWS 구성에서는 private EC2 안의 systemd timer가 주기적으로 service를 실행합니다. service는 backend 코드베이스에서 `npm run ingest:scheduled`를 실행하고, 이 명령이 수집/키워드/요약/색인 파이프라인을 담당합니다.
+
+이 방식을 선택한 이유:
+
+```text
+추가 AWS 비용이 거의 없음
+FastAPI, crawler, Elasticsearch가 같은 private EC2 안에 있어 네트워크 구성이 단순함
+초기 수집량이 크지 않아 ECS Scheduled Task나 EventBridge까지 분리할 필요가 낮음
+나중에 crawler가 커지면 ECS Scheduled Task 또는 EventBridge Scheduler로 전환 가능
+```
+
+처리 흐름:
+
+```text
+crawl RSS
+-> 새 article이 없으면 종료
+-> keyword extraction
+-> 이번 실행에서 새로 생성된 article만 LLM 요약
+-> Elasticsearch reindex
+```
+
+신규 글 판단 기준:
+
+```text
+scheduler started_at 기록
+Article.created_at >= started_at 인 article만 요약
+```
+
+기존 `llm:summarize`는 요약이 없는 과거 글도 대상으로 삼을 수 있지만, `ingest:scheduled`는 새 글만 요약하도록 분리했습니다.
+
+검증:
+
+```bash
+npm run ingest:scheduled -- --source daangn-tech-blog --summary-limit 2
+```
+
+기존에 모두 수집된 source라 새 글이 없었고, 후처리가 건너뛰어졌습니다.
+
+```text
+Crawled daangn-tech-blog: status=succeeded, fetched=10, created=0, updated=0, unchanged=10, failed=0
+Post process: keyword_articles=0, keywords=0, summary_selected=0, summary_generated=0, summary_failed=0, indexed=0
+```
+
+운영 문서:
+
+```text
+docs/scheduler.md
+```
