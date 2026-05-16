@@ -1519,3 +1519,75 @@ suggestions reindex
 ```
 
 이제 신규 글이 수집되면 검색 인덱스뿐 아니라 자동완성 인덱스도 함께 갱신됩니다.
+
+## 38. suggest:audit 상위 후보 사전 반영
+
+`suggest:audit` 결과 중 실제 자동완성 후보로 가치가 높은 기술/서비스를 `KEYWORD_RULES`에 추가했습니다.
+
+추가한 AWS 서비스:
+
+```text
+AWS IAM
+Amazon EC2
+Amazon VPC
+```
+
+추가한 기술:
+
+```text
+Java
+Kotlin
+React
+Node.js
+Spring Boot
+JPA
+LLM
+```
+
+재처리:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run suggest:audit -- --min-articles 3 --limit 10
+npm run search:evaluate
+```
+
+키워드 재추출 결과:
+
+```text
+articles = 1116
+keywords = 2583
+```
+
+자동완성 후보 수:
+
+```text
+suggestions = 68
+```
+
+샘플 확인:
+
+```text
+ja   -> Java, JPA
+rea  -> React
+spr  -> Spring Boot
+node -> Node.js
+ko   -> Kotlin
+iam  -> AWS IAM
+ec   -> Amazon EC2
+vp   -> Amazon VPC
+ll   -> LLM
+```
+
+사전 반영 후 `suggest:audit` 상위 후보에서는 추가한 항목들이 빠졌고, 다음 검토 후보는 `real-time`, `ML`, `생성형 AI`, `Redis`, `Slack`, `REST` 등으로 이동했습니다.
+
+검색 평가:
+
+```text
+average precision@5 = 0.392
+average recall@10 = 0.819
+average mrr = 0.814
+average ndcg@10 = 0.735
+```

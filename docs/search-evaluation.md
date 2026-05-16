@@ -429,3 +429,40 @@ average recall@10 = 0.819
 average mrr = 0.814
 average ndcg@10 = 0.736
 ```
+
+## 자동완성 후보 사전 보강 후 평가
+
+`suggest:audit` 상위 후보 중 자동완성 가치가 높은 항목을 `KEYWORD_RULES`에 추가했습니다.
+
+추가 항목:
+
+```text
+AWS IAM
+Amazon EC2
+Amazon VPC
+Java
+Kotlin
+React
+Node.js
+Spring Boot
+JPA
+LLM
+```
+
+재처리 후:
+
+```text
+keywords = 2583
+suggestions = 68
+```
+
+1116개 글 기준 평가 점수:
+
+```text
+average precision@5 = 0.392
+average recall@10 = 0.819
+average mrr = 0.814
+average ndcg@10 = 0.735
+```
+
+사전 후보가 늘면서 자동완성 체감 품질이 좋아졌고, 검색 평가도 기존 수준을 유지했습니다.
