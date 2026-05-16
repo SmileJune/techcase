@@ -178,6 +178,23 @@ techcase/
 
 크롤러가 커지면 이후 `apps/crawler`로 분리할 수 있습니다.
 
+초기 로컬 실행 명령은 다음과 같습니다.
+
+```bash
+# PostgreSQL, Elasticsearch, Kibana
+npm run infra:up
+
+# FastAPI backend
+npm run dev:backend
+
+# PostgreSQL migrations
+npm run db:migrate
+
+# Next.js web
+pnpm install
+npm run dev:web
+```
+
 ## 초기 AWS 인프라 구성
 
 초기 구성은 AWS 자원을 사용하되 비용과 운영 복잡도를 최소화하는 것을 목표로 합니다.

@@ -1,0 +1,14 @@
+{
+  "name": "techcase",
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --dir apps/web dev",
+    "build:web": "pnpm --dir apps/web build",
+    "lint:web": "pnpm --dir apps/web lint",
+    "dev:backend": "cd apps/backend && uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "db:migrate": "cd apps/backend && uv run alembic upgrade head",
+    "db:history": "cd apps/backend && uv run alembic history",
+    "infra:up": "docker compose -f infra/docker-compose.yml up -d",
+    "infra:down": "docker compose -f infra/docker-compose.yml down"
+  }
+}
