@@ -29,6 +29,9 @@ class CrawlRun(Base):
     updated_count: Mapped[int] = mapped_column(
         Integer, nullable=False, default=0, server_default="0"
     )
+    unchanged_count: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0, server_default="0"
+    )
     failed_count: Mapped[int] = mapped_column(
         Integer, nullable=False, default=0, server_default="0"
     )

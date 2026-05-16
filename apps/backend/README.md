@@ -36,3 +36,19 @@ Show migration history:
 ```bash
 uv run alembic history
 ```
+
+## Seed Data
+
+Insert or update the initial AWS RSS sources:
+
+```bash
+uv run python -m app.seeds.seed_sources
+```
+
+## RSS Crawler
+
+Crawl enabled RSS sources and upsert articles:
+
+```bash
+uv run python -m app.crawler.rss
+```

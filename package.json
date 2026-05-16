@@ -8,6 +8,8 @@
     "dev:backend": "cd apps/backend && uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
     "db:migrate": "cd apps/backend && uv run alembic upgrade head",
     "db:history": "cd apps/backend && uv run alembic history",
+    "db:seed": "cd apps/backend && uv run python -m app.seeds.seed_sources",
+    "crawl:rss": "cd apps/backend && uv run python -m app.crawler.rss",
     "infra:up": "docker compose -f infra/docker-compose.yml up -d",
     "infra:down": "docker compose -f infra/docker-compose.yml down"
   }

@@ -190,6 +190,12 @@ npm run dev:backend
 # PostgreSQL migrations
 npm run db:migrate
 
+# Initial AWS RSS sources
+npm run db:seed
+
+# Crawl enabled RSS feeds
+npm run crawl:rss
+
 # Next.js web
 pnpm install
 npm run dev:web
