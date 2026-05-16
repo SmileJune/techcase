@@ -1,11 +1,4 @@
-const quickSearches = [
-  "Lambda",
-  "EventBridge",
-  "DynamoDB",
-  "EKS",
-  "event-driven",
-  "cost optimization",
-];
+import { SearchExperience } from "./components/SearchExperience";
 
 export default function Home() {
   return (
@@ -23,33 +16,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="search-panel" aria-label="기술 사례 검색">
-        <form className="search-row">
-          <input
-            className="search-input"
-            name="q"
-            placeholder="Lambda, EventBridge, migration, event-driven..."
-            aria-label="검색어"
-          />
-          <button className="search-button" type="submit">
-            검색
-          </button>
-        </form>
-
-        <div className="tag-list" aria-label="추천 검색어">
-          {quickSearches.map((keyword) => (
-            <button className="tag" type="button" key={keyword}>
-              {keyword}
-            </button>
-          ))}
-        </div>
-
-        <p className="result-empty">
-          아직 검색 UI 골격 단계입니다. 다음 단계에서 FastAPI 검색 API와 연결하고 AWS RSS 수집
-          데이터를 표시합니다.
-        </p>
-      </section>
+      <SearchExperience />
     </main>
   );
 }
-
