@@ -395,3 +395,37 @@ average ndcg@10 = 0.716
 ```
 
 LLM 요약은 평가 지표를 크게 끌어올리기보다는, 검색 결과 카드에서 `caseSummary`, `caseProblem`, `caseSolution`을 보여주어 사용자가 글의 문제/해결 맥락을 더 빨리 판단하게 만드는 효과가 큽니다.
+
+## 기술명 alias와 오탈자 보정
+
+`Elasticsearch`처럼 한글/영문 표기가 섞여 쓰이는 기술명을 더 잘 찾기 위해 alias와 오탈자 보정을 추가했습니다.
+
+적용한 변경:
+
+```text
+Elasticsearch 기술 키워드 추가
+elasticsearch, elastic search, elastic-search alias 추가
+엘라스틱서치, 엘라스틱 서치, 엘라스틱 검색 alias 추가
+alias 매칭 시 canonical keyword phrase boost 추가
+영문 alias에 대해 작은 편집거리 기반 오탈자 보정 추가
+일반 Elasticsearch fuzzy query는 사전으로 보정하지 못한 영문 검색어에만 낮은 boost로 적용
+```
+
+샘플 확인:
+
+```text
+엘라스틱서치 -> Elasticsearch 관련 글 상위 노출
+엘라스틱 서치 -> Elasticsearch 관련 글 상위 노출
+elasticsearch -> Elasticsearch 관련 글 상위 노출
+elastic search -> Elasticsearch 관련 글 상위 노출
+elastcsearch -> Elasticsearch 관련 글 상위 노출
+```
+
+1116개 글 기준 평가 점수:
+
+```text
+average precision@5 = 0.383
+average recall@10 = 0.819
+average mrr = 0.814
+average ndcg@10 = 0.736
+```

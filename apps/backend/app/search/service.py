@@ -17,6 +17,15 @@ SEARCH_FIELDS = [
     "content",
 ]
 
+FUZZY_SEARCH_FIELDS = [
+    "title^3",
+    "caseSummary^3",
+    "caseProblem^2",
+    "caseSolution^2",
+    "summary^2",
+    "content",
+]
+
 
 def search_articles(query: str, size: int = 20) -> dict[str, Any]:
     client = get_elasticsearch_client()
@@ -54,14 +63,21 @@ def search_articles(query: str, size: int = 20) -> dict[str, Any]:
 
 def build_search_query(query: str) -> dict[str, Any]:
     expanded_query = expand_query(query)
+    matched_keywords = matched_rule_keywords(query)
     should_queries = [
         multi_match_query(query, operator="and", boost=4),
         phrase_match_query(query),
-        keyword_terms_query(query),
+        keyword_terms_query(matched_keywords),
     ]
+
+    if matched_keywords:
+        should_queries.append(canonical_keyword_match_query(matched_keywords))
 
     if expanded_query != query:
         should_queries.append(multi_match_query(expanded_query, operator="or", boost=2))
+
+    if has_ascii_letter(query) and not matched_keywords:
+        should_queries.append(fuzzy_match_query(query))
 
     return {
         "bool": {
@@ -79,6 +95,51 @@ def multi_match_query(query: str, operator: str, boost: int) -> dict[str, Any]:
             "type": "best_fields",
             "operator": operator,
             "boost": boost,
+        }
+    }
+
+
+def canonical_keyword_match_query(keywords: list[str]) -> dict[str, Any]:
+    return {
+        "bool": {
+            "should": [
+                {
+                    "multi_match": {
+                        "query": keyword,
+                        "fields": [
+                            "technologies^8",
+                            "title^6",
+                            "caseSummary^5",
+                            "caseProblem^4",
+                            "caseSolution^4",
+                            "architectureKeywords^4",
+                            "problemKeywords^4",
+                            "summary^3",
+                            "content",
+                        ],
+                        "type": "phrase",
+                        "slop": 1,
+                        "boost": 5,
+                    }
+                }
+                for keyword in keywords
+            ],
+            "minimum_should_match": 1,
+        }
+    }
+
+
+def fuzzy_match_query(query: str) -> dict[str, Any]:
+    return {
+        "multi_match": {
+            "query": query,
+            "fields": FUZZY_SEARCH_FIELDS,
+            "type": "best_fields",
+            "operator": "or",
+            "fuzziness": "AUTO",
+            "prefix_length": 2,
+            "max_expansions": 30,
+            "boost": 0.6,
         }
     }
 
@@ -102,18 +163,18 @@ def phrase_match_query(query: str) -> dict[str, Any]:
     }
 
 
-def keyword_terms_query(query: str) -> dict[str, Any]:
-    keywords = matched_rule_keywords(query)
-
+def keyword_terms_query(keywords: list[str]) -> dict[str, Any]:
     if not keywords:
         return {"match_none": {}}
+
+    term_values = sorted({keyword for keyword in keywords} | {keyword.casefold() for keyword in keywords})
 
     return {
         "bool": {
             "should": [
-                {"terms": {"technologies": keywords, "boost": 8}},
-                {"terms": {"architectureKeywords": keywords, "boost": 7}},
-                {"terms": {"problemKeywords": keywords, "boost": 7}},
+                {"terms": {"technologies": term_values, "boost": 8}},
+                {"terms": {"architectureKeywords": term_values, "boost": 7}},
+                {"terms": {"problemKeywords": term_values, "boost": 7}},
             ],
             "minimum_should_match": 1,
         }
@@ -135,17 +196,6 @@ def expand_query(query: str) -> str:
         if not matches_rule(normalized_query, rule):
             continue
 
-        matched_non_ascii_alias = next(
-            (
-                alias
-                for alias in rule.aliases
-                if has_non_ascii(alias) and contains_alias(normalized_query, alias)
-            ),
-            None,
-        )
-        if matched_non_ascii_alias is None:
-            continue
-
         search_alias = first_ascii_alias(rule)
         if search_alias and search_alias.casefold() not in normalized_query:
             expanded_terms.append(search_alias)
@@ -157,7 +207,9 @@ def expand_query(query: str) -> str:
 
 
 def matches_rule(normalized_query: str, rule: KeywordRule) -> bool:
-    return any(contains_alias(normalized_query, alias) for alias in rule.aliases)
+    return any(contains_alias(normalized_query, alias) for alias in rule.aliases) or any(
+        fuzzy_contains_alias(normalized_query, alias) for alias in rule.aliases
+    )
 
 
 def first_ascii_alias(rule: KeywordRule) -> str | None:
@@ -168,6 +220,10 @@ def has_non_ascii(value: str) -> bool:
     return any(ord(character) > 127 for character in value)
 
 
+def has_ascii_letter(value: str) -> bool:
+    return any(("a" <= character <= "z") or ("A" <= character <= "Z") for character in value)
+
+
 def normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", value.casefold())
 
@@ -176,6 +232,52 @@ def contains_alias(text: str, alias: str) -> bool:
     normalized_alias = normalize_text(alias)
     pattern = rf"(?<![a-z0-9]){re.escape(normalized_alias)}(?![a-z0-9])"
     return re.search(pattern, text) is not None
+
+
+def fuzzy_contains_alias(text: str, alias: str) -> bool:
+    if has_non_ascii(alias) or not has_ascii_letter(text):
+        return False
+
+    compact_query = compact_ascii(text)
+    compact_alias = compact_ascii(alias)
+
+    if len(compact_query) < 6 or len(compact_alias) < 6:
+        return False
+
+    max_distance = 1 if len(compact_alias) < 10 else 2
+    return levenshtein_distance_at_most(compact_query, compact_alias, max_distance)
+
+
+def compact_ascii(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", value.casefold())
+
+
+def levenshtein_distance_at_most(left: str, right: str, max_distance: int) -> bool:
+    if abs(len(left) - len(right)) > max_distance:
+        return False
+
+    previous_row = list(range(len(right) + 1))
+
+    for left_index, left_character in enumerate(left, start=1):
+        current_row = [left_index]
+        row_minimum = current_row[0]
+
+        for right_index, right_character in enumerate(right, start=1):
+            insertion_cost = current_row[right_index - 1] + 1
+            deletion_cost = previous_row[right_index] + 1
+            substitution_cost = previous_row[right_index - 1] + (
+                0 if left_character == right_character else 1
+            )
+            cost = min(insertion_cost, deletion_cost, substitution_cost)
+            current_row.append(cost)
+            row_minimum = min(row_minimum, cost)
+
+        if row_minimum > max_distance:
+            return False
+
+        previous_row = current_row
+
+    return previous_row[-1] <= max_distance
 
 
 def hit_to_item(hit: dict[str, Any]) -> dict[str, Any]:

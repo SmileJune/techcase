@@ -1,4 +1,5 @@
 ARTICLES_INDEX = "articles"
+SUGGESTIONS_INDEX = "suggestions"
 
 ARTICLES_INDEX_SETTINGS = {
     "settings": {
@@ -32,6 +33,33 @@ ARTICLES_INDEX_SETTINGS = {
             "technologies": {"type": "keyword", "normalizer": "lowercase_normalizer"},
             "architectureKeywords": {"type": "keyword", "normalizer": "lowercase_normalizer"},
             "problemKeywords": {"type": "keyword", "normalizer": "lowercase_normalizer"},
+        },
+    },
+}
+
+SUGGESTIONS_INDEX_SETTINGS = {
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0,
+        "analysis": {
+            "normalizer": {
+                "lowercase_normalizer": {
+                    "type": "custom",
+                    "filter": ["lowercase"],
+                }
+            }
+        },
+    },
+    "mappings": {
+        "dynamic": "strict",
+        "properties": {
+            "id": {"type": "keyword"},
+            "label": {"type": "keyword", "normalizer": "lowercase_normalizer"},
+            "type": {"type": "keyword"},
+            "description": {"type": "keyword"},
+            "aliases": {"type": "keyword", "normalizer": "lowercase_normalizer"},
+            "articleCount": {"type": "integer"},
+            "suggest": {"type": "completion"},
         },
     },
 }

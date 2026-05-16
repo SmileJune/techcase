@@ -1295,3 +1295,167 @@ Post process: keyword_articles=0, keywords=0, summary_selected=0, summary_genera
 ```text
 docs/scheduler.md
 ```
+
+## 34. 검색 결과 카드 맥락 강화
+
+상세 페이지를 만들기보다는 검색 결과 카드에서 바로 판단할 수 있는 정보를 보강했습니다. TechCase의 역할은 원문을 대체하는 것이 아니라, 사용자가 읽을 가치가 있는 기업 기술 블로그 글을 빠르게 고르게 하는 것이기 때문입니다.
+
+추가한 카드 정보:
+
+```text
+회사 로고/회사명/source/발행일
+사례 유형
+LLM 사례 요약
+문제/해결
+기술/문제 상황/아키텍처 키워드 그룹
+원문 보기 링크
+검색 매칭 근거
+```
+
+공식 출처 기반 로고:
+
+```text
+NAVER  docs/logo-assets.md 기준 공식 브랜드 리소스
+Toss   Toss 브랜드 리소스 센터
+Kakao  Kakao 공식 CI 페이지
+```
+
+공식 로고 파일이 있는 회사는 이미지 로고를 사용하고, 없는 회사는 기존 텍스트 기반 로고 배지를 fallback으로 사용합니다. 로고는 출처 식별 목적으로만 사용하며, 각 회사와 TechCase의 제휴를 의미하지 않는다는 상표 안내 문구를 README에 추가했습니다.
+
+검색 하이라이트:
+
+```text
+Elasticsearch highlight의 <em>...</em> 조각을 React에서 안전하게 분해
+제목/사례 요약/문제/해결에 검색어 highlight 표시
+매칭 근거 섹션에서 어떤 필드가 검색어와 매칭됐는지 표시
+```
+
+이 변경으로 사용자는 “왜 이 글이 검색 결과에 나왔는지”를 카드 안에서 바로 확인할 수 있습니다.
+
+검증:
+
+```bash
+npm run build:web
+git diff --check
+```
+
+## 35. 기술명 alias와 오탈자 검색 보정
+
+`엘라스틱서치`, `엘라스틱 서치`, `elasticsearch`, `elastic search`, 오탈자까지 같은 기술 사례로 연결되도록 검색 보정을 추가했습니다.
+
+추가한 Elasticsearch alias:
+
+```text
+elasticsearch
+elastic search
+elastic-search
+엘라스틱서치
+엘라스틱 서치
+엘라스틱 검색
+```
+
+추가한 MQTT alias:
+
+```text
+mqtt
+mq telemetry transport
+엠큐티티
+```
+
+검색 보정 방식:
+
+```text
+KEYWORD_RULES alias 매칭 시 canonical keyword phrase boost 적용
+영문 기술명 오탈자는 alias와 편집거리 기반으로 보정
+일반 fuzzy query는 사전으로 보정하지 못한 영문 검색어에만 낮은 boost로 적용
+```
+
+샘플 확인:
+
+```text
+엘라스틱서치  -> Elasticsearch 관련 글 상위 노출
+엘라스틱 서치 -> Elasticsearch 관련 글 상위 노출
+elastic search -> Elasticsearch 관련 글 상위 노출
+elastcsearch -> Elasticsearch 관련 글 상위 노출
+mq/mqt/mqtt/엠큐 -> MQTT 자동완성 후보 노출
+```
+
+MQTT 보강 후 재처리:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+```
+
+MQTT 검색 결과는 5개 사례가 잡히며, 관련 article의 `technologies`에도 `MQTT`가 반영됐습니다.
+
+## 36. Elasticsearch completion suggester 기반 자동완성
+
+검색창에 입력 중인 기술명/회사명/문제 상황을 제안하기 위해 Elasticsearch `completion suggester` 기반 자동완성을 추가했습니다.
+
+인덱스 구조:
+
+```text
+articles      실제 검색 결과용 인덱스
+suggestions   자동완성 후보 전용 인덱스
+```
+
+후보 생성 소스:
+
+```text
+KEYWORD_RULES      기술명, AWS 서비스, 문제 상황, 아키텍처 키워드
+sources            회사명
+article_keywords   후보별 articleCount와 weight 보정
+```
+
+추가 API:
+
+```text
+GET /api/suggest?q=ka
+```
+
+추가 명령:
+
+```bash
+npm run suggest:reindex
+```
+
+weight 정책:
+
+```text
+AWS 서비스와 기술 후보를 회사 후보보다 우선
+articleCount는 최대 50까지만 반영해 대형 source가 자동완성을 과도하게 지배하지 않도록 제한
+completion fuzzy는 min_length와 prefix_length로 과도한 후보 확장을 제한
+```
+
+프론트 UI:
+
+```text
+검색어 2글자 이상부터 debounce 180ms로 suggest API 호출
+방향키로 후보 이동
+Enter로 후보 선택 검색
+Escape로 후보 닫기
+후보 클릭 시 즉시 검색
+```
+
+샘플 확인:
+
+```text
+ka    -> Apache Kafka, Kakao Pay, Kakao
+kaf   -> Apache Kafka
+elas  -> Elasticsearch, Amazon ElastiCache
+elastc -> Elasticsearch
+엘라   -> Elasticsearch
+쿠버   -> Kubernetes
+```
+
+검증:
+
+```bash
+npm run suggest:reindex
+uv run python -m compileall app
+uv run python -c 'from fastapi.testclient import TestClient; from app.main import app; ...'
+npm run build:web
+git diff --check
+```
