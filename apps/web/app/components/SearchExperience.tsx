@@ -257,6 +257,7 @@ export function SearchExperience() {
   const [isSuggestOpen, setIsSuggestOpen] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const suggestAbortRef = useRef<AbortController | null>(null);
+  const committedQueryRef = useRef<string | null>(null);
 
   useEffect(() => {
     const trimmedQuery = query.trim();
@@ -265,6 +266,12 @@ export function SearchExperience() {
     setActiveSuggestionIndex(-1);
 
     if (trimmedQuery.length < 2) {
+      setSuggestions([]);
+      setIsSuggestOpen(false);
+      return;
+    }
+
+    if (committedQueryRef.current === trimmedQuery) {
       setSuggestions([]);
       setIsSuggestOpen(false);
       return;
@@ -305,9 +312,11 @@ export function SearchExperience() {
 
   async function runSearch(nextQuery: string) {
     const trimmedQuery = nextQuery.trim();
+    committedQueryRef.current = trimmedQuery;
     setQuery(nextQuery);
     setIsSuggestOpen(false);
     setActiveSuggestionIndex(-1);
+    setSuggestions([]);
 
     if (!trimmedQuery) {
       setResult(null);
@@ -382,7 +391,10 @@ export function SearchExperience() {
             aria-autocomplete="list"
             aria-expanded={isSuggestOpen}
             aria-controls="search-suggestions"
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              committedQueryRef.current = null;
+              setQuery(event.target.value);
+            }}
             onFocus={() => setIsSuggestOpen(suggestions.length > 0)}
             onKeyDown={handleInputKeyDown}
           />
