@@ -491,3 +491,10 @@ Terraform 실행 원칙은 다음과 같습니다.
 - `problemKeywords`: 3
 - `summary`: 2
 - `content`: 1
+
+## 관련 문서
+
+- [아키텍처](./architecture.md)
+- [데이터 모델](./data-model.md)
+- [검색 설계](./search-design.md)
+- [AWS 인프라](./aws-infra.md)
