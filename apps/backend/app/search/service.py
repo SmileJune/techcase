@@ -54,17 +54,18 @@ def search_articles(query: str, size: int = 20) -> dict[str, Any]:
 
 def build_search_query(query: str) -> dict[str, Any]:
     expanded_query = expand_query(query)
-    exact_query = multi_match_query(query, operator="and", boost=4)
+    should_queries = [
+        multi_match_query(query, operator="and", boost=4),
+        phrase_match_query(query),
+        keyword_terms_query(query),
+    ]
 
-    if expanded_query == query:
-        return exact_query
+    if expanded_query != query:
+        should_queries.append(multi_match_query(expanded_query, operator="or", boost=2))
 
     return {
         "bool": {
-            "should": [
-                exact_query,
-                multi_match_query(expanded_query, operator="or", boost=2),
-            ],
+            "should": should_queries,
             "minimum_should_match": 1,
         }
     }
@@ -80,6 +81,50 @@ def multi_match_query(query: str, operator: str, boost: int) -> dict[str, Any]:
             "boost": boost,
         }
     }
+
+
+def phrase_match_query(query: str) -> dict[str, Any]:
+    return {
+        "multi_match": {
+            "query": query,
+            "fields": [
+                "title^6",
+                "caseSummary^4",
+                "caseProblem^4",
+                "caseSolution^3",
+                "summary^3",
+                "content",
+            ],
+            "type": "phrase",
+            "slop": 1,
+            "boost": 3,
+        }
+    }
+
+
+def keyword_terms_query(query: str) -> dict[str, Any]:
+    keywords = matched_rule_keywords(query)
+
+    if not keywords:
+        return {"match_none": {}}
+
+    return {
+        "bool": {
+            "should": [
+                {"terms": {"technologies": keywords, "boost": 8}},
+                {"terms": {"architectureKeywords": keywords, "boost": 7}},
+                {"terms": {"problemKeywords": keywords, "boost": 7}},
+            ],
+            "minimum_should_match": 1,
+        }
+    }
+
+
+def matched_rule_keywords(query: str) -> list[str]:
+    normalized_query = normalize_text(query)
+    return sorted(
+        {rule.keyword for rule in KEYWORD_RULES if matches_rule(normalized_query, rule)}
+    )
 
 
 def expand_query(query: str) -> str:

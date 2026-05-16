@@ -1062,3 +1062,109 @@ average ndcg@10     0.654
 ```
 
 새로운 article이 많이 추가되면서 기존 평가 데이터셋의 정답 기준과 실제 검색 후보 풀이 달라졌습니다. 다음 단계에서는 신규 기업 블로그 글을 반영해 한글 검색 평가 데이터셋을 보강해야 합니다.
+
+## 30. 신규 한국어 source 기반 검색 평가 데이터셋 보강
+
+새로 수집한 한국어 기업 기술 블로그 글을 기준으로 검색 평가 쿼리 8개를 추가했습니다.
+
+추가 쿼리:
+
+```text
+ko-tech-eks-autoscaling
+ko-problem-observability
+ko-deployment-canary
+ko-tech-search
+ko-data-log-platform
+ko-problem-jvm-latency
+ko-game-server
+ko-event-driven-commerce
+```
+
+평가셋 설명도 AWS 중심에서 AWS + 한국 기업 기술 블로그 기준으로 수정했습니다.
+
+평가 결과:
+
+```text
+evaluation queries = 24
+indexed articles = 1116
+
+average precision@5 0.367
+average recall@10   0.749
+average mrr         0.701
+average ndcg@10     0.632
+```
+
+관찰:
+
+- `EKS 오토스케일링`, `게임 서버`, `이벤트 기반 상품 조회`는 기대 결과가 상위에 잘 노출됐습니다.
+- `검색 개선`, `로그 플랫폼`은 관련 결과가 일부 잡히지만 일반 명사 조합이라 ranking이 흔들립니다.
+- `비용 최적화`는 여전히 한글 검색 품질 개선이 필요한 대표 쿼리입니다.
+
+다음 개선 후보:
+
+```text
+한글 복합어/문제상황 키워드 boost
+LLM 요약 필드 검색 가중치 강화
+신규 source 글에 대한 LLM 요약 확대
+검색 평가 쿼리별 top 10 결과 스냅샷 저장
+```
+
+## 31. 한글 복합 쿼리 검색 품질 개선
+
+신규 한국어 source 평가에서 약점으로 드러난 `검색 개선`, `로그 플랫폼`, `비용 최적화`, `JVM 응답 지연`, `카나리 배포` 같은 한글 복합 쿼리를 개선했습니다.
+
+적용한 변경:
+
+```text
+검색 쿼리에 phrase match boost 추가
+사전 매칭 keyword field boost 추가
+한글 복합어 사전 확장
+cost/costs처럼 너무 넓게 매칭되던 alias 제거
+비용 최적화 평가셋 expected result 보정
+```
+
+추가한 주요 키워드:
+
+```text
+옵저버빌리티
+로그 플랫폼
+로그 파이프라인
+검색 개선
+검색 성능
+JVM
+카나리 배포
+이벤트 기반
+ClickStack
+Vertex AI Search
+Argo Rollouts
+Spinnaker
+Istio
+```
+
+키워드 재추출 결과:
+
+```text
+before keywords = 1482
+after keywords = 1743
+articles = 1116
+```
+
+검색 평가 개선 전:
+
+```text
+average precision@5 0.367
+average recall@10   0.749
+average mrr         0.701
+average ndcg@10     0.632
+```
+
+검색 평가 개선 후:
+
+```text
+average precision@5 0.375
+average recall@10   0.832
+average mrr         0.778
+average ndcg@10     0.714
+```
+
+이번 개선으로 모든 평균 지표가 상승했습니다. 다만 `검색 개선`, `로그 플랫폼`처럼 일반 명사 조합이 포함된 쿼리는 검색 후보가 여전히 넓으므로, 다음 단계에서는 LLM 요약 필드와 문제상황 키워드의 품질을 더 높이는 작업이 필요합니다.

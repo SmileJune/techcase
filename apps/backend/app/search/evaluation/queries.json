@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "description": "TechCase MVP search evaluation dataset based on articles collected from AWS technology blog RSS feeds.",
+  "description": "TechCase MVP search evaluation dataset based on articles collected from AWS and Korean company technology blog RSS feeds.",
   "metrics": ["precision@5", "recall@10", "mrr", "ndcg@10"],
   "queries": [
     {
@@ -281,6 +281,26 @@
       "intent": "한글 검색어로 비용 최적화, 성능 개선, 비용 절감 사례를 찾는다.",
       "expectedResults": [
         {
+          "url": "https://techblog.woowahan.com/22855/",
+          "title": "우아한 Cloud FinOps 여정",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.kakaopay.com/post/cloud-cost-visualization/",
+          "title": "클라우드 비용 가시화 그렇게 어렵지 않아요!",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/19685/",
+          "title": "최적화된 인스턴스 추천을 위한 Rightsizing Recommendations 시스템 개발 여정",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.lycorp.co.jp/ko/safety-and-cost-saving-why-separate-guardrails-are-necessary",
+          "title": "안전은 기본, 비용 절감은 덤: AI 서비스에 별도 가드레일이 필요한 이유",
+          "relevance": 2
+        },
+        {
           "url": "https://d2.naver.com/helloworld/0004394",
           "title": "비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입",
           "relevance": 3
@@ -353,6 +373,190 @@
           "url": "https://aws.amazon.com/blogs/compute/optimizing-compute-intensive-serverless-workloads-with-multi-threaded-rust-on-aws-lambda/",
           "title": "Optimizing Compute-Intensive Serverless Workloads with Multi-threaded Rust on AWS Lambda",
           "relevance": 3
+        }
+      ]
+    },
+    {
+      "id": "ko-tech-eks-autoscaling",
+      "query": "EKS 오토스케일링",
+      "category": "technology",
+      "intent": "한글 검색어로 EKS 노드 그룹 오토스케일링, Pod 권한, 카나리 배포처럼 Kubernetes 운영 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://medium.com/daangn/job-%EC%9B%8C%ED%81%AC%EB%A1%9C%EB%93%9C%EB%A5%BC-%EC%9C%84%ED%95%9C-eks-node-group-%EC%98%A4%ED%86%A0%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%A7%81-%EB%8F%84%EC%9E%85%EA%B8%B0-a6a28376d153?source=rss----4505f82a2dbd---4",
+          "title": "Job 워크로드를 위한 EKS Node Group 오토스케일링 도입기",
+          "relevance": 3
+        }
+      ]
+    },
+    {
+      "id": "ko-problem-observability",
+      "query": "옵저버빌리티",
+      "category": "problem",
+      "intent": "한글 검색어로 관측성, 모니터링, 로그 플랫폼 구축 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://techblog.gccompany.co.kr/%EC%98%B5%EC%A0%80%EB%B2%84%EB%B9%8C%EB%A6%AC%ED%8B%B0-right-sizing-%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C%EC%97%90%EC%84%9C-%EA%B8%B0%EC%A4%80%EC%9D%84-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B2%95-8c9e1b3d3c97?source=rss----18356045d353---4",
+          "title": "옵저버빌리티 Right-Sizing: 여기어때에서 기준을 만드는 법",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.kakaopay.com/post/pallas-v2-log-platform/",
+          "title": "일 41TB, 200억 건의 로그를 ClickStack으로 실시간 처리하기 - 호그와트 도서관 프로젝트",
+          "relevance": 2
+        },
+        {
+          "url": "https://d2.naver.com/helloworld/0004394",
+          "title": "비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-deployment-canary",
+      "query": "카나리 배포",
+      "category": "architecture",
+      "intent": "한글 검색어로 카나리 배포, Blue-Green 배포, Argo Rollouts, Spinnaker 적용 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://techblog.gccompany.co.kr/eks-alb-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-argo-rollouts-503-%EC%97%90%EB%9F%AC-%EC%97%86%EB%8A%94-%EC%B9%B4%EB%82%98%EB%A6%AC-%EB%B0%B0%ED%8F%AC-%EC%A0%81%EC%9A%A9%EA%B8%B0-689eedaf8d1a?source=rss----18356045d353---4",
+          "title": "EKS + ALB 환경에서 Argo Rollouts 503 에러 없는 카나리 배포 적용기",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.devsisters.com/posts/blue-green-canary-deployment",
+          "title": "Istio와 Spinnaker를 활용한 Blue-Green + Canary 자동 배포 전략 도입기",
+          "relevance": 3
+        }
+      ]
+    },
+    {
+      "id": "ko-tech-search",
+      "query": "검색 개선",
+      "category": "technology",
+      "intent": "한글 검색어로 검색 기능 개선, 검색 시스템 설계, 검색 엔진 분석 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://helloworld.kurly.com/blog/vertex-ai-search-nr/",
+          "title": "Vertex AI Search를 활용한 결과 없는 검색 개선하기",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/20161/",
+          "title": "검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화",
+          "relevance": 3
+        },
+        {
+          "url": "https://d2.naver.com/helloworld/4241703",
+          "title": "네이버 통합검색 AIB 도입과 웹 성능 변화 분석",
+          "relevance": 2
+        },
+        {
+          "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-2/",
+          "title": "컬리 검색이 카프카를 들여다본 이야기 2",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/",
+          "title": "OpenSearch Analyzer를 활용한 검색기능 알아보기",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-data-log-platform",
+      "query": "로그 플랫폼",
+      "category": "architecture",
+      "intent": "한글 검색어로 대용량 로그 처리, 로그 파이프라인, 실시간 로그 플랫폼 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://tech.kakaopay.com/post/pallas-v2-log-platform/",
+          "title": "일 41TB, 200억 건의 로그를 ClickStack으로 실시간 처리하기 - 호그와트 도서관 프로젝트",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.socarcorp.kr/data/2025/02/25/log-pipeline-revamp.html",
+          "title": "로그 파이프라인 개선기 - 기존 파이프라인 문제 정의 및 해결 방안 적용",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/2536/",
+          "title": "로그 데이터로 유저 이해하기",
+          "relevance": 2
+        },
+        {
+          "url": "https://d2.naver.com/helloworld/0004394",
+          "title": "비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.kakaopay.com/post/efficient-logging-with-kotlin/",
+          "title": "Kotlin 환경에서 로그를 기록할 때 불필요한 문자열 연산을 방지하는 방법",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-problem-jvm-latency",
+      "query": "JVM 응답 지연",
+      "category": "problem",
+      "intent": "한글 검색어로 JVM 웜업, 메모리 누수, 배포 직후 지연 같은 JVM 운영 문제 해결 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://tech.kakaopay.com/post/jvm-warm-up/",
+          "title": "배포 직후 발생하는 응답 지연을 해결하기 위한 여정 (feat. JVM 웜업)",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/2628/",
+          "title": "도움이 될수도 있는 JVM memory leak 이야기",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-game-server",
+      "query": "게임 서버",
+      "category": "technology",
+      "intent": "한글 검색어로 게임 서버 개발, Scala 게임 서버, 게임 서비스 장애 회고 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://tech.devsisters.com/posts/2025-engineering-day-game-server",
+          "title": "데브시스터즈 엔지니어링 데이 - 게임 서버 돌아보기",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.devsisters.com/posts/scala-for-game-server-development-kr",
+          "title": "게임 서버 개발에 스칼라 사용하기",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.devsisters.com/posts/crk-hot-range-postmortem",
+          "title": "쿠키런: 킹덤 길드 업데이트 이후 서비스 이슈 되돌아보기",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-event-driven-commerce",
+      "query": "이벤트 기반 상품 조회",
+      "category": "architecture",
+      "intent": "한글 검색어로 이벤트 기반 아키텍처가 커머스, 알림, 상품 조회에 적용된 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4",
+          "title": "쿠폰, 어디에 쓸 수 있어요? - 이벤트 기반 적용 상품 조회 시스템 구축",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.gccompany.co.kr/%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%ED%86%B5%ED%95%A9-%EC%95%8C%EB%A6%BC-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B5%AC%EC%B6%95%EA%B8%B0-part-1-why-3d2961d1e849?source=rss----18356045d353---4",
+          "title": "여기어때 이벤트 기반 통합 알림 플랫폼 구축기 Part 1. Why?",
+          "relevance": 2
+        },
+        {
+          "url": "https://techblog.gccompany.co.kr/%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%ED%86%B5%ED%95%A9-%EC%95%8C%EB%A6%BC-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B5%AC%EC%B6%95%EA%B8%B0-part-2-how-11f41bb2b5f2?source=rss----18356045d353---4",
+          "title": "여기어때 이벤트 기반 통합 알림 플랫폼 구축기 Part 2. How?",
+          "relevance": 2
         }
       ]
     }
