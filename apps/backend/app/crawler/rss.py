@@ -1,3 +1,4 @@
+import argparse
 import html
 import re
 from dataclasses import dataclass
@@ -324,13 +325,17 @@ def crawl_source(db: Session, source: Source) -> CrawlSummary:
     )
 
 
-def crawl_enabled_sources(limit: int | None = None) -> list[CrawlSummary]:
+def crawl_enabled_sources(
+    limit: int | None = None, source_slug: str | None = None
+) -> list[CrawlSummary]:
     with SessionLocal() as db:
         statement = (
             select(Source)
             .where(Source.enabled.is_(True), Source.collection_strategy == "rss")
             .order_by(Source.slug)
         )
+        if source_slug is not None:
+            statement = statement.where(Source.slug == source_slug)
         if limit is not None:
             statement = statement.limit(limit)
 
@@ -342,7 +347,12 @@ def crawl_enabled_sources(limit: int | None = None) -> list[CrawlSummary]:
 
 
 def main() -> None:
-    summaries = crawl_enabled_sources()
+    parser = argparse.ArgumentParser(description="Crawl enabled RSS sources.")
+    parser.add_argument("--source", dest="source_slug", help="Crawl a single source slug.")
+    parser.add_argument("--limit", type=int, help="Limit number of sources to crawl.")
+    args = parser.parse_args()
+
+    summaries = crawl_enabled_sources(limit=args.limit, source_slug=args.source_slug)
     for summary in summaries:
         print(
             "Crawled "

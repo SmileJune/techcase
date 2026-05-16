@@ -127,3 +127,22 @@ GitHub
 ```
 
 Medium 기반 블로그는 RSS에서 기본적으로 최신 10개만 확인되는 경우가 많습니다. 과거 글 전체 수집이 중요해지면 Medium archive 또는 HTML 목록 수집 전략을 별도로 설계합니다.
+
+## 수집 진행 기록
+
+2026-05-16에 한국어 우선순위 source 10곳을 seed에 추가하고 실제 수집을 완료했습니다.
+
+| Source | 수집 결과 |
+| --- | ---: |
+| `29cm-team` | 10 |
+| `daangn-tech-blog` | 10 |
+| `devsisters-tech-blog` | 66 |
+| `gc-company-tech-blog` | 10 |
+| `kakaopay-tech-blog` | 159 |
+| `kurly-tech-blog` | 119 |
+| `ly-corporation-tech-blog` | 50 |
+| `musinsa-tech-blog` | 10 |
+| `socar-tech-blog` | 10 |
+| `yogiyo-tech-blog` | 10 |
+
+총 454개 article을 신규 수집했습니다.

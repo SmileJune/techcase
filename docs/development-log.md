@@ -1000,3 +1000,65 @@ Shopify
 LinkedIn
 Uber
 ```
+
+## 29. 우선순위 한국어 기술 블로그 수집 시작
+
+RSS가 바로 확인된 한국어 기업 기술 블로그 10곳을 source seed에 추가하고, source별로 하나씩 수집했습니다.
+
+추가 source:
+
+```text
+daangn-tech-blog
+ly-corporation-tech-blog
+kakaopay-tech-blog
+socar-tech-blog
+kurly-tech-blog
+gc-company-tech-blog
+yogiyo-tech-blog
+musinsa-tech-blog
+29cm-team
+devsisters-tech-blog
+```
+
+crawler는 특정 source만 수집할 수 있도록 `--source` 옵션을 추가했습니다.
+
+예:
+
+```bash
+npm run crawl:rss -- --source daangn-tech-blog
+```
+
+수집 결과:
+
+```text
+29cm-team                  10
+daangn-tech-blog           10
+devsisters-tech-blog       66
+gc-company-tech-blog       10
+kakaopay-tech-blog        159
+kurly-tech-blog           119
+ly-corporation-tech-blog   50
+musinsa-tech-blog          10
+socar-tech-blog            10
+yogiyo-tech-blog           10
+```
+
+신규 source에서 총 454개 article을 수집했습니다.
+
+후속 처리:
+
+```text
+keywords:extract  articles=1116, keywords=1482
+search:reindex    Indexed articles=1116
+```
+
+검색 평가:
+
+```text
+average precision@5 0.425
+average recall@10   0.865
+average mrr         0.615
+average ndcg@10     0.654
+```
+
+새로운 article이 많이 추가되면서 기존 평가 데이터셋의 정답 기준과 실제 검색 후보 풀이 달라졌습니다. 다음 단계에서는 신규 기업 블로그 글을 반영해 한글 검색 평가 데이터셋을 보강해야 합니다.
