@@ -55,3 +55,39 @@ AWS_SOURCES: tuple[SourceSeed, ...] = (
     ),
 )
 
+KOREAN_TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = (
+    SourceSeed(
+        name="Toss Tech",
+        slug="toss-tech",
+        company_name="Toss",
+        feed_url="https://toss.tech/rss.xml",
+        site_url="https://toss.tech",
+        description="Toss engineering stories and product technology cases.",
+    ),
+    SourceSeed(
+        name="NAVER D2",
+        slug="naver-d2",
+        company_name="NAVER",
+        feed_url="https://d2.naver.com/d2.atom",
+        site_url="https://d2.naver.com",
+        description="NAVER engineering, frontend, backend, AI, and platform technology cases.",
+    ),
+    SourceSeed(
+        name="Kakao Tech",
+        slug="kakao-tech",
+        company_name="Kakao",
+        feed_url="https://tech.kakao.com/feed/",
+        site_url="https://tech.kakao.com",
+        description="Kakao engineering, AI, frontend, backend, and service technology cases.",
+    ),
+    SourceSeed(
+        name="Woowa Tech Blog",
+        slug="woowa-tech-blog",
+        company_name="Woowa Brothers",
+        feed_url="https://techblog.woowahan.com/feed/",
+        site_url="https://techblog.woowahan.com",
+        description="Woowa Brothers engineering, product, data, AI, and platform technology cases.",
+    ),
+)
+
+TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = AWS_SOURCES + KOREAN_TECH_BLOG_SOURCES

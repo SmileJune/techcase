@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app.db.session import SessionLocal
 from app.models.source import Source
-from app.seeds.aws_sources import AWS_SOURCES, SourceSeed
+from app.seeds.aws_sources import TECH_BLOG_SOURCES, SourceSeed
 
 
 def upsert_source(db: Session, seed: SourceSeed) -> bool:
@@ -29,7 +29,7 @@ def seed_sources() -> tuple[int, int]:
     updated_count = 0
 
     with SessionLocal() as db:
-        for seed in AWS_SOURCES:
+        for seed in TECH_BLOG_SOURCES:
             created = upsert_source(db, seed)
             if created:
                 created_count += 1
@@ -48,4 +48,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

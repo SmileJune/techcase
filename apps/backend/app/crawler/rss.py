@@ -13,6 +13,11 @@ from app.models.article import Article
 from app.models.crawl_run import CrawlRun
 from app.models.source import Source
 
+CRAWLER_USER_AGENT = (
+    "TechCaseBot/0.1 "
+    "(RSS crawler for technical case search; https://github.com/SmileJune/techcase)"
+)
+
 
 @dataclass(frozen=True)
 class CrawlSummary:
@@ -98,7 +103,11 @@ def entry_raw_metadata(entry: Any) -> dict[str, Any]:
 
 
 def fetch_feed(feed_url: str) -> list[Any]:
-    with httpx.Client(timeout=20.0, follow_redirects=True) as client:
+    headers = {
+        "User-Agent": CRAWLER_USER_AGENT,
+        "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+    }
+    with httpx.Client(timeout=20.0, follow_redirects=True, headers=headers) as client:
         response = client.get(feed_url)
         response.raise_for_status()
 

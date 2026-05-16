@@ -190,6 +190,32 @@ Problem keywords
 5. Elasticsearch document의 keyword fields에 반영한다.
 ```
 
+초기 구현은 `dictionary_v1` 기반으로 동작합니다.
+
+실행 명령:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+```
+
+현재 추출 대상:
+
+```text
+aws_service: AWS Lambda, Amazon DynamoDB, Amazon EKS, Amazon OpenSearch Service, Amazon MSK 등
+technology: Apache Kafka, Apache Flink, OpenTelemetry, Kubernetes 등
+architecture: serverless, streaming data pipeline, Change Data Capture, cross-Region resilience 등
+problem: cost optimization, observability, migration, incident response 등
+```
+
+추출된 키워드는 `article_keywords`에 저장되고, 재색인 시 Elasticsearch 문서의 다음 필드로 반영됩니다.
+
+```text
+technologies
+architectureKeywords
+problemKeywords
+```
+
 ## Synonym과 alias
 
 MVP 이후에는 synonym을 추가합니다.
@@ -205,6 +231,49 @@ DynamoDB, Amazon DynamoDB
 ```
 
 초기에는 애플리케이션 레벨에서 query expansion을 적용하고, 이후 Elasticsearch synonym filter를 검토합니다.
+
+## 한글/영문 검색 대응
+
+TechCase는 영어 기술 블로그와 한글 기술 블로그를 함께 다룹니다.
+
+따라서 검색어와 문서 언어가 달라도 같은 기술/문제 맥락으로 연결될 수 있어야 합니다.
+
+초기 대응 방식:
+
+```text
+1. 사전 alias에 한글/영문 표현을 함께 등록한다.
+2. article title/summary/content에서 한글 alias도 추출한다.
+3. 검색어에 한글 alias가 포함되면 영어 검색 alias를 함께 붙여 query expansion을 수행한다.
+4. 영어 검색어는 불필요하게 확장하지 않아 기존 검색 precision 하락을 줄인다.
+```
+
+예:
+
+```text
+비용 최적화 -> cost optimization
+장애 대응 -> incident response
+관측성 -> observability
+카프카 -> kafka
+서버리스 -> serverless
+쿠버네티스 -> kubernetes
+```
+
+이 방식은 Elasticsearch synonym filter를 쓰기 전 단계의 애플리케이션 레벨 확장입니다. MVP에서는 구현과 조정이 빠르다는 장점이 있고, 이후 데이터가 늘어나면 Elasticsearch analyzer/synonym 설정으로 일부를 이전할 수 있습니다.
+
+## Source 확장
+
+초기 source는 AWS 기술 블로그 5개로 시작했습니다.
+
+이후 한글/영문 검색 품질을 함께 확인하기 위해 다음 한국 기술 블로그를 추가했습니다.
+
+```text
+Toss Tech: https://toss.tech/rss.xml
+NAVER D2: https://d2.naver.com/d2.atom
+Kakao Tech: https://tech.kakao.com/feed/
+Woowa Tech Blog: https://techblog.woowahan.com/feed/
+```
+
+우아한형제들 기술블로그는 기본 HTTP client 요청에서 차단 페이지가 내려올 수 있어 crawler에 명시적인 User-Agent를 추가했습니다.
 
 ## Ranking 개선 방향
 
