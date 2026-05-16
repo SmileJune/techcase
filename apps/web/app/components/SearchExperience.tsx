@@ -4,11 +4,11 @@ import { FormEvent, useState } from "react";
 
 const quickSearches = [
   "Lambda",
-  "EventBridge",
-  "DynamoDB",
-  "EKS",
-  "event-driven",
-  "cost optimization",
+  "장애 대응",
+  "RAG",
+  "Flutter",
+  "추천 모델",
+  "비용 최적화",
 ];
 
 type SearchResultItem = {
@@ -53,6 +53,26 @@ function formatDate(value?: string | null): string {
     month: "short",
     day: "numeric",
   }).format(new Date(value));
+}
+
+function formatContentType(value?: string | null): string | null {
+  if (!value) {
+    return null;
+  }
+
+  const labels: Record<string, string> = {
+    technical_case: "기술 사례",
+    engineering_story: "엔지니어링 스토리",
+    tutorial: "튜토리얼",
+    release_note: "릴리스",
+    event: "이벤트",
+    recruiting: "채용",
+    interview: "인터뷰",
+    news: "뉴스",
+    other: "기타",
+  };
+
+  return labels[value] ?? value;
 }
 
 function bestSnippet(item: SearchResultItem): string {
@@ -185,6 +205,9 @@ function SearchState({
             <div className="result-meta">
               <span>{item.source}</span>
               <span>{formatDate(item.publishedAt)}</span>
+              {formatContentType(item.contentType) ? (
+                <span>{formatContentType(item.contentType)}</span>
+              ) : null}
             </div>
             <h2>
               <a href={item.url} target="_blank" rel="noreferrer">
@@ -192,11 +215,35 @@ function SearchState({
               </a>
             </h2>
             <p>{bestSnippet(item)}</p>
+            <CaseDetails item={item} />
             <KeywordList item={item} />
           </article>
         ))}
       </div>
     </div>
+  );
+}
+
+function CaseDetails({ item }: { item: SearchResultItem }) {
+  if (!item.caseProblem && !item.caseSolution) {
+    return null;
+  }
+
+  return (
+    <dl className="case-details">
+      {item.caseProblem ? (
+        <div>
+          <dt>문제</dt>
+          <dd>{item.caseProblem}</dd>
+        </div>
+      ) : null}
+      {item.caseSolution ? (
+        <div>
+          <dt>해결</dt>
+          <dd>{item.caseSolution}</dd>
+        </div>
+      ) : null}
+    </dl>
   );
 }
 
