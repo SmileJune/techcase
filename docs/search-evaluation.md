@@ -261,3 +261,34 @@ ko-problem-incident-response
 ko-migration-kafka
 ko-architecture-serverless
 ```
+
+우아한형제들 기술블로그 RSS pagination을 적용한 뒤에는 색인 글 수가 662개로 증가했습니다.
+
+```text
+AWS blogs = 100
+Toss Tech = 20
+NAVER D2 = 20
+Kakao Tech = 10
+Woowa Tech Blog = 512
+indexed articles = 662
+```
+
+662개 글 기준 평가 점수:
+
+```text
+average precision@5 = 0.438
+average recall@10 = 0.927
+average mrr = 0.729
+average ndcg@10 = 0.738
+```
+
+글 수가 늘면서 recall은 여전히 높은 편이지만, 일부 query의 상위 순위가 흔들렸습니다. 특히 `ko-migration-kafka`, `ko-problem-cost-optimization`처럼 한글 query expansion을 거친 검색에서 관련도 낮은 글이 상위에 섞일 수 있습니다.
+
+다음 ranking 개선에서는 다음을 우선 검토합니다.
+
+```text
+정확히 매칭된 기술 키워드 우선 정렬
+technology + problem 조합이 함께 매칭된 글 가중치 강화
+source 확장 후 평가셋 expected result 보정
+한글 query expansion의 boost 조정
+```

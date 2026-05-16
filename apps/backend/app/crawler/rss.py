@@ -1,10 +1,14 @@
+import html
+import re
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
 from typing import Any
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import feedparser
 import httpx
+from bs4 import BeautifulSoup
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -17,6 +21,9 @@ CRAWLER_USER_AGENT = (
     "TechCaseBot/0.1 "
     "(RSS crawler for technical case search; https://github.com/SmileJune/techcase)"
 )
+PAGINATED_SOURCE_SLUGS = {"woowa-tech-blog"}
+MAX_FEED_PAGES = 200
+WORDPRESS_FOOTER_PATTERN = re.compile(r"\s*The post .+ first appeared on .+\.$", re.DOTALL)
 
 
 @dataclass(frozen=True)
@@ -68,13 +75,36 @@ def entry_author(entry: Any) -> str | None:
 def entry_summary(entry: Any) -> str | None:
     summary = get_entry_value(entry, "summary")
     if isinstance(summary, str) and summary:
-        return summary
+        return clean_feed_text(summary)
 
     description = get_entry_value(entry, "description")
     if isinstance(description, str) and description:
-        return description
+        return clean_feed_text(description)
 
     return None
+
+
+def entry_content_html(entry: Any) -> str | None:
+    content = get_entry_value(entry, "content")
+    if isinstance(content, list) and content:
+        value = content[0].get("value") if isinstance(content[0], dict) else None
+        if isinstance(value, str) and value:
+            return value
+
+    encoded = get_entry_value(entry, "content:encoded")
+    if isinstance(encoded, str) and encoded:
+        return encoded
+
+    return None
+
+
+def clean_feed_text(value: str) -> str:
+    decoded = html.unescape(value)
+    text = BeautifulSoup(decoded, "html.parser").get_text(" ", strip=True)
+    text = html.unescape(text)
+    text = WORDPRESS_FOOTER_PATTERN.sub("", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
 
 
 def entry_published_at(entry: Any) -> datetime | None:
@@ -108,11 +138,64 @@ def fetch_feed(feed_url: str) -> list[Any]:
         "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
     }
     with httpx.Client(timeout=20.0, follow_redirects=True, headers=headers) as client:
-        response = client.get(feed_url)
-        response.raise_for_status()
+        return fetch_feed_with_client(client, feed_url)
+
+
+def fetch_feed_with_client(client: httpx.Client, feed_url: str) -> list[Any]:
+    response = client.get(feed_url)
+    response.raise_for_status()
 
     parsed = feedparser.parse(response.content)
     return list(parsed.entries)
+
+
+def fetch_source_entries(source: Source) -> list[Any]:
+    if source.slug not in PAGINATED_SOURCE_SLUGS:
+        return fetch_feed(source.feed_url)
+
+    entries_by_url: dict[str, Any] = {}
+    headers = {
+        "User-Agent": CRAWLER_USER_AGENT,
+        "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+    }
+
+    with httpx.Client(timeout=20.0, follow_redirects=True, headers=headers) as client:
+        for page in range(1, MAX_FEED_PAGES + 1):
+            try:
+                page_entries = fetch_feed_with_client(
+                    client, paginated_feed_url(source.feed_url, page)
+                )
+            except httpx.HTTPStatusError as exc:
+                if exc.response.status_code == 404 and page > 1:
+                    break
+                raise
+
+            if not page_entries:
+                break
+
+            new_entry_count = 0
+            for entry in page_entries:
+                url = entry_url(entry)
+                if not url or url in entries_by_url:
+                    continue
+
+                entries_by_url[url] = entry
+                new_entry_count += 1
+
+            if new_entry_count == 0:
+                break
+
+    return list(entries_by_url.values())
+
+
+def paginated_feed_url(feed_url: str, page: int) -> str:
+    if page == 1:
+        return feed_url
+
+    parts = urlsplit(feed_url)
+    query = dict(parse_qsl(parts.query, keep_blank_values=True))
+    query["paged"] = str(page)
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), parts.fragment))
 
 
 def upsert_article(db: Session, source: Source, entry: Any, collected_at: datetime) -> str:
@@ -126,6 +209,8 @@ def upsert_article(db: Session, source: Source, entry: Any, collected_at: dateti
     author = entry_author(entry)
     published_at = entry_published_at(entry)
     summary = entry_summary(entry)
+    content_html = entry_content_html(entry)
+    content_text = clean_feed_text(content_html) if content_html else None
     raw_metadata = entry_raw_metadata(entry)
 
     if article is None:
@@ -136,6 +221,8 @@ def upsert_article(db: Session, source: Source, entry: Any, collected_at: dateti
             author=author,
             published_at=published_at,
             summary=summary,
+            content_html=content_html,
+            content_text=content_text,
             raw_metadata=raw_metadata,
             collected_at=collected_at,
         )
@@ -148,6 +235,8 @@ def upsert_article(db: Session, source: Source, entry: Any, collected_at: dateti
         "author": author,
         "published_at": published_at,
         "summary": summary,
+        "content_html": content_html,
+        "content_text": content_text,
         "raw_metadata": raw_metadata,
     }
 
@@ -178,7 +267,7 @@ def crawl_source(db: Session, source: Source) -> CrawlSummary:
     error_message: str | None = None
 
     try:
-        entries = fetch_feed(source.feed_url)
+        entries = fetch_source_entries(source)
         fetched_count = len(entries)
         collected_at = datetime.now(UTC)
 

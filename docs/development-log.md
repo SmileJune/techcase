@@ -721,3 +721,62 @@ average recall@10 = 0.958
 average mrr = 0.896
 average ndcg@10 = 0.847
 ```
+
+## 24. 우아한형제들 기술블로그 전체 RSS pagination 수집
+
+우아한형제들 기술블로그는 RSS 첫 페이지에서는 10개 글만 내려주지만, `?paged=N` 방식으로 오래된 글을 더 가져올 수 있음을 확인했습니다.
+
+확인 결과:
+
+```text
+page 1~51: 페이지당 10개
+page 52: 2개
+page 53: 404
+unique_urls = 512
+```
+
+이를 crawler에 반영했습니다.
+
+구현 방식:
+
+```text
+woowa-tech-blog source는 paginated source로 취급
+feed_url?page=N 대신 feed_url?paged=N 사용
+404 또는 새 URL이 없는 페이지를 만나면 종료
+중복 URL은 수집 대상에서 제거
+```
+
+수집 결과:
+
+```text
+Crawled woowa-tech-blog: status=succeeded, fetched=512, created=502, updated=0, unchanged=10, failed=0
+```
+
+전체 article 수:
+
+```text
+160 -> 662
+```
+
+키워드 재추출:
+
+```text
+Extracted keywords: articles=662, keywords=275
+```
+
+재색인:
+
+```text
+Indexed articles: 662
+```
+
+662개 글 기준 평가:
+
+```text
+average precision@5 = 0.438
+average recall@10 = 0.927
+average mrr = 0.729
+average ndcg@10 = 0.738
+```
+
+글 수가 크게 늘면서 검색 결과 후보는 풍부해졌지만, 일부 query에서는 기존 정답 문서의 순위가 밀리는 현상이 생겼습니다. 다음 작업에서는 기술 키워드와 문제 키워드가 함께 매칭되는 글에 더 높은 가중치를 주는 ranking 개선이 필요합니다.

@@ -275,6 +275,19 @@ Woowa Tech Blog: https://techblog.woowahan.com/feed/
 
 우아한형제들 기술블로그는 기본 HTTP client 요청에서 차단 페이지가 내려올 수 있어 crawler에 명시적인 User-Agent를 추가했습니다.
 
+또한 우아한형제들 기술블로그는 RSS pagination을 지원합니다.
+
+확인된 수집 범위:
+
+```text
+page 1~51: 페이지당 10개
+page 52: 2개
+page 53: 404
+unique article URL: 512
+```
+
+따라서 crawler는 `woowa-tech-blog` source에 대해 `?paged=2`, `?paged=3`처럼 페이지를 순회하고, 404 또는 새 URL이 없는 페이지를 만나면 종료합니다.
+
 ## Ranking 개선 방향
 
 초기 ranking은 field boosting 중심입니다.
