@@ -52,3 +52,11 @@ Crawl enabled RSS sources and upsert articles:
 ```bash
 uv run python -m app.crawler.rss
 ```
+
+## Search Index
+
+Create the Elasticsearch `articles` index and reindex PostgreSQL articles:
+
+```bash
+uv run python -m app.search.indexer
+```

@@ -196,6 +196,9 @@ npm run db:seed
 # Crawl enabled RSS feeds
 npm run crawl:rss
 
+# Reindex articles into Elasticsearch
+npm run search:reindex
+
 # Next.js web
 pnpm install
 npm run dev:web
