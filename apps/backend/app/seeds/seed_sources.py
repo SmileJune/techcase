@@ -19,6 +19,12 @@ def upsert_source(db: Session, seed: SourceSeed) -> bool:
     source.feed_url = seed.feed_url
     source.site_url = seed.site_url
     source.description = seed.description
+    source.collection_strategy = seed.collection_strategy
+    source.pagination_strategy = seed.pagination_strategy
+    source.content_strategy = seed.content_strategy
+    source.language = seed.language
+    source.country = seed.country
+    source.trust_level = seed.trust_level
     source.enabled = seed.enabled
 
     return created

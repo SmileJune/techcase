@@ -46,6 +46,12 @@ company_name
 feed_url
 site_url
 description
+collection_strategy
+pagination_strategy
+content_strategy
+language
+country
+trust_level
 enabled
 created_at
 updated_at
@@ -54,7 +60,47 @@ updated_at
 제약:
 
 - `slug`는 unique입니다.
-- `feed_url`은 unique입니다.
+- `feed_url`은 unique입니다. 단, RSS가 없는 기업 블로그도 후보로 관리할 수 있도록 nullable입니다.
+
+수집 전략 필드:
+
+- `collection_strategy`: source를 어떤 방식으로 수집할지 나타냅니다.
+- `pagination_strategy`: RSS 또는 목록 페이지에서 여러 페이지를 가져오는 방식입니다.
+- `content_strategy`: RSS 본문만 사용할지, 글 상세 페이지까지 가져올지 결정합니다.
+- `language`: source의 주 언어입니다.
+- `country`: 기업 또는 블로그의 주요 국가/권역입니다.
+- `trust_level`: 공식 기업 블로그, 공식 문서, 커뮤니티 글 등을 구분하기 위한 신뢰도 기준입니다.
+
+collection_strategy 후보:
+
+```text
+rss
+rss_with_article_fetch
+sitemap
+html_list
+manual
+deferred
+```
+
+pagination_strategy 후보:
+
+```text
+none
+wordpress_paged
+sitemap
+cursor
+page_number
+```
+
+content_strategy 후보:
+
+```text
+feed_only
+article_fetch
+deferred
+```
+
+초기 MVP에서는 `rss`와 `wordpress_paged`만 실제 수집기에 연결합니다. `rss_with_article_fetch`, `sitemap`, `html_list`는 이후 기업 블로그를 늘릴 때 사용할 수 있도록 먼저 모델에 반영해 둡니다.
 
 ## Article
 

@@ -21,7 +21,6 @@ CRAWLER_USER_AGENT = (
     "TechCaseBot/0.1 "
     "(RSS crawler for technical case search; https://github.com/SmileJune/techcase)"
 )
-PAGINATED_SOURCE_SLUGS = {"woowa-tech-blog"}
 MAX_FEED_PAGES = 200
 WORDPRESS_FOOTER_PATTERN = re.compile(r"\s*The post .+ first appeared on .+\.$", re.DOTALL)
 
@@ -150,8 +149,19 @@ def fetch_feed_with_client(client: httpx.Client, feed_url: str) -> list[Any]:
 
 
 def fetch_source_entries(source: Source) -> list[Any]:
-    if source.slug not in PAGINATED_SOURCE_SLUGS:
+    if source.collection_strategy != "rss":
+        raise ValueError(
+            f"Unsupported collection strategy for RSS crawler: {source.collection_strategy}"
+        )
+
+    if not source.feed_url:
+        raise ValueError("RSS source is missing feed_url")
+
+    if source.pagination_strategy == "none":
         return fetch_feed(source.feed_url)
+
+    if source.pagination_strategy != "wordpress_paged":
+        raise ValueError(f"Unsupported RSS pagination strategy: {source.pagination_strategy}")
 
     entries_by_url: dict[str, Any] = {}
     headers = {
@@ -296,7 +306,12 @@ def crawl_source(db: Session, source: Source) -> CrawlSummary:
     crawl_run.unchanged_count = unchanged_count
     crawl_run.failed_count = failed_count
     crawl_run.error_message = error_message
-    crawl_run.metadata_json = {"feed_url": source.feed_url}
+    crawl_run.metadata_json = {
+        "feed_url": source.feed_url,
+        "collection_strategy": source.collection_strategy,
+        "pagination_strategy": source.pagination_strategy,
+        "content_strategy": source.content_strategy,
+    }
 
     return CrawlSummary(
         source_slug=source.slug,
@@ -311,7 +326,11 @@ def crawl_source(db: Session, source: Source) -> CrawlSummary:
 
 def crawl_enabled_sources(limit: int | None = None) -> list[CrawlSummary]:
     with SessionLocal() as db:
-        statement = select(Source).where(Source.enabled.is_(True)).order_by(Source.slug)
+        statement = (
+            select(Source)
+            .where(Source.enabled.is_(True), Source.collection_strategy == "rss")
+            .order_by(Source.slug)
+        )
         if limit is not None:
             statement = statement.limit(limit)
 

@@ -891,3 +891,112 @@ LLM summaries: selected=1, generated=1, failed=0
 ```text
 technical_case
 ```
+
+## 27. 기업별 수집 전략 분리
+
+기업 기술 블로그를 더 많이 추가하기 전에, source마다 수집 방식을 데이터로 관리할 수 있게 변경했습니다.
+
+추가한 `sources` 필드:
+
+```text
+collection_strategy
+pagination_strategy
+content_strategy
+language
+country
+trust_level
+```
+
+전략 의미:
+
+```text
+collection_strategy
+- rss
+- rss_with_article_fetch
+- sitemap
+- html_list
+- manual
+- deferred
+
+pagination_strategy
+- none
+- wordpress_paged
+- sitemap
+- cursor
+- page_number
+
+content_strategy
+- feed_only
+- article_fetch
+- deferred
+```
+
+현재 적용:
+
+```text
+AWS, Toss, NAVER D2, Kakao Tech: rss + none + feed_only
+Woowa Tech Blog: rss + wordpress_paged + feed_only
+```
+
+변경 이유:
+
+- 기업 블로그마다 RSS 품질, 페이지네이션, 본문 제공 방식이 다릅니다.
+- crawler 코드에 특정 회사명을 하드코딩하면 source가 늘어날수록 유지보수가 어려워집니다.
+- RSS가 없는 공식 기술 블로그도 `feed_url = null`, `collection_strategy = deferred`로 후보 관리할 수 있어야 합니다.
+- 이후 source probe, article fetcher, sitemap crawler를 각각 독립적으로 추가할 수 있습니다.
+
+구현 변경:
+
+- `Source` 모델과 Alembic migration에 수집 전략 필드를 추가했습니다.
+- seed 데이터에 언어, 국가, 신뢰도, 페이지네이션 전략을 채웠습니다.
+- 기존 우아한형제들 전용 페이지네이션 하드코딩을 제거하고, `pagination_strategy = wordpress_paged`를 기준으로 동작하게 변경했습니다.
+
+## 28. 추가 기술 블로그 후보 분류
+
+기업 기술 블로그 후보를 실제 feed 요청 기준으로 분류했습니다.
+
+문서:
+
+```text
+docs/source-collection-strategy.md
+```
+
+RSS로 바로 수집 가능한 한국어 후보:
+
+```text
+당근
+LY Corporation
+카카오페이
+쏘카
+컬리
+여기어때
+요기요
+무신사
+29CM
+데브시스터즈
+```
+
+RSS로 바로 수집 가능한 영어 후보:
+
+```text
+Netflix
+Airbnb
+Cloudflare
+GitHub
+Stripe
+Slack
+Datadog
+Pinterest
+Dropbox
+Lyft
+```
+
+별도 수집기 검토 대상:
+
+```text
+쿠팡
+넥슨
+Shopify
+LinkedIn
+Uber
+```

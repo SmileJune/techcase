@@ -107,6 +107,47 @@ AWS 기술 블로그 수집 흐름은 다음과 같습니다.
 9. crawl run 결과와 에러를 PostgreSQL 또는 로그에 기록한다.
 ```
 
+## 기업별 수집 전략
+
+기업 기술 블로그는 제공 방식이 모두 다르기 때문에 source마다 수집 전략을 분리합니다.
+
+```text
+Source
+  collection_strategy
+  pagination_strategy
+  content_strategy
+```
+
+초기 전략은 다음과 같이 나눕니다.
+
+```text
+rss
+- RSS/Atom feed만으로 목록과 기본 요약을 수집할 수 있는 블로그
+- AWS, Toss, NAVER D2, Kakao Tech 등
+
+rss + wordpress_paged
+- WordPress RSS 페이지네이션을 통해 과거 글까지 확장 수집할 수 있는 블로그
+- Woowa Tech Blog
+
+rss_with_article_fetch
+- RSS에는 목록과 짧은 요약만 있고, 상세 본문은 글 URL에서 별도로 가져와야 하는 블로그
+- MVP 이후 본문 품질 개선 단계에서 연결
+
+sitemap / html_list
+- RSS가 없거나 RSS 품질이 낮아 sitemap 또는 HTML 목록 페이지를 탐색해야 하는 블로그
+- 수집 가능성 점검 후 별도 crawler로 연결
+
+deferred
+- 공식 블로그이지만 RSS/HTML 구조, 접근 정책, 수집 안정성을 아직 확인하지 않은 후보
+```
+
+이렇게 분리하는 이유는 다음과 같습니다.
+
+- 기업 블로그를 추가할 때 crawler 코드에 회사명을 하드코딩하지 않아도 됩니다.
+- RSS만으로 충분한 블로그와 상세 본문 fetch가 필요한 블로그를 구분할 수 있습니다.
+- 수집 가능성은 낮지만 가치 있는 공식 블로그를 `deferred` 상태로 관리할 수 있습니다.
+- 이후 source probe, sitemap crawler, article fetcher를 독립적으로 추가하기 쉽습니다.
+
 ## 저장소 분리
 
 TechCase는 PostgreSQL과 Elasticsearch의 역할을 분리합니다.
@@ -168,3 +209,4 @@ apps/backend/
 - [검색 설계](./search-design.md)
 - [AWS 인프라](./aws-infra.md)
 - [개발 계획](./development.md)
+- [기술 블로그 수집 전략](./source-collection-strategy.md)

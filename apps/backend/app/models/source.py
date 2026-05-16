@@ -14,9 +14,23 @@ class Source(Base):
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     slug: Mapped[str] = mapped_column(String(160), nullable=False, unique=True, index=True)
     company_name: Mapped[str] = mapped_column(String(160), nullable=False)
-    feed_url: Mapped[str] = mapped_column(Text, nullable=False, unique=True)
+    feed_url: Mapped[str | None] = mapped_column(Text, unique=True)
     site_url: Mapped[str | None] = mapped_column(Text)
     description: Mapped[str | None] = mapped_column(Text)
+    collection_strategy: Mapped[str] = mapped_column(
+        String(80), nullable=False, default="rss", server_default="rss"
+    )
+    pagination_strategy: Mapped[str] = mapped_column(
+        String(80), nullable=False, default="none", server_default="none"
+    )
+    content_strategy: Mapped[str] = mapped_column(
+        String(80), nullable=False, default="feed_only", server_default="feed_only"
+    )
+    language: Mapped[str | None] = mapped_column(String(20))
+    country: Mapped[str | None] = mapped_column(String(80))
+    trust_level: Mapped[str] = mapped_column(
+        String(40), nullable=False, default="official", server_default="official"
+    )
     enabled: Mapped[bool] = mapped_column(
         Boolean, nullable=False, default=True, server_default="true"
     )
