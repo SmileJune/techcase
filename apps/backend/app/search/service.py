@@ -147,6 +147,7 @@ def hit_to_item(hit: dict[str, Any]) -> dict[str, Any]:
         "caseSummary": source.get("caseSummary"),
         "caseProblem": source.get("caseProblem"),
         "caseSolution": source.get("caseSolution"),
+        "contentType": source.get("contentType"),
         "score": hit["_score"],
         "technologies": source.get("technologies", []),
         "architectureKeywords": source.get("architectureKeywords", []),

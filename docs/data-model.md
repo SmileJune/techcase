@@ -192,6 +192,7 @@ summary_type
 language
 model
 prompt_version
+content_type
 case_summary
 problem
 solution
@@ -210,6 +211,20 @@ summary_type 후보:
 case_summary
 detail_summary
 comparison_summary
+```
+
+content_type 후보:
+
+```text
+technical_case
+engineering_story
+tutorial
+release_note
+event
+recruiting
+interview
+news
+other
 ```
 
 이 엔티티가 필요한 이유는 다음과 같습니다.

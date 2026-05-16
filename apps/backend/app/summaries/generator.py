@@ -21,6 +21,17 @@ DEFAULT_LANGUAGE = "ko"
 DEFAULT_PROMPT_VERSION = "case-summary-v1"
 PROMPT_PATH = Path(__file__).parent / "prompts" / "case_summary_v1.md"
 MAX_CONTENT_CHARS = 12000
+ALLOWED_CONTENT_TYPES = {
+    "technical_case",
+    "engineering_story",
+    "tutorial",
+    "release_note",
+    "event",
+    "recruiting",
+    "interview",
+    "news",
+    "other",
+}
 
 
 @dataclass(frozen=True)
@@ -163,6 +174,7 @@ def upsert_summary(
         db.add(summary)
 
     summary.model = model
+    summary.content_type = normalize_content_type(parsed.get("content_type"))
     summary.case_summary = parsed["case_summary"]
     summary.problem = parsed.get("problem")
     summary.solution = parsed.get("solution")
@@ -173,6 +185,27 @@ def upsert_summary(
         float(parsed["confidence"]) if parsed.get("confidence") is not None else None
     )
     summary.raw_response = parsed.get("_raw_openai_response", parsed)
+
+
+def normalize_content_type(value: Any) -> str:
+    if not isinstance(value, str):
+        return "other"
+
+    normalized = value.strip().casefold()
+    if normalized not in ALLOWED_CONTENT_TYPES:
+        return "other"
+
+    return normalized
+
+
+def validate_summary_response(parsed: dict[str, Any]) -> None:
+    if not isinstance(parsed.get("case_summary"), str) or not parsed["case_summary"].strip():
+        raise ValueError("LLM response is missing case_summary")
+
+    if parsed.get("confidence") is not None:
+        confidence = float(parsed["confidence"])
+        if confidence < 0 or confidence > 1:
+            raise ValueError("LLM response confidence must be between 0 and 1")
 
 
 def list_or_none(value: Any) -> list[str] | None:
@@ -190,8 +223,10 @@ def generate_summaries(
     force: bool,
     prompt_version: str,
     model: str,
-) -> tuple[int, int]:
+) -> tuple[int, int, int]:
     system_prompt = load_prompt()
+    generated_count = 0
+    failed_count = 0
 
     with SessionLocal() as db:
         articles = select_target_articles(
@@ -208,20 +243,25 @@ def generate_summaries(
                 print_dry_run(article, system_prompt, user_content)
                 continue
 
-            parsed = call_openai_json(system_prompt, user_content, model)
-            upsert_summary(
-                db,
-                article,
-                parsed=parsed,
-                prompt_version=prompt_version,
-                model=model,
-            )
+            try:
+                parsed = call_openai_json(system_prompt, user_content, model)
+                validate_summary_response(parsed)
+                upsert_summary(
+                    db,
+                    article,
+                    parsed=parsed,
+                    prompt_version=prompt_version,
+                    model=model,
+                )
+                db.commit()
+                generated_count += 1
+                print(f"Generated summary: {article.title}")
+            except Exception as exc:
+                db.rollback()
+                failed_count += 1
+                print(f"Failed summary: {article.title} ({exc})")
 
-        if not dry_run:
-            db.commit()
-
-    generated_count = 0 if dry_run else len(articles)
-    return len(articles), generated_count
+    return len(articles), generated_count, failed_count
 
 
 def print_dry_run(article: Article, system_prompt: str, user_content: str) -> None:
@@ -247,7 +287,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    selected_count, generated_count = generate_summaries(
+    selected_count, generated_count, failed_count = generate_summaries(
         limit=args.limit,
         source_slug=args.source_slug,
         dry_run=args.dry_run,
@@ -255,7 +295,10 @@ def main() -> None:
         prompt_version=args.prompt_version,
         model=args.model,
     )
-    print(f"LLM summaries: selected={selected_count}, generated={generated_count}")
+    print(
+        "LLM summaries: "
+        f"selected={selected_count}, generated={generated_count}, failed={failed_count}"
+    )
 
 
 if __name__ == "__main__":

@@ -290,6 +290,24 @@ Elasticsearch 재색인
 raw LLM response 보존
 ```
 
+LLM 요약은 모든 기술 블로그 글에 대해 생성하되, 글을 제외하지 않고 `content_type`으로 성격을 분류합니다.
+
+분류 후보:
+
+```text
+technical_case
+engineering_story
+tutorial
+release_note
+event
+recruiting
+interview
+news
+other
+```
+
+이렇게 하면 채용/세미나/인터뷰성 글도 TechCase 데이터 자산으로 보존하면서, 이후 검색 ranking이나 필터에서 글 성격을 활용할 수 있습니다.
+
 초기 명령:
 
 ```bash
@@ -298,12 +316,30 @@ npm run llm:summarize -- --source woowa-tech-blog --limit 10
 npm run search:reindex
 ```
 
+batch 생성은 article 단위로 commit합니다. 한 글에서 LLM 호출, JSON 파싱, 저장 중 오류가 나더라도 전체 batch가 중단되지 않고 실패 건수만 기록합니다.
+
 필요 환경 변수:
 
 ```text
 OPENAI_API_KEY
 OPENAI_MODEL
 ```
+
+Source별 RSS 본문 확보율:
+
+```text
+aws-architecture-blog  total=20   content_text=20   content_1000_plus=20
+aws-big-data-blog      total=20   content_text=20   content_1000_plus=20
+aws-compute-blog       total=20   content_text=20   content_1000_plus=20
+aws-database-blog      total=20   content_text=20   content_1000_plus=20
+aws-devops-blog        total=20   content_text=20   content_1000_plus=20
+kakao-tech             total=10   content_text=0    content_1000_plus=0
+naver-d2               total=20   content_text=20   content_1000_plus=16
+toss-tech              total=20   content_text=20   content_1000_plus=20
+woowa-tech-blog        total=512  content_text=512  content_1000_plus=492
+```
+
+Kakao Tech는 현재 RSS description 중심이므로, 더 좋은 LLM 요약을 위해서는 이후 원문 HTML 수집 전략이 필요합니다.
 
 초기 프롬프트 버전:
 

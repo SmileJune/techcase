@@ -826,3 +826,68 @@ LLM 비용 제어
 ```
 
 검색 문서에는 최신 `case_summary`를 `caseSummary`로 투영하고, 검색 결과 카드에서는 `caseSummary`를 RSS summary보다 우선 표시합니다.
+
+## 26. LLM 요약 content_type 분류와 batch 안정성 개선
+
+모든 기술 블로그 글을 요약 대상으로 유지하되, 글의 성격은 `content_type`으로 분류하기로 했습니다.
+
+추가한 content_type 후보:
+
+```text
+technical_case
+engineering_story
+tutorial
+release_note
+event
+recruiting
+interview
+news
+other
+```
+
+이렇게 하면 글을 제외하지 않고도, 이후 검색 ranking이나 필터에서 기술 사례성 글을 더 우선할 수 있습니다.
+
+batch 생성도 article 단위로 안정화했습니다.
+
+변경 전:
+
+```text
+한 article에서 LLM 호출 또는 JSON 파싱 실패 시 전체 명령 중단 가능
+```
+
+변경 후:
+
+```text
+article별 try/catch
+성공 article은 즉시 commit
+실패 article은 rollback 후 다음 article 계속 처리
+selected/generated/failed 카운트 출력
+```
+
+Source별 본문 확보율도 확인했습니다.
+
+```text
+aws-architecture-blog  total=20   content_text=20   content_1000_plus=20
+aws-big-data-blog      total=20   content_text=20   content_1000_plus=20
+aws-compute-blog       total=20   content_text=20   content_1000_plus=20
+aws-database-blog      total=20   content_text=20   content_1000_plus=20
+aws-devops-blog        total=20   content_text=20   content_1000_plus=20
+kakao-tech             total=10   content_text=0    content_1000_plus=0
+naver-d2               total=20   content_text=20   content_1000_plus=16
+toss-tech              total=20   content_text=20   content_1000_plus=20
+woowa-tech-blog        total=512  content_text=512  content_1000_plus=492
+```
+
+검증:
+
+```text
+npm run llm:summarize -- --source woowa-tech-blog --limit 1
+Generated summary: 별점 뒤에 숨겨진 리뷰의 온도, LLM으로 한 끗 차이가 다른 추천 만들기
+LLM summaries: selected=1, generated=1, failed=0
+```
+
+저장된 content_type:
+
+```text
+technical_case
+```

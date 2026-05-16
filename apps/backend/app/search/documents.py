@@ -33,6 +33,7 @@ def article_to_document(article: Article) -> dict[str, Any]:
         "caseSummary": case_summary.case_summary if case_summary else None,
         "caseProblem": case_summary.problem if case_summary else None,
         "caseSolution": case_summary.solution if case_summary else None,
+        "contentType": case_summary.content_type if case_summary else None,
         "content": article.content_text,
         "technologies": sorted(set(keyword_fields["technologies"])),
         "architectureKeywords": sorted(set(keyword_fields["architectureKeywords"])),

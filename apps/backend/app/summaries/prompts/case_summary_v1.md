@@ -17,6 +17,7 @@ Avoid:
 Return only valid JSON with this shape:
 
 {
+  "content_type": "technical_case",
   "case_summary": "Korean summary in 1-2 concise sentences.",
   "problem": "The main problem or situation in Korean.",
   "solution": "The solution or approach in Korean.",
@@ -25,5 +26,16 @@ Return only valid JSON with this shape:
   "problem_keywords": ["Problem keywords"],
   "confidence": 0.0
 }
+
+content_type must be one of:
+- technical_case
+- engineering_story
+- tutorial
+- release_note
+- event
+- recruiting
+- interview
+- news
+- other
 
 Use Korean for sentence fields. Keep arrays short and specific. Use confidence from 0 to 1.

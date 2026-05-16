@@ -42,6 +42,7 @@ class ArticleSummary(Base):
     language: Mapped[str] = mapped_column(String(20), nullable=False, default="ko", index=True)
     model: Mapped[str] = mapped_column(String(120), nullable=False)
     prompt_version: Mapped[str] = mapped_column(String(80), nullable=False, index=True)
+    content_type: Mapped[str | None] = mapped_column(String(80), index=True)
     case_summary: Mapped[str] = mapped_column(Text, nullable=False)
     problem: Mapped[str | None] = mapped_column(Text)
     solution: Mapped[str | None] = mapped_column(Text)

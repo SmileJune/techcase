@@ -23,6 +23,7 @@ type SearchResultItem = {
   caseSummary?: string | null;
   caseProblem?: string | null;
   caseSolution?: string | null;
+  contentType?: string | null;
   score: number;
   technologies: string[];
   architectureKeywords: string[];

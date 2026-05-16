@@ -27,6 +27,7 @@ ARTICLES_INDEX_SETTINGS = {
             "caseSummary": {"type": "text"},
             "caseProblem": {"type": "text"},
             "caseSolution": {"type": "text"},
+            "contentType": {"type": "keyword", "normalizer": "lowercase_normalizer"},
             "content": {"type": "text"},
             "technologies": {"type": "keyword", "normalizer": "lowercase_normalizer"},
             "architectureKeywords": {"type": "keyword", "normalizer": "lowercase_normalizer"},
