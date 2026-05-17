@@ -2044,6 +2044,34 @@ pnpm --dir apps/web exec tsc --noEmit
 npm run build:web
 ```
 
+## 47. 검색 결과 상단 요약 바 추가
+
+검색 결과 목록에 들어가기 전에 현재 검색 결과의 전체 맥락을 빠르게 파악할 수 있도록 상단 요약 바를 추가했습니다.
+
+표시 정보:
+
+```text
+주요 기술: technologies facet 상위 3개
+문제 맥락: problemKeywords facet 상위 3개
+주요 출처: sources facet 상위 3개
+적용 필터: 현재 선택된 필터 개수
+```
+
+의도:
+
+```text
+사용자가 개별 카드를 읽기 전에 검색어와 관련된 대표 기술/문제/출처를 먼저 파악
+검색 결과 카드마다 맥락을 과하게 반복하지 않고 결과 목록의 탐색 속도 개선
+추천 facet은 요약 바에서도 강조 색상으로 표시
+```
+
+검증:
+
+```bash
+pnpm --dir apps/web exec tsc --noEmit
+npm run build:web
+```
+
 샘플 확인:
 
 ```text

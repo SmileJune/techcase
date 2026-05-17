@@ -623,6 +623,7 @@ function SearchState({
       <div className="result-summary">
         <strong>{result.total}</strong>개 사례를 {formatSortLabel(result.sort)}으로 찾았습니다.
       </div>
+      <ResultOverview result={result} />
       <div className="result-list">
         {result.items.map((item) => (
           <article className="result-card" key={item.id}>
@@ -664,6 +665,61 @@ function SearchState({
       </div>
     </div>
   );
+}
+
+function ResultOverview({ result }: { result: SearchResponse }) {
+  const technologyFacets = topFacets(result.facets.technologies, 3);
+  const problemFacets = topFacets(result.facets.problemKeywords, 3);
+  const sourceFacets = topFacets(result.facets.sources, 3);
+  const activeFilterCount = selectedFilterCount(result.filters);
+
+  if (
+    technologyFacets.length === 0 &&
+    problemFacets.length === 0 &&
+    sourceFacets.length === 0 &&
+    activeFilterCount === 0
+  ) {
+    return null;
+  }
+
+  return (
+    <section className="result-overview" aria-label="검색 결과 요약">
+      <OverviewGroup label="주요 기술" facets={technologyFacets} />
+      <OverviewGroup label="문제 맥락" facets={problemFacets} />
+      <OverviewGroup label="주요 출처" facets={sourceFacets} />
+      {activeFilterCount > 0 ? (
+        <div className="overview-group">
+          <span>적용 필터</span>
+          <div className="overview-chips">
+            <span>{activeFilterCount}개 적용 중</span>
+          </div>
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+function OverviewGroup({ label, facets }: { label: string; facets: FacetItem[] }) {
+  if (facets.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="overview-group">
+      <span>{label}</span>
+      <div className="overview-chips">
+        {facets.map((facet) => (
+          <span className={facet.isRecommended ? "is-recommended" : ""} key={facet.value}>
+            {facet.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function topFacets(facets: FacetItem[], limit: number): FacetItem[] {
+  return facets.slice(0, limit);
 }
 
 function FilterPanel({
