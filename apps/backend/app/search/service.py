@@ -1,9 +1,34 @@
 import re
-from typing import Any
+from typing import Any, Literal
 
 from app.keywords.dictionaries import KEYWORD_RULES, KeywordRule
 from app.search.client import get_elasticsearch_client
 from app.search.indexes import ARTICLES_INDEX
+
+SearchSort = Literal["relevance", "latest"]
+KEYWORD_LABEL_BY_NORMALIZED = {rule.keyword.casefold(): rule.keyword for rule in KEYWORD_RULES}
+GENERIC_FACET_VALUES = {
+    "java",
+    "search",
+    "observability",
+}
+
+FACET_AGGREGATIONS = {
+    "sources": {
+        "terms": {"field": "sourceSlug", "size": 18},
+        "aggs": {
+            "sample": {
+                "top_hits": {
+                    "size": 1,
+                    "_source": ["company", "source", "sourceSlug"],
+                }
+            }
+        },
+    },
+    "technologies": {"terms": {"field": "technologies", "size": 32}},
+    "problemKeywords": {"terms": {"field": "problemKeywords", "size": 18}},
+    "contentTypes": {"terms": {"field": "contentType", "size": 10}},
+}
 
 SEARCH_FIELDS = [
     "technologies^5",
@@ -27,17 +52,33 @@ FUZZY_SEARCH_FIELDS = [
 ]
 
 
-def search_articles(query: str, size: int = 20) -> dict[str, Any]:
+def search_articles(
+    query: str,
+    size: int = 20,
+    sort: SearchSort = "relevance",
+    sources: list[str] | None = None,
+    technologies: list[str] | None = None,
+    problem_keywords: list[str] | None = None,
+    content_types: list[str] | None = None,
+) -> dict[str, Any]:
     client = get_elasticsearch_client()
     normalized_query = query.strip()
+    filters = normalize_filters(
+        sources=sources,
+        technologies=technologies,
+        problem_keywords=problem_keywords,
+        content_types=content_types,
+    )
 
     if not normalized_query:
-        return {"query": query, "total": 0, "items": []}
+        return empty_search_response(query, sort, filters)
 
     response = client.search(
         index=ARTICLES_INDEX,
         size=size,
-        query=build_search_query(normalized_query),
+        query=build_filtered_search_query(normalized_query, filters),
+        sort=build_sort(sort),
+        aggs=FACET_AGGREGATIONS,
         highlight={
             "fields": {
                 "title": {},
@@ -56,9 +97,227 @@ def search_articles(query: str, size: int = 20) -> dict[str, Any]:
 
     return {
         "query": query,
+        "sort": sort,
+        "filters": filters,
+        "facets": parse_facets(response.get("aggregations", {}), normalized_query),
         "total": total_value,
         "items": [hit_to_item(hit) for hit in hits],
     }
+
+
+def empty_search_response(
+    query: str, sort: SearchSort, filters: dict[str, list[str]]
+) -> dict[str, Any]:
+    return {
+        "query": query,
+        "sort": sort,
+        "filters": filters,
+        "facets": empty_facets(),
+        "total": 0,
+        "items": [],
+    }
+
+
+def normalize_filters(
+    sources: list[str] | None,
+    technologies: list[str] | None,
+    problem_keywords: list[str] | None,
+    content_types: list[str] | None,
+) -> dict[str, list[str]]:
+    return {
+        "sources": clean_values(sources),
+        "technologies": clean_values(technologies),
+        "problemKeywords": clean_values(problem_keywords),
+        "contentTypes": clean_values(content_types),
+    }
+
+
+def clean_values(values: list[str] | None) -> list[str]:
+    if not values:
+        return []
+
+    cleaned_values = []
+    seen = set()
+    for value in values:
+        cleaned = value.strip()
+        normalized = cleaned.casefold()
+        if not cleaned or normalized in seen:
+            continue
+
+        seen.add(normalized)
+        cleaned_values.append(cleaned)
+
+    return cleaned_values
+
+
+def build_filtered_search_query(query: str, filters: dict[str, list[str]]) -> dict[str, Any]:
+    filter_clauses = build_filter_clauses(filters)
+
+    if not filter_clauses:
+        return build_search_query(query)
+
+    return {
+        "bool": {
+            "must": [build_search_query(query)],
+            "filter": filter_clauses,
+        }
+    }
+
+
+def build_filter_clauses(filters: dict[str, list[str]]) -> list[dict[str, Any]]:
+    clauses = []
+
+    if filters["sources"]:
+        clauses.append({"terms": {"sourceSlug": filters["sources"]}})
+
+    if filters["technologies"]:
+        clauses.append({"terms": {"technologies": term_values(filters["technologies"])}})
+
+    if filters["problemKeywords"]:
+        clauses.append({"terms": {"problemKeywords": term_values(filters["problemKeywords"])}})
+
+    if filters["contentTypes"]:
+        clauses.append({"terms": {"contentType": term_values(filters["contentTypes"])}})
+
+    return clauses
+
+
+def term_values(values: list[str]) -> list[str]:
+    return sorted({value for value in values} | {value.casefold() for value in values})
+
+
+def empty_facets() -> dict[str, list[dict[str, Any]]]:
+    return {
+        "sources": [],
+        "technologies": [],
+        "problemKeywords": [],
+        "contentTypes": [],
+    }
+
+
+def parse_facets(
+    aggregations: dict[str, Any], query: str = ""
+) -> dict[str, list[dict[str, Any]]]:
+    if not aggregations:
+        return empty_facets()
+
+    matched_keywords = matched_rule_keywords(query)
+
+    return {
+        "sources": parse_source_facets(aggregations.get("sources", {})),
+        "technologies": parse_term_facets(
+            aggregations.get("technologies", {}),
+            matched_keywords=matched_keywords,
+            limit=12,
+        ),
+        "problemKeywords": parse_term_facets(
+            aggregations.get("problemKeywords", {}),
+            matched_keywords=matched_keywords,
+            limit=10,
+        ),
+        "contentTypes": parse_content_type_facets(aggregations.get("contentTypes", {})),
+    }
+
+
+def parse_source_facets(aggregation: dict[str, Any]) -> list[dict[str, Any]]:
+    facets = []
+    for bucket in aggregation.get("buckets", []):
+        sample_hits = bucket.get("sample", {}).get("hits", {}).get("hits", [])
+        source = sample_hits[0].get("_source", {}) if sample_hits else {}
+        facets.append(
+            {
+                "value": bucket["key"],
+                "label": source_facet_label(source, bucket["key"]),
+                "count": bucket["doc_count"],
+            }
+        )
+
+    return facets
+
+
+def source_facet_label(source: dict[str, Any], fallback: str) -> str:
+    company = source.get("company")
+    source_name = source.get("source")
+
+    if company == "AWS" and source_name:
+        return source_name
+
+    return company or source_name or fallback
+
+
+def parse_term_facets(
+    aggregation: dict[str, Any], matched_keywords: list[str], limit: int
+) -> list[dict[str, Any]]:
+    facets = []
+    matched_values = {keyword.casefold() for keyword in matched_keywords}
+
+    for bucket in aggregation.get("buckets", []):
+        value = bucket["key"]
+        label = keyword_label(value)
+        is_recommended = value.casefold() in matched_values or label.casefold() in matched_values
+        facets.append(
+            {
+                "value": bucket["key"],
+                "label": label,
+                "count": bucket["doc_count"],
+                "isRecommended": is_recommended,
+            }
+        )
+
+    return sorted(facets, key=facet_sort_key)[:limit]
+
+
+def facet_sort_key(facet: dict[str, Any]) -> tuple[int, int, int, str]:
+    value = str(facet["value"]).casefold()
+    is_generic = value in GENERIC_FACET_VALUES
+
+    return (
+        0 if facet.get("isRecommended") else 1,
+        1 if is_generic else 0,
+        -int(facet["count"]),
+        str(facet["label"]).casefold(),
+    )
+
+
+def keyword_label(value: str) -> str:
+    return KEYWORD_LABEL_BY_NORMALIZED.get(value.casefold(), value)
+
+
+def parse_content_type_facets(aggregation: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "value": bucket["key"],
+            "label": content_type_label(bucket["key"]),
+            "count": bucket["doc_count"],
+        }
+        for bucket in aggregation.get("buckets", [])
+    ]
+
+
+def content_type_label(value: str) -> str:
+    labels = {
+        "technical_case": "기술 사례",
+        "engineering_story": "엔지니어링 스토리",
+        "tutorial": "튜토리얼",
+        "release_note": "릴리스",
+        "event": "이벤트",
+        "recruiting": "채용",
+        "interview": "인터뷰",
+        "news": "뉴스",
+        "other": "기타",
+    }
+
+    return labels.get(value, value)
+
+
+def build_sort(sort: SearchSort) -> list[dict[str, Any]] | None:
+    if sort == "latest":
+        return [
+            {"publishedAt": {"order": "desc", "missing": "_last"}},
+            {"_score": {"order": "desc"}},
+        ]
+
+    return None
 
 
 def build_search_query(query: str) -> dict[str, Any]:
@@ -167,7 +426,9 @@ def keyword_terms_query(keywords: list[str]) -> dict[str, Any]:
     if not keywords:
         return {"match_none": {}}
 
-    term_values = sorted({keyword for keyword in keywords} | {keyword.casefold() for keyword in keywords})
+    term_values = sorted(
+        {keyword for keyword in keywords} | {keyword.casefold() for keyword in keywords}
+    )
 
     return {
         "bool": {

@@ -95,6 +95,52 @@ content: 1
 GET /api/search?q=lambda
 ```
 
+정렬 기준은 query parameter로 받습니다.
+
+```text
+GET /api/search?q=lambda&sort=relevance
+GET /api/search?q=lambda&sort=latest
+```
+
+정렬 기준:
+
+```text
+relevance: Elasticsearch score 기반 관련도순. 기본값.
+latest: 검색 후보 중 publishedAt 최신순. 같은 날짜 또는 날짜 없음 처리 후 _score로 보조 정렬.
+```
+
+검색 결과를 좁히는 필터도 query parameter로 받습니다.
+
+```text
+GET /api/search?q=Redis&source=gmarket-tech-blog
+GET /api/search?q=Redis&technology=Redis&problem=cost%20optimization
+GET /api/search?q=Redis&content_type=technical_case
+```
+
+필터 기준:
+
+```text
+source: sourceSlug 기준 회사/블로그 필터
+technology: technologies keyword field 기준 필터
+problem: problemKeywords keyword field 기준 필터
+content_type: LLM 요약에서 분류한 contentType 필터
+```
+
+검색 응답에는 현재 검색 결과에 대한 facet도 함께 반환합니다.
+
+```text
+facets.sources
+facets.technologies
+facets.problemKeywords
+facets.contentTypes
+```
+
+프론트엔드는 facet을 결과 상단의 `결과 좁히기` 영역에 표시하고, 사용자가 버튼형 필터를 선택하면 같은 검색어로 다시 검색합니다.
+
+facet은 단순 count 순서만 사용하지 않습니다. 검색어와 직접 매칭되는 기술 키워드는 `isRecommended`로 표시해 상단에 배치하고, `search`, `Java`, `observability`처럼 지나치게 넓게 잡히기 쉬운 facet은 직접 매칭된 경우가 아니라면 뒤로 보냅니다. 예를 들어 `Redis Stream` 검색에서는 `Redis`, `Redis Stream`이 먼저 보이고, `Elasticsearch` 검색에서는 `Elasticsearch`가 먼저 보이도록 합니다.
+
+AWS 블로그는 여러 세부 블로그가 같은 회사명으로 묶이면 필터가 헷갈릴 수 있어, source facet에서는 `AWS Database Blog`, `AWS Architecture Blog`처럼 세부 블로그명을 우선 표시합니다.
+
 내부 Elasticsearch query는 `multi_match` 중심으로 시작합니다.
 
 개념:
@@ -103,7 +149,9 @@ GET /api/search?q=lambda
 q를 title, summary, content, technologies, architectureKeywords, problemKeywords에 대해 검색한다.
 field별 boost를 적용한다.
 highlight를 반환한다.
-publishedAt 최신순 보조 정렬은 추후 검토한다.
+기본은 관련도순으로 두고, 사용자가 선택하면 최신순 정렬을 적용한다.
+source/technology/problem/content_type 필터를 bool filter로 적용한다.
+source, technology, problem, contentType facet을 반환한다.
 ```
 
 초기 검색 필터:

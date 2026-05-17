@@ -1591,3 +1591,558 @@ average recall@10 = 0.819
 average mrr = 0.814
 average ndcg@10 = 0.735
 ```
+
+## 39. 추가 기술 블로그 후보 백로그 정리
+
+서비스의 현재 약점은 검색/요약 기능 자체보다 수집된 기업 사례의 폭이 아직 좁다는 점입니다. 더 많은 기업의 기술 블로그를 추가하기 위해, 다음 source 후보를 별도 백로그 문서로 정리했습니다.
+
+작성한 문서:
+
+```text
+docs/source-candidates.md
+```
+
+문서에 정리한 내용:
+
+```text
+P0: RSS/Atom feed가 확인되어 바로 seed 추가 가능한 후보
+P1: 공식 블로그로 보이나 feed와 본문 품질 검증이 필요한 후보
+P2: RSS가 없거나 불안정해서 HTML 목록/sitemap 수집기가 필요한 후보
+P3: 공식성, 업데이트 상태, 수집 정책 확인이 필요한 후보
+```
+
+바로 추가하기 좋은 영어권 후보:
+
+```text
+Netflix Tech Blog
+Meta Engineering
+Slack Engineering
+Cloudflare Blog
+GitHub Engineering
+Datadog Engineering
+Dropbox Tech
+Lyft Engineering
+Airbnb Tech Blog
+Stripe Blog
+Pinterest Engineering
+```
+
+추가 검토할 한국어 후보:
+
+```text
+네이버 클라우드 플랫폼
+넷마블 기술 블로그
+G마켓 기술 블로그
+직방 기술 블로그
+인프랩 기술 블로그
+뱅크샐러드 기술 블로그
+PortOne Developers
+Sendbird Engineering
+Upstage Blog
+쿠팡 Engineering Blog
+오늘의집 기술 블로그
+야놀자 기술 블로그
+```
+
+다음 구현 작업은 P0 영어권 RSS source를 seed에 추가하고, source별 수집량과 요약 품질을 확인하는 것입니다. 이후 한국어 P1 후보는 `source probe` 명령을 만들어 feed URL과 본문 품질을 자동으로 검증한 뒤 추가합니다.
+
+## 40. 한국어 기술 블로그 우선 확장
+
+영어권 대형 기술 블로그보다 한국어 기업 기술 블로그를 먼저 늘리는 방향으로 조정했습니다.
+
+이유:
+
+```text
+한글 문제상황 검색 품질을 먼저 끌어올릴 수 있음
+국내 기업 사례 비교라는 초기 차별점에 더 직접적으로 연결됨
+한영 기술명 검색과 한국어 LLM 요약 품질을 더 빨리 검증할 수 있음
+```
+
+RSS 또는 Medium feed에서 entry가 확인된 한국어 source를 seed에 추가했습니다.
+
+추가 source:
+
+```text
+naver-cloud-platform-tech-blog
+zigbang-tech-blog
+wantedlab-tech-blog
+coupang-engineering-blog
+lunit-team-blog
+gmarket-tech-blog
+netmarble-tech-blog
+```
+
+feed 확인 결과:
+
+```text
+NAVER Cloud Platform Tech Blog  10
+Zigbang Tech Blog               10
+Wantedlab Tech Blog             10
+Coupang Engineering Blog        10
+Lunit Team Blog                 10
+Gmarket Tech Blog               10
+Netmarble Tech Blog             15
+```
+
+Medium 기반 source는 최신 10개 중심으로 내려오는 한계가 있습니다. Medium archive HTML은 Cloudflare challenge가 걸릴 수 있어 서버 crawler에서 안정적으로 접근하기 어렵습니다. 우선 Medium source는 최신 feed 중심으로 수집하고, 과거 글 전체 수집은 공식 API 또는 허용 가능한 archive 접근 방식을 별도로 검토합니다.
+
+실제 수집 결과:
+
+```text
+naver-cloud-platform-tech-blog: fetched=10, created=10
+zigbang-tech-blog:              fetched=10, created=10
+wantedlab-tech-blog:           fetched=10, created=10
+coupang-engineering-blog:      fetched=10, created=10
+lunit-team-blog:               fetched=10, created=10
+gmarket-tech-blog:             fetched=10, created=10
+netmarble-tech-blog:           fetched=15, created=15
+```
+
+후처리:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+```
+
+키워드 재추출 결과:
+
+```text
+articles = 1191
+keywords = 2741
+```
+
+검색/자동완성 재색인 결과:
+
+```text
+indexed articles = 1191
+indexed suggestions = 75
+```
+
+검색 평가:
+
+```text
+average precision@5 = 0.392
+average recall@10 = 0.806
+average mrr = 0.803
+average ndcg@10 = 0.726
+```
+
+신규 source가 늘었지만 평가 데이터셋은 아직 기존 정답 문서 중심입니다. 다음 단계에서는 새로 수집한 한국어 source를 기준으로 평가 쿼리와 정답 문서를 보강해야 합니다.
+
+추가 확인 결과 G마켓은 `sitemap.xml` 기반 수집이 가능했고, 넷마블은 RSS 페이지네이션이 동작했습니다.
+
+구현한 내용:
+
+```text
+apps/backend/app/crawler/sitemap.py
+npm run crawl:sitemap
+```
+
+G마켓 source 전략:
+
+```text
+collection_strategy = sitemap
+feed_url = https://dev.gmarket.com/sitemap.xml
+content_strategy = article_fetch
+```
+
+넷마블 source 전략:
+
+```text
+collection_strategy = rss
+pagination_strategy = wordpress_paged
+```
+
+추가 수집 결과:
+
+```text
+gmarket-tech-blog:   fetched=104, created=94, updated=10
+netmarble-tech-blog: fetched=73,  created=58, updated=0, unchanged=15
+```
+
+재처리:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+```
+
+재처리 결과:
+
+```text
+articles = 1343
+keywords = 2944
+indexed articles = 1343
+indexed suggestions = 75
+```
+
+검색 평가:
+
+```text
+average precision@5 = 0.400
+average recall@10 = 0.806
+average mrr = 0.803
+average ndcg@10 = 0.728
+```
+
+Medium 기반 source는 여전히 최신 10개 한계가 있습니다. 다음 수집 확장 작업은 sitemap을 제공하는 한국어 블로그를 더 찾거나, HTML 목록 수집기를 추가하는 방향이 적절합니다.
+
+## 41. 한국어 source 추가 수집
+
+RSS 또는 sitemap 기반으로 더 가져올 수 있는 한국어 source를 추가 확인했습니다.
+
+추가 source:
+
+```text
+banksalad-blog
+inflab-tech-blog
+upstage-blog
+```
+
+수집 전략:
+
+```text
+banksalad-blog: rss / none / feed_only
+inflab-tech-blog: rss / none / feed_only
+upstage-blog: sitemap / none / article_fetch
+```
+
+Upstage는 전체 sitemap에서 `/blog/ko/...` 패턴만 수집하도록 source별 sitemap article URL 패턴을 추가했습니다.
+
+수집 결과:
+
+```text
+banksalad-blog: fetched=78, created=78
+inflab-tech-blog: fetched=42, created=42
+upstage-blog:    fetched=76, created=76
+```
+
+이번 라운드 신규 article:
+
+```text
+196
+```
+
+재처리:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+```
+
+재처리 결과:
+
+```text
+articles = 1539
+keywords = 3198
+indexed articles = 1539
+indexed suggestions = 78
+```
+
+검색 평가:
+
+```text
+average precision@5 = 0.375
+average recall@10 = 0.806
+average mrr = 0.799
+average ndcg@10 = 0.731
+```
+
+신규 source가 늘면서 기존 평가 데이터셋의 정답 문서가 현재 검색 후보 풀을 충분히 대표하지 못하게 되었습니다. 특히 `ko-tech-search`, `ko-problem-cost-optimization` 같은 쿼리는 후보가 크게 넓어졌기 때문에, 신규 source 기반 정답 문서를 추가해 평가 데이터셋을 갱신해야 합니다.
+
+보류한 source:
+
+```text
+Sendbird
+```
+
+Sendbird는 sitemap에 글이 많지만 제품/마케팅 콘텐츠가 많이 섞입니다. 기술 사례 검색 품질을 흐리지 않으려면 engineering/API/SDK/infrastructure 성격의 글만 고르는 필터가 필요합니다.
+
+## 42. 신규 한국어 source 검색 평가셋 보강
+
+한국어 source가 1539개 article까지 늘면서 기존 평가셋이 현재 검색 후보 풀을 충분히 대표하지 못하게 되었습니다. 새로 수집한 source의 실제 글을 기준으로 평가 쿼리와 expected result를 보강했습니다.
+
+수정한 파일:
+
+```text
+apps/backend/app/search/evaluation/queries.json
+docs/search-evaluation.md
+```
+
+추가한 평가 쿼리:
+
+```text
+ko-problem-data-consistency
+ko-architecture-pr-preview
+ko-problem-s3-cdn-cost
+ko-problem-bottlerocket-gpu
+ko-tech-redis-stream
+ko-tech-kubernetes-operator
+ko-tech-document-parse
+ko-architecture-data-pipeline
+ko-tech-aws-dms
+```
+
+보강한 기존 쿼리:
+
+```text
+ko-tech-search
+```
+
+평가셋 검증:
+
+```bash
+uv run python -m json.tool app/search/evaluation/queries.json
+npm run search:evaluate
+```
+
+평가 결과:
+
+```text
+evaluation queries = 33
+average precision@5 = 0.394
+average recall@10 = 0.839
+average mrr = 0.854
+average ndcg@10 = 0.784
+```
+
+이전 평가와 비교:
+
+```text
+average precision@5: 0.375 -> 0.394
+average recall@10:   0.806 -> 0.839
+average mrr:         0.799 -> 0.854
+average ndcg@10:     0.731 -> 0.784
+```
+
+의미:
+
+```text
+신규 source 기반 정답 문서가 평가셋에 반영됨
+새 source 추가 후 낮아졌던 precision@5가 일부 회복됨
+recall@10, mrr, ndcg@10은 확실히 개선됨
+검색 후보가 넓은 쿼리는 ranking 개선 여지가 남아 있음
+```
+
+## 43. 검색 결과 정렬 기준 추가
+
+검색 결과가 많아지면서 사용자가 관련도뿐 아니라 최신 글 기준으로도 탐색할 수 있어야 했습니다. 검색 API와 화면에 정렬 기준을 추가했습니다.
+
+추가한 정렬 기준:
+
+```text
+relevance: 관련도순, 기본값
+latest: 최신순
+```
+
+API:
+
+```text
+GET /api/search?q=Redis%20Stream&sort=relevance
+GET /api/search?q=Redis%20Stream&sort=latest
+```
+
+구현:
+
+```text
+backend search service에서 sort 파라미터 처리
+latest 선택 시 publishedAt desc, _score desc 순서로 Elasticsearch sort 적용
+frontend 검색 패널에 관련도순/최신순 세그먼트 컨트롤 추가
+정렬 변경 시 현재 검색어로 다시 검색
+검색 결과 요약에 현재 정렬 기준 표시
+```
+
+검증:
+
+```bash
+uv run ruff check app/routers/search.py app/search/service.py
+pnpm --dir apps/web exec tsc --noEmit
+npm run build:web
+```
+
+## 45. 필터 facet 품질 개선
+
+단순 count 순서 facet은 `search`, `Java`, `observability`처럼 범용적인 키워드가 앞에 뜨는 문제가 있었습니다. 검색어와 직접 관련된 기준을 빠르게 고를 수 있도록 facet 정렬을 개선했습니다.
+
+변경 내용:
+
+```text
+기술 facet aggregation size를 12에서 32로 확대
+문제 상황 facet aggregation size를 10에서 18로 확대
+검색어와 매칭된 키워드 facet에 isRecommended 표시
+추천 facet을 facet 목록 상단에 우선 배치
+범용 facet(search, Java, observability)은 직접 매칭이 아니면 뒤로 배치
+AWS source facet은 AWS 회사명 대신 세부 블로그명 우선 표시
+추천 facet chip에 별도 스타일 적용
+```
+
+샘플:
+
+```text
+Redis Stream:
+Redis, Redis Stream, Apache Kafka ...
+
+MQTT:
+MQTT, Redis, Amazon S3 ...
+
+엘라스틱서치:
+Elasticsearch, Apache Kafka, Amazon S3 ...
+```
+
+검증:
+
+```bash
+uv run ruff check app/search/service.py
+pnpm --dir apps/web exec tsc --noEmit
+npm run search:evaluate
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.400
+average recall@10 = 0.839
+average mrr = 0.854
+average ndcg@10 = 0.782
+```
+
+## 46. 검색 결과 카드 UI 밀도 조정
+
+검색 결과 카드에 문제/해결/매칭 근거가 모두 펼쳐져 있어 목록이 번잡해지는 문제가 있었습니다. 기본 카드에서는 글을 읽을지 판단하는 데 필요한 정보만 보이도록 정리했습니다.
+
+변경 내용:
+
+```text
+카드 기본 본문은 LLM 사례 요약 중심으로 표시
+요약은 최대 2줄로 제한
+문제/해결은 사례 판단에 중요한 정보이므로 카드 기본 영역에 바로 표시
+검색 하이라이트는 검색 근거 보기 접힘 영역으로 이동
+기술 태그는 최대 3개, 문제/구조 태그는 최대 2개 우선 노출
+숨겨진 태그 수는 +N chip으로 표시
+원문 보기 링크와 검색 근거 영역을 카드 하단으로 정리
+```
+
+의도:
+
+```text
+검색 결과 목록은 빠르게 훑을 수 있게 유지
+검색 근거는 사용자가 필요할 때만 열어볼 수 있게 제공
+카드마다 반복되는 설명을 줄이고 LLM 요약의 판단 가치를 높임
+```
+
+검증:
+
+```bash
+pnpm --dir apps/web exec tsc --noEmit
+npm run build:web
+```
+
+샘플 확인:
+
+```text
+Redis Stream + relevance -> G마켓 Redis Stream 적용기 상위 노출
+Redis Stream + latest    -> 매칭 후보 중 최신 발행일 순서로 노출
+```
+
+최신순은 넓은 검색어에서 관련도가 낮은 최신 글이 위로 올 수 있습니다. 따라서 기본값은 관련도순으로 유지하고, 최신 글 탐색이 필요할 때만 사용자가 선택하도록 했습니다.
+
+## 44. 검색 결과 필터와 facet UI 추가
+
+검색 결과가 1500개 이상으로 늘어나면서 검색어 하나만으로 원하는 사례를 좁히기 어려워졌습니다. 검색 API에 facet과 필터를 추가하고, 화면에서는 결과 상단에 `결과 좁히기` 영역을 추가했습니다.
+
+추가한 필터:
+
+```text
+source: 회사/블로그 sourceSlug 기준
+technology: technologies keyword 기준
+problem: problemKeywords keyword 기준
+content_type: LLM 요약 contentType 기준
+```
+
+API 예:
+
+```text
+GET /api/search?q=Redis%20Stream&source=gmarket-tech-blog
+GET /api/search?q=Redis%20Stream&technology=Redis
+GET /api/search?q=Redis%20Stream&problem=cost%20optimization
+GET /api/search?q=Redis%20Stream&content_type=technical_case
+```
+
+검색 응답에 추가한 정보:
+
+```text
+filters
+facets.sources
+facets.technologies
+facets.problemKeywords
+facets.contentTypes
+```
+
+UI:
+
+```text
+검색 결과 상단에 결과 좁히기 패널 추가
+회사/기술/문제 상황/유형 facet 표시
+필터 chip 클릭 시 즉시 재검색
+선택된 필터는 같은 chip을 다시 누르면 해제
+필터 초기화 버튼 제공
+```
+
+샘플 확인:
+
+```text
+Redis Stream 기본 검색 total = 156
+source=gmarket-tech-blog 필터 적용 total = 25
+```
+
+필터 facet에서 Redis가 제대로 보이도록 기술 사전에 `Redis`, `Redis Stream`을 추가했습니다.
+
+재처리:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+```
+
+재처리 결과:
+
+```text
+articles = 1539
+keywords = 3290
+indexed articles = 1539
+indexed suggestions = 80
+```
+
+Redis Stream 샘플:
+
+```text
+기본 검색 total = 90
+technology=redis 필터 적용 total = 90
+기술 facet 상위에 Redis 노출
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.400
+average recall@10 = 0.839
+average mrr = 0.854
+average ndcg@10 = 0.782
+```
+
+검증:
+
+```bash
+uv run ruff check app/routers/search.py app/search/service.py
+pnpm --dir apps/web exec tsc --noEmit
+npm run build:web
+```

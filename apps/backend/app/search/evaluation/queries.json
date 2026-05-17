@@ -460,6 +460,11 @@
           "url": "https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/",
           "title": "OpenSearch Analyzer를 활용한 검색기능 알아보기",
           "relevance": 2
+        },
+        {
+          "url": "https://netmarble.engineering/doxygen-nginx-fcgiwrap/",
+          "title": "30분만 투자하면 사용하는 API 문서 검색 엔진, Doxygen 외부 검색 설정하기",
+          "relevance": 2
         }
       ]
     },
@@ -557,6 +562,203 @@
           "url": "https://techblog.gccompany.co.kr/%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%ED%86%B5%ED%95%A9-%EC%95%8C%EB%A6%BC-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B5%AC%EC%B6%95%EA%B8%B0-part-2-how-11f41bb2b5f2?source=rss----18356045d353---4",
           "title": "여기어때 이벤트 기반 통합 알림 플랫폼 구축기 Part 2. How?",
           "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-problem-data-consistency",
+      "query": "낙관적 락",
+      "category": "problem",
+      "intent": "한글 검색어로 동시성 상황에서 데이터 정합성을 유지하는 방법과 낙관적 락 적용 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://blog.banksalad.com/tech/banksalad-optimistic-lock/",
+          "title": "뱅크샐러드가 게임을 만들 때 데이터 정합성을 유지하는 법 (feat. 낙관적 락)",
+          "relevance": 3
+        }
+      ]
+    },
+    {
+      "id": "ko-architecture-pr-preview",
+      "query": "PR Preview Argo CD Linkerd",
+      "category": "architecture",
+      "intent": "한글/영문 혼합 검색어로 QA 병목을 줄이기 위한 PR Preview 환경과 GitOps 기반 배포 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://tech.inflab.com/20251121-pr-preview/",
+          "title": "Argo CD, Linkerd 기반 QA 병목 제거: PR Preview 환경 구축",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.gccompany.co.kr/eks-alb-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-argo-rollouts-503-%EC%97%90%EB%9F%AC-%EC%97%86%EB%8A%94-%EC%B9%B4%EB%82%98%EB%A6%AC-%EB%B0%B0%ED%8F%AC-%EC%A0%81%EC%9A%A9%EA%B8%B0-689eedaf8d1a?source=rss----18356045d353---4",
+          "title": "EKS + ALB 환경에서 Argo Rollouts 503 에러 없는 카나리 배포 적용기",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-problem-s3-cdn-cost",
+      "query": "S3 비용 이미지 CDN 최적화",
+      "category": "problem",
+      "intent": "한글 검색어로 S3 보관 비용, 이미지 CDN 트래픽, CloudFront 비용 효율화 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://tech.inflab.com/20251029-optimize-s3/",
+          "title": "Amazon S3 보관 비용과 이미지 CDN 트래픽 최적화",
+          "relevance": 3
+        },
+        {
+          "url": "https://medium.com/wantedjobs/cloudfront%EC%9D%98-%EC%88%A8%EC%9D%80-%ED%9E%98-%EC%BA%90%EC%8B%B1-%EC%97%86%EC%9D%B4%EB%8F%84-%EA%B7%B9%EB%8C%80%ED%99%94-%EB%90%98%EB%8A%94-%EC%84%B1%EB%8A%A5%EA%B3%BC-%EB%B9%84%EC%9A%A9-%ED%9A%A8%EC%9C%A8%EC%84%B1-44f66701d1eb?source=rss----fb47eceee74c---4",
+          "title": "CloudFront의 숨은 힘: 캐싱 없이도 극대화 되는 성능과 비용 효율성",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-problem-bottlerocket-gpu",
+      "query": "Bottlerocket GPU 노드 교체",
+      "category": "problem",
+      "intent": "한글/영문 혼합 검색어로 EKS Bottlerocket GPU 노드 운영 문제와 이미지 캐싱 최적화 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://tech.inflab.com/20250827-bottlerocket-ami-gpu-issue/",
+          "title": "EKS Bottlerocket AMI에서 DCGM 오류로 GPU 노드 반복 교체 문제 해결기",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.inflab.com/20250421-bottlerocket-volume-image-cache/",
+          "title": "EKS Bottlerocket에서 이미지 캐싱으로 Pull 시간 줄이기",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-tech-redis-stream",
+      "query": "Redis Stream",
+      "category": "technology",
+      "intent": "Redis Stream과 Redis 운영, Kubernetes 구성, connection 이슈, cluster migration 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://dev.gmarket.com/113",
+          "title": "Redis Stream 적용기",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/23121/",
+          "title": "Redis New Connection 증가 이슈 돌아보기",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.kakaopay.com/post/kakaopaysec-redis-on-kubernetes/",
+          "title": "Redis on Kubernetes 플랫폼을 구성해 나가기",
+          "relevance": 2
+        },
+        {
+          "url": "https://helloworld.kurly.com/blog/redis-fight-part-1/",
+          "title": "DevOps 엔지니어의 Redis Test 분투기 - Part 1",
+          "relevance": 2
+        },
+        {
+          "url": "https://dev.gmarket.com/71",
+          "title": "초보 개발자를 위한 Redis Cluster Migration 가이드라인",
+          "relevance": 2
+        },
+        {
+          "url": "https://dev.gmarket.com/69",
+          "title": "Redis Lua Script를 이용해서 API Rate Limiter개발",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-tech-kubernetes-operator",
+      "query": "쿠버네티스 오퍼레이터 Java",
+      "category": "technology",
+      "intent": "쿠버네티스 오퍼레이터를 Java 또는 Golang으로 구현하거나 적용한 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://dev.gmarket.com/112",
+          "title": "쿠버네티스 오퍼레이터를 Java로 개발해보기",
+          "relevance": 3
+        },
+        {
+          "url": "https://dev.gmarket.com/102",
+          "title": "쿠버네티스 오퍼레이터를 Golang으로 개발해보기",
+          "relevance": 2
+        },
+        {
+          "url": "https://dev.gmarket.com/65",
+          "title": "쿠버네티스 오퍼레이터 적용하기",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-tech-document-parse",
+      "query": "문서 파싱 Document Parse",
+      "category": "technology",
+      "intent": "Document Parse, Document AI, 문서 파싱 기술을 실제 업무 자동화에 적용한 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://www.upstage.ai/blog/ko/document-parse-enhanced",
+          "title": "Document Parse Enhanced | 복잡한 문서를 실제 업무에 바로 활용하는 새로운 문서 파싱 방식",
+          "relevance": 3
+        },
+        {
+          "url": "https://www.upstage.ai/blog/ko/introduce-upstage-document-parse",
+          "title": "복잡한 문서를 지능형 데이터로, 강력한 문서 파싱 기술 - 업스테이지 도큐먼트 파스(Document Parse)",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.kakaopay.com/post/ifkakao2024-document-ai/",
+          "title": "Document AI로 문서 검토 한방에 끝내기",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-architecture-data-pipeline",
+      "query": "데이터 파이프라인",
+      "category": "architecture",
+      "intent": "한글 검색어로 데이터 파이프라인 설계, 분석 데이터 배포, 기본 원칙 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://blog.banksalad.com/tech/datapipe/",
+          "title": "데이터 분석가가 직접 정의, 배포, 관리하는 뱅크샐러드 데이터 파이프라인",
+          "relevance": 3
+        },
+        {
+          "url": "https://netmarble.engineering/data-pipeline-design-principles-a/",
+          "title": "데이터 파이프라인 기본 원리와 원칙은 시간이 지나도 유효해야 한다(1/2)",
+          "relevance": 3
+        },
+        {
+          "url": "https://netmarble.engineering/data-pipeline-design-principles-b/",
+          "title": "데이터 파이프라인 기본 원리와 원칙은 시간이 지나도 유효해야 한다(2/2)",
+          "relevance": 3
+        },
+        {
+          "url": "https://blog.banksalad.com/tech/dataserving/",
+          "title": "분석 데이터를 프로덕션에서 쉽게 사용할 수 없을까?",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-tech-aws-dms",
+      "query": "AWS DMS RDS 통합",
+      "category": "technology",
+      "intent": "AWS DMS와 RDS를 이용한 데이터베이스 통합, 마이그레이션, 운영 경험을 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://blog.banksalad.com/tech/dms/",
+          "title": "사용법과 함께 작성해본 좌충우돌 AWS DMS 사용기 - feat. RDS 통합 이야기",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/10645/",
+          "title": "[다시보기] 2월 우아한테크세미나: 우아한형제들의 RDS Aurora Graviton2 성능 이슈 해결 사례와 RDS를 모니터링하는 방법",
+          "relevance": 1
         }
       ]
     }

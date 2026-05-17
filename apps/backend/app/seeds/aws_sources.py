@@ -213,6 +213,135 @@ KOREAN_TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = (
         language="ko",
         country="KR",
     ),
+    SourceSeed(
+        name="NAVER Cloud Platform Tech Blog",
+        slug="naver-cloud-platform-tech-blog",
+        company_name="NAVER Cloud",
+        feed_url="https://medium.com/feed/naver-cloud-platform",
+        site_url="https://medium.com/naver-cloud-platform",
+        description=(
+            "NAVER Cloud Platform cloud, Kubernetes, DevOps, database, "
+            "and infrastructure technology cases."
+        ),
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Zigbang Tech Blog",
+        slug="zigbang-tech-blog",
+        company_name="Zigbang",
+        feed_url="https://medium.com/feed/zigbang",
+        site_url="https://medium.com/zigbang",
+        description=(
+            "Zigbang real estate platform, backend, data, frontend, "
+            "and product engineering cases."
+        ),
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Wantedlab Tech Blog",
+        slug="wantedlab-tech-blog",
+        company_name="Wantedlab",
+        feed_url="https://medium.com/feed/wantedjobs",
+        site_url="https://medium.com/wantedjobs",
+        description=(
+            "Wantedlab matching, recommendation, product engineering, backend, "
+            "and data technology cases."
+        ),
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Coupang Engineering Blog",
+        slug="coupang-engineering-blog",
+        company_name="Coupang",
+        feed_url="https://medium.com/feed/coupang-engineering",
+        site_url="https://medium.com/coupang-engineering",
+        description="Coupang commerce, logistics, backend, data, and platform engineering cases.",
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Lunit Team Blog",
+        slug="lunit-team-blog",
+        company_name="Lunit",
+        feed_url="https://medium.com/feed/lunit",
+        site_url="https://medium.com/lunit",
+        description="Lunit medical AI, machine learning, data, product, and engineering stories.",
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Gmarket Tech Blog",
+        slug="gmarket-tech-blog",
+        company_name="Gmarket",
+        feed_url="https://dev.gmarket.com/sitemap.xml",
+        site_url="https://dev.gmarket.com",
+        description=(
+            "Gmarket commerce, search, backend, data, frontend, "
+            "and platform engineering cases."
+        ),
+        collection_strategy="sitemap",
+        content_strategy="article_fetch",
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Netmarble Tech Blog",
+        slug="netmarble-tech-blog",
+        company_name="Netmarble",
+        feed_url="https://netmarble.engineering/feed",
+        site_url="https://netmarble.engineering",
+        description=(
+            "Netmarble game backend, large traffic, cloud, data, "
+            "and platform engineering cases."
+        ),
+        pagination_strategy="wordpress_paged",
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Banksalad Blog",
+        slug="banksalad-blog",
+        company_name="Banksalad",
+        feed_url="https://blog.banksalad.com/rss.xml",
+        site_url="https://blog.banksalad.com",
+        description=(
+            "Banksalad fintech, backend, frontend, data, product, "
+            "and engineering technology cases."
+        ),
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Inflab Tech Blog",
+        slug="inflab-tech-blog",
+        company_name="Inflab",
+        feed_url="https://tech.inflab.com/rss.xml",
+        site_url="https://tech.inflab.com",
+        description=(
+            "Inflab education platform, backend, frontend, DevOps, "
+            "cloud, and productivity engineering cases."
+        ),
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Upstage Blog",
+        slug="upstage-blog",
+        company_name="Upstage",
+        feed_url="https://www.upstage.ai/sitemap.xml",
+        site_url="https://www.upstage.ai",
+        description=(
+            "Upstage AI, LLM, document AI, machine learning, "
+            "and product technology cases."
+        ),
+        collection_strategy="sitemap",
+        content_strategy="article_fetch",
+        language="ko",
+        country="KR",
+    ),
 )
 
 TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = AWS_SOURCES + KOREAN_TECH_BLOG_SOURCES

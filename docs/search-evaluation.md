@@ -466,3 +466,123 @@ average ndcg@10 = 0.735
 ```
 
 사전 후보가 늘면서 자동완성 체감 품질이 좋아졌고, 검색 평가도 기존 수준을 유지했습니다.
+
+## 신규 한국어 source 평가셋 보강
+
+한국어 source가 1539개 article까지 늘어나면서 기존 평가셋만으로는 현재 검색 후보 풀을 충분히 대표하기 어려워졌습니다. 특히 새로 수집한 `banksalad-blog`, `inflab-tech-blog`, `gmarket-tech-blog`, `netmarble-tech-blog`, `upstage-blog`의 실제 사례를 평가셋에 반영했습니다.
+
+추가한 평가 쿼리:
+
+```text
+ko-problem-data-consistency
+ko-architecture-pr-preview
+ko-problem-s3-cdn-cost
+ko-problem-bottlerocket-gpu
+ko-tech-redis-stream
+ko-tech-kubernetes-operator
+ko-tech-document-parse
+ko-architecture-data-pipeline
+ko-tech-aws-dms
+```
+
+보강한 기존 쿼리:
+
+```text
+ko-tech-search
+```
+
+신규 평가셋은 다음 source의 실제 글을 expected result로 포함합니다.
+
+```text
+뱅크샐러드
+인프랩
+G마켓
+넷마블
+Upstage
+Wantedlab
+여기어때
+카카오페이
+우아한형제들
+```
+
+1539개 글 기준 평가 점수:
+
+```text
+evaluation queries = 33
+
+average precision@5 = 0.394
+average recall@10 = 0.839
+average mrr = 0.854
+average ndcg@10 = 0.784
+```
+
+이전 24개 평가셋과 비교:
+
+```text
+average precision@5: 0.375 -> 0.394
+average recall@10:   0.806 -> 0.839
+average mrr:         0.799 -> 0.854
+average ndcg@10:     0.731 -> 0.784
+```
+
+해석:
+
+```text
+새 source 추가 후 낮아졌던 precision@5가 일부 회복됨
+신규 source 기반 실제 정답 문서가 평가에 반영되면서 recall@10, mrr, ndcg@10이 개선됨
+후보 풀이 넓은 ko-tech-search, ko-problem-cost-optimization은 여전히 정밀도 개선 여지가 큼
+```
+
+## Redis 키워드와 필터 반영 후 평가
+
+검색 결과 필터 facet에서 Redis 계열 글을 잘 좁힐 수 있도록 `Redis`, `Redis Stream` 기술 키워드를 사전에 추가했습니다.
+
+재처리 후:
+
+```text
+keywords = 3290
+suggestions = 80
+```
+
+1539개 글 기준 평가 점수:
+
+```text
+evaluation queries = 33
+
+average precision@5 = 0.400
+average recall@10 = 0.839
+average mrr = 0.854
+average ndcg@10 = 0.782
+```
+
+Redis 관련 쿼리는 더 많은 Redis 운영 사례를 정답으로 반영하도록 expected result를 보정했습니다.
+
+## Facet 품질 개선
+
+검색어와 직접 매칭되는 facet을 우선 표시하도록 `isRecommended` 값을 추가했습니다.
+
+샘플 확인:
+
+```text
+Redis Stream technologies facet:
+Redis, Redis Stream, Apache Kafka, Spring Boot ...
+
+MQTT technologies facet:
+MQTT, Redis, Amazon S3, Apache Kafka ...
+
+엘라스틱서치 technologies facet:
+Elasticsearch, Apache Kafka, Amazon S3, Kubernetes ...
+```
+
+`search`, `Java`, `observability`처럼 여러 글에 넓게 붙는 facet은 검색어와 직접 매칭되지 않으면 뒤로 보냅니다. 이를 통해 사용자는 검색 결과 상단에서 "왜 이 결과가 나왔는지"와 "어떤 기준으로 더 좁힐 수 있는지"를 더 빠르게 판단할 수 있습니다.
+
+검색 평가 지표는 facet 정렬 변경 후에도 유지되었습니다.
+
+```text
+evaluation queries = 33
+
+average precision@5 = 0.400
+average recall@10 = 0.839
+average mrr = 0.854
+average ndcg@10 = 0.782
+```

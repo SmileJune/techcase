@@ -34,8 +34,34 @@ type SearchResultItem = {
 
 type SearchResponse = {
   query: string;
+  sort: SearchSort;
+  filters: SearchFilters;
+  facets: SearchFacets;
   total: number;
   items: SearchResultItem[];
+};
+
+type SearchSort = "relevance" | "latest";
+
+type SearchFilters = {
+  sources: string[];
+  technologies: string[];
+  problemKeywords: string[];
+  contentTypes: string[];
+};
+
+type FacetItem = {
+  value: string;
+  label: string;
+  count: number;
+  isRecommended?: boolean;
+};
+
+type SearchFacets = {
+  sources: FacetItem[];
+  technologies: FacetItem[];
+  problemKeywords: FacetItem[];
+  contentTypes: FacetItem[];
 };
 
 type SuggestionItem = {
@@ -70,6 +96,18 @@ type MatchReason = {
   field: string;
   label: string;
   snippets: string[];
+};
+
+const sortOptions: { value: SearchSort; label: string }[] = [
+  { value: "relevance", label: "관련도순" },
+  { value: "latest", label: "최신순" },
+];
+
+const emptyFilters: SearchFilters = {
+  sources: [],
+  technologies: [],
+  problemKeywords: [],
+  contentTypes: [],
 };
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
@@ -250,6 +288,8 @@ function bestSnippet(item: SearchResultItem): string {
 
 export function SearchExperience() {
   const [query, setQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<SearchSort>("relevance");
+  const [filters, setFilters] = useState<SearchFilters>(emptyFilters);
   const [result, setResult] = useState<SearchResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -310,7 +350,11 @@ export function SearchExperience() {
     };
   }, [query]);
 
-  async function runSearch(nextQuery: string) {
+  async function runSearch(
+    nextQuery: string,
+    nextSort: SearchSort = sortOrder,
+    nextFilters: SearchFilters = filters,
+  ) {
     const trimmedQuery = nextQuery.trim();
     committedQueryRef.current = trimmedQuery;
     setQuery(nextQuery);
@@ -328,8 +372,13 @@ export function SearchExperience() {
     setErrorMessage(null);
 
     try {
+      const params = new URLSearchParams({
+        q: trimmedQuery,
+        sort: nextSort,
+      });
+      appendFilterParams(params, nextFilters);
       const response = await fetch(
-        `${apiBaseUrl}/api/search?q=${encodeURIComponent(trimmedQuery)}`,
+        `${apiBaseUrl}/api/search?${params.toString()}`,
       );
 
       if (!response.ok) {
@@ -343,6 +392,31 @@ export function SearchExperience() {
       setErrorMessage(error instanceof Error ? error.message : "검색 중 오류가 발생했습니다.");
     } finally {
       setIsLoading(false);
+    }
+  }
+
+  function handleSortChange(nextSort: SearchSort) {
+    setSortOrder(nextSort);
+
+    if (result && query.trim()) {
+      void runSearch(query, nextSort, filters);
+    }
+  }
+
+  function handleFilterToggle(key: keyof SearchFilters, value: string) {
+    const nextFilters = toggleFilter(filters, key, value);
+    setFilters(nextFilters);
+
+    if (query.trim()) {
+      void runSearch(query, sortOrder, nextFilters);
+    }
+  }
+
+  function handleClearFilters() {
+    setFilters(emptyFilters);
+
+    if (query.trim()) {
+      void runSearch(query, sortOrder, emptyFilters);
     }
   }
 
@@ -420,9 +494,62 @@ export function SearchExperience() {
         ))}
       </div>
 
+      <div className="search-toolbar" aria-label="검색 정렬">
+        <span>정렬</span>
+        <div className="sort-control" role="radiogroup" aria-label="검색 결과 정렬">
+          {sortOptions.map((option) => (
+            <button
+              className={`sort-option${sortOrder === option.value ? " is-active" : ""}`}
+              type="button"
+              key={option.value}
+              role="radio"
+              aria-checked={sortOrder === option.value}
+              onClick={() => handleSortChange(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {result ? (
+        <FilterPanel
+          facets={result.facets}
+          filters={filters}
+          onToggle={handleFilterToggle}
+          onClear={handleClearFilters}
+        />
+      ) : null}
       <SearchState result={result} isLoading={isLoading} errorMessage={errorMessage} />
     </section>
   );
+}
+
+function appendFilterParams(params: URLSearchParams, filters: SearchFilters) {
+  filters.sources.forEach((value) => params.append("source", value));
+  filters.technologies.forEach((value) => params.append("technology", value));
+  filters.problemKeywords.forEach((value) => params.append("problem", value));
+  filters.contentTypes.forEach((value) => params.append("content_type", value));
+}
+
+function toggleFilter(
+  filters: SearchFilters,
+  key: keyof SearchFilters,
+  value: string,
+): SearchFilters {
+  const currentValues = filters[key];
+  const nextValues = currentValues.includes(value)
+    ? currentValues.filter((currentValue) => currentValue !== value)
+    : [...currentValues, value];
+
+  return {
+    ...filters,
+    [key]: nextValues,
+  };
+}
+
+function selectedFilterCount(filters: SearchFilters): number {
+  return Object.values(filters).reduce((total, values) => total + values.length, 0);
 }
 
 function SuggestionList({
@@ -494,7 +621,7 @@ function SearchState({
   return (
     <div className="results">
       <div className="result-summary">
-        <strong>{result.total}</strong>개 사례를 찾았습니다.
+        <strong>{result.total}</strong>개 사례를 {formatSortLabel(result.sort)}으로 찾았습니다.
       </div>
       <div className="result-list">
         {result.items.map((item) => (
@@ -520,24 +647,137 @@ function SearchState({
               </a>
             </h2>
             <section className="case-summary" aria-label="사례 요약">
-              <span>사례 요약</span>
               <p>
-                <HighlightedText
-                  value={highlightOrText(item, "caseSummary", bestSnippet(item))}
-                />
+                {bestSnippet(item)}
               </p>
             </section>
             <CaseDetails item={item} />
-            <MatchReasons item={item} />
             <KeywordList item={item} />
-            <a className="source-link" href={item.url} target="_blank" rel="noreferrer">
-              원문 보기
-            </a>
+            <div className="result-card-footer">
+              <MatchEvidenceDetails item={item} />
+              <a className="source-link" href={item.url} target="_blank" rel="noreferrer">
+                원문 보기
+              </a>
+            </div>
           </article>
         ))}
       </div>
     </div>
   );
+}
+
+function FilterPanel({
+  facets,
+  filters,
+  onToggle,
+  onClear,
+}: {
+  facets: SearchFacets;
+  filters: SearchFilters;
+  onToggle: (key: keyof SearchFilters, value: string) => void;
+  onClear: () => void;
+}) {
+  const activeCount = selectedFilterCount(filters);
+
+  return (
+    <aside className="filter-panel" aria-label="검색 결과 필터">
+      <div className="filter-panel-header">
+        <span>결과 좁히기</span>
+        {activeCount > 0 ? (
+          <button type="button" onClick={onClear}>
+            필터 초기화
+          </button>
+        ) : null}
+      </div>
+      <FacetGroup
+        label="회사"
+        filterKey="sources"
+        facets={facets.sources}
+        selectedValues={filters.sources}
+        onToggle={onToggle}
+      />
+      <FacetGroup
+        label="기술"
+        filterKey="technologies"
+        facets={facets.technologies}
+        selectedValues={filters.technologies}
+        onToggle={onToggle}
+      />
+      <FacetGroup
+        label="문제 상황"
+        filterKey="problemKeywords"
+        facets={facets.problemKeywords}
+        selectedValues={filters.problemKeywords}
+        onToggle={onToggle}
+      />
+      <FacetGroup
+        label="유형"
+        filterKey="contentTypes"
+        facets={facets.contentTypes}
+        selectedValues={filters.contentTypes}
+        onToggle={onToggle}
+      />
+    </aside>
+  );
+}
+
+function FacetGroup({
+  label,
+  filterKey,
+  facets,
+  selectedValues,
+  onToggle,
+}: {
+  label: string;
+  filterKey: keyof SearchFilters;
+  facets: FacetItem[];
+  selectedValues: string[];
+  onToggle: (key: keyof SearchFilters, value: string) => void;
+}) {
+  const visibleFacets = mergeSelectedFacets(facets, selectedValues);
+
+  if (visibleFacets.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="facet-group" aria-label={`${label} 필터`}>
+      <span>{label}</span>
+      <div className="facet-list">
+        {visibleFacets.map((facet) => {
+          const isSelected = selectedValues.includes(facet.value);
+
+          return (
+            <button
+              className={`facet-chip${isSelected ? " is-active" : ""}${
+                facet.isRecommended ? " is-recommended" : ""
+              }`}
+              type="button"
+              key={`${filterKey}-${facet.value}`}
+              aria-pressed={isSelected}
+              onClick={() => onToggle(filterKey, facet.value)}
+            >
+              <span>{facet.label}</span>
+              <span>{facet.count}</span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function mergeSelectedFacets(facets: FacetItem[], selectedValues: string[]): FacetItem[] {
+  const facetValues = new Set(facets.map((facet) => facet.value));
+  const missingSelectedFacets = selectedValues
+    .filter((value) => !facetValues.has(value))
+    .map((value) => ({ value, label: value, count: 0 }));
+
+  return [...missingSelectedFacets, ...facets].slice(0, 12);
+}
+
+function formatSortLabel(sort: SearchSort): string {
+  return sortOptions.find((option) => option.value === sort)?.label ?? "관련도순";
 }
 
 function HighlightedText({ value }: { value: string }) {
@@ -628,10 +868,25 @@ function MatchReasons({ item }: { item: SearchResultItem }) {
   );
 }
 
+function MatchEvidenceDetails({ item }: { item: SearchResultItem }) {
+  const reasons = matchReasons(item);
+
+  if (reasons.length === 0) {
+    return null;
+  }
+
+  return (
+    <details className="evidence-details">
+      <summary>검색 근거 보기</summary>
+      <MatchReasons item={item} />
+    </details>
+  );
+}
+
 function KeywordList({ item }: { item: SearchResultItem }) {
-  const technologyKeywords = uniqueKeywords(item.technologies).slice(0, 5);
-  const problemKeywords = uniqueKeywords(item.problemKeywords).slice(0, 4);
-  const architectureKeywords = uniqueKeywords(item.architectureKeywords).slice(0, 4);
+  const technologyKeywords = uniqueKeywords(item.technologies);
+  const problemKeywords = uniqueKeywords(item.problemKeywords);
+  const architectureKeywords = uniqueKeywords(item.architectureKeywords);
 
   if (
     technologyKeywords.length === 0 &&
@@ -643,25 +898,37 @@ function KeywordList({ item }: { item: SearchResultItem }) {
 
   return (
     <div className="keyword-groups">
-      <KeywordGroup label="기술" keywords={technologyKeywords} />
-      <KeywordGroup label="문제 상황" keywords={problemKeywords} />
-      <KeywordGroup label="아키텍처" keywords={architectureKeywords} />
+      <KeywordGroup label="기술" keywords={technologyKeywords} limit={3} />
+      <KeywordGroup label="문제" keywords={problemKeywords} limit={2} />
+      <KeywordGroup label="구조" keywords={architectureKeywords} limit={2} />
     </div>
   );
 }
 
-function KeywordGroup({ label, keywords }: { label: string; keywords: string[] }) {
+function KeywordGroup({
+  label,
+  keywords,
+  limit,
+}: {
+  label: string;
+  keywords: string[];
+  limit: number;
+}) {
   if (keywords.length === 0) {
     return null;
   }
+
+  const visibleKeywords = keywords.slice(0, limit);
+  const hiddenCount = Math.max(keywords.length - visibleKeywords.length, 0);
 
   return (
     <div className="keyword-group">
       <span className="keyword-group-label">{label}</span>
       <div className="result-keywords">
-        {keywords.map((keyword) => (
+        {visibleKeywords.map((keyword) => (
           <span key={`${label}-${keyword}`}>{keyword}</span>
         ))}
+        {hiddenCount > 0 ? <span className="keyword-more">+{hiddenCount}</span> : null}
       </div>
     </div>
   );

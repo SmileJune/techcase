@@ -34,6 +34,8 @@ KEYWORD_RULES = [
     KeywordRule("Apache Flink", "technology", ("flink", "apache flink", "플링크")),
     KeywordRule("Apache Iceberg", "technology", ("iceberg", "apache iceberg")),
     KeywordRule("MQTT", "technology", ("mqtt", "mq telemetry transport", "엠큐티티")),
+    KeywordRule("Redis", "technology", ("redis", "레디스")),
+    KeywordRule("Redis Stream", "technology", ("redis stream", "redis streams", "레디스 스트림")),
     KeywordRule(
         "Elasticsearch",
         "technology",
