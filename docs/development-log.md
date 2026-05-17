@@ -1967,6 +1967,39 @@ pnpm --dir apps/web exec tsc --noEmit
 npm run build:web
 ```
 
+## 56. 비용 최적화 평가셋 보정
+
+검색 audit에서 `비용 최적화` 한글 쿼리의 `precision@5`가 0으로 나타났지만, 실제 상위 결과를 확인해보니 검색 결과 자체가 나쁘다기보다 평가셋이 신규 수집 글을 충분히 반영하지 못한 상태였습니다.
+
+확인한 상위 결과:
+
+```text
+스타트업 엔지니어의 AWS 비용 최적화 경험기
+클라우드 서비스 사용량 관리를 통한 운영 비용 최적화
+데이터는 지웠는데 비용은 그대로? Aurora 스토리지 비용 최적화 하기
+The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework
+Cloud expenditure optimization for cost efficiency
+```
+
+위 글들은 제목, LLM 요약, 문제/해결 필드 기준으로 비용 최적화 사례성이 충분하므로 `ko-problem-cost-optimization` expected result에 추가했습니다. 반면 `AWS re:Invent 2023, 관심 세션을 중심으로` 글은 비용 최적화와 관련은 있지만 기업 적용 사례보다는 세션 회고 성격이 강해 정답셋에는 포함하지 않았습니다.
+
+평가 결과:
+
+```text
+average precision@5 = 0.436
+average recall@10 = 0.845
+average mrr = 0.858
+average ndcg@10 = 0.788
+```
+
+대표 변화:
+
+```text
+ko-problem-cost-optimization precision@5 = 0.000 -> 0.800
+```
+
+이번 작업은 검색 로직 개선이 아니라 평가 기준 정합성 개선입니다. 데이터가 늘어날수록 “검색 품질 저하”와 “평가셋 누락”을 분리해서 판단해야 합니다.
+
 ## 45. 필터 facet 품질 개선
 
 단순 count 순서 facet은 `search`, `Java`, `observability`처럼 범용적인 키워드가 앞에 뜨는 문제가 있었습니다. 검색어와 직접 관련된 기준을 빠르게 고를 수 있도록 facet 정렬을 개선했습니다.

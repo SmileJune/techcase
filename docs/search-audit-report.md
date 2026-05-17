@@ -1,14 +1,14 @@
 # Search Audit Report
 
-Generated at: 2026-05-17T07:17:48.036001+00:00
+Generated at: 2026-05-17T07:53:13.430771+00:00
 
 ## Summary
 
 - queries: 33
-- average precision@5: 0.412
-- average recall@10: 0.834
-- average mrr: 0.847
-- average ndcg@10: 0.774
+- average precision@5: 0.436
+- average recall@10: 0.845
+- average mrr: 0.858
+- average ndcg@10: 0.788
 
 ## Query Audits
 
@@ -1087,30 +1087,35 @@ Highlights:
 - category: problem
 - intent: 한글 검색어로 비용 최적화, 성능 개선, 비용 절감 사례를 찾는다.
 - total results: 352
-- precision@5: 0.000
-- recall@10: 0.167
-- mrr: 0.125
-- ndcg@10: 0.110
+- precision@5: 0.800
+- recall@10: 0.545
+- mrr: 0.500
+- ndcg@10: 0.545
 
 #### Expected URLs
 
 - relevance 3: [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/)
 - relevance 3: [클라우드 비용 가시화 그렇게 어렵지 않아요!](https://tech.kakaopay.com/post/cloud-cost-visualization/)
 - relevance 3: [최적화된 인스턴스 추천을 위한 Rightsizing Recommendations 시스템 개발 여정](https://techblog.woowahan.com/19685/)
+- relevance 3: [스타트업 엔지니어의 AWS 비용 최적화 경험기](https://tech.inflab.com/20240227-finops-for-startup/)
+- relevance 3: [클라우드 서비스 사용량 관리를 통한 운영 비용 최적화](https://medium.com/coupang-engineering/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89-%EA%B4%80%EB%A6%AC%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9A%B4%EC%98%81-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-1521565c64ec?source=rss----fb028911af07---4)
+- relevance 3: [데이터는 지웠는데 비용은 그대로? Aurora 스토리지 비용 최적화 하기](https://medium.com/wantedjobs/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%8A%94-%EC%A7%80%EC%9B%A0%EB%8A%94%EB%8D%B0-%EB%B9%84%EC%9A%A9%EC%9D%80-%EA%B7%B8%EB%8C%80%EB%A1%9C-aurora-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0-43d208f6564d?source=rss----fb47eceee74c---4)
 - relevance 2: [안전은 기본, 비용 절감은 덤: AI 서비스에 별도 가드레일이 필요한 이유](https://techblog.lycorp.co.jp/ko/safety-and-cost-saving-why-separate-guardrails-are-necessary)
 - relevance 3: [비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입](https://d2.naver.com/helloworld/0004394)
 - relevance 2: [How HotelTrader cut inter-AZ cost 95% and latency by 49% with Valkey GLIDE on Amazon ElastiCache](https://aws.amazon.com/blogs/database/how-hoteltrader-cut-inter-az-cost-95-and-latency-by-49-with-valkey-glide-on-amazon-elasticache/)
+- relevance 2: [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/)
+- relevance 2: [Cloud expenditure optimization for cost efficiency](https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4)
 
 #### Top Results
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
 | 1 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 592.06 | cost optimization, observability |
-| 2 | - | [스타트업 엔지니어의 AWS 비용 최적화 경험기](https://tech.inflab.com/20240227-finops-for-startup/) | Inflab / Inflab Tech Blog | 537.38 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon DynamoDB |
-| 3 | - | [클라우드 서비스 사용량 관리를 통한 운영 비용 최적화](https://medium.com/coupang-engineering/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89-%EA%B4%80%EB%A6%AC%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9A%B4%EC%98%81-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-1521565c64ec?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 489.17 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
-| 4 | - | [데이터는 지웠는데 비용은 그대로? Aurora 스토리지 비용 최적화 하기](https://medium.com/wantedjobs/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%8A%94-%EC%A7%80%EC%9B%A0%EB%8A%94%EB%8D%B0-%EB%B9%84%EC%9A%A9%EC%9D%80-%EA%B7%B8%EB%8C%80%EB%A1%9C-aurora-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0-43d208f6564d?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 468.77 | Amazon Aurora, Amazon CloudWatch, Amazon RDS, cost optimization, observability |
-| 5 | - | [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/) | AWS / AWS Architecture Blog | 360.73 | AWS CloudFormation, AWS IAM, cost optimization, high availability, incident response, observability |
-| 6 | - | [Cloud expenditure optimization for cost efficiency](https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 356.94 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
+| 2 | expected:3 | [스타트업 엔지니어의 AWS 비용 최적화 경험기](https://tech.inflab.com/20240227-finops-for-startup/) | Inflab / Inflab Tech Blog | 537.38 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon DynamoDB |
+| 3 | expected:3 | [클라우드 서비스 사용량 관리를 통한 운영 비용 최적화](https://medium.com/coupang-engineering/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89-%EA%B4%80%EB%A6%AC%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9A%B4%EC%98%81-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-1521565c64ec?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 489.17 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
+| 4 | expected:3 | [데이터는 지웠는데 비용은 그대로? Aurora 스토리지 비용 최적화 하기](https://medium.com/wantedjobs/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%8A%94-%EC%A7%80%EC%9B%A0%EB%8A%94%EB%8D%B0-%EB%B9%84%EC%9A%A9%EC%9D%80-%EA%B7%B8%EB%8C%80%EB%A1%9C-aurora-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0-43d208f6564d?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 468.77 | Amazon Aurora, Amazon CloudWatch, Amazon RDS, cost optimization, observability |
+| 5 | expected:2 | [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/) | AWS / AWS Architecture Blog | 360.73 | AWS CloudFormation, AWS IAM, cost optimization, high availability, incident response, observability |
+| 6 | expected:2 | [Cloud expenditure optimization for cost efficiency](https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 356.94 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
 | 7 | - | [이달의 Nclouder 10월 주인공을 소개합니다!](https://medium.com/naver-cloud-platform/%EC%9D%B4%EB%8B%AC%EC%9D%98-nclouder-10%EC%9B%94-%EC%A3%BC%EC%9D%B8%EA%B3%B5%EC%9D%84-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4-9d7e18801b7c?source=rss----c7f2bfeb6b98---4) | NAVER Cloud / NAVER Cloud Platform Tech Blog | 332.08 | cost optimization, high availability, observability |
 | 8 | expected:3 | [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/) | Woowa Brothers / Woowa Tech Blog | 317.90 | Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS |
 | 9 | - | [데이터분석가로서 업무 과정과 경험, 배움을 공유합니다](https://techblog.woowahan.com/2686/) | Woowa Brothers / Woowa Tech Blog | 310.87 | cost optimization, observability |
@@ -1138,7 +1143,7 @@ Highlights:
 
 ##### 2. 스타트업 엔지니어의 AWS 비용 최적화 경험기
 
-- match: not expected
+- match: expected relevance 3
 - source: Inflab / Inflab Tech Blog
 - url: https://tech.inflab.com/20240227-finops-for-startup/
 - technologies: AWS CDK, AWS CloudFormation, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2, Amazon ElastiCache, Amazon RDS, Amazon S3, Amazon VPC, Elasticsearch, Istio, Kubernetes, Redis, search
@@ -1158,7 +1163,7 @@ Highlights:
 
 ##### 3. 클라우드 서비스 사용량 관리를 통한 운영 비용 최적화
 
-- match: not expected
+- match: expected relevance 3
 - source: Coupang / Coupang Engineering Blog
 - url: https://medium.com/coupang-engineering/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89-%EA%B4%80%EB%A6%AC%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9A%B4%EC%98%81-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-1521565c64ec?source=rss----fb028911af07---4
 - technologies: Amazon CloudWatch, Amazon EC2, Amazon S3

@@ -296,6 +296,21 @@
           "relevance": 3
         },
         {
+          "url": "https://tech.inflab.com/20240227-finops-for-startup/",
+          "title": "스타트업 엔지니어의 AWS 비용 최적화 경험기",
+          "relevance": 3
+        },
+        {
+          "url": "https://medium.com/coupang-engineering/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89-%EA%B4%80%EB%A6%AC%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9A%B4%EC%98%81-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-1521565c64ec?source=rss----fb028911af07---4",
+          "title": "클라우드 서비스 사용량 관리를 통한 운영 비용 최적화",
+          "relevance": 3
+        },
+        {
+          "url": "https://medium.com/wantedjobs/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%8A%94-%EC%A7%80%EC%9B%A0%EB%8A%94%EB%8D%B0-%EB%B9%84%EC%9A%A9%EC%9D%80-%EA%B7%B8%EB%8C%80%EB%A1%9C-aurora-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0-43d208f6564d?source=rss----fb47eceee74c---4",
+          "title": "데이터는 지웠는데 비용은 그대로? Aurora 스토리지 비용 최적화 하기",
+          "relevance": 3
+        },
+        {
           "url": "https://techblog.lycorp.co.jp/ko/safety-and-cost-saving-why-separate-guardrails-are-necessary",
           "title": "안전은 기본, 비용 절감은 덤: AI 서비스에 별도 가드레일이 필요한 이유",
           "relevance": 2
@@ -308,6 +323,16 @@
         {
           "url": "https://aws.amazon.com/blogs/database/how-hoteltrader-cut-inter-az-cost-95-and-latency-by-49-with-valkey-glide-on-amazon-elasticache/",
           "title": "How HotelTrader cut inter-AZ cost 95% and latency by 49% with Valkey GLIDE on Amazon ElastiCache",
+          "relevance": 2
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/",
+          "title": "The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework",
+          "relevance": 2
+        },
+        {
+          "url": "https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4",
+          "title": "Cloud expenditure optimization for cost efficiency",
           "relevance": 2
         }
       ]
