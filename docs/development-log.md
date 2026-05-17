@@ -2387,10 +2387,55 @@ npm run search:evaluate
 average precision@5 = 0.406
 average recall@10 = 0.839
 average mrr = 0.847
-average ndcg@10 = 0.781
+average ndcg@10 = 0.774
 ```
 
-4차 backfill 대비 `precision@5`와 `mrr`은 유지되었고, `recall@10`과 `ndcg@10`은 소폭 회복했습니다. 이제 저장된 모든 글이 `caseSummary`, `caseProblem`, `caseSolution`, `contentType` 기반 카드 표시와 검색 인덱싱 대상이 됩니다.
+4차 backfill 대비 `precision@5`, `recall@10`, `mrr`은 유지되었고 `ndcg@10`은 소폭 하락했습니다. 이제 저장된 모든 글이 `caseSummary`, `caseProblem`, `caseSolution`, `contentType` 기반 카드 표시와 검색 인덱싱 대상이 됩니다.
+
+## 54. 검색 품질 audit 리포트 생성기 추가
+
+정량 지표만으로는 검색 결과가 왜 좋아졌거나 나빠졌는지 판단하기 어렵기 때문에, 평가 쿼리별 상위 검색 결과를 Markdown으로 확인할 수 있는 audit 리포트 생성기를 추가했습니다.
+
+추가한 명령어:
+
+```bash
+npm run search:audit
+```
+
+생성 파일:
+
+```text
+docs/search-audit-report.md
+```
+
+리포트 포함 정보:
+
+```text
+평가 쿼리별 total results
+precision@5 / recall@10 / mrr / ndcg@10
+expected URL 목록
+상위 10개 검색 결과
+expected match 여부와 relevance
+source, score, 주요 keyword
+상위 3개 결과의 caseSummary/problem/solution/highlight
+```
+
+현재 audit 기준 전체 지표:
+
+```text
+average precision@5 = 0.412
+average recall@10 = 0.834
+average mrr = 0.847
+average ndcg@10 = 0.774
+```
+
+검증:
+
+```bash
+cd apps/backend && uv run ruff check app/search/evaluation/audit.py
+npm run search:audit
+npm run search:evaluate
+```
 
 샘플 확인:
 
