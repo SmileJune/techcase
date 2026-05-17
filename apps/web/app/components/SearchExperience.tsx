@@ -12,6 +12,8 @@ const quickSearches = [
   "비용 최적화",
 ];
 
+const pageSize = 20;
+
 type SearchResultItem = {
   id: string;
   title: string;
@@ -38,6 +40,9 @@ type SearchResponse = {
   filters: SearchFilters;
   facets: SearchFacets;
   total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
   items: SearchResultItem[];
 };
 
@@ -288,8 +293,9 @@ function bestSnippet(item: SearchResultItem): string {
 
 export function SearchExperience() {
   const [query, setQuery] = useState("");
-  const [sortOrder, setSortOrder] = useState<SearchSort>("relevance");
+  const [sortOrder, setSortOrder] = useState<SearchSort>("latest");
   const [filters, setFilters] = useState<SearchFilters>(emptyFilters);
+  const [currentPage, setCurrentPage] = useState(1);
   const [result, setResult] = useState<SearchResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -298,6 +304,11 @@ export function SearchExperience() {
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const suggestAbortRef = useRef<AbortController | null>(null);
   const committedQueryRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    void runSearch("", "latest", emptyFilters, 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const trimmedQuery = query.trim();
@@ -354,19 +365,17 @@ export function SearchExperience() {
     nextQuery: string,
     nextSort: SearchSort = sortOrder,
     nextFilters: SearchFilters = filters,
+    nextPage = 1,
   ) {
     const trimmedQuery = nextQuery.trim();
+    const effectiveSort = trimmedQuery ? nextSort : "latest";
     committedQueryRef.current = trimmedQuery;
     setQuery(nextQuery);
+    setSortOrder(effectiveSort);
+    setCurrentPage(nextPage);
     setIsSuggestOpen(false);
     setActiveSuggestionIndex(-1);
     setSuggestions([]);
-
-    if (!trimmedQuery) {
-      setResult(null);
-      setErrorMessage(null);
-      return;
-    }
 
     setIsLoading(true);
     setErrorMessage(null);
@@ -374,7 +383,9 @@ export function SearchExperience() {
     try {
       const params = new URLSearchParams({
         q: trimmedQuery,
-        sort: nextSort,
+        sort: effectiveSort,
+        page: String(nextPage),
+        page_size: String(pageSize),
       });
       appendFilterParams(params, nextFilters);
       const response = await fetch(
@@ -396,10 +407,11 @@ export function SearchExperience() {
   }
 
   function handleSortChange(nextSort: SearchSort) {
-    setSortOrder(nextSort);
+    const effectiveSort = query.trim() ? nextSort : "latest";
+    setSortOrder(effectiveSort);
 
-    if (result && query.trim()) {
-      void runSearch(query, nextSort, filters);
+    if (result) {
+      void runSearch(query, effectiveSort, filters, 1);
     }
   }
 
@@ -407,23 +419,22 @@ export function SearchExperience() {
     const nextFilters = toggleFilter(filters, key, value);
     setFilters(nextFilters);
 
-    if (query.trim()) {
-      void runSearch(query, sortOrder, nextFilters);
-    }
+    void runSearch(query, sortOrder, nextFilters, 1);
   }
 
   function handleClearFilters() {
     setFilters(emptyFilters);
+    void runSearch(query, sortOrder, emptyFilters, 1);
+  }
 
-    if (query.trim()) {
-      void runSearch(query, sortOrder, emptyFilters);
-    }
+  function handlePageChange(nextPage: number) {
+    void runSearch(query, sortOrder, filters, nextPage);
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const activeSuggestion = suggestions[activeSuggestionIndex];
-    void runSearch(activeSuggestion?.label ?? query);
+    void runSearch(activeSuggestion?.label ?? query, sortOrder, filters, 1);
   }
 
   function handleInputKeyDown(event: KeyboardEvent<HTMLInputElement>) {
@@ -476,7 +487,7 @@ export function SearchExperience() {
             <SuggestionList
               suggestions={suggestions}
               activeIndex={activeSuggestionIndex}
-              onSelect={(suggestion) => void runSearch(suggestion.label)}
+              onSelect={(suggestion) => void runSearch(suggestion.label, sortOrder, filters, 1)}
               onHover={setActiveSuggestionIndex}
             />
           ) : null}
@@ -488,7 +499,12 @@ export function SearchExperience() {
 
       <div className="tag-list" aria-label="추천 검색어">
         {quickSearches.map((keyword) => (
-          <button className="tag" type="button" key={keyword} onClick={() => void runSearch(keyword)}>
+          <button
+            className="tag"
+            type="button"
+            key={keyword}
+            onClick={() => void runSearch(keyword, sortOrder, filters, 1)}
+          >
             {keyword}
           </button>
         ))}
@@ -520,7 +536,13 @@ export function SearchExperience() {
           onClear={handleClearFilters}
         />
       ) : null}
-      <SearchState result={result} isLoading={isLoading} errorMessage={errorMessage} />
+      <SearchState
+        result={result}
+        isLoading={isLoading}
+        errorMessage={errorMessage}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </section>
   );
 }
@@ -593,10 +615,14 @@ function SearchState({
   result,
   isLoading,
   errorMessage,
+  currentPage,
+  onPageChange,
 }: {
   result: SearchResponse | null;
   isLoading: boolean;
   errorMessage: string | null;
+  currentPage: number;
+  onPageChange: (page: number) => void;
 }) {
   if (isLoading) {
     return <p className="result-empty">검색 결과를 불러오는 중입니다.</p>;
@@ -609,7 +635,7 @@ function SearchState({
   if (!result) {
     return (
       <p className="result-empty">
-        추천 검색어를 누르거나 직접 검색어를 입력해 AWS 기술 블로그 사례를 찾아보세요.
+        최신 기업 기술 블로그 사례를 불러오는 중입니다.
       </p>
     );
   }
@@ -621,7 +647,17 @@ function SearchState({
   return (
     <div className="results">
       <div className="result-summary">
-        <strong>{result.total}</strong>개 사례를 {formatSortLabel(result.sort)}으로 찾았습니다.
+        {result.query ? (
+          <>
+            <strong>{result.total}</strong>개 사례 중 {formatResultRange(result)}를{" "}
+            {formatSortLabel(result.sort)}으로 보고 있습니다.
+          </>
+        ) : (
+          <>
+            최신 기업 기술 블로그 <strong>{result.total}</strong>개 중{" "}
+            {formatResultRange(result)}를 보고 있습니다.
+          </>
+        )}
       </div>
       <ResultOverview result={result} />
       <div className="result-list">
@@ -663,7 +699,50 @@ function SearchState({
           </article>
         ))}
       </div>
+      <PaginationControls
+        page={currentPage}
+        totalPages={result.totalPages}
+        onPageChange={onPageChange}
+      />
     </div>
+  );
+}
+
+function PaginationControls({
+  page,
+  totalPages,
+  onPageChange,
+}: {
+  page: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) {
+  if (totalPages <= 1) {
+    return null;
+  }
+
+  const clampedPage = Math.min(Math.max(page, 1), totalPages);
+
+  return (
+    <nav className="pagination" aria-label="검색 결과 페이지">
+      <button
+        type="button"
+        onClick={() => onPageChange(clampedPage - 1)}
+        disabled={clampedPage <= 1}
+      >
+        이전
+      </button>
+      <span>
+        {clampedPage} / {totalPages}
+      </span>
+      <button
+        type="button"
+        onClick={() => onPageChange(clampedPage + 1)}
+        disabled={clampedPage >= totalPages}
+      >
+        다음
+      </button>
+    </nav>
   );
 }
 
@@ -841,6 +920,17 @@ function mergeSelectedFacets(facets: FacetItem[], selectedValues: string[]): Fac
 
 function formatSortLabel(sort: SearchSort): string {
   return sortOptions.find((option) => option.value === sort)?.label ?? "관련도순";
+}
+
+function formatResultRange(result: SearchResponse): string {
+  if (result.total === 0 || result.items.length === 0) {
+    return "0개";
+  }
+
+  const start = (result.page - 1) * result.pageSize + 1;
+  const end = start + result.items.length - 1;
+
+  return `${start}-${end}번째`;
 }
 
 function HighlightedText({ value }: { value: string }) {

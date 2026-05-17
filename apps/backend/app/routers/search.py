@@ -12,6 +12,10 @@ router = APIRouter(tags=["search"])
 def search_articles(
     q: Annotated[str, Query(description="Search query")] = "",
     sort: Annotated[SearchSort, Query(description="Search result sort order")] = "relevance",
+    page: Annotated[int, Query(ge=1, description="Search result page")] = 1,
+    page_size: Annotated[
+        int, Query(ge=1, le=50, description="Search result page size")
+    ] = 20,
     source: Annotated[list[str] | None, Query(description="Filter by source slug")] = None,
     technology: Annotated[list[str] | None, Query(description="Filter by technology")] = None,
     problem: Annotated[list[str] | None, Query(description="Filter by problem keyword")] = None,
@@ -19,6 +23,8 @@ def search_articles(
 ) -> dict[str, object]:
     return search_article_documents(
         q,
+        size=page_size,
+        page=page,
         sort=sort,
         sources=source,
         technologies=technology,

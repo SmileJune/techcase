@@ -2672,3 +2672,163 @@ ko-tech-search ndcg@10 = 0.174 -> 0.552
 검색 엔진/검색 품질/검색 플랫폼처럼 하위 의도를 분리한 평가 쿼리가 필요함
 정답셋 보강 후에도 Top 5에 범용 검색 기능 소개 글이 섞이므로 query intent 기반 ranking은 별도 설계가 필요함
 ```
+
+## 58. 검색 도메인 평가셋 세분화
+
+`검색 개선` 하나의 쿼리에 서로 다른 의도가 섞여 있어, 검색 품질을 더 구체적으로 판단하기 어렵다는 문제가 있었습니다. 검색 도메인을 다음 세부 쿼리로 분리했습니다.
+
+추가한 평가 쿼리:
+
+```text
+ko-search-quality-improvement: 검색 품질 개선
+ko-search-elasticsearch-index: Elasticsearch 인덱스 구조
+ko-search-opensearch-analyzer: OpenSearch Analyzer
+ko-search-realtime-indexing: 실시간 검색 인덱싱
+ko-search-platform-kafka: 검색 플랫폼 Kafka
+```
+
+각 쿼리의 의도:
+
+```text
+검색 품질 개선: 결과 없는 검색, 랭킹, 쿼리 최적화, 검색 성능 개선
+Elasticsearch 인덱스 구조: 인덱스 구조, 쿼리 최적화, 실시간 인덱싱 설계
+OpenSearch Analyzer: Analyzer 기반 텍스트 분석, 색인, 검색 기능 구현
+실시간 검색 인덱싱: 이벤트 기반 색인 파이프라인, 실시간 검색 인덱스 갱신
+검색 플랫폼 Kafka: Kafka를 활용한 검색 플랫폼/색인 파이프라인
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.416
+average recall@10 = 0.823
+average mrr = 0.858
+average ndcg@10 = 0.770
+```
+
+세부 쿼리 결과:
+
+```text
+ko-search-quality-improvement    p@5=0.400 r@10=0.500 mrr=1.000 ndcg@10=0.503
+ko-search-elasticsearch-index    p@5=0.200 r@10=0.500 mrr=1.000 ndcg@10=0.657
+ko-search-opensearch-analyzer    p@5=0.400 r@10=1.000 mrr=1.000 ndcg@10=0.974
+ko-search-realtime-indexing      p@5=0.400 r@10=0.750 mrr=0.333 ndcg@10=0.418
+ko-search-platform-kafka         p@5=0.000 r@10=0.333 mrr=0.100 ndcg@10=0.157
+```
+
+실험:
+
+```text
+복합 키워드가 함께 등장하는 문서에 co-occurrence boost를 주는 방식
+검색 플랫폼을 별도 architecture 키워드로 추가하는 방식
+```
+
+두 방식 모두 `검색 플랫폼 Kafka`를 안정적으로 개선하지 못했고 다른 쿼리의 순위를 흔들었습니다. 따라서 검색 로직 변경은 반영하지 않았습니다.
+
+해석:
+
+```text
+검색 품질 개선, OpenSearch Analyzer처럼 의도가 명확한 쿼리는 꽤 잘 동작함
+검색 플랫폼 Kafka처럼 기술명과 아키텍처 의도가 섞인 쿼리는 아직 약함
+search, Kafka 같은 넓은 키워드의 단순 OR 가산점만으로는 사용자의 복합 의도를 충분히 표현하기 어려움
+다음 단계에서는 query intent를 명시적으로 분류하거나, 기술+문제/아키텍처 조합을 별도 ranking feature로 다루는 설계가 필요함
+```
+
+## 59. 복합 의도 검색 랭킹 설계 문서화
+
+`검색 플랫폼 Kafka`처럼 기술명과 아키텍처 의도가 함께 들어간 query는 현재 검색 구조에서 약점으로 드러났습니다. 단순히 `Kafka` 또는 `search` 중 하나가 매칭되는 글도 높은 점수를 받을 수 있기 때문입니다.
+
+`docs/search-design.md`에 복합 의도 검색 랭킹 설계를 추가했습니다.
+
+정리한 내용:
+
+```text
+query intent를 technology/problem/architecture/company 축으로 분해
+technology + architecture co-match를 ranking feature 후보로 정의
+search, Java, observability 같은 넓은 키워드는 단독 boost를 제한
+function_score 기반의 좁은 조건부 가산점 후보 설계
+LLM architectureKeywords 품질 개선 필요성 기록
+```
+
+실패한 실험도 함께 반영했습니다.
+
+```text
+복합 키워드 co-occurrence boost는 다른 query 순위를 흔들었음
+검색 플랫폼 사전 추가만으로는 ko-search-platform-kafka 개선에 실패했음
+```
+
+다음 구현 후보:
+
+```text
+matched_rules(query)로 KeywordRule 전체를 반환
+keyword_type별 bucket 구성
+technology + architecture가 동시에 존재하는 query에만 좁은 function_score 적용
+ko-search-platform-kafka, ko-search-realtime-indexing, ko-tech-search, migration-kafka-msk를 함께 비교
+```
+
+## 60. 기본 페이지 최신 글 노출
+
+검색어를 입력하기 전 기본 페이지에서 빈 상태 메시지만 보여주는 대신, 최신 기업 기술 블로그 글을 바로 보여주도록 변경했습니다.
+
+변경 내용:
+
+```text
+빈 query 검색 시 backend가 match_all query를 사용
+빈 query의 기본 sort는 latest로 보정
+frontend 첫 진입 시 q="" + sort=latest로 검색 요청
+검색어가 없는 기본 화면의 결과 요약 문구를 최신 글 중심으로 변경
+```
+
+의도:
+
+```text
+사용자가 검색어를 입력하기 전에도 서비스가 어떤 글을 수집하고 있는지 바로 확인 가능
+최신 기술 블로그 피드처럼 탐색 시작 가능
+검색 중심 서비스이면서도 기본 화면의 빈 느낌을 줄임
+```
+
+검증:
+
+```bash
+cd apps/backend && uv run ruff check app/search/service.py
+pnpm --dir apps/web exec tsc --noEmit
+```
+
+## 61. 검색 결과 페이지네이션 추가
+
+기본 페이지에서 최신 글을 보여주게 되면서, 사용자가 더 많은 글을 이어서 탐색할 수 있도록 페이지네이션을 추가했습니다.
+
+Backend 변경:
+
+```text
+GET /api/search?page=1&page_size=20
+page는 1 이상
+page_size는 1~50 범위
+Elasticsearch from/size로 offset pagination 적용
+응답에 page, pageSize, totalPages 추가
+```
+
+Frontend 변경:
+
+```text
+검색 응답 타입에 page/pageSize/totalPages 추가
+첫 진입 최신 글 목록도 page=1로 요청
+검색어/정렬/필터 변경 시 1페이지로 이동
+결과 하단에 이전/다음 페이지 버튼 추가
+결과 요약에 현재 노출 범위 표시
+```
+
+예시 문구:
+
+```text
+최신 기업 기술 블로그 1539개 중 1-20번째를 보고 있습니다.
+123개 사례 중 21-40번째를 관련도순으로 보고 있습니다.
+```
+
+검증:
+
+```bash
+cd apps/backend && uv run ruff check app/routers/search.py app/search/service.py
+pnpm --dir apps/web exec tsc --noEmit
+npm run build:web
+```

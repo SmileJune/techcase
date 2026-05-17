@@ -509,6 +509,131 @@
       ]
     },
     {
+      "id": "ko-search-quality-improvement",
+      "query": "검색 품질 개선",
+      "category": "technology",
+      "intent": "검색 결과 품질, 검색 성능, 결과 없는 검색, 랭킹이나 쿼리 최적화 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://helloworld.kurly.com/blog/vertex-ai-search-nr/",
+          "title": "Vertex AI Search를 활용한 결과 없는 검색 개선하기",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/20161/",
+          "title": "검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.inflab.com/202211-mongodb-atlas-search/",
+          "title": "MongoDB Atlas Search 정렬이슈 해결기",
+          "relevance": 3
+        },
+        {
+          "url": "https://d2.naver.com/helloworld/4241703",
+          "title": "네이버 통합검색 AIB 도입과 웹 성능 변화 분석",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-search-elasticsearch-index",
+      "query": "Elasticsearch 인덱스 구조",
+      "category": "technology",
+      "intent": "Elasticsearch 기반 인덱스 구조, 쿼리 최적화, 실시간 인덱싱 설계 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://techblog.woowahan.com/20161/",
+          "title": "검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/7425/",
+          "title": "실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/11732/",
+          "title": "배민상회와 검색플랫폼 연동기",
+          "relevance": 2
+        },
+        {
+          "url": "https://techblog.woowahan.com/14041/",
+          "title": "배달의민족 광고데이터 이관기",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-search-opensearch-analyzer",
+      "query": "OpenSearch Analyzer",
+      "category": "technology",
+      "intent": "OpenSearch Analyzer를 활용한 텍스트 분석, 색인, 검색 기능 구현 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/",
+          "title": "OpenSearch Analyzer를 활용한 검색기능 알아보기",
+          "relevance": 3
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/",
+          "title": "Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface",
+          "relevance": 1
+        }
+      ]
+    },
+    {
+      "id": "ko-search-realtime-indexing",
+      "query": "실시간 검색 인덱싱",
+      "category": "architecture",
+      "intent": "실시간 검색 색인, 검색 인덱스 갱신, 이벤트 기반 색인 파이프라인 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://techblog.woowahan.com/7425/",
+          "title": "실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/11732/",
+          "title": "배민상회와 검색플랫폼 연동기",
+          "relevance": 3
+        },
+        {
+          "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-2/",
+          "title": "컬리 검색이 카프카를 들여다본 이야기 2",
+          "relevance": 3
+        },
+        {
+          "url": "https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4",
+          "title": "쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-search-platform-kafka",
+      "query": "검색 플랫폼 Kafka",
+      "category": "architecture",
+      "intent": "Kafka를 활용한 검색 플랫폼, 검색 색인 파이프라인, 이벤트 기반 검색 연동 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-2/",
+          "title": "컬리 검색이 카프카를 들여다본 이야기 2",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/11732/",
+          "title": "배민상회와 검색플랫폼 연동기",
+          "relevance": 3
+        },
+        {
+          "url": "https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4",
+          "title": "쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축",
+          "relevance": 2
+        }
+      ]
+    },
+    {
       "id": "ko-data-log-platform",
       "query": "로그 플랫폼",
       "category": "architecture",

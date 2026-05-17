@@ -60,6 +60,7 @@ FUZZY_SEARCH_FIELDS = [
 def search_articles(
     query: str,
     size: int = 20,
+    page: int = 1,
     sort: SearchSort = "relevance",
     sources: list[str] | None = None,
     technologies: list[str] | None = None,
@@ -75,14 +76,16 @@ def search_articles(
         content_types=content_types,
     )
 
-    if not normalized_query:
-        return empty_search_response(query, sort, filters)
+    effective_sort = "latest" if not normalized_query and sort == "relevance" else sort
+    normalized_page = max(page, 1)
+    offset = (normalized_page - 1) * size
 
     response = client.search(
         index=ARTICLES_INDEX,
+        from_=offset,
         size=size,
         query=build_filtered_search_query(normalized_query, filters),
-        sort=build_sort(sort),
+        sort=build_sort(effective_sort),
         aggs=FACET_AGGREGATIONS,
         highlight={
             "fields": {
@@ -102,10 +105,13 @@ def search_articles(
 
     return {
         "query": query,
-        "sort": sort,
+        "sort": effective_sort,
         "filters": filters,
         "facets": parse_facets(response.get("aggregations", {}), normalized_query),
         "total": total_value,
+        "page": normalized_page,
+        "pageSize": size,
+        "totalPages": total_pages(total_value, size),
         "items": [hit_to_item(hit) for hit in hits],
     }
 
@@ -119,8 +125,18 @@ def empty_search_response(
         "filters": filters,
         "facets": empty_facets(),
         "total": 0,
+        "page": 1,
+        "pageSize": 20,
+        "totalPages": 0,
         "items": [],
     }
+
+
+def total_pages(total: int, size: int) -> int:
+    if total <= 0:
+        return 0
+
+    return (total + size - 1) // size
 
 
 def normalize_filters(
@@ -157,13 +173,14 @@ def clean_values(values: list[str] | None) -> list[str]:
 
 def build_filtered_search_query(query: str, filters: dict[str, list[str]]) -> dict[str, Any]:
     filter_clauses = build_filter_clauses(filters)
+    base_query = build_search_query(query) if query else {"match_all": {}}
 
     if not filter_clauses:
-        return build_search_query(query)
+        return base_query
 
     return {
         "bool": {
-            "must": [build_search_query(query)],
+            "must": [base_query],
             "filter": filter_clauses,
         }
     }

@@ -1,14 +1,14 @@
 # Search Audit Report
 
-Generated at: 2026-05-17T09:19:48.308798+00:00
+Generated at: 2026-05-17T10:43:19.635065+00:00
 
 ## Summary
 
-- queries: 33
-- average precision@5: 0.442
-- average recall@10: 0.852
-- average mrr: 0.884
-- average ndcg@10: 0.799
+- queries: 38
+- average precision@5: 0.426
+- average recall@10: 0.821
+- average mrr: 0.859
+- average ndcg@10: 0.764
 
 ## Query Audits
 
@@ -754,8 +754,8 @@ Highlights:
 | 6 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 89.22 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
 | 7 | - | [Announcing aggregations on Amazon ElastiCache](https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/) | AWS / AWS Database Blog | 78.98 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
 | 8 | - | [프로젝트 관리를 위한 JIRA 활용기](https://dev.gmarket.com/43) | Gmarket / Gmarket Tech Blog | 74.64 | Apache Kafka, Elasticsearch, Redis, search |
-| 9 | - | [[다시 보기] 8월 우아한테크세미나: 행정동을 법정동으로, 배민 지리 체계 프로젝트 살펴보기](https://techblog.woowahan.com/13547/) | Woowa Brothers / Woowa Tech Blog | 71.70 | migration, streaming data pipeline |
-| 10 | - | [[다시 보기] 7월 우아한테크세미나: MLOps를 활용한 AI 서비스 개발 스토리](https://techblog.woowahan.com/12924/) | Woowa Brothers / Woowa Tech Blog | 71.70 | streaming data pipeline |
+| 9 | - | [[다시 보기] 5월 우아한테크세미나: 사례별로 알아보는 안전한 S3 보안 가이드](https://techblog.woowahan.com/12200/) | Woowa Brothers / Woowa Tech Blog | 71.70 | Amazon S3, streaming data pipeline |
+| 10 | - | [[다시 보기] 4월 우아한테크세미나: 우아한 테크리더 4인의 “공감 토크쇼”](https://techblog.woowahan.com/11323/) | Woowa Brothers / Woowa Tech Blog | 71.70 | streaming data pipeline |
 
 #### Top Result Details
 
@@ -1823,6 +1823,454 @@ Highlights:
 - summary: 주소 **검색** 서비스를 개선하면서 Real-time Service Configuration으로 consul을 적용한 사례를 공유하고자 합니다.
 - content: AS-IS 주소 **검색** 서비스 사용자의 주소(장소) 및 위치를 조회하는 시스템(PHP 레거시) A사 Map API(의존도 100%) POI 통합검색 API: 전자지도 위에 표시된 건물과 상점 등 **검색** 역지오 **검색** API: 위경도 좌표 -> 주소 단일 장애점(SPOF – Single Point
 - content: B사 Map API geocode: 주소 -> 좌표 변환 API reverseGeocoding: 좌표 -> 주소 변환 API **search**: 지역별 업체 및 상호 **검색** API 따라서, B사 Map API 3개를 조합하여 A사의 Poi API와 같은 데이터를 내려주도록 작업을 해야 합니다.
+
+
+### ko-search-quality-improvement - `검색 품질 개선`
+
+- category: technology
+- intent: 검색 결과 품질, 검색 성능, 결과 없는 검색, 랭킹이나 쿼리 최적화 사례를 찾는다.
+- total results: 532
+- precision@5: 0.400
+- recall@10: 0.500
+- mrr: 1.000
+- ndcg@10: 0.512
+
+#### Expected URLs
+
+- relevance 3: [Vertex AI Search를 활용한 결과 없는 검색 개선하기](https://helloworld.kurly.com/blog/vertex-ai-search-nr/)
+- relevance 3: [검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화](https://techblog.woowahan.com/20161/)
+- relevance 3: [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/)
+- relevance 2: [네이버 통합검색 AIB 도입과 웹 성능 변화 분석](https://d2.naver.com/helloworld/4241703)
+
+#### Top Results
+
+| Rank | Match | Title | Source | Score | Keywords |
+|---:|---|---|---|---:|---|
+| 1 | expected:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 318.13 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 2 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 240.09 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
+| 3 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 209.71 | search, performance optimization |
+| 4 | expected:2 | [네이버 통합검색 AIB 도입과 웹 성능 변화 분석](https://d2.naver.com/helloworld/4241703) | NAVER / NAVER D2 | 182.01 | search, performance optimization, streaming data pipeline |
+| 5 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog | 180.55 | search |
+| 6 | - | [쿠팡의 머신러닝 플랫폼을 통한 ML 개발 가속화](https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1%EC%9D%98-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%ED%86%B5%ED%95%9C-ml-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%86%8D%ED%99%94-de29804148bb?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 163.80 | Kubernetes, LLM, search, observability, canary deployment, streaming data pipeline |
+| 7 | - | [프롬프트 엔지니어링으로 메뉴 이미지 품질 검수하기: GPT 기반 업무 자동화](https://techblog.woowahan.com/20408/) | Woowa Brothers / Woowa Tech Blog | 159.54 | LLM, search, performance optimization |
+| 8 | - | [신입 백엔드 개발자 혼돈의 파일럿 프로젝트 돌아보기 (feat.정산플랫폼팀)](https://techblog.woowahan.com/7828/) | Woowa Brothers / Woowa Tech Blog | 158.04 | JPA, JVM, Java, React, Spring Boot, search |
+| 9 | - | [Detect and resolve HBase inconsistencies faster with AI on Amazon EMR](https://aws.amazon.com/blogs/big-data/detect-and-resolve-hbase-inconsistencies-faster-with-ai-on-amazon-emr/) | AWS / AWS Big Data Blog | 156.66 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon OpenSearch Service |
+| 10 | - | [정산지기를 향한 첫걸음 (feat. 파일럿 프로젝트)](https://techblog.woowahan.com/2668/) | Woowa Brothers / Woowa Tech Blog | 154.77 | JPA, Java, Spring Boot, search |
+
+#### Top Result Details
+
+##### 1. MongoDB Atlas Search 정렬이슈 해결기
+
+- match: expected relevance 3
+- source: Inflab / Inflab Tech Blog
+- url: https://tech.inflab.com/202211-mongodb-atlas-search/
+- technologies: Amazon OpenSearch Service, Elasticsearch, Java, search
+- problem keywords: observability
+- case summary: MongoDB Atlas Search에서 정렬 성능 저하 문제를 경험하고, storedSource 옵션과 near operator, score function을 활용해 성능 개선과 고급 정렬 기능을 구현한 사례입니다.
+- problem: MongoDB Atlas Search에서 $search 다음에 $sort를 사용하면 mongod가 많은 데이터를 조회하고 정렬하여 성능 저하가 발생하는 문제와, 다양한 정렬 기준(최신순, 답변많은순, 좋아요순)을 효율적으로 처리하는 어려움이 있었습니다.
+- solution: storedSource 옵션으로 정렬 필드를 검색 인덱스에 저장해 mongot에서 정렬을 수행하거나, near operator와 score function을 활용해 mongot에서 필터링과 정렬을 함께 처리하는 방식을 적용하여 성능을 개선하고, score function을 이용해 복합 조건의 고급 정렬을 구현했습니다.
+
+Highlights:
+
+- title: MongoDB Atlas **Search** 정렬이슈 해결기
+- caseProblem: MongoDB Atlas Search에서 $**search** 다음에 $sort를 사용하면 mongod가 많은 데이터를 조회하고 정렬하여 성능 저하가 발생하는 문제와, 다양한 정렬 기준(최신순
+- caseSolution: storedSource 옵션으로 정렬 필드를 **검색** 인덱스에 저장해 mongot에서 정렬을 수행하거나, near operator와 score function을 활용해 mongot에서
+- content: MongoDB Atlas **Search** 우선 검색엔진으로 사용한 기술에 대해 간략한 소개를 하겠습니다. Atlas **Search** 는 MongoDB full-managed 클라우드 서비스인 MongoDB Atlas 에서 제공하는 전문 **검색** 솔루션입니다.
+- content: returnStoredSource 옵션을 **검색** 쿼리에 넣어서 요청합니다. db . question . aggregate ( [ { $**search** : { text : { query : "강의" , path : [ "title" , "body" , "writer.name" ] } , returnStoredSource
+
+##### 2. Full-text, exact-match, range, and hybrid search on Amazon ElastiCache
+
+- match: not expected
+- source: AWS / AWS Database Blog
+- url: https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/
+- technologies: AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey, search
+- problem keywords: migration, performance optimization
+- case summary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 실시간 전체 텍스트, 정확 일치, 범위, 하이브리드 검색 기능을 구현하여 대규모 데이터에 대해 마이크로초 단위의 저지연 검색을 가능하게 한 사례이다.
+- problem: 대규모 동적 데이터에 대해 별도의 검색 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 검색(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
+- solution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 검색 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을 통해 마이크로초 단위 응답과 높은 QPS를 달성했다.
+
+Highlights:
+
+- title: Full-text, exact-match, range, and hybrid **search** on Amazon ElastiCache
+- caseSummary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 실시간 전체 텍스트, 정확 일치, 범위, 하이브리드 **검색** 기능을 구현하여 대규모 데이터에 대해 마이크로초
+- caseProblem: 대규모 동적 데이터에 대해 별도의 **검색** 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 **검색**(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
+- caseSolution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 **검색** 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을
+- summary: New **search** capabilities are available in ElastiCache version 9.0 for Valkey.
+- summary: In this post, we walk through the new **search** capabilities, show how they work together, and build a **search**
+
+##### 3. SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정
+
+- match: not expected
+- source: Wantedlab / Wantedlab Tech Blog
+- url: https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4
+- technologies: search
+- problem keywords: performance optimization
+- case summary: 원티드랩은 Google Search Console의 Core Web Vitals 지표를 기준으로 99% 이상의 URL을 ‘좋은 URL’로 개선하기 위해 서버 사이드 최적화, 클라이언트 사이드 번들 사이즈 축소, API 호출 병렬화, CDN 도입 등 다양한 기술적 접근을 통해 사용자 경험과 SEO 성능을 크게 향상시켰다.
+- problem: 원티드 플랫폼의 대부분 URL이 Google Search Console에서 ‘느린 URL’ 또는 ‘개선이 필요한 URL’로 분류되어 사용자 경험과 SEO 성능이 저하된 상황이었다.
+- solution: 서버 사이드에서 번역키 데이터 제거, DB 인덱스 추가, API 병렬 호출, 내부 API 전환, CloudFront CDN 도입 등으로 응답 속도를 개선하고, 클라이언트 사이드에서는 3rd-party 라이브러리 번들 사이즈 최적화와 레이아웃 이동 문제(CLS) 해결을 통해 페이지 렌더링 성능을 향상시켰다.
+
+Highlights:
+
+- caseSummary: 원티드랩은 Google **Search** Console의 Core Web Vitals 지표를 기준으로 99% 이상의 URL을 ‘좋은 URL’로 개선하기 위해 서버 사이드 최적화, 클라이언트
+- caseProblem: 원티드 플랫폼의 대부분 URL이 Google **Search** Console에서 ‘느린 URL’ 또는 ‘개선이 필요한 URL’로 분류되어 사용자 경험과 SEO 성능이 저하된 상황이었다.
+- summary: ‘SEO 주도 개발’이란, Google **Search** Console (이하 GSC) 과 도구를 통해 SEO 관련 지표를 주기적으로 관찰하고, 이를 개선하는 것을 개발의 주요 목표 중
+- summary: 모든 URL이 ‘좋은 URL’이 되기까지 10월 30일부로 원티드의 99% URL은 좋은 URL로 전환. 10월 30일, 저희는 Google **Search** Console의 코어 웹 바이탈
+- content: HTML 용량 66% 감소 (경쟁사보다 가벼운 페이지 달성) 프론트엔드 서버 Latency 16% **개선** FCP (First Contentful Paint) 10% **개선** LCP (Largest Contentful Paint) 21% **개선** 번역키 데이터 제거 배포 후, 서버 Latency 지표
+- content: FCP: 60% **개선** LCP: 31% **개선** TTFB: 13% **개선** 2–2. 마지막 관문, 데스크톱 CLS **개선** 위의 모든 과정을 마쳤을 때, 대부분의 페이지가 ‘좋은 URL’로 전환되었습니다.
+
+
+### ko-search-elasticsearch-index - `Elasticsearch 인덱스 구조`
+
+- category: technology
+- intent: Elasticsearch 기반 인덱스 구조, 쿼리 최적화, 실시간 인덱싱 설계 사례를 찾는다.
+- total results: 36
+- precision@5: 0.400
+- recall@10: 0.500
+- mrr: 1.000
+- ndcg@10: 0.598
+
+#### Expected URLs
+
+- relevance 3: [검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화](https://techblog.woowahan.com/20161/)
+- relevance 3: [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/)
+- relevance 2: [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/)
+- relevance 2: [배달의민족 광고데이터 이관기](https://techblog.woowahan.com/14041/)
+
+#### Top Results
+
+| Rank | Match | Title | Source | Score | Keywords |
+|---:|---|---|---|---:|---|
+| 1 | expected:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog | 277.92 | Elasticsearch, search, performance optimization |
+| 2 | - | [Elasticsearch 병렬 테스트를 향한 여정](https://techblog.woowahan.com/18486/) | Woowa Brothers / Woowa Tech Blog | 238.92 | Elasticsearch, JVM, Java, search, performance optimization |
+| 3 | expected:2 | [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/) | Woowa Brothers / Woowa Tech Blog | 206.47 | Amazon OpenSearch Service, Elasticsearch, search, observability, event-driven architecture |
+| 4 | - | [쿠팡 SCM 워크플로우: 효율적이고 확장 가능한 low-code, no-code 플랫폼 개발](https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1-scm-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B4%EA%B3%A0-%ED%99%95%EC%9E%A5-%EA%B0%80%EB%8A%A5%ED%95%9C-low-code-no-code-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B0%9C%EB%B0%9C-7d997644d14?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 206.47 | Amazon Aurora, Amazon S3, Elasticsearch, search, migration, observability |
+| 5 | - | [Gmarket의 유사이미지 추천 기능 파헤치기](https://dev.gmarket.com/57) | Gmarket / Gmarket Tech Blog | 206.47 | Elasticsearch, Redis, search |
+| 6 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 206.47 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 7 | - | [Code With Me를 활용한 페어 프로그래밍](https://tech.inflab.com/202211-pair-programming/) | Inflab / Inflab Tech Blog | 206.47 | Elasticsearch, Spring Boot, search |
+| 8 | - | [Kafka 이벤트 모니터링이란.. (먼산)](https://dev.gmarket.com/51) | Gmarket / Gmarket Tech Blog | 206.47 | Apache Kafka, Elasticsearch, search, observability, streaming data pipeline |
+| 9 | - | [가파르게 성장하는 서비스를 담당한, 한 품질담당자의 회고](https://techblog.woowahan.com/9220/) | Woowa Brothers / Woowa Tech Blog | 206.47 | Elasticsearch, search |
+| 10 | - | [프로젝트 관리를 위한 JIRA 활용기](https://dev.gmarket.com/43) | Gmarket / Gmarket Tech Blog | 206.47 | Apache Kafka, Elasticsearch, Redis, search |
+
+#### Top Result Details
+
+##### 1. 실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서
+
+- match: expected relevance 3
+- source: Woowa Brothers / Woowa Tech Blog
+- url: https://techblog.woowahan.com/7425/
+- technologies: Elasticsearch, search
+- problem keywords: performance optimization
+- case summary: 우아한형제들은 Elasticsearch 인덱스 구조를 가게 정보와 메뉴 정보로 분리하고, 검색 쿼리를 여러 단계로 나누어 실시간 인덱싱과 검색 성능 문제를 해결하였다.
+- problem: 가게 수 증가와 기능 고도화로 인해 Elasticsearch의 인덱싱 및 검색 성능이 저하되고, 특히 가게 문서 업데이트 시 메뉴가 모두 재인덱싱되는 쓰기 증폭과 검색 쿼리의 높은 tail latency 문제가 발생하였다.
+- solution: 가게와 메뉴 데이터를 별도 인덱스로 분리하고, 검색 쿼리를 query, decision, fetch의 여러 단계로 나누어 처리하였으며, 메뉴 인덱스는 nested document 구조로 변경하여 aggregation 비용을 줄이고, shard 수 조정 및 쿼리 단계 병합으로 성능을 최적화하였다.
+
+Highlights:
+
+- title: 실시간 인덱싱을 위한 **Elasticsearch** 구조를 찾아서
+- caseSummary: 우아한형제들은 **Elasticsearch** 인덱스 구조를 가게 정보와 메뉴 정보로 분리하고, 검색 쿼리를 여러 단계로 나누어 실시간 인덱싱과 검색 성능 문제를 해결하였다.
+- content: 저희는 그 원인을 메뉴 **인덱스** 구조에서 찾았습니다. 1. 메뉴 **인덱스** 데이터 모델 변경 **인덱스** 분리 후, 메뉴 인덱스는 ES 문서 하나가 메뉴 하나에 대응되는 모델을 가지고 있었습니다.
+- content: 최종 **구조** 최적화를 거친 뒤 최종 구조는 위와 같습니다. 기존 인덱스를 가게 **인덱스**, 메뉴 인덱스로 분리하였고, 3-step으로 검색 쿼리를 구성해 주었습니다. 기존보다 10배 높은 인덱싱 성능과, 기존과 비슷하거나 그 이상의 성능을 보이는 검색 성능이 확인되었습니다.
+
+##### 2. Elasticsearch 병렬 테스트를 향한 여정
+
+- match: not expected
+- source: Woowa Brothers / Woowa Tech Blog
+- url: https://techblog.woowahan.com/18486/
+- technologies: Elasticsearch, JVM, Java, search
+- problem keywords: performance optimization
+- case summary: Woowa Brothers는 Elasticsearch에 의존하는 멀티모듈 통합 테스트 환경에서 병렬 테스트 도입 시 발생하는 공유 자원(ES 인덱스) 동시성 문제를 네임스페이스 전략을 통해 해결하여 테스트 성능을 2배 이상 향상시켰다.
+- problem: Elasticsearch와 DB를 공유하는 통합 테스트가 20개 이상의 모듈에서 수행되면서 CI/CD 테스트 시간이 10분 이상 소요되고, gradle의 --parallel 옵션 적용 시 ES 인덱스 alias 중복 생성과 동시성 문제로 테스트가 실패하는 상황이었다.
+- solution: 테스트 프로세스별로 고유한 네임스페이스를 가진 인덱스와 alias를 생성하여 인덱스 격리를 구현함으로써 동시성 문제를 제거하고, 분산락이나 스레드 락 대신 ES 자체 네임스페이스 전략으로 병렬 테스트를 안정적으로 수행하도록 개선했다.
+
+Highlights:
+
+- title: **Elasticsearch** 병렬 테스트를 향한 여정
+- summary: 저희는 검색엔진으로 **Elasticsearch**(이하 ES)를 사용합니다. 대부분의 코드가 ES에 의존하고 있으며, 테스트 […]
+- content: 저희는 검색엔진으로 **Elasticsearch**(이하 ES)를 사용합니다. 대부분의 코드가 ES에 의존하고 있으며, 테스트 코드는 주로 통합 테스트 형식으로 작성되었습니다. 작성한 쿼리가 올바르게 동작하는지, 필터링과 정렬이 제대로 수행되는지를 ES의 응답 값을 통해 확인합니다.
+- content: ElasticsearchStatusException[**Elasticsearch** exception [type=illegal_argument_exception, reason=no write index is defined for alias [test-main].
+
+##### 3. 배민상회와 검색플랫폼 연동기
+
+- match: expected relevance 2
+- source: Woowa Brothers / Woowa Tech Blog
+- url: https://techblog.woowahan.com/11732/
+- technologies: Amazon OpenSearch Service, Elasticsearch, search
+- problem keywords: observability
+- case summary: 배민상회는 기존 Elasticsearch 기반의 검색 시스템에서 발생한 성능, 사전 구축, 인프라 유지 문제를 해결하기 위해 우아한형제들의 검색플랫폼과 이벤트 드리븐 방식으로 연동하여 검색 품질과 운영 효율을 개선하였다.
+- problem: 기존 Elasticsearch 기반 like 검색은 한글 형태소 분석과 사전 구축의 어려움, 정확도 위주의 검색 한계, 인프라 유지 부담, 그리고 다수 개발 존 환경 미반영 등의 문제로 배민상회 사장님들의 업무용 상품 검색에 적합하지 않았다.
+- solution: 우아한형제들의 검색플랫폼과 REST API 및 이벤트 드리븐 색인 방식을 도입해 검색 시나리오별 추상화 인터페이스를 설계하고, 개발 존별 환경 정보를 색인에 포함하여 다중 개발 환경을 지원하며, 자체 DSL을 활용해 간결하고 직관적인 검색 질의를 구현했다.
+
+Highlights:
+
+- caseSummary: 배민상회는 기존 **Elasticsearch** 기반의 검색 시스템에서 발생한 성능, 사전 구축, 인프라 유지 문제를 해결하기 위해 우아한형제들의 검색플랫폼과 이벤트 드리븐 방식으로 연동하여
+- caseProblem: 기존 **Elasticsearch** 기반 like 검색은 한글 형태소 분석과 사전 구축의 어려움, 정확도 위주의 검색 한계, 인프라 유지 부담, 그리고 다수 개발 존 환경 미반영 등의 문제로
+- content: 배민상회 서비스 화면(출처: https://mart.baemin.com ) 초기에 배민상회는 DB에 저장된 상품정보를 like 검색을 이용하여 찾고 있었고, 검색 성능 개선 목적으로 like 검색을 그대로 **Elasticsearch** 라는 검색엔진을 사용하여 검색하도록 구현하였습니다.
+- content: Elasticsearch의 node를 유지하기 위한 인스턴스 구성과 모니터링, 색인의 관리 등 **Elasticsearch** 자체를 유지하기 위한 개발 리소스가 필요하였습니다.
+
+
+### ko-search-opensearch-analyzer - `OpenSearch Analyzer`
+
+- category: technology
+- intent: OpenSearch Analyzer를 활용한 텍스트 분석, 색인, 검색 기능 구현 사례를 찾는다.
+- total results: 291
+- precision@5: 0.400
+- recall@10: 1.000
+- mrr: 1.000
+- ndcg@10: 0.974
+
+#### Expected URLs
+
+- relevance 3: [OpenSearch Analyzer를 활용한 검색기능 알아보기](https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/)
+- relevance 1: [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/)
+
+#### Top Results
+
+| Rank | Match | Title | Source | Score | Keywords |
+|---:|---|---|---|---:|---|
+| 1 | expected:3 | [OpenSearch Analyzer를 활용한 검색기능 알아보기](https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/) | Kakao Pay / Kakao Pay Tech Blog | 582.95 | Amazon OpenSearch Service, search |
+| 2 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 461.40 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 3 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 403.79 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
+| 4 | expected:1 | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 380.52 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
+| 5 | - | [Detect and resolve HBase inconsistencies faster with AI on Amazon EMR](https://aws.amazon.com/blogs/big-data/detect-and-resolve-hbase-inconsistencies-faster-with-ai-on-amazon-emr/) | AWS / AWS Big Data Blog | 366.03 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon OpenSearch Service |
+| 6 | - | [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/) | Woowa Brothers / Woowa Tech Blog | 297.32 | Amazon OpenSearch Service, Elasticsearch, search, observability, event-driven architecture |
+| 7 | - | [비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입](https://d2.naver.com/helloworld/0004394) | NAVER / NAVER D2 | 297.32 | Amazon OpenSearch Service, Apache Kafka, Java, search, observability, log platform |
+| 8 | - | [How to consolidate cross-Region S3 data into OpenSearch](https://aws.amazon.com/blogs/big-data/how-to-consolidate-cross-region-s3-data-into-opensearch/) | AWS / AWS Big Data Blog | 297.32 | AWS IAM, Amazon OpenSearch Service, Amazon S3, Amazon VPC, search, observability |
+| 9 | - | [Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink](https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/) | AWS / AWS Big Data Blog | 297.32 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
+| 10 | - | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog | 297.32 | AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon MSK, Amazon OpenSearch Service, Amazon S3 |
+
+#### Top Result Details
+
+##### 1. OpenSearch Analyzer를 활용한 검색기능 알아보기
+
+- match: expected relevance 3
+- source: Kakao Pay / Kakao Pay Tech Blog
+- url: https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/
+- technologies: Amazon OpenSearch Service, search
+- problem keywords: -
+- case summary: 카카오페이는 OpenSearch Analyzer를 활용해 검색 기능을 구현하며, 이를 통해 효율적인 텍스트 분석과 검색 정확도 향상을 달성했다.
+- problem: 검색 서비스에서 텍스트 분석과 색인 과정의 효율성 및 정확도를 높이는 것이 필요했다.
+- solution: Amazon OpenSearch Service의 Analyzer 기능을 활용하여 텍스트를 효과적으로 분해하고 색인해 검색 성능을 개선했다.
+
+Highlights:
+
+- caseSolution: Amazon **OpenSearch Service의 Analyzer** 기능을 활용하여 텍스트를 효과적으로 분해하고 색인해 검색 성능을 개선했다.
+
+##### 2. MongoDB Atlas Search 정렬이슈 해결기
+
+- match: not expected
+- source: Inflab / Inflab Tech Blog
+- url: https://tech.inflab.com/202211-mongodb-atlas-search/
+- technologies: Amazon OpenSearch Service, Elasticsearch, Java, search
+- problem keywords: observability
+- case summary: MongoDB Atlas Search에서 정렬 성능 저하 문제를 경험하고, storedSource 옵션과 near operator, score function을 활용해 성능 개선과 고급 정렬 기능을 구현한 사례입니다.
+- problem: MongoDB Atlas Search에서 $search 다음에 $sort를 사용하면 mongod가 많은 데이터를 조회하고 정렬하여 성능 저하가 발생하는 문제와, 다양한 정렬 기준(최신순, 답변많은순, 좋아요순)을 효율적으로 처리하는 어려움이 있었습니다.
+- solution: storedSource 옵션으로 정렬 필드를 검색 인덱스에 저장해 mongot에서 정렬을 수행하거나, near operator와 score function을 활용해 mongot에서 필터링과 정렬을 함께 처리하는 방식을 적용하여 성능을 개선하고, score function을 이용해 복합 조건의 고급 정렬을 구현했습니다.
+
+Highlights:
+
+- title: MongoDB Atlas **Search** 정렬이슈 해결기
+- caseProblem: MongoDB Atlas Search에서 $**search** 다음에 $sort를 사용하면 mongod가 많은 데이터를 조회하고 정렬하여 성능 저하가 발생하는 문제와, 다양한 정렬 기준(최신순
+- content: MongoDB Atlas **Search** 우선 검색엔진으로 사용한 기술에 대해 간략한 소개를 하겠습니다. Atlas **Search** 는 MongoDB full-managed 클라우드 서비스인 MongoDB Atlas 에서 제공하는 전문 검색 솔루션입니다.
+- content: Atlas **Search** Architecture Atlas **Search** 클러스터의 각 노드에는 mongot 와 mongod 라 불리는 두 개의 프로세스가 존재하며 다음과 같은 역할을 담당합니다. mongot Apache Lucene 기반의 자바 웹 프로세스 **Search** Index (Inverted
+
+##### 3. How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK
+
+- match: not expected
+- source: AWS / AWS Big Data Blog
+- url: https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/
+- technologies: AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service, Amazon S3, Amazon VPC, Apache Kafka, search
+- problem keywords: high availability, observability, performance optimization
+- case summary: Amazon OpenSearch Service와 Amazon MSK를 활용해 AWS 리전 간 실시간 데이터 동기화 및 액티브-액티브 복제를 구현하여 고가용성과 장애 복구를 자동화한 사례입니다.
+- problem: 기존 Amazon OpenSearch Service의 리전 간 복제는 S3 스냅샷이나 크로스 클러스터 복제에 의존해 수동 장애 조치가 필요하고, 이로 인해 다운타임과 데이터 불일치, 지연이 발생하는 문제가 있었습니다.
+- solution: Amazon MSK Replicator를 이용한 양방향 리전 간 데이터 복제와 Amazon OpenSearch Ingestion(OSI) 파이프라인을 결합해 액티브-액티브 모델을 구축, 각 리전에서 동일한 데이터셋을 유지하며 자동 장애 조치와 데이터 동기화를 실현했습니다.
+
+Highlights:
+
+- title: How to build a cross-Region resilience for **Amazon OpenSearch Service** with Amazon MSK
+- content: Cross-Region resilience for **Amazon OpenSearch Service** has historically been a complex challenge, relying on S3-based snapshots or cross-cluster replication that
+- content: This architecture enables low-latency Regional **search** while maintaining a resilient, cross-Region copy of the indexed data.
+
+
+### ko-search-realtime-indexing - `실시간 검색 인덱싱`
+
+- category: architecture
+- intent: 실시간 검색 색인, 검색 인덱스 갱신, 이벤트 기반 색인 파이프라인 사례를 찾는다.
+- total results: 420
+- precision@5: 0.400
+- recall@10: 0.750
+- mrr: 0.333
+- ndcg@10: 0.418
+
+#### Expected URLs
+
+- relevance 3: [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/)
+- relevance 3: [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/)
+- relevance 3: [컬리 검색이 카프카를 들여다본 이야기 2](https://helloworld.kurly.com/blog/search-system-with-kafka-2/)
+- relevance 2: [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4)
+
+#### Top Results
+
+| Rank | Match | Title | Source | Score | Keywords |
+|---:|---|---|---|---:|---|
+| 1 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 318.13 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 2 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 250.15 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
+| 3 | expected:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog | 233.81 | Elasticsearch, search, performance optimization |
+| 4 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 209.71 | search, performance optimization |
+| 5 | expected:2 | [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4) | 29CM / 29CM TEAM | 201.40 | Apache Kafka, Elasticsearch, search, Change Data Capture, event-driven architecture |
+| 6 | - | [실시간 반응형 추천 개발 일지 2부: 벡터 검색, 그리고 숨겨진 요구사항과 기술 도입 의사 결정을 다루는 방법](https://techblog.woowahan.com/21027/) | Woowa Brothers / Woowa Tech Blog | 191.45 | AWS Lambda, Amazon OpenSearch Service, Amazon RDS, Kubernetes, LLM, Redis |
+| 7 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog | 180.55 | search |
+| 8 | - | [비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입](https://d2.naver.com/helloworld/0004394) | NAVER / NAVER D2 | 162.58 | Amazon OpenSearch Service, Apache Kafka, Java, search, observability, log platform |
+| 9 | expected:3 | [컬리 검색이 카프카를 들여다본 이야기 2](https://helloworld.kurly.com/blog/search-system-with-kafka-2/) | Kurly / Kurly Tech Blog | 158.38 | Apache Kafka, search |
+| 10 | - | [Detect and resolve HBase inconsistencies faster with AI on Amazon EMR](https://aws.amazon.com/blogs/big-data/detect-and-resolve-hbase-inconsistencies-faster-with-ai-on-amazon-emr/) | AWS / AWS Big Data Blog | 156.66 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon OpenSearch Service |
+
+#### Top Result Details
+
+##### 1. MongoDB Atlas Search 정렬이슈 해결기
+
+- match: not expected
+- source: Inflab / Inflab Tech Blog
+- url: https://tech.inflab.com/202211-mongodb-atlas-search/
+- technologies: Amazon OpenSearch Service, Elasticsearch, Java, search
+- problem keywords: observability
+- case summary: MongoDB Atlas Search에서 정렬 성능 저하 문제를 경험하고, storedSource 옵션과 near operator, score function을 활용해 성능 개선과 고급 정렬 기능을 구현한 사례입니다.
+- problem: MongoDB Atlas Search에서 $search 다음에 $sort를 사용하면 mongod가 많은 데이터를 조회하고 정렬하여 성능 저하가 발생하는 문제와, 다양한 정렬 기준(최신순, 답변많은순, 좋아요순)을 효율적으로 처리하는 어려움이 있었습니다.
+- solution: storedSource 옵션으로 정렬 필드를 검색 인덱스에 저장해 mongot에서 정렬을 수행하거나, near operator와 score function을 활용해 mongot에서 필터링과 정렬을 함께 처리하는 방식을 적용하여 성능을 개선하고, score function을 이용해 복합 조건의 고급 정렬을 구현했습니다.
+
+Highlights:
+
+- title: MongoDB Atlas **Search** 정렬이슈 해결기
+- caseProblem: MongoDB Atlas Search에서 $**search** 다음에 $sort를 사용하면 mongod가 많은 데이터를 조회하고 정렬하여 성능 저하가 발생하는 문제와, 다양한 정렬 기준(최신순
+- caseSolution: storedSource 옵션으로 정렬 필드를 **검색** 인덱스에 저장해 mongot에서 정렬을 수행하거나, near operator와 score function을 활용해 mongot에서
+- content: MongoDB Atlas **Search** 우선 검색엔진으로 사용한 기술에 대해 간략한 소개를 하겠습니다. Atlas **Search** 는 MongoDB full-managed 클라우드 서비스인 MongoDB Atlas 에서 제공하는 전문 **검색** 솔루션입니다.
+- content: AWS에서 제공하는 OpenSearch 와 같이 Apache Lucene **검색** 라이브러리를 탑재하고 있으며 **실시간** 모니터링 및 로그 분석을 지원합니다.
+
+##### 2. Full-text, exact-match, range, and hybrid search on Amazon ElastiCache
+
+- match: not expected
+- source: AWS / AWS Database Blog
+- url: https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/
+- technologies: AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey, search
+- problem keywords: migration, performance optimization
+- case summary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 실시간 전체 텍스트, 정확 일치, 범위, 하이브리드 검색 기능을 구현하여 대규모 데이터에 대해 마이크로초 단위의 저지연 검색을 가능하게 한 사례이다.
+- problem: 대규모 동적 데이터에 대해 별도의 검색 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 검색(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
+- solution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 검색 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을 통해 마이크로초 단위 응답과 높은 QPS를 달성했다.
+
+Highlights:
+
+- title: Full-text, exact-match, range, and hybrid **search** on Amazon ElastiCache
+- caseSummary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 **실시간** 전체 텍스트, 정확 일치, 범위, 하이브리드 **검색** 기능을 구현하여 대규모 데이터에 대해 마이크로초
+- caseProblem: 대규모 동적 데이터에 대해 별도의 **검색** 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 **검색**(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
+- caseSolution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 **검색** 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을
+- summary: New **search** capabilities are available in ElastiCache version 9.0 for Valkey.
+- summary: In this post, we walk through the new **search** capabilities, show how they work together, and build a **search**
+
+##### 3. 실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서
+
+- match: expected relevance 3
+- source: Woowa Brothers / Woowa Tech Blog
+- url: https://techblog.woowahan.com/7425/
+- technologies: Elasticsearch, search
+- problem keywords: performance optimization
+- case summary: 우아한형제들은 Elasticsearch 인덱스 구조를 가게 정보와 메뉴 정보로 분리하고, 검색 쿼리를 여러 단계로 나누어 실시간 인덱싱과 검색 성능 문제를 해결하였다.
+- problem: 가게 수 증가와 기능 고도화로 인해 Elasticsearch의 인덱싱 및 검색 성능이 저하되고, 특히 가게 문서 업데이트 시 메뉴가 모두 재인덱싱되는 쓰기 증폭과 검색 쿼리의 높은 tail latency 문제가 발생하였다.
+- solution: 가게와 메뉴 데이터를 별도 인덱스로 분리하고, 검색 쿼리를 query, decision, fetch의 여러 단계로 나누어 처리하였으며, 메뉴 인덱스는 nested document 구조로 변경하여 aggregation 비용을 줄이고, shard 수 조정 및 쿼리 단계 병합으로 성능을 최적화하였다.
+
+Highlights:
+
+- title: **실시간** 인덱싱을 위한 Elasticsearch 구조를 찾아서
+- caseSummary: 우아한형제들은 Elasticsearch 인덱스 구조를 가게 정보와 메뉴 정보로 분리하고, **검색** 쿼리를 여러 단계로 나누어 **실시간** 인덱싱과 **검색** 성능 문제를 해결하였다.
+- caseProblem: 가게 수 증가와 기능 고도화로 인해 Elasticsearch의 **인덱싱** 및 **검색** 성능이 저하되고, 특히 가게 문서 업데이트 시 메뉴가 모두 재인덱싱되는 쓰기 증폭과 **검색** 쿼리의 높은
+- caseSolution: 가게와 메뉴 데이터를 별도 인덱스로 분리하고, **검색** 쿼리를 query, decision, fetch의 여러 단계로 나누어 처리하였으며, 메뉴 인덱스는 nested document 구조로
+- summary: 저희 팀에서는 배달의민족 **검색** 시스템을 담당하고 있고, 사용자가 원하는 **실시간** 결과를 빠르게 제공하기 위해 노력하고 있습니다.
+- summary: 지난 블로그 글에서 늘어나는 이벤트에 대응하여, 배민 **검색** 시스템에 bulk processing을 도입한 경험을 공유드렸습니다.
+
+
+### ko-search-platform-kafka - `검색 플랫폼 Kafka`
+
+- category: architecture
+- intent: Kafka를 활용한 검색 플랫폼, 검색 색인 파이프라인, 이벤트 기반 검색 연동 사례를 찾는다.
+- total results: 457
+- precision@5: 0.000
+- recall@10: 0.333
+- mrr: 0.125
+- ndcg@10: 0.171
+
+#### Expected URLs
+
+- relevance 3: [컬리 검색이 카프카를 들여다본 이야기 2](https://helloworld.kurly.com/blog/search-system-with-kafka-2/)
+- relevance 3: [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/)
+- relevance 2: [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4)
+
+#### Top Results
+
+| Rank | Match | Title | Source | Score | Keywords |
+|---:|---|---|---|---:|---|
+| 1 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 354.82 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
+| 2 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 318.13 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 3 | - | [[다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍](https://techblog.woowahan.com/7894/) | Woowa Brothers / Woowa Tech Blog | 307.35 | Apache Kafka, event-driven architecture, streaming data pipeline |
+| 4 | - | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 291.21 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
+| 5 | - | [지금 매출 얼마인가요?](https://tech.devsisters.com/posts/near-real-time) | Devsisters / Devsisters Tech Blog | 288.91 | Amazon S3, Apache Kafka, Elasticsearch, search, observability, log platform |
+| 6 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 286.36 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
+| 7 | - | [프로젝트 관리를 위한 JIRA 활용기](https://dev.gmarket.com/43) | Gmarket / Gmarket Tech Blog | 285.52 | Apache Kafka, Elasticsearch, Redis, search |
+| 8 | expected:3 | [컬리 검색이 카프카를 들여다본 이야기 2](https://helloworld.kurly.com/blog/search-system-with-kafka-2/) | Kurly / Kurly Tech Blog | 277.52 | Apache Kafka, search |
+| 9 | - | [Kafka 이벤트 모니터링이란.. (먼산)](https://dev.gmarket.com/51) | Gmarket / Gmarket Tech Blog | 277.02 | Apache Kafka, Elasticsearch, search, observability, streaming data pipeline |
+| 10 | - | [우아한테크캠프 6기 교육생들의 최종 회고](https://techblog.woowahan.com/14969/) | Woowa Brothers / Woowa Tech Blog | 275.77 | Apache Kafka, JPA, Java, search, observability |
+
+#### Top Result Details
+
+##### 1. 엔지니어링 프로젝트 임팩트 산정하기
+
+- match: not expected
+- source: Wantedlab / Wantedlab Tech Blog
+- url: https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4
+- technologies: Apache Kafka, search
+- problem keywords: -
+- case summary: 원티드랩 데이터팀은 Apache Kafka 기반의 Weaver 프로젝트를 도입해 실시간 이벤트 처리 인프라를 구축하고, 이를 통해 개발 시간 절감, SaaS 내재화 비용 절감, 인프라 비용 최적화 등 다양한 방식으로 프로젝트 임팩트를 원화 단위로 산정하였다.
+- problem: 기존 배치 처리 중심의 데이터 파이프라인과 외부 툴 의존으로 인해 실시간 사용자 행동 데이터 처리와 이벤트 관리가 비효율적이며, 개발자 작업 임팩트 산정이 어려운 상황이었다.
+- solution: Apache Kafka를 활용한 Weaver 프로젝트로 이벤트를 단일 endpoint로 통합하고 CDC를 실시간 이벤트로 전환하여 개발 시간과 인프라 비용을 절감하며, 임팩트를 개발 시간 절약, 유사 서비스 비용 비교, 인프라 사용량 절약 세 가지 방법으로 원화 가치로 산정하였다.
+
+Highlights:
+
+- caseSummary: 원티드랩 데이터팀은 **Apache Kafka** 기반의 Weaver 프로젝트를 도입해 실시간 이벤트 처리 인프라를 구축하고, 이를 통해 개발 시간 절감, SaaS 내재화 비용 절감, 인프라
+- summary: 위버를 한 마디로 표현하면 다양한 문제를 해결하기 위한 데이터 팀의 **Apache Kafka** 운용 프로젝트 입니다.
+- summary: 실시간 인프라의 부재를 크게 느껴 여러 조사를 해보았고, **Apache Kafka**(실시간으로 이벤트를 처리할 수 있는 데이터 스트리밍 **플랫폼**)가 적합하다는 판단 하에 도입을 하였습니다
+- content: 위버를 한 마디로 표현하면 다양한 문제를 해결하기 위한 데이터 팀의 **Apache Kafka** 운용 프로젝트 입니다. 위버 도입 전까지 저희는 대부분의 데이터를 배치로 처리하고 있었고, 실시간성이 필요한 사용자 행동 데이터의 경우 외부 툴(amplitude)에 의존해왔습니다.
+- content: 실시간 인프라의 부재를 크게 느껴 여러 조사를 해보았고, **Apache Kafka**(실시간으로 이벤트를 처리할 수 있는 데이터 스트리밍 **플랫폼**)가 적합하다는 판단 하에 도입을 하였습니다.
+
+##### 2. MongoDB Atlas Search 정렬이슈 해결기
+
+- match: not expected
+- source: Inflab / Inflab Tech Blog
+- url: https://tech.inflab.com/202211-mongodb-atlas-search/
+- technologies: Amazon OpenSearch Service, Elasticsearch, Java, search
+- problem keywords: observability
+- case summary: MongoDB Atlas Search에서 정렬 성능 저하 문제를 경험하고, storedSource 옵션과 near operator, score function을 활용해 성능 개선과 고급 정렬 기능을 구현한 사례입니다.
+- problem: MongoDB Atlas Search에서 $search 다음에 $sort를 사용하면 mongod가 많은 데이터를 조회하고 정렬하여 성능 저하가 발생하는 문제와, 다양한 정렬 기준(최신순, 답변많은순, 좋아요순)을 효율적으로 처리하는 어려움이 있었습니다.
+- solution: storedSource 옵션으로 정렬 필드를 검색 인덱스에 저장해 mongot에서 정렬을 수행하거나, near operator와 score function을 활용해 mongot에서 필터링과 정렬을 함께 처리하는 방식을 적용하여 성능을 개선하고, score function을 이용해 복합 조건의 고급 정렬을 구현했습니다.
+
+Highlights:
+
+- title: MongoDB Atlas **Search** 정렬이슈 해결기
+- caseProblem: MongoDB Atlas Search에서 $**search** 다음에 $sort를 사용하면 mongod가 많은 데이터를 조회하고 정렬하여 성능 저하가 발생하는 문제와, 다양한 정렬 기준(최신순
+- caseSolution: storedSource 옵션으로 정렬 필드를 **검색** 인덱스에 저장해 mongot에서 정렬을 수행하거나, near operator와 score function을 활용해 mongot에서
+- content: MongoDB Atlas **Search** 우선 검색엔진으로 사용한 기술에 대해 간략한 소개를 하겠습니다. Atlas **Search** 는 MongoDB full-managed 클라우드 서비스인 MongoDB Atlas 에서 제공하는 전문 **검색** 솔루션입니다.
+- content: returnStoredSource 옵션을 **검색** 쿼리에 넣어서 요청합니다. db . question . aggregate ( [ { $**search** : { text : { query : "강의" , path : [ "title" , "body" , "writer.name" ] } , returnStoredSource
+
+##### 3. [다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍
+
+- match: not expected
+- source: Woowa Brothers / Woowa Tech Blog
+- url: https://techblog.woowahan.com/7894/
+- technologies: Apache Kafka
+- problem keywords: -
+- case summary: 우아한형제들의 실시간 음식배달 플랫폼에서 대량의 트랜잭션과 상태변경 데이터를 효율적으로 처리하기 위해 Apache Kafka Streams 기반의 분산 이벤트 스트리밍 아키텍처를 도입한 사례입니다.
+- problem: 음식배달 주문과 관련된 수십 배에 달하는 대량의 실시간 트랜잭션과 30분 내외의 상태변경 데이터를 효율적으로 처리하고 분석하는 것이 필요했습니다.
+- solution: Apache Kafka Streams를 활용한 분산 이벤트 스트리밍 아키텍처를 구축하여, 여러 지역에서 발생하는 데이터를 최대한 격리하지 않고 최적화하여 자원 효율성을 극대화하고 실시간 데이터 처리 및 분석을 가능하게 했습니다.
+
+Highlights:
+
+- caseSummary: 우아한형제들의 실시간 음식배달 플랫폼에서 대량의 트랜잭션과 상태변경 데이터를 효율적으로 처리하기 위해 **Apache Kafka** Streams 기반의 분산 이벤트 스트리밍 아키텍처를 도입한
+- caseSolution: **Apache Kafka** Streams를 활용한 분산 이벤트 스트리밍 아키텍처를 구축하여, 여러 지역에서 발생하는 데이터를 최대한 격리하지 않고 최적화하여 자원 효율성을 극대화하고 실시간
 
 
 ### ko-data-log-platform - `로그 플랫폼`

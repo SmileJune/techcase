@@ -109,6 +109,31 @@ relevance: Elasticsearch score 기반 관련도순. 기본값.
 latest: 검색 후보 중 publishedAt 최신순. 같은 날짜 또는 날짜 없음 처리 후 _score로 보조 정렬.
 ```
 
+빈 query는 기본 페이지 탐색용으로 사용합니다.
+
+```text
+GET /api/search?q=&sort=latest
+```
+
+이 경우 `match_all` query를 사용하고 최신순으로 글을 반환합니다. 사용자가 검색어를 입력하기 전에도 최신 기업 기술 블로그 글을 둘러볼 수 있게 하기 위한 동작입니다.
+
+페이지네이션은 `page`, `page_size` query parameter로 받습니다.
+
+```text
+GET /api/search?q=&sort=latest&page=1&page_size=20
+GET /api/search?q=Kafka&sort=relevance&page=2&page_size=20
+```
+
+페이지네이션 응답 필드:
+
+```text
+page
+pageSize
+totalPages
+total
+items
+```
+
 검색 결과를 좁히는 필터도 query parameter로 받습니다.
 
 ```text
@@ -524,6 +549,154 @@ tutorial           +8
 - 너무 오래된 글은 약하게 감점하거나 최신순 보조 정렬
 - source 신뢰도 또는 글 유형에 따른 가중치
 - 클릭 로그 기반 ranking 개선
+
+## 복합 의도 검색 랭킹 설계
+
+`검색 플랫폼 Kafka`처럼 기술명과 아키텍처/문제 의도가 함께 들어간 query는 단순 키워드 매칭만으로는 품질을 올리기 어렵습니다.
+
+예:
+
+```text
+검색 플랫폼 Kafka
+```
+
+이 query는 하나의 문자열이지만 실제 의도는 다음처럼 나뉩니다.
+
+```text
+technology: Apache Kafka
+architecture: search platform, search indexing pipeline
+problem/context: 검색 데이터 동기화, 실시간 색인, 이벤트 기반 검색 연동
+```
+
+현재 검색은 `Apache Kafka` 또는 `search` 중 하나만 강하게 매칭돼도 높은 점수를 받을 수 있습니다. 이 때문에 다음처럼 한쪽 의도만 맞는 글이 상위에 섞일 수 있습니다.
+
+```text
+Kafka는 맞지만 검색 플랫폼 사례는 아닌 글
+검색은 맞지만 Kafka 기반 색인/플랫폼 사례는 아닌 글
+```
+
+따라서 복합 의도 검색은 "각 키워드가 등장하는가"보다 "서로 다른 의도 축이 같은 사례 안에서 함께 충족되는가"를 ranking feature로 다루어야 합니다.
+
+### Query Intent 분해
+
+검색어를 다음 축으로 분해합니다.
+
+```text
+technology: Kafka, Redis, Elasticsearch, OpenSearch, Kubernetes
+problem: 비용 최적화, 장애 대응, 성능 개선, 데이터 정합성
+architecture: 검색 플랫폼, 로그 플랫폼, 데이터 파이프라인, 실시간 인덱싱
+company/source: Woowa Brothers, Kurly, AWS, NAVER
+```
+
+초기 구현에서는 완전한 query parser를 만들기보다 기존 `KeywordRule` 기반으로 분해합니다.
+
+예:
+
+```text
+검색 플랫폼 Kafka
+-> technology: Apache Kafka
+-> architecture 후보: search
+-> raw phrase 후보: 검색 플랫폼
+```
+
+단, `search`처럼 너무 넓은 키워드는 단독 매칭만으로 큰 가산점을 주면 안 됩니다. `Kafka + search`, `Elasticsearch + indexing`, `OpenSearch + analyzer`처럼 조합으로 의미가 생기는 경우에만 별도 가산점을 주는 편이 안전합니다.
+
+### Ranking Feature 후보
+
+복합 의도 query에서는 다음 feature를 추가 후보로 둡니다.
+
+```text
+technology_exact_match
+architecture_exact_match
+problem_exact_match
+technology_architecture_co_match
+technology_problem_co_match
+raw_phrase_in_title_or_case_summary
+content_type_case_boost
+```
+
+예상 가산점 방향:
+
+```text
+기술명과 아키텍처 키워드가 모두 keyword field에 존재하면 가산
+기술명이 technologies에 있고 query phrase가 title/caseSummary에 있으면 가산
+문제 키워드와 해결 요약이 함께 맞으면 가산
+contentType이 technical_case이면 기존 사례성 가산점 유지
+```
+
+중요한 점은 co-match feature를 전역으로 크게 적용하지 않는 것입니다. 이전 실험에서 복합 키워드 co-occurrence boost를 넓게 적용했을 때 `검색 플랫폼 Kafka`가 개선되지 않았고, 다른 query의 순위가 흔들렸습니다.
+
+### 구현 원칙
+
+첫 구현은 다음 원칙을 따릅니다.
+
+```text
+1. 복합 의도 query에서만 적용한다.
+2. 단일 넓은 키워드(search, observability, Java)에는 큰 가산점을 주지 않는다.
+3. keyword field와 LLM 요약 field를 함께 본다.
+4. 기존 평균 평가 지표가 악화되면 반영하지 않는다.
+5. audit 리포트에서 특정 query의 상위 10개 변화를 반드시 확인한다.
+```
+
+구현 후보:
+
+```text
+matched_rules(query)로 KeywordRule 전체를 반환
+keyword_type별로 technology/problem/architecture bucket 구성
+technology + architecture가 모두 존재할 때만 function_score 추가
+function_score filter는 terms 중심으로 좁게 구성
+raw query phrase는 title/caseSummary/caseProblem/caseSolution에 낮은 boost로만 추가
+```
+
+예상 pseudo query:
+
+```json
+{
+  "function_score": {
+    "query": "<base bool query>",
+    "functions": [
+      {
+        "filter": {
+          "bool": {
+            "must": [
+              { "terms": { "technologies": ["Apache Kafka", "apache kafka"] } },
+              { "terms": { "architectureKeywords": ["search", "검색 플랫폼"] } }
+            ]
+          }
+        },
+        "weight": 25
+      }
+    ],
+    "score_mode": "sum",
+    "boost_mode": "sum"
+  }
+}
+```
+
+단, 현재 `검색 플랫폼`은 정식 keyword로 안정적으로 추출되지 않습니다. 단순히 사전에 `검색 플랫폼`을 추가하는 실험은 `검색 플랫폼 Kafka`를 개선하지 못했습니다. 따라서 먼저 LLM 요약의 `architectureKeywords` 품질을 확인하고, 필요하면 "검색 플랫폼", "검색 인덱싱", "색인 파이프라인" 같은 아키텍처 키워드를 LLM 추출 단계에서 더 잘 생성하도록 개선해야 합니다.
+
+### 평가 대상
+
+복합 의도 ranking 변경 시 최소한 다음 query를 함께 비교합니다.
+
+```text
+ko-search-platform-kafka
+ko-search-realtime-indexing
+ko-tech-search
+ko-event-driven-commerce
+migration-kafka-msk
+ko-migration-kafka
+ko-data-log-platform
+```
+
+성공 기준:
+
+```text
+ko-search-platform-kafka의 mrr과 ndcg@10 개선
+기존 ko-tech-search, migration-kafka-msk 품질 유지
+average precision@5, ndcg@10 악화 없음
+상위 5개 결과가 사람이 봐도 query intent와 맞음
+```
 
 ## 검색 품질 검증 쿼리
 
