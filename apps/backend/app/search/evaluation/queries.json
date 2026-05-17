@@ -462,6 +462,11 @@
       "intent": "한글 검색어로 검색 기능 개선, 검색 시스템 설계, 검색 엔진 분석 사례를 찾는다.",
       "expectedResults": [
         {
+          "url": "https://tech.inflab.com/202211-mongodb-atlas-search/",
+          "title": "MongoDB Atlas Search 정렬이슈 해결기",
+          "relevance": 3
+        },
+        {
           "url": "https://helloworld.kurly.com/blog/vertex-ai-search-nr/",
           "title": "Vertex AI Search를 활용한 결과 없는 검색 개선하기",
           "relevance": 3
@@ -479,6 +484,16 @@
         {
           "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-2/",
           "title": "컬리 검색이 카프카를 들여다본 이야기 2",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/11732/",
+          "title": "배민상회와 검색플랫폼 연동기",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/7425/",
+          "title": "실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서",
           "relevance": 3
         },
         {

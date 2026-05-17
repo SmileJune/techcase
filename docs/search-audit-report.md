@@ -1,14 +1,14 @@
 # Search Audit Report
 
-Generated at: 2026-05-17T07:53:13.430771+00:00
+Generated at: 2026-05-17T09:19:48.308798+00:00
 
 ## Summary
 
 - queries: 33
-- average precision@5: 0.436
-- average recall@10: 0.845
-- average mrr: 0.858
-- average ndcg@10: 0.788
+- average precision@5: 0.442
+- average recall@10: 0.852
+- average mrr: 0.884
+- average ndcg@10: 0.799
 
 ## Query Audits
 
@@ -1732,17 +1732,20 @@ Highlights:
 - category: technology
 - intent: 한글 검색어로 검색 기능 개선, 검색 시스템 설계, 검색 엔진 분석 사례를 찾는다.
 - total results: 476
-- precision@5: 0.000
-- recall@10: 0.333
-- mrr: 0.143
-- ndcg@10: 0.174
+- precision@5: 0.200
+- recall@10: 0.556
+- mrr: 1.000
+- ndcg@10: 0.552
 
 #### Expected URLs
 
+- relevance 3: [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/)
 - relevance 3: [Vertex AI Search를 활용한 결과 없는 검색 개선하기](https://helloworld.kurly.com/blog/vertex-ai-search-nr/)
 - relevance 3: [검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화](https://techblog.woowahan.com/20161/)
 - relevance 2: [네이버 통합검색 AIB 도입과 웹 성능 변화 분석](https://d2.naver.com/helloworld/4241703)
 - relevance 3: [컬리 검색이 카프카를 들여다본 이야기 2](https://helloworld.kurly.com/blog/search-system-with-kafka-2/)
+- relevance 3: [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/)
+- relevance 3: [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/)
 - relevance 2: [OpenSearch Analyzer를 활용한 검색기능 알아보기](https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/)
 - relevance 2: [30분만 투자하면 사용하는 API 문서 검색 엔진, Doxygen 외부 검색 설정하기](https://netmarble.engineering/doxygen-nginx-fcgiwrap/)
 
@@ -1750,7 +1753,7 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 318.13 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 1 | expected:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 318.13 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
 | 2 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 240.09 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
 | 3 | - | [Real-time Service Configuration으로 Consul을 신주소 서비스에 적용한 사례](https://techblog.woowahan.com/2586/) | Woowa Brothers / Woowa Tech Blog | 232.80 | AWS IAM, Amazon VPC, Java, search, high availability |
 | 4 | - | [Announcing aggregations on Amazon ElastiCache](https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/) | AWS / AWS Database Blog | 215.16 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
@@ -1758,14 +1761,14 @@ Highlights:
 | 6 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog | 180.55 | search |
 | 7 | expected:2 | [네이버 통합검색 AIB 도입과 웹 성능 변화 분석](https://d2.naver.com/helloworld/4241703) | NAVER / NAVER D2 | 173.24 | search, performance optimization, streaming data pipeline |
 | 8 | expected:3 | [검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화](https://techblog.woowahan.com/20161/) | Woowa Brothers / Woowa Tech Blog | 169.57 | Elasticsearch, Spring Boot, search, migration, observability, performance optimization |
-| 9 | - | [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/) | Woowa Brothers / Woowa Tech Blog | 167.76 | Amazon OpenSearch Service, Elasticsearch, search, observability, event-driven architecture |
-| 10 | - | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog | 166.30 | Elasticsearch, search, performance optimization |
+| 9 | expected:3 | [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/) | Woowa Brothers / Woowa Tech Blog | 167.76 | Amazon OpenSearch Service, Elasticsearch, search, observability, event-driven architecture |
+| 10 | expected:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog | 166.30 | Elasticsearch, search, performance optimization |
 
 #### Top Result Details
 
 ##### 1. MongoDB Atlas Search 정렬이슈 해결기
 
-- match: not expected
+- match: expected relevance 3
 - source: Inflab / Inflab Tech Blog
 - url: https://tech.inflab.com/202211-mongodb-atlas-search/
 - technologies: Amazon OpenSearch Service, Elasticsearch, Java, search

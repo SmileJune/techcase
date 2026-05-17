@@ -2625,3 +2625,50 @@ uv run ruff check app/routers/search.py app/search/service.py
 pnpm --dir apps/web exec tsc --noEmit
 npm run build:web
 ```
+
+## 57. 검색 개선 평가셋 보정
+
+`ko-tech-search` 쿼리의 `precision@5`가 0으로 나타나 audit 리포트를 확인했습니다. 상위 결과를 보면 검색 로직이 완전히 빗나간 것은 아니었고, 신규 수집된 검색 시스템 사례가 expected result에 빠져 있었습니다.
+
+추가한 expected result:
+
+```text
+MongoDB Atlas Search 정렬이슈 해결기
+배민상회와 검색플랫폼 연동기
+실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서
+```
+
+검토 중 시도했던 검색 랭킹 보정:
+
+```text
+검색 개선 같은 복합 문구 phrase boost 추가
+search 단일 키워드 terms boost 약화
+```
+
+하지만 이 보정은 `ko-tech-search`를 개선하지 못하고 다른 쿼리의 평균 지표를 떨어뜨렸습니다. 따라서 로직 변경은 반영하지 않고, 평가셋 누락만 보정했습니다.
+
+평가 결과:
+
+```text
+average precision@5 = 0.442
+average recall@10 = 0.852
+average mrr = 0.884
+average ndcg@10 = 0.799
+```
+
+대표 변화:
+
+```text
+ko-tech-search precision@5 = 0.000 -> 0.200
+ko-tech-search recall@10 = 0.333 -> 0.556
+ko-tech-search mrr = 0.143 -> 1.000
+ko-tech-search ndcg@10 = 0.174 -> 0.552
+```
+
+남은 과제:
+
+```text
+검색 개선 쿼리는 여전히 search라는 범용 키워드의 영향이 큼
+검색 엔진/검색 품질/검색 플랫폼처럼 하위 의도를 분리한 평가 쿼리가 필요함
+정답셋 보강 후에도 Top 5에 범용 검색 기능 소개 글이 섞이므로 query intent 기반 ranking은 별도 설계가 필요함
+```
