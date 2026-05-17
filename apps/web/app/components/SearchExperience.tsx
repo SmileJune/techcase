@@ -734,46 +734,53 @@ function FilterPanel({
   onClear: () => void;
 }) {
   const activeCount = selectedFilterCount(filters);
+  const summaryText = activeCount > 0 ? `${activeCount}개 적용 중` : "필터 열기";
 
   return (
-    <aside className="filter-panel" aria-label="검색 결과 필터">
-      <div className="filter-panel-header">
+    <details className="filter-panel" open={activeCount > 0 ? true : undefined}>
+      <summary className="filter-panel-summary">
         <span>결과 좁히기</span>
-        {activeCount > 0 ? (
-          <button type="button" onClick={onClear}>
-            필터 초기화
-          </button>
-        ) : null}
+        <span>{summaryText}</span>
+      </summary>
+      <div className="filter-panel-body">
+        <div className="filter-panel-header">
+          <span>필터</span>
+          {activeCount > 0 ? (
+            <button type="button" onClick={onClear}>
+              필터 초기화
+            </button>
+          ) : null}
+        </div>
+        <FacetGroup
+          label="회사"
+          filterKey="sources"
+          facets={facets.sources}
+          selectedValues={filters.sources}
+          onToggle={onToggle}
+        />
+        <FacetGroup
+          label="기술"
+          filterKey="technologies"
+          facets={facets.technologies}
+          selectedValues={filters.technologies}
+          onToggle={onToggle}
+        />
+        <FacetGroup
+          label="문제 상황"
+          filterKey="problemKeywords"
+          facets={facets.problemKeywords}
+          selectedValues={filters.problemKeywords}
+          onToggle={onToggle}
+        />
+        <FacetGroup
+          label="유형"
+          filterKey="contentTypes"
+          facets={facets.contentTypes}
+          selectedValues={filters.contentTypes}
+          onToggle={onToggle}
+        />
       </div>
-      <FacetGroup
-        label="회사"
-        filterKey="sources"
-        facets={facets.sources}
-        selectedValues={filters.sources}
-        onToggle={onToggle}
-      />
-      <FacetGroup
-        label="기술"
-        filterKey="technologies"
-        facets={facets.technologies}
-        selectedValues={filters.technologies}
-        onToggle={onToggle}
-      />
-      <FacetGroup
-        label="문제 상황"
-        filterKey="problemKeywords"
-        facets={facets.problemKeywords}
-        selectedValues={filters.problemKeywords}
-        onToggle={onToggle}
-      />
-      <FacetGroup
-        label="유형"
-        filterKey="contentTypes"
-        facets={facets.contentTypes}
-        selectedValues={filters.contentTypes}
-        onToggle={onToggle}
-      />
-    </aside>
+    </details>
   );
 }
 

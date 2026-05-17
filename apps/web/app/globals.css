@@ -264,11 +264,62 @@ a {
 }
 
 .filter-panel {
-  border-top: 1px solid var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  margin-top: 18px;
+}
+
+.filter-panel-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 42px;
+  cursor: pointer;
+  list-style: none;
+  padding: 0 12px;
+}
+
+.filter-panel-summary::-webkit-details-marker {
+  display: none;
+}
+
+.filter-panel-summary > span:first-child {
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.filter-panel-summary > span:first-child::before {
+  content: "▸";
+  display: inline-block;
+  color: var(--muted);
+  margin-right: 7px;
+  transition: transform 0.15s ease;
+}
+
+.filter-panel[open] .filter-panel-summary > span:first-child::before {
+  transform: rotate(90deg);
+}
+
+.filter-panel-summary > span:last-child {
+  border-radius: 999px;
+  background: #f0f4f1;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+  padding: 5px 8px;
+}
+
+.filter-panel[open] .filter-panel-summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.filter-panel-body {
   display: grid;
   gap: 14px;
-  margin-top: 18px;
-  padding-top: 16px;
+  padding: 14px 12px 16px;
 }
 
 .filter-panel-header {
@@ -279,8 +330,8 @@ a {
 }
 
 .filter-panel-header > span {
-  color: var(--foreground);
-  font-size: 14px;
+  color: var(--muted);
+  font-size: 12px;
   font-weight: 760;
 }
 

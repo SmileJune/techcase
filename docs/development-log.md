@@ -2072,6 +2072,121 @@ pnpm --dir apps/web exec tsc --noEmit
 npm run build:web
 ```
 
+## 48. 필터 영역 compact화
+
+검색 결과 상단 요약 바가 추가되면서 `결과 좁히기` 필터 영역을 기본 화면에서 더 조용하게 보이도록 접힘 패널로 변경했습니다.
+
+변경 내용:
+
+```text
+필터 영역을 details/summary 기반 접힘 패널로 변경
+기본 상태에서는 결과 좁히기와 필터 열기만 표시
+필터가 적용된 경우 N개 적용 중 상태 표시
+필터 적용 중에는 패널을 열린 상태로 렌더링
+필터 초기화 버튼은 펼친 영역 안에 유지
+```
+
+의도:
+
+```text
+검색 결과 상단에서 요약 바와 카드가 먼저 보이도록 화면 밀도 조정
+필터는 필요할 때 여는 보조 도구로 배치
+선택된 필터 상태는 닫힌 패널에서도 놓치지 않게 표시
+```
+
+검증:
+
+```bash
+pnpm --dir apps/web exec tsc --noEmit
+npm run build:web
+```
+
+## 49. LLM 요약 100개 backfill
+
+검색 결과 카드의 `사례 요약`, `문제`, `해결` 표시 품질을 높이기 위해 LLM 요약이 없는 글 100개를 추가 처리했습니다.
+
+처리 전 상태:
+
+```text
+total = 1539
+summarized = 1116
+missing = 423
+```
+
+source별 미작성 수:
+
+```text
+Gmarket = 104
+Banksalad = 78
+Upstage = 76
+Netmarble = 73
+Inflab = 42
+Coupang = 10
+Lunit = 10
+NAVER Cloud = 10
+Wantedlab = 10
+Zigbang = 10
+```
+
+실행:
+
+```bash
+npm run llm:summarize -- --limit 100
+```
+
+결과:
+
+```text
+selected = 100
+generated = 100
+failed = 0
+
+total = 1539
+summarized = 1216
+missing = 323
+```
+
+처리 후 남은 미작성 수:
+
+```text
+Gmarket = 82
+Upstage = 76
+Netmarble = 67
+Banksalad = 60
+Inflab = 19
+Coupang = 8
+Zigbang = 7
+NAVER Cloud = 4
+```
+
+새 요약을 검색 결과에 반영하기 위해 Elasticsearch 인덱스를 갱신했습니다.
+
+```bash
+npm run search:reindex
+```
+
+검색 평가:
+
+```bash
+npm run search:evaluate
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.412
+average recall@10 = 0.839
+average mrr = 0.853
+average ndcg@10 = 0.786
+```
+
+샘플 확인:
+
+```text
+Redis Stream 적용기
+caseSummary/caseProblem/caseSolution 생성 확인
+```
+
 샘플 확인:
 
 ```text
