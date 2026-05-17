@@ -2187,6 +2187,211 @@ Redis Stream 적용기
 caseSummary/caseProblem/caseSolution 생성 확인
 ```
 
+## 50. LLM 요약 2차 100개 backfill
+
+남은 미요약 글 323개 중 다음 100개를 추가 처리했습니다.
+
+실행:
+
+```bash
+npm run llm:summarize -- --limit 100
+```
+
+결과:
+
+```text
+selected = 100
+generated = 100
+failed = 0
+
+total = 1539
+summarized = 1316
+missing = 223
+```
+
+처리 후 남은 미작성 수:
+
+```text
+Upstage = 76
+Banksalad = 49
+Netmarble = 47
+Gmarket = 42
+Inflab = 9
+```
+
+새 요약을 검색 결과에 반영하기 위해 Elasticsearch 인덱스를 갱신했습니다.
+
+```bash
+npm run search:reindex
+```
+
+검색 평가:
+
+```bash
+npm run search:evaluate
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.412
+average recall@10 = 0.834
+average mrr = 0.852
+average ndcg@10 = 0.783
+```
+
+1차 backfill 대비 `precision@5`는 유지되었고, `recall@10`과 `ndcg@10`은 소폭 하락했습니다. 새 LLM 요약이 검색 대상 텍스트에 반영되면서 일부 문제/아키텍처 계열 쿼리의 후보 풀이 넓어진 영향으로 보입니다.
+
+## 51. LLM 요약 3차 100개 backfill
+
+남은 미요약 글 223개 중 다음 100개를 추가 처리했습니다.
+
+실행:
+
+```bash
+npm run llm:summarize -- --limit 100
+```
+
+결과:
+
+```text
+selected = 100
+generated = 100
+failed = 0
+
+total = 1539
+summarized = 1416
+missing = 123
+```
+
+처리 후 남은 미작성 수:
+
+```text
+Upstage = 76
+Banksalad = 25
+Gmarket = 17
+Netmarble = 5
+```
+
+새 요약을 검색 결과에 반영하기 위해 Elasticsearch 인덱스를 갱신했습니다.
+
+```bash
+npm run search:reindex
+```
+
+검색 평가:
+
+```bash
+npm run search:evaluate
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.412
+average recall@10 = 0.834
+average mrr = 0.847
+average ndcg@10 = 0.778
+```
+
+2차 backfill 대비 `precision@5`와 `recall@10`은 유지되었고, `mrr`과 `ndcg@10`은 소폭 하락했습니다. LLM 요약이 검색 대상 필드에 추가되면서 넓은 문제/아키텍처 쿼리의 검색 후보가 더 많아졌기 때문입니다.
+
+## 52. LLM 요약 4차 100개 backfill
+
+남은 미요약 글 123개 중 다음 100개를 추가 처리했습니다.
+
+실행:
+
+```bash
+npm run llm:summarize -- --limit 100
+```
+
+결과:
+
+```text
+selected = 100
+generated = 100
+failed = 0
+
+total = 1539
+summarized = 1516
+missing = 23
+```
+
+처리 후 남은 미작성 수:
+
+```text
+Upstage = 23
+```
+
+새 요약을 검색 결과에 반영하기 위해 Elasticsearch 인덱스를 갱신했습니다.
+
+```bash
+npm run search:reindex
+```
+
+검색 평가:
+
+```bash
+npm run search:evaluate
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.406
+average recall@10 = 0.834
+average mrr = 0.847
+average ndcg@10 = 0.778
+```
+
+3차 backfill 대비 `recall@10`, `mrr`, `ndcg@10`은 유지되었고 `precision@5`만 소폭 하락했습니다. Upstage 제품/마케팅성 글의 LLM 요약이 검색 대상에 추가되며 일부 넓은 쿼리의 상위 후보가 더 넓어진 영향으로 보입니다.
+
+## 53. LLM 요약 backfill 완료
+
+남은 Upstage 미요약 글 23개를 마지막으로 처리해 전체 1539개 글의 LLM 요약을 모두 채웠습니다.
+
+실행:
+
+```bash
+npm run llm:summarize -- --limit 100
+```
+
+결과:
+
+```text
+selected = 23
+generated = 23
+failed = 0
+
+total = 1539
+summarized = 1539
+missing = 0
+```
+
+새 요약을 검색 결과에 반영하기 위해 Elasticsearch 인덱스를 갱신했습니다.
+
+```bash
+npm run search:reindex
+```
+
+검색 평가:
+
+```bash
+npm run search:evaluate
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.406
+average recall@10 = 0.839
+average mrr = 0.847
+average ndcg@10 = 0.781
+```
+
+4차 backfill 대비 `precision@5`와 `mrr`은 유지되었고, `recall@10`과 `ndcg@10`은 소폭 회복했습니다. 이제 저장된 모든 글이 `caseSummary`, `caseProblem`, `caseSolution`, `contentType` 기반 카드 표시와 검색 인덱싱 대상이 됩니다.
+
 샘플 확인:
 
 ```text
