@@ -12,6 +12,11 @@ GENERIC_FACET_VALUES = {
     "search",
     "observability",
 }
+CONTENT_TYPE_RANKING_WEIGHTS = {
+    "technical_case": 30,
+    "engineering_story": 15,
+    "tutorial": 8,
+}
 
 FACET_AGGREGATIONS = {
     "sources": {
@@ -338,10 +343,29 @@ def build_search_query(query: str) -> dict[str, Any]:
     if has_ascii_letter(query) and not matched_keywords:
         should_queries.append(fuzzy_match_query(query))
 
-    return {
+    base_query = {
         "bool": {
             "should": should_queries,
             "minimum_should_match": 1,
+        }
+    }
+
+    return apply_content_type_ranking(base_query)
+
+
+def apply_content_type_ranking(query: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "function_score": {
+            "query": query,
+            "functions": [
+                {
+                    "filter": {"term": {"contentType": content_type}},
+                    "weight": weight,
+                }
+                for content_type, weight in CONTENT_TYPE_RANKING_WEIGHTS.items()
+            ],
+            "score_mode": "sum",
+            "boost_mode": "sum",
         }
     }
 

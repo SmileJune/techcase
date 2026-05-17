@@ -2437,6 +2437,59 @@ npm run search:audit
 npm run search:evaluate
 ```
 
+## 55. contentType 기반 사례성 랭킹 보정
+
+LLM 요약 backfill 완료 후 모든 글이 `contentType`을 가지게 되었으므로, 검색 랭킹에 글 유형 기반 가산점을 추가했습니다.
+
+적용 방식:
+
+```text
+Elasticsearch function_score
+boost_mode = sum
+score_mode = sum
+```
+
+가중치:
+
+```text
+technical_case = 30
+engineering_story = 15
+tutorial = 8
+```
+
+의도:
+
+```text
+기술 사례성이 높은 글을 같은 점수대에서 조금 더 위로 배치
+event/recruiting/news/release_note는 감점하지 않고 중립 유지
+검색 랭킹을 크게 흔들지 않는 범위에서 첫 번째 안전한 보정만 적용
+```
+
+검색 평가:
+
+```bash
+npm run search:evaluate
+```
+
+평가 결과:
+
+```text
+average precision@5 = 0.412
+average recall@10 = 0.834
+average mrr = 0.847
+average ndcg@10 = 0.774
+```
+
+정량 지표는 보정 전과 동일했습니다. 현재 평가셋의 상위 결과는 대부분 이미 `technical_case` 중심이라 큰 순위 변화는 없었고, 같은 점수대의 사례성 보정 장치만 추가된 상태입니다.
+
+검증:
+
+```bash
+cd apps/backend && uv run ruff check app/search/service.py app/search/evaluation/audit.py
+npm run search:evaluate
+npm run search:audit
+```
+
 샘플 확인:
 
 ```text

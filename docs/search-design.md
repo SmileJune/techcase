@@ -148,6 +148,7 @@ AWS 블로그는 여러 세부 블로그가 같은 회사명으로 묶이면 필
 ```text
 q를 title, summary, content, technologies, architectureKeywords, problemKeywords에 대해 검색한다.
 field별 boost를 적용한다.
+contentType 기반 사례성 가산점을 function_score로 적용한다.
 highlight를 반환한다.
 기본은 관련도순으로 두고, 사용자가 선택하면 최신순 정렬을 적용한다.
 source/technology/problem/content_type 필터를 bool filter로 적용한다.
@@ -504,6 +505,16 @@ unique article URL: 512
 ## Ranking 개선 방향
 
 초기 ranking은 field boosting 중심입니다.
+
+현재는 LLM 요약에서 분류한 `contentType`을 활용해 사례성이 높은 글에 가산점을 줍니다.
+
+```text
+technical_case     +30
+engineering_story  +15
+tutorial           +8
+```
+
+이 보정은 `function_score`의 `boost_mode=sum` 방식으로 적용합니다. 감점은 아직 적용하지 않습니다. 제품 소개, 이벤트, 채용, 뉴스성 글도 데이터 자산으로 유지하되, 같은 점수대에서는 기술 사례와 엔지니어링 경험 글이 더 위로 오도록 하는 것이 목적입니다.
 
 이후 개선 아이디어:
 
