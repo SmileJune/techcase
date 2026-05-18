@@ -54,6 +54,7 @@ KEYWORD_RULES = [
     KeywordRule("Java", "technology", ("java", "자바")),
     KeywordRule("Kotlin", "technology", ("kotlin", "코틀린")),
     KeywordRule("React", "technology", ("react", "react.js", "reactjs", "리액트")),
+    KeywordRule("Next.js", "technology", ("next.js", "nextjs")),
     KeywordRule("Node.js", "technology", ("node.js", "nodejs", "node js")),
     KeywordRule("Spring Boot", "technology", ("spring boot", "springboot", "스프링 부트")),
     KeywordRule("JPA", "technology", ("jpa", "java persistence api")),

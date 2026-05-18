@@ -7,6 +7,9 @@ from app.search.indexes import ARTICLES_INDEX
 
 SearchSort = Literal["relevance", "latest"]
 KEYWORD_LABEL_BY_NORMALIZED = {rule.keyword.casefold(): rule.keyword for rule in KEYWORD_RULES}
+QUERY_ONLY_KEYWORD_ALIASES = {
+    "next": "Next.js",
+}
 GENERIC_FACET_VALUES = {
     "java",
     "search",
@@ -485,9 +488,15 @@ def keyword_terms_query(keywords: list[str]) -> dict[str, Any]:
 
 def matched_rule_keywords(query: str) -> list[str]:
     normalized_query = normalize_text(query)
-    return sorted(
-        {rule.keyword for rule in KEYWORD_RULES if matches_rule(normalized_query, rule)}
-    )
+    matched_keywords = {
+        rule.keyword for rule in KEYWORD_RULES if matches_rule(normalized_query, rule)
+    }
+
+    query_only_keyword = QUERY_ONLY_KEYWORD_ALIASES.get(normalized_query)
+    if query_only_keyword:
+        matched_keywords.add(query_only_keyword)
+
+    return sorted(matched_keywords)
 
 
 def expand_query(query: str) -> str:
@@ -495,7 +504,9 @@ def expand_query(query: str) -> str:
     expanded_terms = []
 
     for rule in KEYWORD_RULES:
-        if not matches_rule(normalized_query, rule):
+        if not matches_rule(normalized_query, rule) and not matches_query_only_alias(
+            normalized_query, rule
+        ):
             continue
 
         search_alias = first_ascii_alias(rule)
@@ -506,6 +517,10 @@ def expand_query(query: str) -> str:
         return query
 
     return " ".join([query, *sorted(set(expanded_terms))])
+
+
+def matches_query_only_alias(normalized_query: str, rule: KeywordRule) -> bool:
+    return QUERY_ONLY_KEYWORD_ALIASES.get(normalized_query) == rule.keyword
 
 
 def matches_rule(normalized_query: str, rule: KeywordRule) -> bool:

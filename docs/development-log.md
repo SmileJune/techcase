@@ -2832,3 +2832,74 @@ cd apps/backend && uv run ruff check app/routers/search.py app/search/service.py
 pnpm --dir apps/web exec tsc --noEmit
 npm run build:web
 ```
+
+## 62. Next.js 검색 alias 개선
+
+`next`로 검색했을 때 일반 영어 단어 `next`가 포함된 글이 섞이고, 사용자가 기대하는 `Next.js` 기술 스택 글이 충분히 올라오지 않는 문제가 있었습니다.
+
+원인:
+
+```text
+기술 사전에 Next.js가 없었음
+next는 일반 단어라 사전에 그대로 alias로 넣으면 next step 같은 표현까지 오탐 가능
+```
+
+개선:
+
+```text
+Next.js 기술 키워드 추가
+일반 alias는 next.js, nextjs만 사용
+검색 query가 정확히 next일 때만 query-only alias로 Next.js 매칭
+next step 같은 문장은 Next.js로 매칭하지 않음
+```
+
+재처리:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+```
+
+재처리 결과:
+
+```text
+articles = 1539
+keywords = 3318
+indexed articles = 1539
+indexed suggestions = 81
+```
+
+검증:
+
+```text
+next -> Next.js로 query expansion
+next.js -> Next.js 매칭
+nextjs -> Next.js 매칭
+next step -> Next.js 미매칭
+nex -> Next.js 자동완성 후보 노출
+```
+
+검색 결과 확인:
+
+```text
+next 검색 상위 5개가 Next.js 관련 글로 노출
+Google Cloud Next 행사 글은 상위 5 밖으로 밀림
+```
+
+평가셋:
+
+```text
+tech-nextjs query 추가
+query = next
+expected result = Next.js 관련 사례 5개
+```
+
+평가 결과:
+
+```text
+tech-nextjs precision@5 = 1.000
+tech-nextjs recall@10 = 1.000
+tech-nextjs mrr = 1.000
+tech-nextjs ndcg@10 = 1.000
+```
