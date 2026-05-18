@@ -3212,3 +3212,295 @@ localStorage는 같은 브라우저/컴퓨터에서 계속 유지됨
 pnpm --dir apps/web exec tsc --noEmit
 npm run build:web
 ```
+
+## 69. 글로벌 엔지니어링 블로그 5곳 추가 수집
+
+더 많은 기업 사례를 확보하기 위해 RSS 응답이 안정적으로 확인된 글로벌 엔지니어링 블로그 5곳을 source seed에 추가했습니다.
+
+추가 source:
+
+```text
+GitHub Engineering
+Cloudflare Engineering
+Datadog Engineering Blog
+Dropbox Tech Blog
+Engineering at Slack
+```
+
+보류 source:
+
+```text
+Netflix Tech Blog
+```
+
+Netflix는 후보로 함께 확인했지만, 현재 로컬 probe에서 SSL 인증서 검증 오류가 발생해 이번 라운드에서는 제외했습니다.
+
+수집 결과:
+
+```text
+github-engineering-blog = 10
+cloudflare-engineering-blog = 14
+datadog-engineering-blog = 92
+dropbox-tech-blog = 10
+slack-engineering-blog = 8
+```
+
+총 134개 article이 신규 수집되었습니다.
+
+재처리:
+
+```bash
+npm run db:seed
+npm run crawl:rss -- --source github-engineering-blog
+npm run crawl:rss -- --source cloudflare-engineering-blog
+npm run crawl:rss -- --source datadog-engineering-blog
+npm run crawl:rss -- --source dropbox-tech-blog
+npm run crawl:rss -- --source slack-engineering-blog
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+npm run search:alias-audit
+npm run search:audit
+```
+
+재처리 결과:
+
+```text
+articles = 1673
+keywords = 3517
+indexed articles = 1673
+indexed suggestions = 87
+```
+
+검색 평가:
+
+```text
+average precision@5 = 0.420
+average recall@10 = 0.827
+average mrr = 0.844
+average ndcg@10 = 0.762
+```
+
+이전 평가보다 평균 지표가 일부 낮아졌습니다. 신규 영어권 글이 들어오면서 `go`, `observability`, `search`처럼 넓은 쿼리의 후보 풀이 커진 영향입니다. 수집 자체는 성공했지만, 다음 단계에서는 신규 source를 반영한 평가셋 보강과 ranking 조정이 필요합니다.
+
+참고:
+
+```text
+신규 영어권 source에는 아직 LLM 사례 요약을 생성하지 않음
+검색 대상에는 RSS summary/content 기준으로 포함됨
+카드의 문제/해결 맥락 품질을 높이려면 llm:summarize 후 재색인이 필요함
+```
+
+## 70. 신규 글로벌 source LLM 요약 생성
+
+글로벌 엔지니어링 블로그 5곳에서 새로 수집한 134개 article에 대해 LLM 사례 요약을 생성했습니다.
+
+요약 생성 결과:
+
+```text
+datadog-engineering-blog = 92 generated / 0 failed
+github-engineering-blog = 10 generated / 0 failed
+cloudflare-engineering-blog = 14 generated / 0 failed
+dropbox-tech-blog = 10 generated / 0 failed
+slack-engineering-blog = 8 generated / 0 failed
+```
+
+총 134개 article 요약이 실패 없이 생성되었습니다.
+
+실행:
+
+```bash
+npm run llm:summarize -- --source datadog-engineering-blog --limit 100
+npm run llm:summarize -- --source github-engineering-blog --limit 20
+npm run llm:summarize -- --source cloudflare-engineering-blog --limit 20
+npm run llm:summarize -- --source dropbox-tech-blog --limit 20
+npm run llm:summarize -- --source slack-engineering-blog --limit 20
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+npm run search:alias-audit
+npm run search:audit
+```
+
+재색인 결과:
+
+```text
+articles = 1673
+keywords = 3517
+indexed articles = 1673
+indexed suggestions = 87
+```
+
+검색 평가:
+
+```text
+average precision@5 = 0.420
+average recall@10 = 0.808
+average mrr = 0.836
+average ndcg@10 = 0.751
+```
+
+LLM 요약이 추가되면서 카드의 `문제/해결` 맥락은 풍부해졌지만, 검색 평가 평균은 낮아졌습니다. 신규 영어권 글과 LLM 요약 keyword가 검색 후보를 넓히면서 기존 정답셋이 뒤로 밀린 영향입니다.
+
+다음 작업 후보:
+
+```text
+신규 글로벌 source 기반 평가셋 보강
+go/search/observability처럼 넓은 query의 ranking 재점검
+LLM technologies/problem_keywords를 그대로 강하게 boost할지 조정
+영어권 source와 한국어 source를 query intent에 따라 균형 있게 정렬하는 정책 검토
+```
+
+## 71. 신규 글로벌 source 기반 검색 평가셋 보강
+
+GitHub, Cloudflare, Datadog, Dropbox, Slack 글이 추가되면서 기존 평가셋이 실제 검색 결과를 충분히 설명하지 못하는 문제가 생겼습니다.
+
+예를 들어 `go` 검색에서는 Datadog의 Go 성능 분석, Go binding, Go memory regression 글이 상위에 노출되었지만 기존 기대 결과에는 국내 블로그 글만 등록되어 있었습니다. 이 경우 검색 결과 자체는 의미 있었지만 평가에서는 오답으로 계산되었습니다.
+
+따라서 새로 수집한 글로벌 engineering source 중 검색 의도와 명확히 맞는 글을 기대 결과에 추가했습니다.
+
+보강한 대표 query:
+
+```text
+Lambda
+go
+observability
+incident response
+streaming data pipeline
+Change Data Capture
+검색 개선
+검색 품질 개선
+실시간 검색 인덱싱
+데이터 파이프라인
+```
+
+대표적으로 추가한 글:
+
+```text
+Datadog Lambda Extension Rust 재작성 사례
+Datadog Go profiling / Go bindings / Go memory regression 사례
+Datadog observability / incident response 사례
+Cloudflare Jetflow 데이터 파이프라인 사례
+Cloudflare platform resilience 자동화 사례
+Datadog CDC 기반 replication/search 사례
+Dropbox Dash search relevance 개선 사례
+GitHub Enterprise Server search architecture 개선 사례
+```
+
+재평가 결과:
+
+```text
+average precision@5 = 0.468
+average recall@10 = 0.834
+average mrr = 0.879
+average ndcg@10 = 0.788
+```
+
+직전 평가:
+
+```text
+average precision@5 = 0.420
+average recall@10 = 0.808
+average mrr = 0.836
+average ndcg@10 = 0.751
+```
+
+이번 개선은 ranking 로직 변경이 아니라, 신규 데이터 유입 후 평가 기준을 현실화한 결과입니다. 앞으로 source를 크게 늘릴 때는 수집, 요약, 키워드 추출, 색인뿐 아니라 평가셋 보강까지 같은 작업 단위로 묶어야 합니다.
+
+검증:
+
+```bash
+npm run search:evaluate
+npm run search:alias-audit
+npm run search:ambiguous-audit
+npm run search:audit
+```
+
+## 72. 한국어 기술 블로그 3곳 추가 수집
+
+추가 기업 사례 확보를 위해 한국어 기술 블로그 후보를 더 확인했습니다.
+
+feed probe 결과:
+
+```text
+hyperconnect-tech-blog        200, entries=10
+watcha-tech-blog              200, entries=10
+nhn-cloud-meetup              200, entries=10
+kakao-enterprise-tech-blog    200, entries=2
+```
+
+Kakao Enterprise feed는 응답은 성공했지만 실제 기술 사례 글이 거의 없고 `About Us`가 섞여 있어 이번 라운드에서는 제외했습니다.
+
+추가한 source:
+
+```text
+hyperconnect-tech-blog
+watcha-tech-blog
+nhn-cloud-meetup
+```
+
+수집 결과:
+
+```text
+hyperconnect-tech-blog = 10
+watcha-tech-blog = 10
+nhn-cloud-meetup = 10
+```
+
+총 30개 article이 신규 수집되었습니다.
+
+새로 수집한 30개 article 전체에 대해 LLM 사례 요약도 생성했습니다.
+
+```text
+hyperconnect-tech-blog = 10 generated / 0 failed
+watcha-tech-blog = 10 generated / 0 failed
+nhn-cloud-meetup = 10 generated / 0 failed
+```
+
+재처리:
+
+```bash
+npm run db:seed
+npm run crawl:rss -- --source hyperconnect-tech-blog
+npm run crawl:rss -- --source watcha-tech-blog
+npm run crawl:rss -- --source nhn-cloud-meetup
+npm run llm:summarize -- --source hyperconnect-tech-blog --limit 20
+npm run llm:summarize -- --source watcha-tech-blog --limit 20
+npm run llm:summarize -- --source nhn-cloud-meetup --limit 20
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+npm run search:audit
+```
+
+재처리 결과:
+
+```text
+articles = 1703
+keywords = 3615
+indexed articles = 1703
+indexed suggestions = 90
+```
+
+검색 평가:
+
+```text
+average precision@5 = 0.473
+average recall@10 = 0.834
+average mrr = 0.862
+average ndcg@10 = 0.784
+```
+
+직전 평가와 비교:
+
+```text
+precision@5: 0.468 -> 0.473
+recall@10:   0.834 -> 0.834
+mrr:         0.879 -> 0.862
+ndcg@10:     0.788 -> 0.784
+```
+
+신규 source는 AI, 추천, MLOps, ClickHouse, 인증서/보안, 클라우드 비용 최적화 사례를 보강합니다. 평가셋에는 아직 이 신규 의도가 충분히 반영되지 않았으므로, 다음에는 `추천 시스템`, `MLOps`, `ClickHouse`, `mTLS`, `클라우드 비용 최적화` 같은 query를 추가하는 것이 좋습니다.

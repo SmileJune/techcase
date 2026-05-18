@@ -62,6 +62,9 @@ content_strategy
 | 무신사 | MUSINSA Tech Blog | `https://techblog.musinsa.com` | `https://techblog.musinsa.com/feed` | 200, entry 10개 | `rss / none / feed_only` |
 | 29CM | 29CM TEAM | `https://medium.com/29cm` | `https://medium.com/feed/29cm` | 200, entry 10개 | `rss / none / feed_only` |
 | 데브시스터즈 | Devsisters 기술 블로그 | `https://tech.devsisters.com` | `https://tech.devsisters.com/rss.xml` | 200, entry 66개 | `rss / none / feed_only` |
+| 하이퍼커넥트 | Hyperconnect Tech Blog | `https://hyperconnect.github.io` | `https://hyperconnect.github.io/feed.xml` | 200, entry 10개 | `rss / none / feed_only` |
+| 왓챠 | Watcha Tech Blog | `https://medium.com/watcha` | `https://medium.com/feed/watcha` | 200, entry 10개 | `rss / none / feed_only` |
+| NHN Cloud | NHN Cloud Meetup | `https://meetup.nhncloud.com` | `https://meetup.nhncloud.com/rss` | 200, entry 10개 | `rss / none / feed_only` |
 
 ### 별도 수집기 검토가 필요한 후보
 
@@ -185,3 +188,98 @@ G마켓은 RSS 페이지네이션이 실제로는 같은 최신 글만 반복해
 이번 추가 라운드에서 총 196개 article을 신규 수집했습니다.
 
 Sendbird는 sitemap이 크고 기술 글도 일부 포함하지만, 제품/마케팅 글이 많이 섞여 한국어 기술 사례 source로 바로 넣기에는 품질 검증이 더 필요합니다.
+
+2026-05-18에 글로벌 엔지니어링 블로그 5곳을 추가했습니다. 한국어 source를 우선한다는 방향은 유지하되, 검색/인프라/관측성/플랫폼 엔지니어링 사례를 보강하기 위해 RSS 품질이 확인된 source만 먼저 넣었습니다.
+
+추가 전 feed probe 결과:
+
+| Source | Feed 응답 | Entry 수 | 비고 |
+| --- | ---: | ---: | --- |
+| `github-engineering-blog` | 200 | 10 | engineering category feed |
+| `cloudflare-engineering-blog` | 200 | 14 | engineering tag feed |
+| `datadog-engineering-blog` | 200 | 92 | engineering XML feed |
+| `dropbox-tech-blog` | 200 | 10 | 전체 tech feed |
+| `slack-engineering-blog` | 200 | 8 | WordPress feed |
+
+수집 결과:
+
+| Source | 전략 | 수집 결과 |
+| --- | --- | ---: |
+| `github-engineering-blog` | `rss / none / feed_only` | 10 |
+| `cloudflare-engineering-blog` | `rss / none / feed_only` | 14 |
+| `datadog-engineering-blog` | `rss / none / feed_only` | 92 |
+| `dropbox-tech-blog` | `rss / none / feed_only` | 10 |
+| `slack-engineering-blog` | `rss / none / feed_only` | 8 |
+
+이번 추가 라운드에서 총 134개 article을 신규 수집했습니다.
+
+Netflix Tech Blog도 후보였지만 현재 로컬 probe에서 SSL 인증서 검증 오류가 발생해 이번 라운드에서는 제외했습니다. 브라우저 또는 배포 환경에서 정상 접근 여부를 별도로 확인한 뒤 추가합니다.
+
+신규 영어권 source는 아직 LLM 사례 요약을 생성하지 않았습니다. RSS summary만으로도 검색 대상에는 포함되지만, 카드의 `문제/해결` 품질을 높이려면 이후 `llm:summarize`를 별도로 실행해야 합니다.
+
+2026-05-18에 신규 글로벌 source 134개 article 전체에 대해 LLM 사례 요약을 생성했습니다.
+
+| Source | LLM 요약 결과 |
+| --- | ---: |
+| `cloudflare-engineering-blog` | 14 |
+| `datadog-engineering-blog` | 92 |
+| `dropbox-tech-blog` | 10 |
+| `github-engineering-blog` | 10 |
+| `slack-engineering-blog` | 8 |
+
+총 134개 요약이 생성되었고 실패 건수는 0개입니다.
+
+LLM 요약 반영 후 검색 평가 평균은 낮아졌습니다. 신규 영어권 글과 LLM 요약 keyword가 검색 후보를 넓히면서 기존 평가셋의 정답 문서가 일부 뒤로 밀렸기 때문입니다. 따라서 다음 수집 확장 단계에서는 article 수 증가와 함께 평가셋도 반드시 함께 보강합니다.
+
+이후 신규 글로벌 source를 반영해 검색 평가셋을 보강했습니다. Datadog의 Go/Lambda/observability 사례, Cloudflare의 데이터 파이프라인/플랫폼 복원력 사례, Dropbox와 GitHub의 검색 품질/검색 아키텍처 사례를 기대 결과에 추가했습니다.
+
+평가셋 보강 후 검색 평가 평균은 다음과 같이 재측정되었습니다.
+
+| Metric | 보강 전 | 보강 후 |
+| --- | ---: | ---: |
+| `precision@5` | 0.420 | 0.468 |
+| `recall@10` | 0.808 | 0.834 |
+| `mrr` | 0.836 | 0.879 |
+| `ndcg@10` | 0.751 | 0.788 |
+
+이는 검색 로직을 바꿔 얻은 개선이 아니라, 신규 source 유입으로 생긴 유효한 검색 결과를 평가 기준에 반영한 결과입니다. 앞으로 source를 추가할 때는 수집 가능한 글 수뿐 아니라 해당 source가 어떤 query intent를 강화하는지도 함께 기록합니다.
+
+2026-05-18에 한국어 기술 블로그 3곳을 추가 수집했습니다.
+
+추가 전 feed probe 결과:
+
+| Source | Feed 응답 | Entry 수 | 비고 |
+| --- | ---: | ---: | --- |
+| `hyperconnect-tech-blog` | 200 | 10 | AI, 추천, 실시간 통신, 인프라 사례 |
+| `watcha-tech-blog` | 200 | 10 | 추천, MLOps, 클라우드 비용, 마이그레이션 사례 |
+| `nhn-cloud-meetup` | 200 | 10 | DB, 보안, 클라우드, 개발 생산성 사례 |
+
+수집 및 요약 결과:
+
+| Source | 수집 결과 | LLM 요약 결과 |
+| --- | ---: | ---: |
+| `hyperconnect-tech-blog` | 10 | 10 |
+| `watcha-tech-blog` | 10 | 10 |
+| `nhn-cloud-meetup` | 10 | 10 |
+
+이번 추가 라운드에서 총 30개 article을 신규 수집했고, 모두 LLM 사례 요약까지 생성했습니다.
+
+재처리 결과:
+
+| 항목 | 결과 |
+| --- | ---: |
+| 전체 article | 1703 |
+| 추출 keyword | 3615 |
+| Elasticsearch article 색인 | 1703 |
+| suggestion 색인 | 90 |
+
+검색 평가:
+
+| Metric | 이전 | 이번 |
+| --- | ---: | ---: |
+| `precision@5` | 0.468 | 0.473 |
+| `recall@10` | 0.834 | 0.834 |
+| `mrr` | 0.879 | 0.862 |
+| `ndcg@10` | 0.788 | 0.784 |
+
+`precision@5`는 소폭 상승했지만, 일부 broad query에서 신규 후보가 상위에 섞이면서 `mrr`, `ndcg@10`은 소폭 하락했습니다. 다음 단계에서는 새 source에서 들어온 AI/추천/MLOps/ClickHouse/보안 관련 글을 평가셋에 보강하거나, query intent별 ranking 조정을 검토합니다.

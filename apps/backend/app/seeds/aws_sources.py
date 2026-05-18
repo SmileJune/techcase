@@ -342,6 +342,115 @@ KOREAN_TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = (
         language="ko",
         country="KR",
     ),
+    SourceSeed(
+        name="Hyperconnect Tech Blog",
+        slug="hyperconnect-tech-blog",
+        company_name="Hyperconnect",
+        feed_url="https://hyperconnect.github.io/feed.xml",
+        site_url="https://hyperconnect.github.io",
+        description=(
+            "Hyperconnect AI, media, realtime communication, mobile, "
+            "backend, and infrastructure engineering cases."
+        ),
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="Watcha Tech Blog",
+        slug="watcha-tech-blog",
+        company_name="Watcha",
+        feed_url="https://medium.com/feed/watcha",
+        site_url="https://medium.com/watcha",
+        description=(
+            "Watcha media service, recommendation, data, backend, "
+            "frontend, and cloud engineering cases."
+        ),
+        language="ko",
+        country="KR",
+    ),
+    SourceSeed(
+        name="NHN Cloud Meetup",
+        slug="nhn-cloud-meetup",
+        company_name="NHN Cloud",
+        feed_url="https://meetup.nhncloud.com/rss",
+        site_url="https://meetup.nhncloud.com",
+        description=(
+            "NHN Cloud infrastructure, database, security, cloud, "
+            "backend, and platform engineering cases."
+        ),
+        language="ko",
+        country="KR",
+    ),
 )
 
-TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = AWS_SOURCES + KOREAN_TECH_BLOG_SOURCES
+GLOBAL_ENGINEERING_BLOG_SOURCES: tuple[SourceSeed, ...] = (
+    SourceSeed(
+        name="GitHub Engineering",
+        slug="github-engineering-blog",
+        company_name="GitHub",
+        feed_url="https://github.blog/engineering/feed/",
+        site_url="https://github.blog/engineering/",
+        description=(
+            "GitHub developer platform, code search, infrastructure, "
+            "performance, and engineering productivity cases."
+        ),
+        language="en",
+        country="global",
+    ),
+    SourceSeed(
+        name="Cloudflare Engineering",
+        slug="cloudflare-engineering-blog",
+        company_name="Cloudflare",
+        feed_url="https://blog.cloudflare.com/tag/engineering/rss/",
+        site_url="https://blog.cloudflare.com/tag/engineering/",
+        description=(
+            "Cloudflare network, CDN, edge computing, security, "
+            "observability, and infrastructure engineering cases."
+        ),
+        language="en",
+        country="global",
+    ),
+    SourceSeed(
+        name="Datadog Engineering Blog",
+        slug="datadog-engineering-blog",
+        company_name="Datadog",
+        feed_url="https://www.datadoghq.com/blog/engineering/index.xml",
+        site_url="https://www.datadoghq.com/blog/engineering/",
+        description=(
+            "Datadog observability, metrics, tracing, backend, "
+            "frontend, and infrastructure engineering cases."
+        ),
+        language="en",
+        country="global",
+    ),
+    SourceSeed(
+        name="Dropbox Tech Blog",
+        slug="dropbox-tech-blog",
+        company_name="Dropbox",
+        feed_url="https://dropbox.tech/feed",
+        site_url="https://dropbox.tech",
+        description=(
+            "Dropbox storage, synchronization, reliability, "
+            "platform, and infrastructure engineering cases."
+        ),
+        language="en",
+        country="global",
+    ),
+    SourceSeed(
+        name="Engineering at Slack",
+        slug="slack-engineering-blog",
+        company_name="Slack",
+        feed_url="https://slack.engineering/feed/",
+        site_url="https://slack.engineering",
+        description=(
+            "Slack messaging platform, data infrastructure, security, "
+            "backend, and reliability engineering cases."
+        ),
+        language="en",
+        country="global",
+    ),
+)
+
+TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = (
+    AWS_SOURCES + KOREAN_TECH_BLOG_SOURCES + GLOBAL_ENGINEERING_BLOG_SOURCES
+)
