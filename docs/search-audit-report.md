@@ -1,14 +1,14 @@
 # Search Audit Report
 
-Generated at: 2026-05-18T10:32:20.799614+00:00
+Generated at: 2026-05-18T12:29:25.118322+00:00
 
 ## Summary
 
 - queries: 41
-- average precision@5: 0.459
-- average recall@10: 0.823
-- average mrr: 0.875
-- average ndcg@10: 0.780
+- average precision@5: 0.444
+- average recall@10: 0.809
+- average mrr: 0.845
+- average ndcg@10: 0.758
 
 ## Query Audits
 
@@ -16,11 +16,11 @@ Generated at: 2026-05-18T10:32:20.799614+00:00
 
 - category: technology
 - intent: AWS Lambda가 실제로 어떤 서버리스/관측성/고성능 워크로드 사례에 사용되는지 찾는다.
-- total results: 91
+- total results: 98
 - precision@5: 0.400
 - recall@10: 0.500
-- mrr: 1.000
-- ndcg@10: 0.618
+- mrr: 0.250
+- ndcg@10: 0.353
 
 #### Expected URLs
 
@@ -33,39 +33,20 @@ Generated at: 2026-05-18T10:32:20.799614+00:00
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Squeezing every millisecond: How we rebuilt the Datadog Lambda Extension in Rust](https://www.datadoghq.com/blog/engineering/datadog-lambda-extension-rust/) | Datadog / Datadog Engineering Blog | 450.02 | AWS Lambda, observability |
-| 2 | - | [.NET 10 runtime now available in AWS Lambda](https://aws.amazon.com/blogs/compute/net-10-runtime-now-available-in-aws-lambda/) | AWS / AWS Compute Blog | 442.91 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon EC2, migration, observability |
-| 3 | - | [lambda@edge를 활용한 이미지 워터마킹](https://medium.com/zigbang/lambda-edge%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%9B%8C%ED%84%B0%EB%A7%88%ED%82%B9-41f1cb282682?source=rss----2f055286701b---4) | Zigbang / Zigbang Tech Blog | 439.99 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon S3, Node.js |
-| 4 | expected:3 | [Building Memory-Intensive Apps with AWS Lambda Managed Instances](https://aws.amazon.com/blogs/compute/building-memory-intensive-apps-with-aws-lambda-managed-instances/) | AWS / AWS Compute Blog | 429.56 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon S3 |
-| 5 | - | [Building fault-tolerant applications with AWS Lambda durable functions](https://aws.amazon.com/blogs/compute/building-fault-tolerant-long-running-application-with-aws-lambda-durable-functions/) | AWS / AWS Compute Blog | 427.29 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon S3 |
-| 6 | - | [Build high-performance apps with AWS Lambda Managed Instances](https://aws.amazon.com/blogs/compute/build-high-performance-apps-with-aws-lambda-managed-instances/) | AWS / AWS Compute Blog | 422.42 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2, Amazon EventBridge |
-| 7 | - | [Automate AWS Lambda Runtime Upgrades with AWS Transform custom](https://aws.amazon.com/blogs/devops/automate-aws-lambda-runtime-upgrades-with-aws-transform-custom/) | AWS / AWS DevOps Blog | 422.42 | AWS CDK, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2 |
-| 8 | - | [잘못 작성된 람다 코드를 삭제하기까지의 여정](https://helloworld.kurly.com/blog/study-in-lambda/) | Kurly / Kurly Tech Blog | 414.20 | AWS Lambda |
-| 9 | - | [Optimizing Compute-Intensive Serverless Workloads with Multi-threaded Rust on AWS Lambda](https://aws.amazon.com/blogs/compute/optimizing-compute-intensive-serverless-workloads-with-multi-threaded-rust-on-aws-lambda/) | AWS / AWS Compute Blog | 400.41 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Node.js, observability |
-| 10 | - | [Lambda Calculus에 대해 알아보자](https://helloworld.kurly.com/blog/lambda-calculus-1/) | Kurly / Kurly Tech Blog | 370.74 | AWS Lambda |
+| 1 | - | [.NET 10 runtime now available in AWS Lambda](https://aws.amazon.com/blogs/compute/net-10-runtime-now-available-in-aws-lambda/) | AWS / AWS Compute Blog | 468.16 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon EC2, migration, observability |
+| 2 | - | [lambda@edge를 활용한 이미지 워터마킹](https://medium.com/zigbang/lambda-edge%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%9B%8C%ED%84%B0%EB%A7%88%ED%82%B9-41f1cb282682?source=rss----2f055286701b---4) | Zigbang / Zigbang Tech Blog | 460.64 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon S3, Node.js |
+| 3 | - | [Building fault-tolerant applications with AWS Lambda durable functions](https://aws.amazon.com/blogs/compute/building-fault-tolerant-long-running-application-with-aws-lambda-durable-functions/) | AWS / AWS Compute Blog | 449.46 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon S3 |
+| 4 | expected:3 | [Squeezing every millisecond: How we rebuilt the Datadog Lambda Extension in Rust](https://www.datadoghq.com/blog/engineering/datadog-lambda-extension-rust/) | Datadog / Datadog Engineering Blog | 448.84 | AWS Lambda, observability |
+| 5 | expected:3 | [Building Memory-Intensive Apps with AWS Lambda Managed Instances](https://aws.amazon.com/blogs/compute/building-memory-intensive-apps-with-aws-lambda-managed-instances/) | AWS / AWS Compute Blog | 447.12 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon S3 |
+| 6 | - | [Build high-performance apps with AWS Lambda Managed Instances](https://aws.amazon.com/blogs/compute/build-high-performance-apps-with-aws-lambda-managed-instances/) | AWS / AWS Compute Blog | 446.56 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2, Amazon EventBridge |
+| 7 | - | [Automate AWS Lambda Runtime Upgrades with AWS Transform custom](https://aws.amazon.com/blogs/devops/automate-aws-lambda-runtime-upgrades-with-aws-transform-custom/) | AWS / AWS DevOps Blog | 446.56 | AWS CDK, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2 |
+| 8 | - | [잘못 작성된 람다 코드를 삭제하기까지의 여정](https://helloworld.kurly.com/blog/study-in-lambda/) | Kurly / Kurly Tech Blog | 426.10 | AWS Lambda |
+| 9 | - | [Optimizing Compute-Intensive Serverless Workloads with Multi-threaded Rust on AWS Lambda](https://aws.amazon.com/blogs/compute/optimizing-compute-intensive-serverless-workloads-with-multi-threaded-rust-on-aws-lambda/) | AWS / AWS Compute Blog | 415.22 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Node.js, observability |
+| 10 | - | [Lambda Calculus에 대해 알아보자](https://helloworld.kurly.com/blog/lambda-calculus-1/) | Kurly / Kurly Tech Blog | 385.61 | AWS Lambda |
 
 #### Top Result Details
 
-##### 1. Squeezing every millisecond: How we rebuilt the Datadog Lambda Extension in Rust
-
-- match: expected relevance 3
-- source: Datadog / Datadog Engineering Blog
-- url: https://www.datadoghq.com/blog/engineering/datadog-lambda-extension-rust/
-- technologies: AWS Lambda
-- problem keywords: observability
-- case summary: Datadog은 Lambda Extension을 Rust로 재작성하여 콜드 스타트 시간을 82% 단축하고, 바이너리 크기를 87% 축소하며, 메모리 사용량도 크게 줄였다.
-- problem: 기존 Datadog Lambda Extension이 AWS Lambda 환경에서 콜드 스타트 지연과 높은 메모리 사용 문제를 겪고 있었다.
-- solution: Rust 언어로 Lambda Extension을 재구현하여 실행 효율성을 극대화하고, 빠른 시작 시간과 낮은 메모리 사용을 달성했다.
-
-Highlights:
-
-- title: Squeezing every millisecond: How we rebuilt the Datadog **Lambda** Extension in Rust
-- caseSummary: Datadog은 **Lambda** Extension을 Rust로 재작성하여 콜드 스타트 시간을 82% 단축하고, 바이너리 크기를 87% 축소하며, 메모리 사용량도 크게 줄였다.
-- caseProblem: 기존 Datadog **Lambda** Extension이 **AWS Lambda** 환경에서 콜드 스타트 지연과 높은 메모리 사용 문제를 겪고 있었다.
-- caseSolution: Rust 언어로 **Lambda** Extension을 재구현하여 실행 효율성을 극대화하고, 빠른 시작 시간과 낮은 메모리 사용을 달성했다.
-- summary: Learn how we rewrote the Datadog **Lambda** Extension in Rust, cutting cold starts by 82 percent, shrinking
-
-##### 2. .NET 10 runtime now available in AWS Lambda
+##### 1. .NET 10 runtime now available in AWS Lambda
 
 - match: not expected
 - source: AWS / AWS Compute Blog
@@ -85,7 +66,7 @@ Highlights:
 - content: If using **aws-lambda**-tools-defaults.json , then set function-runtime to dotnet10 . 5. Run dotnet **lambda** deploy-function to deploy.
 - content: Right-click the project in Solution Explorer and choose Publish to **AWS Lambda** .
 
-##### 3. lambda@edge를 활용한 이미지 워터마킹
+##### 2. lambda@edge를 활용한 이미지 워터마킹
 
 - match: not expected
 - source: Zigbang / Zigbang Tech Blog
@@ -105,16 +86,35 @@ Highlights:
 - summary: 이번 포스팅에서는 **AWS lambda**@edge를 활용하여 이미지에 워터마킹 하는방법에 대해서 이야기 해보겠습니다.
 - summary: 다음은 **lambda**@edge 에 대한 AWS 에 설명입니다.
 
+##### 3. Building fault-tolerant applications with AWS Lambda durable functions
+
+- match: not expected
+- source: AWS / AWS Compute Blog
+- url: https://aws.amazon.com/blogs/compute/building-fault-tolerant-long-running-application-with-aws-lambda-durable-functions/
+- technologies: AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon S3, LLM, Node.js
+- problem keywords: high availability
+- case summary: AWS Lambda Durable Functions를 활용해 다단계, 장기 실행 비즈니스 애플리케이션에서 장애 허용성과 상태 관리 문제를 해결하는 사례이다.
+- problem: 장기 실행 및 다단계 작업을 포함하는 비즈니스 프로세스에서 중단이나 실패 발생 시 상태 추적과 복구를 직접 구현해야 하는 복잡성과 비용 문제.
+- solution: AWS Lambda Durable Functions를 사용해 내장된 체크포인트, 자동 재시도, 상태 복원, 최대 1년 대기 기능을 통해 장애 허용성을 확보하고 개발자가 비즈니스 로직에 집중할 수 있도록 함.
+
+Highlights:
+
+- title: Building fault-tolerant applications with **AWS Lambda** durable functions
+- caseSummary: **AWS Lambda** Durable Functions를 활용해 다단계, 장기 실행 비즈니스 애플리케이션에서 장애 허용성과 상태 관리 문제를 해결하는 사례이다.
+- caseSolution: **AWS Lambda** Durable Functions를 사용해 내장된 체크포인트, 자동 재시도, 상태 복원, 최대 1년 대기 기능을 통해 장애 허용성을 확보하고 개발자가 비즈니스 로직에
+- content: At re:Invent 2025, Amazon Web Services (AWS) launched **AWS Lambda** durable functions, a new capability extending Lambda’s event-driven programming model with built-in
+- content: Conclusion **AWS Lambda** durable functions extends the **Lambda** programming model to streamline building fault-tolerant, long-running applications using familiar programming
+
 
 ### tech-dynamodb - `DynamoDB`
 
 - category: technology
 - intent: DynamoDB 마이그레이션, 데이터 export, 분석 연동 사례를 찾는다.
-- total results: 41
-- precision@5: 0.400
+- total results: 44
+- precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
-- ndcg@10: 0.896
+- ndcg@10: 0.903
 
 #### Expected URLs
 
@@ -126,16 +126,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Filter, transform, and load your DynamoDB table exports using AWS Glue](https://aws.amazon.com/blogs/database/filter-transform-and-load-your-dynamodb-table-exports-using-aws-glue/) | AWS / AWS Database Blog | 439.88 | AWS Glue, Amazon DynamoDB, Amazon S3, Java, migration, observability |
-| 2 | - | [멀티 클라우드 환경에서의 데이터 마이그레이션 시스템 구축](https://medium.com/watcha/%EB%A9%80%ED%8B%B0-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-420394a212d2?source=rss----bd1678892a27---4) | Watcha / Watcha Tech Blog | 405.42 | AWS IAM, Amazon DynamoDB, Amazon S3, Kubernetes, migration, observability |
-| 3 | expected:3 | [Zero-downtime DynamoDB construct migration: from Table to TableV2 with cdk orphan](https://aws.amazon.com/blogs/database/zero-downtime-dynamodb-construct-migration-from-table-to-tablev2-with-cdk-orphan/) | AWS / AWS Database Blog | 398.19 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Node.js |
-| 4 | - | [Spring Boot에서 Repository로 DynamoDB 조작하기 (1) – 설정부터 실행까지](https://techblog.woowahan.com/2633/) | Woowa Brothers / Woowa Tech Blog | 396.90 | Amazon DynamoDB, JPA, Java, React, Spring Boot, performance optimization |
-| 5 | - | [Spring Boot에서 Repository로 DynamoDB 조작하기 (2) – Gradle을 활용해 실행 & 테스팅 환경 구축](https://techblog.woowahan.com/2634/) | Woowa Brothers / Woowa Tech Blog | 359.57 | Amazon DynamoDB, Java, Spring Boot |
-| 6 | expected:2 | [Improve DynamoDB analytics with AWS Glue zero-ETL schema and partition controls](https://aws.amazon.com/blogs/big-data/improve-dynamodb-analytics-with-aws-glue-zero-etl-schema-and-partition-controls/) | AWS / AWS Big Data Blog | 359.57 | AWS Glue, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon S3, Apache Iceberg |
-| 7 | - | [LocalStack을 활용한 Integration Test 환경 만들기](https://techblog.woowahan.com/2638/) | Woowa Brothers / Woowa Tech Blog | 328.14 | AWS Lambda, Amazon DynamoDB, Amazon S3, Java, Spring Boot |
-| 8 | - | [Serverless ICYMI Q1 2026](https://aws.amazon.com/blogs/compute/serverless-icymi-q1-2026/) | AWS / AWS Compute Blog | 327.35 | AWS CDK, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EventBridge, Java |
-| 9 | - | [Inside the feature store powering real-time AI in Dropbox Dash](https://dropbox.tech/machine-learning/feature-store-powering-realtime-ai-in-dropbox-dash) | Dropbox / Dropbox Tech Blog | 306.88 | Amazon DynamoDB, LLM, search, observability, performance optimization |
-| 10 | - | [Build a multi-tenant configuration system with tagged storage patterns](https://aws.amazon.com/blogs/architecture/build-a-multi-tenant-configuration-system-with-tagged-storage-patterns/) | AWS / AWS Architecture Blog | 251.67 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon ElastiCache |
+| 1 | expected:3 | [Filter, transform, and load your DynamoDB table exports using AWS Glue](https://aws.amazon.com/blogs/database/filter-transform-and-load-your-dynamodb-table-exports-using-aws-glue/) | AWS / AWS Database Blog | 445.04 | AWS Glue, Amazon DynamoDB, Amazon S3, Java, migration, observability |
+| 2 | - | [멀티 클라우드 환경에서의 데이터 마이그레이션 시스템 구축](https://medium.com/watcha/%EB%A9%80%ED%8B%B0-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-420394a212d2?source=rss----bd1678892a27---4) | Watcha / Watcha Tech Blog | 413.84 | AWS IAM, Amazon DynamoDB, Amazon S3, Kubernetes, migration, observability |
+| 3 | expected:3 | [Zero-downtime DynamoDB construct migration: from Table to TableV2 with cdk orphan](https://aws.amazon.com/blogs/database/zero-downtime-dynamodb-construct-migration-from-table-to-tablev2-with-cdk-orphan/) | AWS / AWS Database Blog | 408.10 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Node.js |
+| 4 | - | [Spring Boot에서 Repository로 DynamoDB 조작하기 (1) – 설정부터 실행까지](https://techblog.woowahan.com/2633/) | Woowa Brothers / Woowa Tech Blog | 407.48 | Amazon DynamoDB, JPA, Java, React, Spring Boot, performance optimization |
+| 5 | expected:2 | [Improve DynamoDB analytics with AWS Glue zero-ETL schema and partition controls](https://aws.amazon.com/blogs/big-data/improve-dynamodb-analytics-with-aws-glue-zero-etl-schema-and-partition-controls/) | AWS / AWS Big Data Blog | 370.97 | AWS Glue, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon S3, Apache Iceberg |
+| 6 | - | [Spring Boot에서 Repository로 DynamoDB 조작하기 (2) – Gradle을 활용해 실행 & 테스팅 환경 구축](https://techblog.woowahan.com/2634/) | Woowa Brothers / Woowa Tech Blog | 370.97 | Amazon DynamoDB, Java, Spring Boot |
+| 7 | - | [Serverless ICYMI Q1 2026](https://aws.amazon.com/blogs/compute/serverless-icymi-q1-2026/) | AWS / AWS Compute Blog | 332.55 | AWS CDK, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EventBridge, Java |
+| 8 | - | [LocalStack을 활용한 Integration Test 환경 만들기](https://techblog.woowahan.com/2638/) | Woowa Brothers / Woowa Tech Blog | 330.41 | AWS Lambda, Amazon DynamoDB, Amazon S3, Java, Spring Boot |
+| 9 | - | [Inside the feature store powering real-time AI in Dropbox Dash](https://dropbox.tech/machine-learning/feature-store-powering-realtime-ai-in-dropbox-dash) | Dropbox / Dropbox Tech Blog | 311.00 | Amazon DynamoDB, LLM, search, observability, performance optimization |
+| 10 | - | [Build a multi-tenant configuration system with tagged storage patterns](https://aws.amazon.com/blogs/architecture/build-a-multi-tenant-configuration-system-with-tagged-storage-patterns/) | AWS / AWS Architecture Blog | 257.78 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon ElastiCache |
 
 #### Top Result Details
 
@@ -203,7 +203,7 @@ Highlights:
 
 - category: technology
 - intent: Amazon EKS 운영, 환경 프로비저닝, 이벤트 대응 사례를 찾는다.
-- total results: 32
+- total results: 39
 - precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
@@ -219,16 +219,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:2 | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog | 480.76 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EKS, Java |
-| 2 | expected:3 | [How Generali Malaysia optimizes operations with Amazon EKS](https://aws.amazon.com/blogs/architecture/how-generali-malaysia-optimizes-operations-with-amazon-eks/) | AWS / AWS Architecture Blog | 459.52 | AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Kubernetes, cost optimization |
-| 3 | - | [EKS Anywhere 구축기](https://techblog.woowahan.com/10221/) | Woowa Brothers / Woowa Tech Blog | 445.67 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon S3 |
-| 4 | - | [Optimizing storage performance for Amazon EKS on AWS Outposts](https://aws.amazon.com/blogs/compute/optimizing-storage-performance-for-amazon-eks-on-aws-outposts/) | AWS / AWS Compute Blog | 435.94 | AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
-| 5 | expected:3 | [Deloitte optimizes EKS environment provisioning and achieves 89% faster testing environments using Amazon EKS and vCluster](https://aws.amazon.com/blogs/architecture/deloitte-optimizes-eks-environment-provisioning-and-achieves-89-faster-testing-environments-using-amazon-eks-and-vcluster/) | AWS / AWS Architecture Blog | 413.94 | AWS IAM, Amazon EC2, Amazon EKS, Amazon VPC, Kubernetes, cost optimization |
-| 6 | - | [EKS Bottlerocket에서 이미지 캐싱으로 Pull 시간 줄이기](https://tech.inflab.com/20250421-bottlerocket-volume-image-cache/) | Inflab / Inflab Tech Blog | 394.09 | AWS CloudFormation, Amazon EC2, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
-| 7 | - | [EKS Bottlerocket AMI에서 DCGM 오류로 GPU 노드 반복 교체 문제 해결기](https://tech.inflab.com/20250827-bottlerocket-ami-gpu-issue/) | Inflab / Inflab Tech Blog | 387.74 | Amazon EC2, Amazon EKS, Kubernetes, observability |
-| 8 | - | [Job 워크로드를 위한 EKS Node Group 오토스케일링 도입기](https://medium.com/daangn/job-%EC%9B%8C%ED%81%AC%EB%A1%9C%EB%93%9C%EB%A5%BC-%EC%9C%84%ED%95%9C-eks-node-group-%EC%98%A4%ED%86%A0%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%A7%81-%EB%8F%84%EC%9E%85%EA%B8%B0-a6a28376d153?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 384.63 | Amazon EC2, Amazon EKS, Amazon VPC, Istio, Kubernetes, cost optimization |
-| 9 | - | [EKS에서 쿠버네티스 포드의 IAM 권한 제어하기: Pod Identity Webhook](https://tech.devsisters.com/posts/pod-iam-role) | Devsisters / Devsisters Tech Blog | 379.71 | AWS IAM, Amazon EC2, Amazon EKS, Kubernetes |
-| 10 | - | [Our Journey to Autoscaling EKS Node Groups for Job Workloads](https://medium.com/daangn/our-journey-to-autoscaling-eks-node-groups-for-job-workloads-e8a6a7ed845e?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 368.45 | Amazon EC2, Amazon EKS, Amazon VPC, Istio, Kubernetes, cost optimization |
+| 1 | expected:2 | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog | 508.68 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EKS, Java |
+| 2 | expected:3 | [How Generali Malaysia optimizes operations with Amazon EKS](https://aws.amazon.com/blogs/architecture/how-generali-malaysia-optimizes-operations-with-amazon-eks/) | AWS / AWS Architecture Blog | 483.79 | AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Kubernetes, cost optimization |
+| 3 | - | [Optimizing storage performance for Amazon EKS on AWS Outposts](https://aws.amazon.com/blogs/compute/optimizing-storage-performance-for-amazon-eks-on-aws-outposts/) | AWS / AWS Compute Blog | 461.39 | AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
+| 4 | - | [EKS Anywhere 구축기](https://techblog.woowahan.com/10221/) | Woowa Brothers / Woowa Tech Blog | 454.53 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon S3 |
+| 5 | expected:3 | [Deloitte optimizes EKS environment provisioning and achieves 89% faster testing environments using Amazon EKS and vCluster](https://aws.amazon.com/blogs/architecture/deloitte-optimizes-eks-environment-provisioning-and-achieves-89-faster-testing-environments-using-amazon-eks-and-vcluster/) | AWS / AWS Architecture Blog | 432.12 | AWS IAM, Amazon EC2, Amazon EKS, Amazon VPC, Kubernetes, cost optimization |
+| 6 | - | [EKS Bottlerocket에서 이미지 캐싱으로 Pull 시간 줄이기](https://tech.inflab.com/20250421-bottlerocket-volume-image-cache/) | Inflab / Inflab Tech Blog | 400.58 | AWS CloudFormation, Amazon EC2, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
+| 7 | - | [EKS Bottlerocket AMI에서 DCGM 오류로 GPU 노드 반복 교체 문제 해결기](https://tech.inflab.com/20250827-bottlerocket-ami-gpu-issue/) | Inflab / Inflab Tech Blog | 397.13 | Amazon EC2, Amazon EKS, Kubernetes, observability |
+| 8 | - | [Job 워크로드를 위한 EKS Node Group 오토스케일링 도입기](https://medium.com/daangn/job-%EC%9B%8C%ED%81%AC%EB%A1%9C%EB%93%9C%EB%A5%BC-%EC%9C%84%ED%95%9C-eks-node-group-%EC%98%A4%ED%86%A0%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%A7%81-%EB%8F%84%EC%9E%85%EA%B8%B0-a6a28376d153?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 390.66 | Amazon EC2, Amazon EKS, Amazon VPC, Istio, Kubernetes, cost optimization |
+| 9 | - | [EKS에서 쿠버네티스 포드의 IAM 권한 제어하기: Pod Identity Webhook](https://tech.devsisters.com/posts/pod-iam-role) | Devsisters / Devsisters Tech Blog | 377.94 | AWS IAM, Amazon EC2, Amazon EKS, Kubernetes |
+| 10 | - | [Our Journey to Autoscaling EKS Node Groups for Job Workloads](https://medium.com/daangn/our-journey-to-autoscaling-eks-node-groups-for-job-workloads-e8a6a7ed845e?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 373.66 | Amazon EC2, Amazon EKS, Amazon VPC, Istio, Kubernetes, cost optimization |
 
 #### Top Result Details
 
@@ -270,32 +270,32 @@ Highlights:
 - content: Previous experience of the Generali DevOps and Cloud team was also a strong factor in selecting **Amazon EKS**.
 - content: If you’re interested in learning more about **Amazon EKS**, refer to **Amazon EKS** Best Practices Guide .
 
-##### 3. EKS Anywhere 구축기
+##### 3. Optimizing storage performance for Amazon EKS on AWS Outposts
 
 - match: not expected
-- source: Woowa Brothers / Woowa Tech Blog
-- url: https://techblog.woowahan.com/10221/
-- technologies: AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon S3, Amazon VPC, Kubernetes, search
-- problem keywords: migration, observability
-- case summary: 우아한형제들 데이터플랫폼팀은 온프레미스 Hadoop 클러스터를 재활용해 MLOps 플랫폼용 Kubernetes 클러스터를 구축하며, AWS EKS Anywhere를 활용해 베어메탈 환경에서 Kubernetes 클러스터를 설치하고 운영하는 과정에서 발생한 문제와 해결책을 공유한다.
-- problem: AWS 이관으로 온프레미스 Hadoop 인프라 사용성이 감소하고, GPU 인프라 부족 문제를 해결하기 위해 온프레미스 환경에 Kubernetes 클러스터를 구축해야 했으며, 베어메탈 환경에서 EKS Anywhere 설치 및 운영 시 기능 제한과 인증 문제 등 다양한 기술적 어려움에 직면했다.
-- solution: AWS EKS Anywhere를 선택해 베어메탈 환경에 Kubernetes 클러스터를 구축하고, Tinkerbell 오픈소스를 이용한 자동화 프로비저닝을 적용했으며, 수동 설정과 삽질을 통해 AWS IAM Authenticator 문제 등 인증 및 관리 기능 미지원 문제를 극복했다.
+- source: AWS / AWS Compute Blog
+- url: https://aws.amazon.com/blogs/compute/optimizing-storage-performance-for-amazon-eks-on-aws-outposts/
+- technologies: AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon S3, Kubernetes
+- problem keywords: cost optimization, high availability, observability, performance optimization
+- case summary: AWS Outposts 환경에서 Amazon EKS를 활용해 하이브리드 클라우드 및 엣지 컴퓨팅 워크로드를 위한 스토리지 성능 최적화 방안을 다루며, EBS, EFS, S3의 특성과 운영 고려사항을 제시한다.
+- problem: 온프레미스 인프라에서 Kubernetes 기반 워크로드를 안정적이고 고성능으로 운영하기 위해 AWS Outposts와 Amazon EKS를 활용할 때, 스토리지 성능과 가용성, 네트워크 의존성 문제를 해결해야 하는 상황.
+- solution: Amazon EKS 확장 클러스터와 로컬 클러스터 아키텍처를 통해 제어 평면 위치를 선택하고, Amazon EBS를 로컬 스토리지로 활용해 낮은 지연과 높은 처리량을 확보하며, Amazon EFS와 S3는 각각 공유 파일 시스템과 객체 저장소로 적절히 활용하되 네트워크 연결성과 비용을 고려해 최적화한다. 또한 모니터링, 보안, 비용 관리 전략을 병행 적용한다.
 
 Highlights:
 
-- title: **EKS** Anywhere 구축기
-- caseSummary: 우아한형제들 데이터플랫폼팀은 온프레미스 Hadoop 클러스터를 재활용해 MLOps 플랫폼용 Kubernetes 클러스터를 구축하며, AWS **EKS** Anywhere를 활용해 베어메탈
-- caseProblem: 이관으로 온프레미스 Hadoop 인프라 사용성이 감소하고, GPU 인프라 부족 문제를 해결하기 위해 온프레미스 환경에 Kubernetes 클러스터를 구축해야 했으며, 베어메탈 환경에서 **EKS**
-- caseSolution: AWS **EKS** Anywhere를 선택해 베어메탈 환경에 Kubernetes 클러스터를 구축하고, Tinkerbell 오픈소스를 이용한 자동화 프로비저닝을 적용했으며, 수동 설정과 삽질을
-- summary: MLOps 플랫폼 내 컨테이너를 관리하기 위한 도구로 **EKS** Anywhere를 채택하였습니다.
-- summary: 이 글에서는 **EKS** Anywhere의 소개와 함께 구축하면서 마주했던 문제들과 이를 해결한 과정에 대해 공유드리고자 합니다. 천상계로의 배달 그 이후… […]
+- title: Optimizing storage performance for **Amazon EKS** on AWS Outposts
+- caseSolution: **Amazon EKS** 확장 클러스터와 로컬 클러스터 아키텍처를 통해 제어 평면 위치를 선택하고, Amazon EBS를 로컬 스토리지로 활용해 낮은 지연과 높은 처리량을 확보하며, Amazon
+- summary: Amazon Elastic Kubernetes Service (**Amazon EKS**) on AWS Outposts brings the power of managed Kubernetes
+- summary: Use **Amazon EKS** on Outposts rack to create hybrid cloud deployments that maintain consistent AWS experiences
+- content: **Amazon EKS** on Outposts deployment options The following two sections outline the differences between **Amazon EKS** extended and local cluster deployment options available
+- content: Figure 1 : Extended cluster **Amazon EKS** local cluster architecture **Amazon EKS** local clusters deploy the Kubernetes control plane on your Outpost, as shown in the
 
 
 ### tech-opensearch - `OpenSearch`
 
 - category: technology
 - intent: OpenSearch가 검색, 관측성, 데이터 통합, 복원력 구성에 쓰인 사례를 찾는다.
-- total results: 20
+- total results: 21
 - precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
@@ -311,16 +311,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 535.01 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
-| 2 | expected:2 | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 486.71 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
-| 3 | - | [OpenSearch Analyzer를 활용한 검색기능 알아보기](https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/) | Kakao Pay / Kakao Pay Tech Blog | 466.76 | Amazon OpenSearch Service, search |
-| 4 | - | [후기 서비스 AWS Opensearch 도입기](https://helloworld.kurly.com/blog/2023-review-opensearch/) | Kurly / Kurly Tech Blog | 466.76 | Amazon OpenSearch Service |
-| 5 | expected:3 | [How to consolidate cross-Region S3 data into OpenSearch](https://aws.amazon.com/blogs/big-data/how-to-consolidate-cross-region-s3-data-into-opensearch/) | AWS / AWS Big Data Blog | 454.18 | AWS IAM, Amazon OpenSearch Service, Amazon S3, Amazon VPC, search, observability |
-| 6 | - | [배달의민족 광고데이터 이관기](https://techblog.woowahan.com/14041/) | Woowa Brothers / Woowa Tech Blog | 420.08 | Amazon OpenSearch Service, Elasticsearch, JVM, search, cost optimization, migration |
-| 7 | - | [Detect and resolve HBase inconsistencies faster with AI on Amazon EMR](https://aws.amazon.com/blogs/big-data/detect-and-resolve-hbase-inconsistencies-faster-with-ai-on-amazon-emr/) | AWS / AWS Big Data Blog | 401.37 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon OpenSearch Service |
-| 8 | - | [데이터카탈로그에서 DataHub를 이용하는 방법](https://techblog.woowahan.com/21434/) | Woowa Brothers / Woowa Tech Blog | 374.31 | Amazon EKS, Amazon OpenSearch Service, Amazon S3, Apache Kafka, Elasticsearch, Java |
-| 9 | - | [Orchestrating large-scale document processing with AWS Step Functions and Amazon Bedrock batch inference](https://aws.amazon.com/blogs/compute/orchestrating-large-scale-document-processing-with-aws-step-functions-and-amazon-bedrock-batch-inference/) | AWS / AWS Compute Blog | 336.58 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EventBridge |
-| 10 | - | [실시간 반응형 추천 개발 일지 2부: 벡터 검색, 그리고 숨겨진 요구사항과 기술 도입 의사 결정을 다루는 방법](https://techblog.woowahan.com/21027/) | Woowa Brothers / Woowa Tech Blog | 327.02 | AWS Lambda, Amazon OpenSearch Service, Amazon RDS, Kubernetes, LLM, Redis |
+| 1 | expected:3 | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 536.78 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
+| 2 | expected:2 | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 486.57 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
+| 3 | - | [OpenSearch Analyzer를 활용한 검색기능 알아보기](https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/) | Kakao Pay / Kakao Pay Tech Blog | 482.22 | Amazon OpenSearch Service, search |
+| 4 | - | [후기 서비스 AWS Opensearch 도입기](https://helloworld.kurly.com/blog/2023-review-opensearch/) | Kurly / Kurly Tech Blog | 482.22 | Amazon OpenSearch Service |
+| 5 | expected:3 | [How to consolidate cross-Region S3 data into OpenSearch](https://aws.amazon.com/blogs/big-data/how-to-consolidate-cross-region-s3-data-into-opensearch/) | AWS / AWS Big Data Blog | 467.03 | AWS IAM, Amazon OpenSearch Service, Amazon S3, Amazon VPC, search, observability |
+| 6 | - | [배달의민족 광고데이터 이관기](https://techblog.woowahan.com/14041/) | Woowa Brothers / Woowa Tech Blog | 429.80 | Amazon OpenSearch Service, Elasticsearch, JVM, search, cost optimization, migration |
+| 7 | - | [Detect and resolve HBase inconsistencies faster with AI on Amazon EMR](https://aws.amazon.com/blogs/big-data/detect-and-resolve-hbase-inconsistencies-faster-with-ai-on-amazon-emr/) | AWS / AWS Big Data Blog | 402.49 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon OpenSearch Service |
+| 8 | - | [데이터카탈로그에서 DataHub를 이용하는 방법](https://techblog.woowahan.com/21434/) | Woowa Brothers / Woowa Tech Blog | 381.48 | Amazon EKS, Amazon OpenSearch Service, Amazon S3, Apache Kafka, Elasticsearch, Java |
+| 9 | - | [Orchestrating large-scale document processing with AWS Step Functions and Amazon Bedrock batch inference](https://aws.amazon.com/blogs/compute/orchestrating-large-scale-document-processing-with-aws-step-functions-and-amazon-bedrock-batch-inference/) | AWS / AWS Compute Blog | 341.71 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EventBridge |
+| 10 | - | [실시간 반응형 추천 개발 일지 2부: 벡터 검색, 그리고 숨겨진 요구사항과 기술 도입 의사 결정을 다루는 방법](https://techblog.woowahan.com/21027/) | Woowa Brothers / Woowa Tech Blog | 331.69 | AWS Lambda, Amazon OpenSearch Service, Amazon RDS, Kubernetes, LLM, Redis |
 
 #### Top Result Details
 
@@ -387,7 +387,7 @@ Highlights:
 
 - category: technology
 - intent: Apache Flink 기반 스트리밍 애플리케이션과 데이터 파이프라인 사례를 찾는다.
-- total results: 11
+- total results: 16
 - precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
@@ -403,16 +403,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:2 | [Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink](https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/) | AWS / AWS Big Data Blog | 838.33 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
-| 2 | expected:3 | [Building unified data pipelines with Apache Iceberg and Apache Flink](https://aws.amazon.com/blogs/big-data/building-unified-data-pipelines-with-apache-iceberg-and-apache-flink/) | AWS / AWS Big Data Blog | 666.95 | AWS Glue, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon S3, Amazon VPC |
-| 3 | - | [Apache Flink 어플리케이션의 End-to-End Latency 병목 찾아내기](https://hyperconnect.github.io/2025/03/28/flink-e2e-latency.html) | Hyperconnect / Hyperconnect Tech Blog | 666.53 | Apache Flink, cost optimization, observability, performance optimization |
-| 4 | - | [Apache Flink + RocksDB 튜닝으로 광고 Frequency Capping 실시간 집계를 일주일까지 확장하기](https://toss.tech/article/flink-realtime-frequency-capping) | Toss / Toss Tech | 608.75 | Apache Flink, Apache Kafka, JVM, Java, Kubernetes, Redis |
-| 5 | expected:3 | [Build streaming applications on Amazon Managed Service for Apache Flink with AI-assisted guidance](https://aws.amazon.com/blogs/big-data/build-streaming-applications-on-amazon-managed-service-for-apache-flink-with-ai-assisted-guidance/) | AWS / AWS Big Data Blog | 565.62 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon S3, Apache Flink, Java |
-| 6 | - | [AI 실시간 추천 시스템을 위한 Flink 기반 스트림 조인 서비스 구축기](https://hyperconnect.github.io/2025/06/11/azar-flink-real-time-stream-join-service.html) | Hyperconnect / Hyperconnect Tech Blog | 431.84 | Apache Flink, Apache Kafka, Java, Redis, Spinnaker, observability |
-| 7 | - | [실시간 마케팅을 위한 PoC 개발기](https://techblog.woowahan.com/22043/) | Woowa Brothers / Woowa Tech Blog | 397.00 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
-| 8 | - | [로그 파이프라인 개선기 - 기존 파이프라인 문제 정의 및 해결 방안 적용](https://tech.socarcorp.kr/data/2025/02/25/log-pipeline-revamp.html) | SOCAR / SOCAR Tech Blog | 389.74 | AWS Lambda, Amazon MSK, Amazon S3, Apache Flink, Apache Kafka, Java |
-| 9 | - | [2조 토큰을 카테고리 분류에 쓰면서 알게된 것들](https://medium.com/daangn/2%EC%A1%B0-%ED%86%A0%ED%81%B0%EC%9D%84-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC-%EB%B6%84%EB%A5%98%EC%97%90-%EC%93%B0%EB%A9%B4%EC%84%9C-%EC%95%8C%EA%B2%8C%EB%90%9C-%EA%B2%83%EB%93%A4-f619f1db6b7b?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 389.74 | Apache Flink, Apache Kafka, Go, LLM, search, observability |
-| 10 | - | [실시간 반응형 추천 개발 일지 1부: 프로젝트 소개](https://techblog.woowahan.com/17383/) | Woowa Brothers / Woowa Tech Blog | 389.74 | Amazon RDS, Apache Flink, Apache Kafka, LLM, search, observability |
+| 1 | expected:2 | [Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink](https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/) | AWS / AWS Big Data Blog | 852.58 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
+| 2 | expected:3 | [Building unified data pipelines with Apache Iceberg and Apache Flink](https://aws.amazon.com/blogs/big-data/building-unified-data-pipelines-with-apache-iceberg-and-apache-flink/) | AWS / AWS Big Data Blog | 678.49 | AWS Glue, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon S3, Amazon VPC |
+| 3 | - | [Apache Flink 어플리케이션의 End-to-End Latency 병목 찾아내기](https://hyperconnect.github.io/2025/03/28/flink-e2e-latency.html) | Hyperconnect / Hyperconnect Tech Blog | 678.33 | Apache Flink, cost optimization, observability, performance optimization |
+| 4 | - | [Apache Flink + RocksDB 튜닝으로 광고 Frequency Capping 실시간 집계를 일주일까지 확장하기](https://toss.tech/article/flink-realtime-frequency-capping) | Toss / Toss Tech | 619.87 | Apache Flink, Apache Kafka, JVM, Java, Kubernetes, Redis |
+| 5 | expected:3 | [Build streaming applications on Amazon Managed Service for Apache Flink with AI-assisted guidance](https://aws.amazon.com/blogs/big-data/build-streaming-applications-on-amazon-managed-service-for-apache-flink-with-ai-assisted-guidance/) | AWS / AWS Big Data Blog | 567.07 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon S3, Apache Flink, Java |
+| 6 | - | [Jackson과 Scala 기반 Flink를 사용한 코드 리팩토링 과정에서 발생한 Serialization 관련 이슈 해결하기](https://hyperconnect.github.io/2023/11/20/refactoring-jackson-flink-serialization.html) | Hyperconnect / Hyperconnect Tech Blog | 457.01 | Apache Flink, Java, Kotlin, streaming data pipeline |
+| 7 | - | [AI 실시간 추천 시스템을 위한 Flink 기반 스트림 조인 서비스 구축기](https://hyperconnect.github.io/2025/06/11/azar-flink-real-time-stream-join-service.html) | Hyperconnect / Hyperconnect Tech Blog | 397.06 | Apache Flink, Apache Kafka, Java, Redis, Spinnaker, observability |
+| 8 | - | [실시간 마케팅을 위한 PoC 개발기](https://techblog.woowahan.com/22043/) | Woowa Brothers / Woowa Tech Blog | 377.74 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
+| 9 | - | [2조 토큰을 카테고리 분류에 쓰면서 알게된 것들](https://medium.com/daangn/2%EC%A1%B0-%ED%86%A0%ED%81%B0%EC%9D%84-%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC-%EB%B6%84%EB%A5%98%EC%97%90-%EC%93%B0%EB%A9%B4%EC%84%9C-%EC%95%8C%EA%B2%8C%EB%90%9C-%EA%B2%83%EB%93%A4-f619f1db6b7b?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 370.54 | Apache Flink, Apache Kafka, Go, LLM, search, observability |
+| 10 | - | [Flink SQL 도입기](https://hyperconnect.github.io/2025/02/18/flink-sql-adoption-case.html) | Hyperconnect / Hyperconnect Tech Blog | 370.54 | Amazon S3, Apache Flink, Apache Kafka, Kubernetes, Redis, high availability |
 
 #### Top Result Details
 
@@ -468,19 +468,17 @@ Highlights:
 Highlights:
 
 - title: **Apache Flink** 어플리케이션의 End-to-End Latency 병목 찾아내기
-- content: **Flink** 내부 코드 실행에 시간이 오래 걸리는 경우 반대로 처리 외 시간이 지표 상 오래 걸리면서 위와 같이 **Flink** 내부 실행에 걸리는 시간이 flame graph의 대부분을 차지하는 경우에는 **Flink** 내부 코드를 들여다볼 필요가 있습니다.
-- content: /**flink**-docs-release-2.0 https://github.com/**apache/flink** https://github.com/dropwizard/metrics
 
 
 ### tech-nextjs - `next`
 
 - category: technology
 - intent: next라는 일반 단어가 아니라 Next.js 기술 스택 관련 사례를 찾는다.
-- total results: 165
-- precision@5: 1.000
+- total results: 174
+- precision@5: 0.800
 - recall@10: 0.857
 - mrr: 1.000
-- ndcg@10: 0.949
+- ndcg@10: 0.915
 
 #### Expected URLs
 
@@ -496,16 +494,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Next.js 트러블슈팅: CORS와 Version Skew 에러 원인부터 해결까지](https://tech.kakaopay.com/post/nextjs-troubleshooting-cors-version-skew/) | Kakao Pay / Kakao Pay Tech Blog | 270.15 | Next.js |
-| 2 | expected:3 | [[디자인 시스템 어떻게 만들었어요?(3)] Tree Shaking과 구형 브라우저 대응](https://techblog.yogiyo.co.kr/%EB%94%94%EC%9E%90%EC%9D%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%A7%8C%EB%93%A4%EC%97%88%EC%96%B4%EC%9A%94-3-tree-shaking%EA%B3%BC-%EA%B5%AC%ED%98%95-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EB%8C%80%EC%9D%91-d29474baf7ba?source=rss----c1b33ccbbc42---4) | YOGIYO / YOGIYO Tech Blog | 251.16 | Next.js, React |
-| 3 | expected:3 | [CMS 모노레포 개선기: 빌드 시간 단축부터 번들 최적화까지](https://techblog.gccompany.co.kr/cms-%EB%AA%A8%EB%85%B8%EB%A0%88%ED%8F%AC-%EA%B0%9C%EC%84%A0%EA%B8%B0-%EB%B9%8C%EB%93%9C-%EC%8B%9C%EA%B0%84-%EB%8B%A8%EC%B6%95%EB%B6%80%ED%84%B0-%EB%B2%88%EB%93%A4-%EC%B5%9C%EC%A0%81%ED%99%94%EA%B9%8C%EC%A7%80-78fda1eaeaef?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 250.23 | Next.js, Spring Boot, migration |
-| 4 | expected:2 | [Todo list 만들기는 이제 그만](https://techblog.woowahan.com/2672/) | Woowa Brothers / Woowa Tech Blog | 248.80 | Next.js, Node.js, React, performance optimization |
-| 5 | expected:2 | [FE Core팀의 CI 속도전: 캐시 전략을 활용한 병렬 빌드](https://tech.socarcorp.kr/fe/2025/06/10/monorepo-ci-cd-pipeline.html) | SOCAR / SOCAR Tech Blog | 241.21 | Kubernetes, Next.js |
-| 6 | expected:2 | [기존 서비스 국제화(i18n) 작업 쉽게 덜어내기: t 함수 자동 래핑 스크립트 만들기](https://tech.inflab.com/20250206-i18n-automation/) | Inflab / Inflab Tech Blog | 240.45 | Next.js, React, migration |
-| 7 | - | [2025 프론트엔드 뉴스 한 방에 몰아 보기](https://meetup.nhncloud.com/posts/407) | NHN Cloud / NHN Cloud Meetup | 239.12 | LLM, Next.js, Node.js, React, search, migration |
-| 8 | - | [인프콘 티저 페이지 개발기 (like 해커톤)](https://tech.inflab.com/202206-infcon/) | Inflab / Inflab Tech Blog | 239.08 | Next.js, React |
-| 9 | - | [개발 파트 소개 - 2. 웹 프론트엔드 파트](https://tech.inflab.com/20240423-fe-part/) | Inflab / Inflab Tech Blog | 239.08 | Amazon EC2, Java, Next.js, Node.js, React, migration |
-| 10 | - | [FE News 26년 3월 소식을 전해드립니다!](https://d2.naver.com/news/0407747) | NAVER / NAVER D2 | 237.83 | Next.js, React |
+| 1 | expected:3 | [Next.js 트러블슈팅: CORS와 Version Skew 에러 원인부터 해결까지](https://tech.kakaopay.com/post/nextjs-troubleshooting-cors-version-skew/) | Kakao Pay / Kakao Pay Tech Blog | 280.26 | Next.js |
+| 2 | expected:3 | [[디자인 시스템 어떻게 만들었어요?(3)] Tree Shaking과 구형 브라우저 대응](https://techblog.yogiyo.co.kr/%EB%94%94%EC%9E%90%EC%9D%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%A7%8C%EB%93%A4%EC%97%88%EC%96%B4%EC%9A%94-3-tree-shaking%EA%B3%BC-%EA%B5%AC%ED%98%95-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EB%8C%80%EC%9D%91-d29474baf7ba?source=rss----c1b33ccbbc42---4) | YOGIYO / YOGIYO Tech Blog | 250.72 | Next.js, React |
+| 3 | expected:2 | [Todo list 만들기는 이제 그만](https://techblog.woowahan.com/2672/) | Woowa Brothers / Woowa Tech Blog | 249.90 | Next.js, Node.js, React, performance optimization |
+| 4 | expected:3 | [CMS 모노레포 개선기: 빌드 시간 단축부터 번들 최적화까지](https://techblog.gccompany.co.kr/cms-%EB%AA%A8%EB%85%B8%EB%A0%88%ED%8F%AC-%EA%B0%9C%EC%84%A0%EA%B8%B0-%EB%B9%8C%EB%93%9C-%EC%8B%9C%EA%B0%84-%EB%8B%A8%EC%B6%95%EB%B6%80%ED%84%B0-%EB%B2%88%EB%93%A4-%EC%B5%9C%EC%A0%81%ED%99%94%EA%B9%8C%EC%A7%80-78fda1eaeaef?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 249.50 | Next.js, Spring Boot, migration |
+| 5 | - | [JavaScript Bundle Size 최적화 (1/2)](https://hyperconnect.github.io/2019/07/29/Optimize-webview-bundle-size-1.html) | Hyperconnect / Hyperconnect Tech Blog | 247.25 | Next.js, React |
+| 6 | - | [앱 내 Webview 개발기](https://hyperconnect.github.io/2019/10/25/webview-history.html) | Hyperconnect / Hyperconnect Tech Blog | 242.76 | Next.js, React |
+| 7 | - | [JavaScript Bundle Size 최적화 (2/2)](https://hyperconnect.github.io/2019/08/14/Optimize-webview-bundle-size-2.html) | Hyperconnect / Hyperconnect Tech Blog | 242.36 | Next.js, React |
+| 8 | expected:2 | [FE Core팀의 CI 속도전: 캐시 전략을 활용한 병렬 빌드](https://tech.socarcorp.kr/fe/2025/06/10/monorepo-ci-cd-pipeline.html) | SOCAR / SOCAR Tech Blog | 242.35 | Kubernetes, Next.js |
+| 9 | expected:2 | [기존 서비스 국제화(i18n) 작업 쉽게 덜어내기: t 함수 자동 래핑 스크립트 만들기](https://tech.inflab.com/20250206-i18n-automation/) | Inflab / Inflab Tech Blog | 241.59 | Next.js, React, migration |
+| 10 | - | [개발 파트 소개 - 2. 웹 프론트엔드 파트](https://tech.inflab.com/20240423-fe-part/) | Inflab / Inflab Tech Blog | 240.23 | Amazon EC2, Java, Next.js, Node.js, React, migration |
 
 #### Top Result Details
 
@@ -545,36 +543,35 @@ Highlights:
 - content: **Next.js** automatically optimizes bundles by code splitting, tree-shaking, and other techniques.
 - content: **Next.js** 공식문서 에 따르면 fetch, URL, Object.assign() 등 자주 사용되는 폴리필이 기본으로 제공됩니다. **next**-polyfill-nomodule 을 통해 다양한 polyfill 을 주입하지만, 이는 이러한 외부 서비스들은 별도의 인프라 구축 없이 바로 사용할
 
-##### 3. CMS 모노레포 개선기: 빌드 시간 단축부터 번들 최적화까지
+##### 3. Todo list 만들기는 이제 그만
 
-- match: expected relevance 3
-- source: GC Company / GC Company Tech Blog
-- url: https://techblog.gccompany.co.kr/cms-%EB%AA%A8%EB%85%B8%EB%A0%88%ED%8F%AC-%EA%B0%9C%EC%84%A0%EA%B8%B0-%EB%B9%8C%EB%93%9C-%EC%8B%9C%EA%B0%84-%EB%8B%A8%EC%B6%95%EB%B6%80%ED%84%B0-%EB%B2%88%EB%93%A4-%EC%B5%9C%EC%A0%81%ED%99%94%EA%B9%8C%EC%A7%80-78fda1eaeaef?source=rss----18356045d353---4
-- technologies: Next.js, Spring Boot
-- problem keywords: migration
-- case summary: GC Company는 Spring Boot와 Next.js 기반의 모노레포 CMS에서 10여 개 앱의 빌드 병목 문제를 해결하기 위해 TurboRepo 병렬 빌드와 캐시 최적화, AI 기반 번들 분석을 도입하여 배포 시간을 43% 단축하고 번들 크기를 크게 줄였다.
-- problem: 10여 개 Next.js 앱을 하나의 모노레포에서 운영하며 전체 앱을 매번 순차적으로 빌드해야 했고, 이로 인해 배포 시간이 약 14분으로 길어져 개발 생산성에 큰 영향을 미쳤다.
-- solution: 빌드 환경 최적화와 TurboRepo를 활용한 병렬 빌드 및 자동 재시도 로직 도입, 빌드 캐시 설정 개선으로 빌드 시간을 단축했으며, AI 도구를 활용해 대규모 코드베이스를 분석하고 lodash 개별 import 전환, Lottie 경량화 등 단계적 번들 최적화를 진행했다.
+- match: expected relevance 2
+- source: Woowa Brothers / Woowa Tech Blog
+- url: https://techblog.woowahan.com/2672/
+- technologies: Next.js, Node.js, React
+- problem keywords: performance optimization
+- case summary: React와 Next.js 기반의 realworld.io 오픈소스 프로젝트에 Next.js 예제를 기여하며, 상태 관리를 Redux나 Mobx 없이 React local state와 Context API, SWR을 활용해 구현한 사례입니다.
+- problem: 기존 Todo list 예제는 너무 단순해 실무에 적용하기 어려우며, Next.js 기반 realworld.io 예제가 미완성 상태여서 완성도가 높은 현실적인 예제 구현이 필요했습니다.
+- solution: Next.js 환경에서 Redux나 Mobx 없이 React local state와 Context API를 활용해 상태 관리를 하고, SWR 라이브러리로 원격 데이터 페칭을 효율적으로 처리하는 구조로 realworld.io 예제를 완성하여 오픈소스에 기여했습니다.
 
 Highlights:
 
-- caseSummary: GC Company는 Spring Boot와 **Next.js** 기반의 모노레포 CMS에서 10여 개 앱의 빌드 병목 문제를 해결하기 위해 TurboRepo 병렬 빌드와 캐시 최적화, AI
-- caseProblem: 10여 개 **Next.js** 앱을 하나의 모노레포에서 운영하며 전체 앱을 매번 순차적으로 빌드해야 했고, 이로 인해 배포 시간이 약 14분으로 길어져 개발 생산성에 큰 영향을 미쳤다.
-- summary: 저희 팀은 여기어때 통합CMS를 관리하고 있습니다. 10여 개 **Next.js** 앱 을 하나의 모노레포에서 운영하고 있는데, 배포할 때마다 약 14분을 기다려야 했습니다.
-- summary: 통합CMS의 빌드 구조 저희 통합CMS는 아래와 같은 Spring Boot + **Next.js** 가 결합된 구조로 되어있습니다.
-- content: 현재 모노레포에는 10여 개 **Next.js** 앱과 공유 패키지(@packages/ui, @packages/service 등)가 있으며, 모든 앱의 빌드 결과물이 하나의 Spring Boot JAR에 포함됩니다.
-- content: **next**/cache/**", "out/**"] } } } 테스트 파일(*.test.*, *.spec.*)을 inputs에서 제외하여, 테스트 코드만 수정했을 때는 빌드 캐시가 유효하게 유지됩니다. outputs에서 .**next**/cache/**를 제외한 것은 **Next.js** 내부 캐시가 TurboRepo
+- caseSummary: React와 **Next.js** 기반의 realworld.io 오픈소스 프로젝트에 **Next.js** 예제를 기여하며, 상태 관리를 Redux나 Mobx 없이 React local state와
+- caseProblem: 기존 Todo list 예제는 너무 단순해 실무에 적용하기 어려우며, **Next.js** 기반 realworld.io 예제가 미완성 상태여서 완성도가 높은 현실적인 예제 구현이 필요했습니다
+- caseSolution: **Next.js** 환경에서 Redux나 Mobx 없이 React local state와 Context API를 활용해 상태 관리를 하고, SWR 라이브러리로 원격 데이터 페칭을 효율적으로
+- content: 제가 처음 realworld 프로젝트를 발견했을 당시에는 수많은 프론트엔드 예제 중에서 **Next.js** 예제가 없었습니다. 2019년 2월 달에 **Next.js** Issue 가 open 되었지만, 미완성인 상태로 1년의 시간이 흘러가 버린 것입니다.
+- content: 물론 제가 완성한 위의 프로젝트가 **Next.js** 를 대표하는 완벽한 예제는 아닙니다.
 
 
 ### tech-go - `go`
 
 - category: technology
 - intent: go라는 일반 동사가 아니라 Go/Golang 언어 기반 개발 사례를 찾는다.
-- total results: 93
-- precision@5: 1.000
+- total results: 106
+- precision@5: 0.800
 - recall@10: 0.900
 - mrr: 1.000
-- ndcg@10: 0.936
+- ndcg@10: 0.890
 
 #### Expected URLs
 
@@ -593,16 +590,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [뱅크샐러드 Go 코딩 컨벤션](https://blog.banksalad.com/tech/go-best-practice-in-banksalad/) | Banksalad / Banksalad Blog | 383.81 | Go |
-| 2 | expected:3 | [Profiling improvements in Go 1.18](https://www.datadoghq.com/blog/engineering/profiling-improvements-in-go-1-18/) | Datadog / Datadog Engineering Blog | 376.26 | Go |
-| 3 | expected:3 | [Releasing czlib and zstd Go bindings](https://www.datadoghq.com/blog/engineering/releasing-czlib-and-zstd-go-bindings/) | Datadog / Datadog Engineering Blog | 367.83 | Go |
-| 4 | expected:3 | [From hand-tuned Go to self-optimizing code: Building BitsEvolve](https://www.datadoghq.com/blog/engineering/self-optimizing-system/) | Datadog / Datadog Engineering Blog | 347.98 | Go, performance optimization |
-| 5 | expected:3 | [How Go 1.24's Swiss Tables saved us hundreds of gigabytes](https://www.datadoghq.com/blog/engineering/go-swiss-tables/) | Datadog / Datadog Engineering Blog | 345.38 | Go, performance optimization |
-| 6 | expected:3 | [How we tracked down a Go 1.24 memory regression across hundreds of pods](https://www.datadoghq.com/blog/engineering/go-memory-regression/) | Datadog / Datadog Engineering Blog | 343.53 | Go, observability |
-| 7 | expected:3 | [How we reduced the size of our Agent Go binaries by up to 77%](https://www.datadoghq.com/blog/engineering/agent-go-binaries/) | Datadog / Datadog Engineering Blog | 337.56 | Go |
-| 8 | expected:3 | [쿠버네티스 오퍼레이터를 Golang으로 개발해보기](https://dev.gmarket.com/102) | Gmarket / Gmarket Tech Blog | 277.96 | Go, Java, Kubernetes, Spring Boot |
-| 9 | expected:3 | [우리가 테스트를 하는 이유. 근데 이제 Golang을 곁들인](https://blog.banksalad.com/tech/why-we-do-test-by-golang/) | Banksalad / Banksalad Blog | 274.72 | Go |
-| 10 | - | [AI 코딩 도구 보안 가이드: 실제 사고 사례와 DevContainer 격리 환경 구축 방법](https://meetup.nhncloud.com/posts/396) | NHN Cloud / NHN Cloud Meetup | 263.04 | Go, Java, Node.js, observability |
+| 1 | expected:3 | [뱅크샐러드 Go 코딩 컨벤션](https://blog.banksalad.com/tech/go-best-practice-in-banksalad/) | Banksalad / Banksalad Blog | 382.47 | Go |
+| 2 | expected:3 | [Profiling improvements in Go 1.18](https://www.datadoghq.com/blog/engineering/profiling-improvements-in-go-1-18/) | Datadog / Datadog Engineering Blog | 370.14 | Go |
+| 3 | - | [Go 제네릭 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/320) | NHN Cloud / NHN Cloud Meetup | 369.90 | Go |
+| 4 | expected:3 | [Releasing czlib and zstd Go bindings](https://www.datadoghq.com/blog/engineering/releasing-czlib-and-zstd-go-bindings/) | Datadog / Datadog Engineering Blog | 362.26 | Go |
+| 5 | expected:3 | [From hand-tuned Go to self-optimizing code: Building BitsEvolve](https://www.datadoghq.com/blog/engineering/self-optimizing-system/) | Datadog / Datadog Engineering Blog | 341.18 | Go, performance optimization |
+| 6 | expected:3 | [How Go 1.24's Swiss Tables saved us hundreds of gigabytes](https://www.datadoghq.com/blog/engineering/go-swiss-tables/) | Datadog / Datadog Engineering Blog | 338.52 | Go, performance optimization |
+| 7 | expected:3 | [How we tracked down a Go 1.24 memory regression across hundreds of pods](https://www.datadoghq.com/blog/engineering/go-memory-regression/) | Datadog / Datadog Engineering Blog | 336.53 | Go, observability |
+| 8 | expected:3 | [How we reduced the size of our Agent Go binaries by up to 77%](https://www.datadoghq.com/blog/engineering/agent-go-binaries/) | Datadog / Datadog Engineering Blog | 330.49 | Go |
+| 9 | expected:3 | [쿠버네티스 오퍼레이터를 Golang으로 개발해보기](https://dev.gmarket.com/102) | Gmarket / Gmarket Tech Blog | 269.28 | Go, Java, Kubernetes, Spring Boot |
+| 10 | expected:3 | [우리가 테스트를 하는 이유. 근데 이제 Golang을 곁들인](https://blog.banksalad.com/tech/why-we-do-test-by-golang/) | Banksalad / Banksalad Blog | 266.03 | Go |
 
 #### Top Result Details
 
@@ -643,34 +640,35 @@ Highlights:
 - caseSolution: **Go** 1.18에서 적용된 여러 패치와 버그 수정으로 프로파일링 데이터의 정확성을 개선하여, 더 신뢰할 수 있는 성능 분석이 가능하도록 했다.
 - summary: How several patches and fixes in **Go** 1.18 bring improved profiling accuracy.
 
-##### 3. Releasing czlib and zstd Go bindings
+##### 3. Go 제네릭 : NHN Cloud Meetup
 
-- match: expected relevance 3
-- source: Datadog / Datadog Engineering Blog
-- url: https://www.datadoghq.com/blog/engineering/releasing-czlib-and-zstd-go-bindings/
+- match: not expected
+- source: NHN Cloud / NHN Cloud Meetup
+- url: https://meetup.nhncloud.com/posts/320
 - technologies: Go
 - problem keywords: -
-- case summary: Datadog은 Go 언어에서 고성능 압축 라이브러리인 czlib와 zstd를 사용하기 위해 cgo 바인딩을 개발하여 프로덕션 환경에 적용했다.
-- problem: Go 언어 환경에서 효율적인 데이터 압축을 위해 기존의 C 기반 압축 라이브러리를 활용하고자 했으나, 직접적인 연동 방법이 필요했다.
-- solution: czlib와 zstd의 C 라이브러리를 Go에서 사용할 수 있도록 cgo 바인딩을 개발하여, Go 애플리케이션 내에서 고성능 압축 기능을 구현했다.
+- case summary: NHN Cloud Meetup에서 Go 언어의 제네릭 기능 도입과 활용 사례를 다루며, 제네릭을 통해 코드 재사용성과 타입 안전성을 개선한 경험을 공유한다.
+- problem: Go 언어에서 타입 안전성을 유지하면서 코드 재사용성을 높이는 방법이 필요했다.
+- solution: Go 제네릭 기능을 활용하여 다양한 타입에 대해 공통 로직을 구현하고, 코드 중복을 줄이며 유지보수성을 향상시켰다.
 
 Highlights:
 
-- title: Releasing czlib and zstd **Go** bindings
-- caseSummary: Datadog은 **Go** 언어에서 고성능 압축 라이브러리인 czlib와 zstd를 사용하기 위해 cgo 바인딩을 개발하여 프로덕션 환경에 적용했다.
-- caseProblem: **Go** 언어 환경에서 효율적인 데이터 압축을 위해 기존의 C 기반 압축 라이브러리를 활용하고자 했으나, 직접적인 연동 방법이 필요했다.
-- caseSolution: czlib와 zstd의 C 라이브러리를 Go에서 사용할 수 있도록 cgo 바인딩을 개발하여, **Go** 애플리케이션 내에서 고성능 압축 기능을 구현했다.
+- title: **Go** 제네릭 : NHN Cloud Meetup
+- caseSummary: NHN Cloud Meetup에서 **Go** 언어의 제네릭 기능 도입과 활용 사례를 다루며, 제네릭을 통해 코드 재사용성과 타입 안전성을 개선한 경험을 공유한다.
+- caseProblem: **Go** 언어에서 타입 안전성을 유지하면서 코드 재사용성을 높이는 방법이 필요했다.
+- caseSolution: **Go** 제네릭 기능을 활용하여 다양한 타입에 대해 공통 로직을 구현하고, 코드 중복을 줄이며 유지보수성을 향상시켰다.
+- summary: **Go** 제네릭
 
 
 ### tech-nodejs - `node`
 
 - category: technology
 - intent: node라는 인프라 일반 용어가 아니라 Node.js 런타임과 서버 개발 사례를 찾는다.
-- total results: 147
-- precision@5: 0.800
+- total results: 162
+- precision@5: 0.600
 - recall@10: 1.000
-- mrr: 1.000
-- ndcg@10: 0.972
+- mrr: 0.500
+- ndcg@10: 0.725
 
 #### Expected URLs
 
@@ -684,20 +682,40 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Node.js 컨테이너, 왜 깔끔하게 안 죽을까? (feat. Graceful shutdown)](https://tech.socarcorp.kr/dev/2026/01/19/nodejs-graceful-shutdown.html) | SOCAR / SOCAR Tech Blog | 258.40 | Kubernetes, Node.js |
-| 2 | expected:3 | [Tracing NodeJs Applications with OpenTelemetry](https://medium.com/zigbang/tracing-nodejs-applications-with-opentelemetry-624958d38d4d?source=rss----2f055286701b---4) | Zigbang / Zigbang Tech Blog | 222.97 | Kubernetes, Node.js, OpenTelemetry, search, migration, observability |
-| 3 | - | [FE News 26년 4월 소식을 전해드립니다!](https://d2.naver.com/news/6428522) | NAVER / NAVER D2 | 209.89 | Node.js, React |
-| 4 | expected:2 | [기존 Express 서버에 Vue.js 적용해보기 (feat.EJS)](https://techblog.woowahan.com/2596/) | Woowa Brothers / Woowa Tech Blog | 200.56 | Node.js, search |
-| 5 | expected:2 | [강의실 개편](https://tech.inflab.com/202207-refactoring-legacy-code/) | Inflab / Inflab Tech Blog | 197.21 | JPA, Node.js, React, migration |
-| 6 | expected:2 | [사전예약 서버 프로파일링으로 서버 병목찾아 개선하기](https://tech.devsisters.com/posts/perf-citizen-card) | Devsisters / Devsisters Tech Blog | 192.42 | Amazon S3, Node.js, observability |
-| 7 | - | [[여기보기] WAS 프로세스가 다진 마음은 루트와 헤어질 결심](https://netmarble.engineering/managing-was-process-permission-do-not-use-root/) | Netmarble / Netmarble Tech Blog | 192.04 | Node.js |
-| 8 | - | [성능 테스트를 위한 격리 - 시뮬레이션](https://dev.gmarket.com/56) | Gmarket / Gmarket Tech Blog | 191.67 | Node.js |
-| 9 | - | [Troubleshooting environment with AI analysis in AWS Elastic Beanstalk](https://aws.amazon.com/blogs/devops/troubleshooting-environment-with-ai-analysis-in-aws-elastic-beanstalk/) | AWS / AWS DevOps Blog | 191.26 | Amazon EC2, Amazon S3, Node.js, observability |
-| 10 | - | [Hygen을 이용한 컴포넌트 템플릿 만들기](https://techblog.woowahan.com/12548/) | Woowa Brothers / Woowa Tech Blog | 190.65 | Java, Node.js, React |
+| 1 | - | [Node CPU 점유율 최적화 경험기](https://hyperconnect.github.io/2020/02/11/Node-cpu-debug.html) | Hyperconnect / Hyperconnect Tech Blog | 301.24 | Amazon S3, Next.js, React |
+| 2 | expected:3 | [Node.js 컨테이너, 왜 깔끔하게 안 죽을까? (feat. Graceful shutdown)](https://tech.socarcorp.kr/dev/2026/01/19/nodejs-graceful-shutdown.html) | SOCAR / SOCAR Tech Blog | 268.09 | Kubernetes, Node.js |
+| 3 | expected:3 | [Tracing NodeJs Applications with OpenTelemetry](https://medium.com/zigbang/tracing-nodejs-applications-with-opentelemetry-624958d38d4d?source=rss----2f055286701b---4) | Zigbang / Zigbang Tech Blog | 224.08 | Kubernetes, Node.js, OpenTelemetry, search, migration, observability |
+| 4 | - | [FE News 26년 4월 소식을 전해드립니다!](https://d2.naver.com/news/6428522) | NAVER / NAVER D2 | 214.72 | Node.js, React |
+| 5 | expected:2 | [기존 Express 서버에 Vue.js 적용해보기 (feat.EJS)](https://techblog.woowahan.com/2596/) | Woowa Brothers / Woowa Tech Blog | 203.77 | Node.js, search |
+| 6 | expected:2 | [강의실 개편](https://tech.inflab.com/202207-refactoring-legacy-code/) | Inflab / Inflab Tech Blog | 202.14 | JPA, Node.js, React, migration |
+| 7 | expected:2 | [사전예약 서버 프로파일링으로 서버 병목찾아 개선하기](https://tech.devsisters.com/posts/perf-citizen-card) | Devsisters / Devsisters Tech Blog | 200.39 | Amazon S3, Node.js, observability |
+| 8 | - | [[여기보기] WAS 프로세스가 다진 마음은 루트와 헤어질 결심](https://netmarble.engineering/managing-was-process-permission-do-not-use-root/) | Netmarble / Netmarble Tech Blog | 199.99 | Node.js |
+| 9 | - | [성능 테스트를 위한 격리 - 시뮬레이션](https://dev.gmarket.com/56) | Gmarket / Gmarket Tech Blog | 199.61 | Node.js |
+| 10 | - | [Hygen을 이용한 컴포넌트 템플릿 만들기](https://techblog.woowahan.com/12548/) | Woowa Brothers / Woowa Tech Blog | 198.55 | Java, Node.js, React |
 
 #### Top Result Details
 
-##### 1. Node.js 컨테이너, 왜 깔끔하게 안 죽을까? (feat. Graceful shutdown)
+##### 1. Node CPU 점유율 최적화 경험기
+
+- match: not expected
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2020/02/11/Node-cpu-debug.html
+- technologies: Amazon S3, Next.js, React
+- problem keywords: -
+- case summary: Hyperconnect는 SSR 기반 Node.js 웹뷰 서버에서 지속적으로 증가하는 CPU 점유율 문제를 Node 내장 프로파일러와 Flame graph 시각화를 통해 분석하고, i18next 초기화 방식을 개선하여 CPU 부하를 크게 줄인 경험을 공유합니다.
+- problem: SSR 서버에서 CPU 점유율이 지속적으로 증가하는 문제가 발생했으며, 메모리 사용량은 증가하지 않아 원인 파악이 어려웠습니다.
+- solution: Node.js 내장 프로파일러와 Apache 벤치마크 도구를 활용해 CPU 사용 패턴을 분석하고, i18next의 매 요청 초기화를 전역 초기화 및 인스턴스 재활용 방식으로 변경하여 CPU 부하를 최적화했습니다.
+
+Highlights:
+
+- title: **Node** CPU 점유율 최적화 경험기
+- caseSummary: Hyperconnect는 SSR 기반 **Node.js** 웹뷰 서버에서 지속적으로 증가하는 CPU 점유율 문제를 **Node** 내장 프로파일러와 Flame graph 시각화를 통해 분석하고,
+- caseSolution: **Node.js** 내장 프로파일러와 Apache 벤치마크 도구를 활용해 CPU 사용 패턴을 분석하고, i18next의 매 요청 초기화를 전역 초기화 및 인스턴스 재활용 방식으로 변경하여
+- summary: **Node** 어플리케이션에서 CPU를 최적화하는 방법을 소개합니다.
+- content: 위 상태로 **node** application(이 경우에는 SSR 서버)을 실행할 경우 디렉토리에 isolate-xxx-v8.log 와 같은 이름으로 프로파일링 로그가 생성됩니다. 하지만 파일을 열어봐도 알아볼 수 없습니다.
+- content: (**Node** 8.5 이상 필요) $ npm install -g flamebearer # flamebearer 설치 $ **node** --prof-process --preprocess -j isolate * .log | flamebearer # 프로파일링 로그로 Flame graph 생성 Flame
+
+##### 2. Node.js 컨테이너, 왜 깔끔하게 안 죽을까? (feat. Graceful shutdown)
 
 - match: expected relevance 3
 - source: SOCAR / SOCAR Tech Blog
@@ -716,7 +734,7 @@ Highlights:
 - content: 처음에는 단순히 시그널 처리 문제라고 생각했지만, 파고들다 보니 Linux 커널의 PID 1 보호 메커니즘 과 **Node.js** 이벤트 루프 동작 방식 이 함께 얽힌 문제였습니다. 그 과정에서 겪은 삽질을 정리해봅니다. 0.
 - content: 이벤트 루프의 문제 **Node.js** 프로세스는 이벤트 루프가 완전히 비워져야 종료 됩니다. 상황을 정리하면 다음과 같았습니다.
 
-##### 2. Tracing NodeJs Applications with OpenTelemetry
+##### 3. Tracing NodeJs Applications with OpenTelemetry
 
 - match: expected relevance 3
 - source: Zigbang / Zigbang Tech Blog
@@ -736,30 +754,12 @@ Highlights:
 - content: @opentelemetry/exporter-trace-otlp-http @opentelemetry/sdk-**node** @opentelemetry/sdk-trace-**node** Adding Tracer and Auto-instrumentation On your src folder add a tracer.ts
 - content: You can easily achieve that using custom headers and openTelemetry **node** SDK.
 
-##### 3. FE News 26년 4월 소식을 전해드립니다!
-
-- match: not expected
-- source: NAVER / NAVER D2
-- url: https://d2.naver.com/news/6428522
-- technologies: Node.js, React
-- problem keywords: -
-- case summary: JavaScript의 기존 Date 객체 한계를 극복하기 위해 9년간 표준화된 Temporal API가 ES2026에 포함되며, Node.js는 연간 주요 릴리즈 모델로 전환하고, Expo SDK 55에서는 Jetpack Compose를 React Native에 직접 노출하는 방식을 도입했다.
-- problem: JavaScript Date 객체의 불완전한 시간 처리와 Node.js의 낮은 홀수 버전 채택률 및 유지보수 부담, React Native에서 네이티브 UI 컴포넌트 활용의 어려움 문제.
-- solution: Temporal API를 통해 불변 값, 명시적 타임존, 나노초 정밀도 등을 지원하는 새로운 시간 처리 방식을 도입하고, Node.js는 연 1회 주요 버전 출시 체계로 전환하며, Expo UI는 Jetpack Compose를 React Native 앱에 직접 노출해 최신 네이티브 컴포넌트를 즉시 활용 가능하게 함.
-
-Highlights:
-
-- summary: 현재 Firefox 139+, Chrome/Edge 144+, TypeScript 6.0 Beta, **Node.js** 26에서 지원된다.
-- summary: **Node.js** Moves to Annual Major Releases Starting with **Node** 27 **Node.js** 프로젝트가 짝수/홀수 릴리즈 모델을 폐기하고, **Node.js**
-- content: 현재 Firefox 139+, Chrome/Edge 144+, TypeScript 6.0 Beta, **Node.js** 26에서 지원된다. Announcing TypeScript 6.0 TypeScript 6.0이 출시되었다.
-- content: **Node.js** Moves to Annual Major Releases Starting with **Node** 27 **Node.js** 프로젝트가 짝수/홀수 릴리즈 모델을 폐기하고, **Node.js** 27부터 연간 1회 주요 버전을 출시하는 방식으로 전환한다.
-
 
 ### problem-cost-optimization - `cost optimization`
 
 - category: problem
 - intent: 비용 최적화나 비용 절감 문제를 해결한 기업/아키텍처 사례를 찾는다.
-- total results: 80
+- total results: 84
 - precision@5: 0.400
 - recall@10: 1.000
 - mrr: 0.333
@@ -775,16 +775,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 692.18 | cost optimization, observability |
-| 2 | - | [Cloud expenditure optimization for cost efficiency](https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 319.01 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
-| 3 | expected:3 | [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/) | AWS / AWS Architecture Blog | 156.95 | AWS CloudFormation, AWS IAM, cost optimization, high availability, incident response, observability |
-| 4 | expected:2 | [How Generali Malaysia optimizes operations with Amazon EKS](https://aws.amazon.com/blogs/architecture/how-generali-malaysia-optimizes-operations-with-amazon-eks/) | AWS / AWS Architecture Blog | 156.19 | AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Kubernetes, cost optimization |
-| 5 | - | [Enhancing auto scaling resilience by tracking worker utilization metrics](https://aws.amazon.com/blogs/compute/enhancing-auto-scaling-resilience-by-tracking-worker-utilization-metrics/) | AWS / AWS Compute Blog | 146.42 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2, Java |
-| 6 | - | [How we optimized Dash's relevance judge with DSPy](https://dropbox.tech/machine-learning/optimizing-dropbox-dash-relevance-judge-with-dspy) | Dropbox / Dropbox Tech Blog | 145.50 | LLM, search, migration, observability, performance optimization |
-| 7 | - | [Accelerate CPU-based AI inference workloads using Intel AMX on Amazon EC2](https://aws.amazon.com/blogs/compute/accelerate-cpu-based-ai-inference-workloads-using-intel-amx-on-amazon-ec2/) | AWS / AWS Compute Blog | 144.25 | Amazon EC2, cost optimization, migration, observability, performance optimization |
-| 8 | expected:3 | [How HotelTrader cut inter-AZ cost 95% and latency by 49% with Valkey GLIDE on Amazon ElastiCache](https://aws.amazon.com/blogs/database/how-hoteltrader-cut-inter-az-cost-95-and-latency-by-49-with-valkey-glide-on-amazon-elasticache/) | AWS / AWS Database Blog | 143.50 | AWS IAM, Amazon EC2, Amazon EKS, Amazon ElastiCache, Amazon VPC, Java |
-| 9 | - | [More room to build: serverless services now support payloads up to 1 MB](https://aws.amazon.com/blogs/compute/more-room-to-build-serverless-services-now-support-payloads-up-to-1-mb/) | AWS / AWS Compute Blog | 142.56 | AWS Lambda, Amazon CloudWatch, Amazon EventBridge, Amazon S3, Apache Kafka, Java |
-| 10 | - | [Optimizing storage performance for Amazon EKS on AWS Outposts](https://aws.amazon.com/blogs/compute/optimizing-storage-performance-for-amazon-eks-on-aws-outposts/) | AWS / AWS Compute Blog | 140.85 | AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
+| 1 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 726.30 | cost optimization, observability |
+| 2 | - | [Cloud expenditure optimization for cost efficiency](https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 325.25 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
+| 3 | expected:3 | [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/) | AWS / AWS Architecture Blog | 162.98 | AWS CloudFormation, AWS IAM, cost optimization, high availability, incident response, observability |
+| 4 | expected:2 | [How Generali Malaysia optimizes operations with Amazon EKS](https://aws.amazon.com/blogs/architecture/how-generali-malaysia-optimizes-operations-with-amazon-eks/) | AWS / AWS Architecture Blog | 161.72 | AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Kubernetes, cost optimization |
+| 5 | - | [Enhancing auto scaling resilience by tracking worker utilization metrics](https://aws.amazon.com/blogs/compute/enhancing-auto-scaling-resilience-by-tracking-worker-utilization-metrics/) | AWS / AWS Compute Blog | 149.77 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2, Java |
+| 6 | - | [Accelerate CPU-based AI inference workloads using Intel AMX on Amazon EC2](https://aws.amazon.com/blogs/compute/accelerate-cpu-based-ai-inference-workloads-using-intel-amx-on-amazon-ec2/) | AWS / AWS Compute Blog | 148.28 | Amazon EC2, cost optimization, migration, observability, performance optimization |
+| 7 | - | [How we optimized Dash's relevance judge with DSPy](https://dropbox.tech/machine-learning/optimizing-dropbox-dash-relevance-judge-with-dspy) | Dropbox / Dropbox Tech Blog | 147.86 | LLM, search, migration, observability, performance optimization |
+| 8 | expected:3 | [How HotelTrader cut inter-AZ cost 95% and latency by 49% with Valkey GLIDE on Amazon ElastiCache](https://aws.amazon.com/blogs/database/how-hoteltrader-cut-inter-az-cost-95-and-latency-by-49-with-valkey-glide-on-amazon-elasticache/) | AWS / AWS Database Blog | 147.08 | AWS IAM, Amazon EC2, Amazon EKS, Amazon ElastiCache, Amazon VPC, Java |
+| 9 | - | [More room to build: serverless services now support payloads up to 1 MB](https://aws.amazon.com/blogs/compute/more-room-to-build-serverless-services-now-support-payloads-up-to-1-mb/) | AWS / AWS Compute Blog | 144.17 | AWS Lambda, Amazon CloudWatch, Amazon EventBridge, Amazon S3, Apache Kafka, Java |
+| 10 | - | [Optimizing storage performance for Amazon EKS on AWS Outposts](https://aws.amazon.com/blogs/compute/optimizing-storage-performance-for-amazon-eks-on-aws-outposts/) | AWS / AWS Compute Blog | 143.61 | AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
 
 #### Top Result Details
 
@@ -843,11 +843,11 @@ Highlights:
 
 - category: problem
 - intent: 관측성, 모니터링, 디버깅 문제를 해결한 사례를 찾는다.
-- total results: 340
-- precision@5: 0.600
+- total results: 372
+- precision@5: 0.800
 - recall@10: 0.857
 - mrr: 1.000
-- ndcg@10: 0.883
+- ndcg@10: 0.850
 
 #### Expected URLs
 
@@ -863,16 +863,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [PHP 8: Observability baked right in](https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/) | Datadog / Datadog Engineering Blog | 449.76 | observability |
-| 2 | expected:3 | [Enhancing network observability with new AWS Outposts racks LAG metrics](https://aws.amazon.com/blogs/compute/enhancing-network-observability-with-new-aws-outposts-racks-lag-metrics/) | AWS / AWS Compute Blog | 370.22 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, high availability, observability |
-| 3 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 370.22 | cost optimization, observability |
-| 4 | expected:3 | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 295.50 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
-| 5 | - | [LLMOps로 확장하는 AI플랫폼 2.0](https://techblog.woowahan.com/22839/) | Woowa Brothers / Woowa Tech Blog | 274.09 | LLM, Redis, observability, performance optimization, streaming data pipeline |
-| 6 | expected:3 | [Improving trust with Datadog Log Management](https://www.datadoghq.com/blog/engineering/improving-trust-with-datadog-log-management/) | Datadog / Datadog Engineering Blog | 273.19 | observability |
-| 7 | - | [Scaling to Infinity: 한계를 넘어서는 LY Corporation의 관측 가능성 플랫폼 진화기](https://techblog.lycorp.co.jp/ko/the-evolution-of-the-ly-observability-platform) | LY Corporation / LY Corporation Tech Blog | 268.44 | observability |
-| 8 | - | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog | 261.22 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EKS, Java |
-| 9 | expected:2 | [Squeezing every millisecond: How we rebuilt the Datadog Lambda Extension in Rust](https://www.datadoghq.com/blog/engineering/datadog-lambda-extension-rust/) | Datadog / Datadog Engineering Blog | 256.94 | AWS Lambda, observability |
-| 10 | expected:2 | [When protections outlive their purpose: A lesson on managing defense systems at scale](https://github.blog/engineering/infrastructure/when-protections-outlive-their-purpose-a-lesson-on-managing-defense-systems-at-scale/) | GitHub / GitHub Engineering | 247.29 | observability |
+| 1 | expected:3 | [PHP 8: Observability baked right in](https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/) | Datadog / Datadog Engineering Blog | 470.20 | observability |
+| 2 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 387.32 | cost optimization, observability |
+| 3 | expected:3 | [Enhancing network observability with new AWS Outposts racks LAG metrics](https://aws.amazon.com/blogs/compute/enhancing-network-observability-with-new-aws-outposts-racks-lag-metrics/) | AWS / AWS Compute Blog | 387.32 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, high availability, observability |
+| 4 | expected:3 | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 309.20 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
+| 5 | expected:3 | [Improving trust with Datadog Log Management](https://www.datadoghq.com/blog/engineering/improving-trust-with-datadog-log-management/) | Datadog / Datadog Engineering Blog | 283.23 | observability |
+| 6 | - | [Scaling to Infinity: 한계를 넘어서는 LY Corporation의 관측 가능성 플랫폼 진화기](https://techblog.lycorp.co.jp/ko/the-evolution-of-the-ly-observability-platform) | LY Corporation / LY Corporation Tech Blog | 276.48 | observability |
+| 7 | - | [LLMOps로 확장하는 AI플랫폼 2.0](https://techblog.woowahan.com/22839/) | Woowa Brothers / Woowa Tech Blog | 273.10 | LLM, Redis, observability, performance optimization, streaming data pipeline |
+| 8 | - | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog | 266.41 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EKS, Java |
+| 9 | expected:2 | [Squeezing every millisecond: How we rebuilt the Datadog Lambda Extension in Rust](https://www.datadoghq.com/blog/engineering/datadog-lambda-extension-rust/) | Datadog / Datadog Engineering Blog | 260.54 | AWS Lambda, observability |
+| 10 | expected:2 | [When protections outlive their purpose: A lesson on managing defense systems at scale](https://github.blog/engineering/infrastructure/when-protections-outlive-their-purpose-a-lesson-on-managing-defense-systems-at-scale/) | GitHub / GitHub Engineering | 247.61 | observability |
 
 #### Top Result Details
 
@@ -892,7 +892,22 @@ Highlights:
 - title: PHP 8: **Observability** baked right in
 - summary: What the observer API means for PHP 8 and the future of **observability**
 
-##### 2. Enhancing network observability with new AWS Outposts racks LAG metrics
+##### 2. AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability
+
+- match: not expected
+- source: Kakao Pay / Kakao Pay Tech Blog
+- url: https://tech.kakaopay.com/post/2023-aws-reinvent-2/
+- technologies: -
+- problem keywords: cost optimization, observability
+- case summary: AWS re:Invent 2023에서 비용 최적화와 관측성 관련 세션을 중심으로 최신 클라우드 운영 전략과 기술을 소개하고 적용 가능성을 검토한 사례입니다.
+- problem: 클라우드 환경에서 비용 효율성을 유지하면서도 시스템의 상태를 효과적으로 모니터링하고 문제를 신속히 파악하는 운영상의 어려움이 있었습니다.
+- solution: AWS의 최신 비용 최적화 도구와 관측성 솔루션을 활용해 리소스 사용을 최적화하고, 로그 및 메트릭 기반의 통합 모니터링 체계를 구축하여 운영 효율을 높였습니다.
+
+Highlights:
+
+- title: AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, **Observability**
+
+##### 3. Enhancing network observability with new AWS Outposts racks LAG metrics
 
 - match: expected relevance 3
 - source: AWS / AWS Compute Blog
@@ -910,27 +925,12 @@ Highlights:
 - content: Implementing an **observability** strategy that uses available network metrics is key to understanding the health of this connectivity.
 - content: Reach out to your AWS account team, or fill out this form to learn more about **observability** for Outposts.
 
-##### 3. AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability
-
-- match: not expected
-- source: Kakao Pay / Kakao Pay Tech Blog
-- url: https://tech.kakaopay.com/post/2023-aws-reinvent-2/
-- technologies: -
-- problem keywords: cost optimization, observability
-- case summary: AWS re:Invent 2023에서 비용 최적화와 관측성 관련 세션을 중심으로 최신 클라우드 운영 전략과 기술을 소개하고 적용 가능성을 검토한 사례입니다.
-- problem: 클라우드 환경에서 비용 효율성을 유지하면서도 시스템의 상태를 효과적으로 모니터링하고 문제를 신속히 파악하는 운영상의 어려움이 있었습니다.
-- solution: AWS의 최신 비용 최적화 도구와 관측성 솔루션을 활용해 리소스 사용을 최적화하고, 로그 및 메트릭 기반의 통합 모니터링 체계를 구축하여 운영 효율을 높였습니다.
-
-Highlights:
-
-- title: AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, **Observability**
-
 
 ### problem-incident-response - `incident response`
 
 - category: problem
 - intent: 장애 대응, 사고 조사, SRE 자동화 관련 사례를 찾는다.
-- total results: 310
+- total results: 335
 - precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
@@ -948,16 +948,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [2023-03-08 incident: A deep dive into our incident response](https://www.datadoghq.com/blog/engineering/2023-03-08-deep-dive-into-incident-response/) | Datadog / Datadog Engineering Blog | 919.64 | incident response, event response |
-| 2 | expected:3 | [Leverage Agentic AI for Autonomous Incident Response with AWS DevOps Agent](https://aws.amazon.com/blogs/devops/leverage-agentic-ai-for-autonomous-incident-response-with-aws-devops-agent/) | AWS / AWS DevOps Blog | 867.92 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EKS, Amazon S3 |
-| 3 | - | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog | 671.21 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EKS, Java |
-| 4 | expected:3 | [Building an end-to-end agentic SRE using AWS DevOps Agent](https://aws.amazon.com/blogs/devops/building-an-end-to-end-agentic-sre-using-aws-devops-agent/) | AWS / AWS DevOps Blog | 664.84 | AWS CDK, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon EventBridge, Amazon VPC |
-| 5 | - | [From AI agent prototype to product: Lessons from building AWS DevOps Agent](https://aws.amazon.com/blogs/devops/from-ai-agent-prototype-to-product-lessons-from-building-aws-devops-agent/) | AWS / AWS DevOps Blog | 646.57 | AWS IAM, AWS Lambda, Amazon S3, Kubernetes, LLM, OpenTelemetry |
-| 6 | expected:3 | [Automating Incident Investigation with AWS DevOps Agent and Salesforce MCP Server](https://aws.amazon.com/blogs/devops/automating-incident-investigation-with-aws-devops-agent-and-salesforce-mcp-server/) | AWS / AWS DevOps Blog | 376.71 | AWS IAM, Amazon CloudWatch, Amazon EC2, incident response, observability, event response |
-| 7 | - | [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/) | AWS / AWS Architecture Blog | 234.94 | AWS CloudFormation, AWS IAM, cost optimization, high availability, incident response, observability |
-| 8 | - | [Best Practices for Deploying AWS DevOps Agent in Production](https://aws.amazon.com/blogs/devops/best-practices-for-deploying-aws-devops-agent-in-production/) | AWS / AWS DevOps Blog | 233.81 | AWS CDK, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon RDS |
-| 9 | expected:2 | [Improving platform resilience at Cloudflare through automation](https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/) | Cloudflare / Cloudflare Engineering | 225.35 | Go, React, high availability, incident response, observability, performance optimization |
-| 10 | - | [Securely connect AWS DevOps Agent to private services in your VPCs](https://aws.amazon.com/blogs/devops/securely-connect-aws-devops-agent-to-private-services-in-your-vpcs/) | AWS / AWS DevOps Blog | 218.40 | AWS IAM, Amazon VPC, high availability, incident response, observability, performance optimization |
+| 1 | expected:3 | [2023-03-08 incident: A deep dive into our incident response](https://www.datadoghq.com/blog/engineering/2023-03-08-deep-dive-into-incident-response/) | Datadog / Datadog Engineering Blog | 963.29 | incident response, event response |
+| 2 | expected:3 | [Leverage Agentic AI for Autonomous Incident Response with AWS DevOps Agent](https://aws.amazon.com/blogs/devops/leverage-agentic-ai-for-autonomous-incident-response-with-aws-devops-agent/) | AWS / AWS DevOps Blog | 909.17 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EKS, Amazon S3 |
+| 3 | - | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog | 696.13 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EKS, Java |
+| 4 | expected:3 | [Building an end-to-end agentic SRE using AWS DevOps Agent](https://aws.amazon.com/blogs/devops/building-an-end-to-end-agentic-sre-using-aws-devops-agent/) | AWS / AWS DevOps Blog | 655.26 | AWS CDK, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon EventBridge, Amazon VPC |
+| 5 | - | [From AI agent prototype to product: Lessons from building AWS DevOps Agent](https://aws.amazon.com/blogs/devops/from-ai-agent-prototype-to-product-lessons-from-building-aws-devops-agent/) | AWS / AWS DevOps Blog | 637.84 | AWS IAM, AWS Lambda, Amazon S3, Kubernetes, LLM, OpenTelemetry |
+| 6 | expected:3 | [Automating Incident Investigation with AWS DevOps Agent and Salesforce MCP Server](https://aws.amazon.com/blogs/devops/automating-incident-investigation-with-aws-devops-agent-and-salesforce-mcp-server/) | AWS / AWS DevOps Blog | 376.09 | AWS IAM, Amazon CloudWatch, Amazon EC2, incident response, observability, event response |
+| 7 | - | [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/) | AWS / AWS Architecture Blog | 240.19 | AWS CloudFormation, AWS IAM, cost optimization, high availability, incident response, observability |
+| 8 | - | [Best Practices for Deploying AWS DevOps Agent in Production](https://aws.amazon.com/blogs/devops/best-practices-for-deploying-aws-devops-agent-in-production/) | AWS / AWS DevOps Blog | 238.34 | AWS CDK, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon RDS |
+| 9 | expected:2 | [Improving platform resilience at Cloudflare through automation](https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare/) | Cloudflare / Cloudflare Engineering | 228.95 | Go, React, high availability, incident response, observability, performance optimization |
+| 10 | - | [Securely connect AWS DevOps Agent to private services in your VPCs](https://aws.amazon.com/blogs/devops/securely-connect-aws-devops-agent-to-private-services-in-your-vpcs/) | AWS / AWS DevOps Blog | 221.73 | AWS IAM, Amazon VPC, high availability, incident response, observability, performance optimization |
 
 #### Top Result Details
 
@@ -1016,7 +1016,7 @@ Highlights:
 
 - category: architecture
 - intent: 실시간 스트리밍 데이터 처리나 파이프라인 구성 사례를 찾는다.
-- total results: 88
+- total results: 100
 - precision@5: 0.400
 - recall@10: 0.750
 - mrr: 0.500
@@ -1033,16 +1033,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [Getting started with Change Data Capture in Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/getting-started-with-change-data-capture-in-amazon-aurora-dsql/) | AWS / AWS Database Blog | 210.22 | AWS IAM, AWS Lambda, Amazon Aurora, Apache Kafka, React, search |
-| 2 | expected:3 | [Building unified data pipelines with Apache Iceberg and Apache Flink](https://aws.amazon.com/blogs/big-data/building-unified-data-pipelines-with-apache-iceberg-and-apache-flink/) | AWS / AWS Big Data Blog | 207.15 | AWS Glue, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon S3, Amazon VPC |
-| 3 | expected:3 | [Build streaming applications on Amazon Managed Service for Apache Flink with AI-assisted guidance](https://aws.amazon.com/blogs/big-data/build-streaming-applications-on-amazon-managed-service-for-apache-flink-with-ai-assisted-guidance/) | AWS / AWS Big Data Blog | 201.72 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon S3, Apache Flink, Java |
-| 4 | - | [Meet Coupang’s Machine Learning Platform](https://medium.com/coupang-engineering/meet-coupangs-machine-learning-platform-cd00e9ccc172?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 94.65 | Kubernetes, LLM, search, observability, performance optimization, canary deployment |
-| 5 | - | [How to consolidate cross-Region S3 data into OpenSearch](https://aws.amazon.com/blogs/big-data/how-to-consolidate-cross-region-s3-data-into-opensearch/) | AWS / AWS Big Data Blog | 86.44 | AWS IAM, Amazon OpenSearch Service, Amazon S3, Amazon VPC, search, observability |
-| 6 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 86.27 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
-| 7 | expected:3 | [Building Jetflow: a framework for flexible, performant data pipelines at Cloudflare](https://blog.cloudflare.com/building-jetflow-a-framework-for-flexible-performant-data-pipelines-at-cloudflare/) | Cloudflare / Cloudflare Engineering | 80.82 | Apache Kafka, migration, observability, performance optimization |
-| 8 | - | [Announcing aggregations on Amazon ElastiCache](https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/) | AWS / AWS Database Blog | 76.61 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
-| 9 | - | [Inside the feature store powering real-time AI in Dropbox Dash](https://dropbox.tech/machine-learning/feature-store-powering-realtime-ai-in-dropbox-dash) | Dropbox / Dropbox Tech Blog | 74.86 | Amazon DynamoDB, LLM, search, observability, performance optimization |
-| 10 | - | [프로젝트 관리를 위한 JIRA 활용기](https://dev.gmarket.com/43) | Gmarket / Gmarket Tech Blog | 72.43 | Apache Kafka, Elasticsearch, Redis, search |
+| 1 | - | [Getting started with Change Data Capture in Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/getting-started-with-change-data-capture-in-amazon-aurora-dsql/) | AWS / AWS Database Blog | 209.81 | AWS IAM, AWS Lambda, Amazon Aurora, Apache Kafka, React, search |
+| 2 | expected:3 | [Building unified data pipelines with Apache Iceberg and Apache Flink](https://aws.amazon.com/blogs/big-data/building-unified-data-pipelines-with-apache-iceberg-and-apache-flink/) | AWS / AWS Big Data Blog | 206.78 | AWS Glue, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon S3, Amazon VPC |
+| 3 | expected:3 | [Build streaming applications on Amazon Managed Service for Apache Flink with AI-assisted guidance](https://aws.amazon.com/blogs/big-data/build-streaming-applications-on-amazon-managed-service-for-apache-flink-with-ai-assisted-guidance/) | AWS / AWS Big Data Blog | 200.53 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon S3, Apache Flink, Java |
+| 4 | - | [How to consolidate cross-Region S3 data into OpenSearch](https://aws.amazon.com/blogs/big-data/how-to-consolidate-cross-region-s3-data-into-opensearch/) | AWS / AWS Big Data Blog | 90.92 | AWS IAM, Amazon OpenSearch Service, Amazon S3, Amazon VPC, search, observability |
+| 5 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 90.66 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
+| 6 | - | [Meet Coupang’s Machine Learning Platform](https://medium.com/coupang-engineering/meet-coupangs-machine-learning-platform-cd00e9ccc172?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 85.56 | Kubernetes, LLM, search, observability, performance optimization, canary deployment |
+| 7 | expected:3 | [Building Jetflow: a framework for flexible, performant data pipelines at Cloudflare](https://blog.cloudflare.com/building-jetflow-a-framework-for-flexible-performant-data-pipelines-at-cloudflare/) | Cloudflare / Cloudflare Engineering | 83.95 | Apache Kafka, migration, observability, performance optimization |
+| 8 | - | [Announcing aggregations on Amazon ElastiCache](https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/) | AWS / AWS Database Blog | 78.54 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
+| 9 | - | [Inside the feature store powering real-time AI in Dropbox Dash](https://dropbox.tech/machine-learning/feature-store-powering-realtime-ai-in-dropbox-dash) | Dropbox / Dropbox Tech Blog | 76.67 | Amazon DynamoDB, LLM, search, observability, performance optimization |
+| 10 | - | [프로젝트 관리를 위한 JIRA 활용기](https://dev.gmarket.com/43) | Gmarket / Gmarket Tech Blog | 74.47 | Apache Kafka, Elasticsearch, Redis, search |
 
 #### Top Result Details
 
@@ -1105,11 +1105,11 @@ Highlights:
 
 - category: architecture
 - intent: CDC 기반 데이터 동기화나 변경 데이터 처리 사례를 찾는다.
-- total results: 21
-- precision@5: 0.400
+- total results: 28
+- precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
-- ndcg@10: 0.967
+- ndcg@10: 0.974
 
 #### Expected URLs
 
@@ -1121,16 +1121,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Getting started with Change Data Capture in Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/getting-started-with-change-data-capture-in-amazon-aurora-dsql/) | AWS / AWS Database Blog | 1112.49 | AWS IAM, AWS Lambda, Amazon Aurora, Apache Kafka, React, search |
-| 2 | expected:3 | [Replication redefined: How we built a low-latency, multi-tenant data replication platform](https://www.datadoghq.com/blog/engineering/cdc-replication-search/) | Datadog / Datadog Engineering Blog | 939.73 | search, performance optimization, Change Data Capture |
-| 3 | - | [Enable real-time mainframe analytics with Precisely Connect and Amazon S3](https://aws.amazon.com/blogs/big-data/enable-real-time-mainframe-analytics-with-precisely-connect-and-amazon-s3/) | AWS / AWS Big Data Blog | 702.73 | AWS Glue, Amazon MSK, Amazon RDS, Amazon S3, Apache Iceberg, migration |
-| 4 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 170.93 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
-| 5 | - | [멀티 클라우드 환경에서의 데이터 마이그레이션 시스템 구축](https://medium.com/watcha/%EB%A9%80%ED%8B%B0-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-420394a212d2?source=rss----bd1678892a27---4) | Watcha / Watcha Tech Blog | 164.11 | AWS IAM, Amazon DynamoDB, Amazon S3, Kubernetes, migration, observability |
-| 6 | expected:2 | [Migrating Amazon RDS for PostgreSQL to Amazon Aurora using seeded logical replication](https://aws.amazon.com/blogs/database/migrating-amazon-rds-for-postgresql-to-amazon-aurora-using-seeded-logical-replication/) | AWS / AWS Database Blog | 158.18 | AWS IAM, Amazon Aurora, Amazon CloudWatch, Amazon RDS, Amazon VPC, high availability |
-| 7 | - | [Sharded MySQL Cluster 도입 배경과 개발기 (부제: 우당탕탕 좌충우돌 개발기)](https://dev.gmarket.com/61) | Gmarket / Gmarket Tech Blog | 154.03 | Apache Kafka, JPA, JVM, Java, Kubernetes, Spring Boot |
-| 8 | - | [우리 팀은 카프카를 어떻게 사용하고 있을까](https://techblog.woowahan.com/17386/) | Woowa Brothers / Woowa Tech Blog | 145.53 | Amazon S3, Apache Kafka, Java, Redis, observability, Change Data Capture |
-| 9 | - | [Troubleshoot Amazon RDS for Oracle to Amazon Redshift DMS migrations with AWS DevOps Agent](https://aws.amazon.com/blogs/database/troubleshoot-amazon-rds-for-oracle-to-amazon-redshift-dms-migrations-with-aws-devops-agent/) | AWS / AWS Database Blog | 144.54 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EventBridge, Amazon RDS, incident response |
-| 10 | - | [How Our Team Uses Kafka](https://techblog.woowahan.com/20078/) | Woowa Brothers / Woowa Tech Blog | 142.13 | Amazon S3, Apache Kafka, Java, Redis, performance optimization, Change Data Capture |
+| 1 | expected:3 | [Getting started with Change Data Capture in Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/getting-started-with-change-data-capture-in-amazon-aurora-dsql/) | AWS / AWS Database Blog | 1155.41 | AWS IAM, AWS Lambda, Amazon Aurora, Apache Kafka, React, search |
+| 2 | expected:3 | [Replication redefined: How we built a low-latency, multi-tenant data replication platform](https://www.datadoghq.com/blog/engineering/cdc-replication-search/) | Datadog / Datadog Engineering Blog | 957.85 | search, performance optimization, Change Data Capture |
+| 3 | - | [Enable real-time mainframe analytics with Precisely Connect and Amazon S3](https://aws.amazon.com/blogs/big-data/enable-real-time-mainframe-analytics-with-precisely-connect-and-amazon-s3/) | AWS / AWS Big Data Blog | 670.58 | AWS Glue, Amazon MSK, Amazon RDS, Amazon S3, Apache Iceberg, migration |
+| 4 | - | [CDC & CDC Sink Platform 개발 1편 - CDC Platform 개발](https://hyperconnect.github.io/2021/01/11/cdc-platform.html) | Hyperconnect / Hyperconnect Tech Blog | 646.34 | Amazon Aurora, Amazon RDS, Apache Kafka, Elasticsearch, Java, Kubernetes |
+| 5 | expected:2 | [Migrating Amazon RDS for PostgreSQL to Amazon Aurora using seeded logical replication](https://aws.amazon.com/blogs/database/migrating-amazon-rds-for-postgresql-to-amazon-aurora-using-seeded-logical-replication/) | AWS / AWS Database Blog | 155.58 | AWS IAM, Amazon Aurora, Amazon CloudWatch, Amazon RDS, Amazon VPC, high availability |
+| 6 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 152.85 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
+| 7 | - | [Sharded MySQL Cluster 도입 배경과 개발기 (부제: 우당탕탕 좌충우돌 개발기)](https://dev.gmarket.com/61) | Gmarket / Gmarket Tech Blog | 151.04 | Apache Kafka, JPA, JVM, Java, Kubernetes, Spring Boot |
+| 8 | - | [멀티 클라우드 환경에서의 데이터 마이그레이션 시스템 구축](https://medium.com/watcha/%EB%A9%80%ED%8B%B0-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-420394a212d2?source=rss----bd1678892a27---4) | Watcha / Watcha Tech Blog | 149.73 | AWS IAM, Amazon DynamoDB, Amazon S3, Kubernetes, migration, observability |
+| 9 | - | [Troubleshoot Amazon RDS for Oracle to Amazon Redshift DMS migrations with AWS DevOps Agent](https://aws.amazon.com/blogs/database/troubleshoot-amazon-rds-for-oracle-to-amazon-redshift-dms-migrations-with-aws-devops-agent/) | AWS / AWS Database Blog | 140.50 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EventBridge, Amazon RDS, incident response |
+| 10 | - | [How Our Team Uses Kafka](https://techblog.woowahan.com/20078/) | Woowa Brothers / Woowa Tech Blog | 137.91 | Amazon S3, Apache Kafka, Java, Redis, performance optimization, Change Data Capture |
 
 #### Top Result Details
 
@@ -1192,11 +1192,11 @@ Highlights:
 
 - category: architecture
 - intent: 리전 간 복원력, DR, cross-Region 데이터 구성 사례를 찾는다.
-- total results: 215
+- total results: 241
 - precision@5: 0.200
 - recall@10: 1.000
 - mrr: 1.000
-- ndcg@10: 0.867
+- ndcg@10: 0.857
 
 #### Expected URLs
 
@@ -1208,16 +1208,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 1083.15 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
-| 2 | - | [Enabling high availability of Amazon EC2 instances on AWS Outposts servers (Part 3)](https://aws.amazon.com/blogs/compute/enabling-high-availability-of-amazon-ec2-instances-on-aws-outposts-servers-part-3/) | AWS / AWS Compute Blog | 399.85 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, high availability |
-| 3 | - | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 399.85 | Elasticsearch, search, high availability, migration, performance optimization |
-| 4 | - | [Streamlining access to powerful disaster recovery capabilities of AWS](https://aws.amazon.com/blogs/architecture/streamlining-access-to-powerful-disaster-recovery-capabilities-of-aws/) | AWS / AWS Architecture Blog | 270.61 | AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EKS, Amazon EventBridge |
-| 5 | - | [Amazon Aurora DSQL for global-scale financial transactions](https://aws.amazon.com/blogs/database/amazon-aurora-dsql-for-global-scale-financial-transactions/) | AWS / AWS Database Blog | 260.93 | Amazon Aurora, high availability, migration, performance optimization, cross-Region resilience, serverless |
-| 6 | expected:2 | [How to consolidate cross-Region S3 data into OpenSearch](https://aws.amazon.com/blogs/big-data/how-to-consolidate-cross-region-s3-data-into-opensearch/) | AWS / AWS Big Data Blog | 216.19 | AWS IAM, Amazon OpenSearch Service, Amazon S3, Amazon VPC, search, observability |
-| 7 | - | [Amazon Aurora DSQL connections: Drivers, strings, and best practices](https://aws.amazon.com/blogs/database/amazon-aurora-dsql-connections-drivers-strings-and-best-practices/) | AWS / AWS Database Blog | 213.54 | AWS IAM, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon EventBridge, Amazon RDS |
-| 8 | expected:2 | [Simplify cross-account and cross-Region stack output references with AWS CloudFormation and CDK’s new Fn::GetStackOutput](https://aws.amazon.com/blogs/devops/simplify-cross-account-and-cross-region-stack-output-references-with-aws-cloudformation-and-cdks-new-fngetstackoutput/) | AWS / AWS DevOps Blog | 207.45 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon EC2, Amazon VPC, cross-Region resilience |
-| 9 | - | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 202.70 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
-| 10 | - | [Migrating data from an Amazon Aurora snapshot into Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/migrating-data-from-an-amazon-aurora-snapshot-into-amazon-aurora-dsql/) | AWS / AWS Database Blog | 201.87 | AWS CloudFormation, AWS Glue, AWS IAM, Amazon Aurora, Amazon RDS, Amazon S3 |
+| 1 | expected:3 | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 1132.96 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
+| 2 | - | [Enabling high availability of Amazon EC2 instances on AWS Outposts servers (Part 3)](https://aws.amazon.com/blogs/compute/enabling-high-availability-of-amazon-ec2-instances-on-aws-outposts-servers-part-3/) | AWS / AWS Compute Blog | 418.05 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, high availability |
+| 3 | - | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 418.05 | Elasticsearch, search, high availability, migration, performance optimization |
+| 4 | - | [개발자를 위한 레디스 튜토리얼 03 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/226) | NHN Cloud / NHN Cloud Meetup | 325.95 | Redis, high availability |
+| 5 | - | [Streamlining access to powerful disaster recovery capabilities of AWS](https://aws.amazon.com/blogs/architecture/streamlining-access-to-powerful-disaster-recovery-capabilities-of-aws/) | AWS / AWS Architecture Blog | 279.15 | AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EKS, Amazon EventBridge |
+| 6 | - | [Amazon Aurora DSQL for global-scale financial transactions](https://aws.amazon.com/blogs/database/amazon-aurora-dsql-for-global-scale-financial-transactions/) | AWS / AWS Database Blog | 265.86 | Amazon Aurora, high availability, migration, performance optimization, cross-Region resilience, serverless |
+| 7 | expected:2 | [How to consolidate cross-Region S3 data into OpenSearch](https://aws.amazon.com/blogs/big-data/how-to-consolidate-cross-region-s3-data-into-opensearch/) | AWS / AWS Big Data Blog | 224.19 | AWS IAM, Amazon OpenSearch Service, Amazon S3, Amazon VPC, search, observability |
+| 8 | - | [Amazon Aurora DSQL connections: Drivers, strings, and best practices](https://aws.amazon.com/blogs/database/amazon-aurora-dsql-connections-drivers-strings-and-best-practices/) | AWS / AWS Database Blog | 215.83 | AWS IAM, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon EventBridge, Amazon RDS |
+| 9 | expected:2 | [Simplify cross-account and cross-Region stack output references with AWS CloudFormation and CDK’s new Fn::GetStackOutput](https://aws.amazon.com/blogs/devops/simplify-cross-account-and-cross-region-stack-output-references-with-aws-cloudformation-and-cdks-new-fngetstackoutput/) | AWS / AWS DevOps Blog | 215.11 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon EC2, Amazon VPC, cross-Region resilience |
+| 10 | - | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 206.61 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
 
 #### Top Result Details
 
@@ -1281,7 +1281,7 @@ Highlights:
 
 - category: migration
 - intent: Kafka에서 Amazon MSK로 이전하거나 MSK 기반으로 확장한 사례를 찾는다.
-- total results: 245
+- total results: 269
 - precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
@@ -1297,16 +1297,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 849.57 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
-| 2 | expected:3 | [Migrating TLS Clients managed by third-party Certificate Authorities from self-managed Apache Kafka to Amazon MSK](https://aws.amazon.com/blogs/big-data/migrating-tls-clients-managed-by-third-party-certificate-authorities-from-self-managed-apache-kafka-to-amazon-msk/) | AWS / AWS Big Data Blog | 691.56 | AWS IAM, Amazon EC2, Amazon MSK, Apache Kafka, Java, migration |
-| 3 | - | [Configure a custom domain name for your Amazon MSK cluster enabled with IAM authentication](https://aws.amazon.com/blogs/big-data/configure-a-custom-domain-name-for-your-amazon-msk-cluster-enabled-with-iam-authentication/) | AWS / AWS Big Data Blog | 538.09 | AWS CloudFormation, AWS IAM, Amazon EC2, Amazon MSK, Amazon VPC, Apache Kafka |
-| 4 | expected:2 | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 466.25 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
-| 5 | - | [로그 파이프라인 개선기 - 기존 파이프라인 문제 정의 및 해결 방안 적용](https://tech.socarcorp.kr/data/2025/02/25/log-pipeline-revamp.html) | SOCAR / SOCAR Tech Blog | 428.16 | AWS Lambda, Amazon MSK, Amazon S3, Apache Flink, Apache Kafka, Java |
-| 6 | - | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog | 428.16 | AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon MSK, Amazon OpenSearch Service, Amazon S3 |
-| 7 | - | [Enable real-time mainframe analytics with Precisely Connect and Amazon S3](https://aws.amazon.com/blogs/big-data/enable-real-time-mainframe-analytics-with-precisely-connect-and-amazon-s3/) | AWS / AWS Big Data Blog | 329.14 | AWS Glue, Amazon MSK, Amazon RDS, Amazon S3, Apache Iceberg, migration |
-| 8 | - | [Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink](https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/) | AWS / AWS Big Data Blog | 289.52 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
-| 9 | - | [[다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍](https://techblog.woowahan.com/7894/) | Woowa Brothers / Woowa Tech Blog | 269.01 | Apache Kafka, event-driven architecture, streaming data pipeline |
-| 10 | - | [초보 개발자를 위한 Redis Cluster Migration 가이드라인](https://dev.gmarket.com/71) | Gmarket / Gmarket Tech Blog | 237.67 | Java, Node.js, Redis, Spring Boot, search, migration |
+| 1 | expected:3 | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 871.85 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
+| 2 | expected:3 | [Migrating TLS Clients managed by third-party Certificate Authorities from self-managed Apache Kafka to Amazon MSK](https://aws.amazon.com/blogs/big-data/migrating-tls-clients-managed-by-third-party-certificate-authorities-from-self-managed-apache-kafka-to-amazon-msk/) | AWS / AWS Big Data Blog | 708.90 | AWS IAM, Amazon EC2, Amazon MSK, Apache Kafka, Java, migration |
+| 3 | - | [Configure a custom domain name for your Amazon MSK cluster enabled with IAM authentication](https://aws.amazon.com/blogs/big-data/configure-a-custom-domain-name-for-your-amazon-msk-cluster-enabled-with-iam-authentication/) | AWS / AWS Big Data Blog | 546.59 | AWS CloudFormation, AWS IAM, Amazon EC2, Amazon MSK, Amazon VPC, Apache Kafka |
+| 4 | expected:2 | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 468.40 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
+| 5 | - | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog | 433.10 | AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon MSK, Amazon OpenSearch Service, Amazon S3 |
+| 6 | - | [로그 파이프라인 개선기 - 기존 파이프라인 문제 정의 및 해결 방안 적용](https://tech.socarcorp.kr/data/2025/02/25/log-pipeline-revamp.html) | SOCAR / SOCAR Tech Blog | 433.10 | AWS Lambda, Amazon MSK, Amazon S3, Apache Flink, Apache Kafka, Java |
+| 7 | - | [Enable real-time mainframe analytics with Precisely Connect and Amazon S3](https://aws.amazon.com/blogs/big-data/enable-real-time-mainframe-analytics-with-precisely-connect-and-amazon-s3/) | AWS / AWS Big Data Blog | 336.15 | AWS Glue, Amazon MSK, Amazon RDS, Amazon S3, Apache Iceberg, migration |
+| 8 | - | [CDC & CDC Sink Platform 개발 3편 - CDC Event Application Consuming 및 Event Stream Join의 구현](https://hyperconnect.github.io/2021/06/21/cdc-event-application-consuming.html) | Hyperconnect / Hyperconnect Tech Blog | 294.85 | Apache Kafka, Java, Kotlin, migration, performance optimization, Change Data Capture |
+| 9 | - | [Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink](https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/) | AWS / AWS Big Data Blog | 289.74 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
+| 10 | - | [[다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍](https://techblog.woowahan.com/7894/) | Woowa Brothers / Woowa Tech Blog | 266.58 | Apache Kafka, event-driven architecture, streaming data pipeline |
 
 #### Top Result Details
 
@@ -1375,7 +1375,7 @@ Highlights:
 
 - category: problem
 - intent: 한글 검색어로 비용 최적화, 성능 개선, 비용 절감 사례를 찾는다.
-- total results: 394
+- total results: 450
 - precision@5: 0.800
 - recall@10: 0.545
 - mrr: 0.500
@@ -1399,16 +1399,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 592.40 | cost optimization, observability |
-| 2 | expected:3 | [스타트업 엔지니어의 AWS 비용 최적화 경험기](https://tech.inflab.com/20240227-finops-for-startup/) | Inflab / Inflab Tech Blog | 543.23 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon DynamoDB |
-| 3 | expected:3 | [클라우드 서비스 사용량 관리를 통한 운영 비용 최적화](https://medium.com/coupang-engineering/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89-%EA%B4%80%EB%A6%AC%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9A%B4%EC%98%81-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-1521565c64ec?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 495.12 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
-| 4 | expected:3 | [데이터는 지웠는데 비용은 그대로? Aurora 스토리지 비용 최적화 하기](https://medium.com/wantedjobs/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%8A%94-%EC%A7%80%EC%9B%A0%EB%8A%94%EB%8D%B0-%EB%B9%84%EC%9A%A9%EC%9D%80-%EA%B7%B8%EB%8C%80%EB%A1%9C-aurora-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0-43d208f6564d?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 474.71 | Amazon Aurora, Amazon CloudWatch, Amazon RDS, cost optimization, observability |
-| 5 | expected:2 | [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/) | AWS / AWS Architecture Blog | 360.08 | AWS CloudFormation, AWS IAM, cost optimization, high availability, incident response, observability |
-| 6 | expected:2 | [Cloud expenditure optimization for cost efficiency](https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 357.38 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
-| 7 | - | [이달의 Nclouder 10월 주인공을 소개합니다!](https://medium.com/naver-cloud-platform/%EC%9D%B4%EB%8B%AC%EC%9D%98-nclouder-10%EC%9B%94-%EC%A3%BC%EC%9D%B8%EA%B3%B5%EC%9D%84-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4-9d7e18801b7c?source=rss----c7f2bfeb6b98---4) | NAVER Cloud / NAVER Cloud Platform Tech Blog | 329.07 | cost optimization, high availability, observability |
-| 8 | expected:3 | [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/) | Woowa Brothers / Woowa Tech Blog | 317.10 | Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS |
-| 9 | - | [데이터분석가로서 업무 과정과 경험, 배움을 공유합니다](https://techblog.woowahan.com/2686/) | Woowa Brothers / Woowa Tech Blog | 312.48 | cost optimization, observability |
-| 10 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 272.06 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
+| 1 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 612.21 | cost optimization, observability |
+| 2 | expected:3 | [스타트업 엔지니어의 AWS 비용 최적화 경험기](https://tech.inflab.com/20240227-finops-for-startup/) | Inflab / Inflab Tech Blog | 537.12 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon DynamoDB |
+| 3 | expected:3 | [클라우드 서비스 사용량 관리를 통한 운영 비용 최적화](https://medium.com/coupang-engineering/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%82%AC%EC%9A%A9%EB%9F%89-%EA%B4%80%EB%A6%AC%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9A%B4%EC%98%81-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-1521565c64ec?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 490.13 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
+| 4 | expected:3 | [데이터는 지웠는데 비용은 그대로? Aurora 스토리지 비용 최적화 하기](https://medium.com/wantedjobs/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%8A%94-%EC%A7%80%EC%9B%A0%EB%8A%94%EB%8D%B0-%EB%B9%84%EC%9A%A9%EC%9D%80-%EA%B7%B8%EB%8C%80%EB%A1%9C-aurora-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EB%B9%84%EC%9A%A9-%EC%B5%9C%EC%A0%81%ED%99%94-%ED%95%98%EA%B8%B0-43d208f6564d?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 470.18 | Amazon Aurora, Amazon CloudWatch, Amazon RDS, cost optimization, observability |
+| 5 | expected:2 | [Cloud expenditure optimization for cost efficiency](https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 365.12 | Amazon CloudWatch, Amazon EC2, Amazon S3, cost optimization, migration, observability |
+| 6 | expected:2 | [The Hidden Price Tag: Uncovering Hidden Costs in Cloud Architectures with the AWS Well-Architected Framework](https://aws.amazon.com/blogs/architecture/the-hidden-price-tag-uncovering-hidden-costs-in-cloud-architectures-with-the-aws-well-architected-framework/) | AWS / AWS Architecture Blog | 365.07 | AWS CloudFormation, AWS IAM, cost optimization, high availability, incident response, observability |
+| 7 | - | [이달의 Nclouder 10월 주인공을 소개합니다!](https://medium.com/naver-cloud-platform/%EC%9D%B4%EB%8B%AC%EC%9D%98-nclouder-10%EC%9B%94-%EC%A3%BC%EC%9D%B8%EA%B3%B5%EC%9D%84-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4-9d7e18801b7c?source=rss----c7f2bfeb6b98---4) | NAVER Cloud / NAVER Cloud Platform Tech Blog | 325.13 | cost optimization, high availability, observability |
+| 8 | expected:3 | [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/) | Woowa Brothers / Woowa Tech Blog | 318.08 | Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS |
+| 9 | - | [데이터분석가로서 업무 과정과 경험, 배움을 공유합니다](https://techblog.woowahan.com/2686/) | Woowa Brothers / Woowa Tech Blog | 309.51 | cost optimization, observability |
+| 10 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 275.30 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
 
 #### Top Result Details
 
@@ -1475,7 +1475,7 @@ Highlights:
 
 - category: problem
 - intent: 한글 검색어로 장애 대응, 사고 조사, SRE 자동화 사례를 찾는다.
-- total results: 400
+- total results: 449
 - precision@5: 0.200
 - recall@10: 0.333
 - mrr: 0.250
@@ -1491,16 +1491,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [데브시스터즈의 장애 대응 원칙과 방법](https://tech.devsisters.com/posts/incident-management-principles) | Devsisters / Devsisters Tech Blog | 665.58 | incident response, observability, performance optimization |
-| 2 | - | [우아한형제들이 장애를 놓치지 않고 탐지하는 방법](https://techblog.woowahan.com/24488/) | Woowa Brothers / Woowa Tech Blog | 433.66 | incident response, observability |
-| 3 | - | [2023-03-08 incident: A deep dive into our incident response](https://www.datadoghq.com/blog/engineering/2023-03-08-deep-dive-into-incident-response/) | Datadog / Datadog Engineering Blog | 433.36 | incident response, event response |
-| 4 | expected:2 | [Leverage Agentic AI for Autonomous Incident Response with AWS DevOps Agent](https://aws.amazon.com/blogs/devops/leverage-agentic-ai-for-autonomous-incident-response-with-aws-devops-agent/) | AWS / AWS DevOps Blog | 416.13 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EKS, Amazon S3 |
-| 5 | - | [우아~한 장애대응](https://techblog.woowahan.com/4886/) | Woowa Brothers / Woowa Tech Blog | 388.15 | incident response, observability, performance optimization |
-| 6 | - | [나를 술푸게 하는 고민들](https://techblog.woowahan.com/2583/) | Woowa Brothers / Woowa Tech Blog | 370.69 | Java, MQTT, search, incident response |
-| 7 | - | [피처 플래그 개발기: 실시간 데이터 동기화를 향한 여정](https://tech.kakaopay.com/post/feature-flag/) | Kakao Pay / Kakao Pay Tech Blog | 370.69 | incident response |
-| 8 | - | [데브시스터즈 엔지니어링 데이 - Infra/SRE 돌아보기](https://tech.devsisters.com/posts/2025-engineering-day-infra-sre) | Devsisters / Devsisters Tech Blog | 359.82 | Kubernetes, incident response |
-| 9 | - | [Netflix Hystrix를 이용한 MSA 회복성 패턴 톺아보기](https://dev.gmarket.com/40) | Gmarket / Gmarket Tech Blog | 357.69 | Istio, Spring Boot, incident response, observability, performance optimization |
-| 10 | - | [훈련은 실전처럼, 실전은…… 싫어요](https://techblog.woowahan.com/7346/) | Woowa Brothers / Woowa Tech Blog | 357.17 | incident response, observability |
+| 1 | - | [데브시스터즈의 장애 대응 원칙과 방법](https://tech.devsisters.com/posts/incident-management-principles) | Devsisters / Devsisters Tech Blog | 657.41 | incident response, observability, performance optimization |
+| 2 | - | [2023-03-08 incident: A deep dive into our incident response](https://www.datadoghq.com/blog/engineering/2023-03-08-deep-dive-into-incident-response/) | Datadog / Datadog Engineering Blog | 453.68 | incident response, event response |
+| 3 | - | [우아한형제들이 장애를 놓치지 않고 탐지하는 방법](https://techblog.woowahan.com/24488/) | Woowa Brothers / Woowa Tech Blog | 439.64 | incident response, observability |
+| 4 | expected:2 | [Leverage Agentic AI for Autonomous Incident Response with AWS DevOps Agent](https://aws.amazon.com/blogs/devops/leverage-agentic-ai-for-autonomous-incident-response-with-aws-devops-agent/) | AWS / AWS DevOps Blog | 435.64 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EKS, Amazon S3 |
+| 5 | - | [장애 모의 훈련 그리고 배운 점](https://hyperconnect.github.io/2024/11/12/sre-incident-training.html) | Hyperconnect / Hyperconnect Tech Blog | 420.24 | Amazon ElastiCache, Amazon RDS, Apache Kafka, Kubernetes, Redis, high availability |
+| 6 | - | [우아~한 장애대응](https://techblog.woowahan.com/4886/) | Woowa Brothers / Woowa Tech Blog | 392.76 | incident response, observability, performance optimization |
+| 7 | - | [피처 플래그 개발기: 실시간 데이터 동기화를 향한 여정](https://tech.kakaopay.com/post/feature-flag/) | Kakao Pay / Kakao Pay Tech Blog | 375.08 | incident response |
+| 8 | - | [나를 술푸게 하는 고민들](https://techblog.woowahan.com/2583/) | Woowa Brothers / Woowa Tech Blog | 375.08 | Java, MQTT, search, incident response |
+| 9 | - | [데브시스터즈 엔지니어링 데이 - Infra/SRE 돌아보기](https://tech.devsisters.com/posts/2025-engineering-day-infra-sre) | Devsisters / Devsisters Tech Blog | 363.77 | Kubernetes, incident response |
+| 10 | - | [선제적 장애 대응을 위한 Sentry 최적화 적용기](https://techblog.woowahan.com/21604/) | Woowa Brothers / Woowa Tech Blog | 360.56 | search, incident response, observability |
 
 #### Top Result Details
 
@@ -1524,7 +1524,25 @@ Highlights:
 - caseSolution: 통해 협업하며, **장애** 종료 후 포스트모템을 통해 원인 분석과 재발 방지 대책을 수립하는 체계적 **장애 대응** 프로세스를 구축하였다.
 - summary: 데브시스터즈에서 적용하고 있는 **장애 대응** 원칙과 방법을 공개합니다.
 
-##### 2. 우아한형제들이 장애를 놓치지 않고 탐지하는 방법
+##### 2. 2023-03-08 incident: A deep dive into our incident response
+
+- match: not expected
+- source: Datadog / Datadog Engineering Blog
+- url: https://www.datadoghq.com/blog/engineering/2023-03-08-deep-dive-into-incident-response/
+- technologies: -
+- problem keywords: incident response
+- case summary: Datadog의 2023년 3월 8일 인시던트 대응 과정을 분석하며 성공과 실패 지점을 파악하고 개선점을 도출한 사례이다.
+- problem: 대규모 인시던트 발생 시 효과적인 대응과 복구 과정에서의 어려움과 한계점이 드러났다.
+- solution: 인시던트 대응 프로세스를 면밀히 검토하고, 성공 사례와 문제점을 분석하여 향후 대응 역량을 강화하는 방안을 마련하였다.
+
+Highlights:
+
+- title: 2023-03-08 **incident**: A deep dive into our **incident response**
+- caseSummary: Datadog의 2023년 3월 8일 인시던트 **대응** 과정을 분석하며 성공과 실패 지점을 파악하고 개선점을 도출한 사례이다.
+- caseSolution: 인시던트 **대응** 프로세스를 면밀히 검토하고, 성공 사례와 문제점을 분석하여 향후 **대응** 역량을 강화하는 방안을 마련하였다.
+- summary: This post sketches out our **incident response** process, where it succeeded and where it stumbled on March
+
+##### 3. 우아한형제들이 장애를 놓치지 않고 탐지하는 방법
 
 - match: not expected
 - source: Woowa Brothers / Woowa Tech Blog
@@ -1544,30 +1562,12 @@ Highlights:
 - caseSolution: **대응** 프로세스 자동화를 구현했다.
 - content: **장애 대응** 프로세스 임계 도달 횟수만큼 임계 값에 도달하게 되면 Slack 채널에 경보가 발송 (좌측 이미지)됩니다. 경보 메시지에는 지표 현황이나 긴급도 등의 정보가 포함되어 있어 현재 상황을 빠르게 파악할 수 있습니다.
 
-##### 3. 2023-03-08 incident: A deep dive into our incident response
-
-- match: not expected
-- source: Datadog / Datadog Engineering Blog
-- url: https://www.datadoghq.com/blog/engineering/2023-03-08-deep-dive-into-incident-response/
-- technologies: -
-- problem keywords: incident response
-- case summary: Datadog의 2023년 3월 8일 인시던트 대응 과정을 분석하며 성공과 실패 지점을 파악하고 개선점을 도출한 사례이다.
-- problem: 대규모 인시던트 발생 시 효과적인 대응과 복구 과정에서의 어려움과 한계점이 드러났다.
-- solution: 인시던트 대응 프로세스를 면밀히 검토하고, 성공 사례와 문제점을 분석하여 향후 대응 역량을 강화하는 방안을 마련하였다.
-
-Highlights:
-
-- title: 2023-03-08 **incident**: A deep dive into our **incident response**
-- caseSummary: Datadog의 2023년 3월 8일 인시던트 **대응** 과정을 분석하며 성공과 실패 지점을 파악하고 개선점을 도출한 사례이다.
-- caseSolution: 인시던트 **대응** 프로세스를 면밀히 검토하고, 성공 사례와 문제점을 분석하여 향후 **대응** 역량을 강화하는 방안을 마련하였다.
-- summary: This post sketches out our **incident response** process, where it succeeded and where it stumbled on March
-
 
 ### ko-migration-kafka - `카프카 마이그레이션`
 
 - category: migration
 - intent: 한글 기술명과 문제 상황을 함께 입력해 Kafka/MSK 이전 사례를 찾는다.
-- total results: 246
+- total results: 271
 - precision@5: 0.400
 - recall@10: 1.000
 - mrr: 1.000
@@ -1582,16 +1582,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 440.84 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
-| 2 | expected:3 | [Migrating TLS Clients managed by third-party Certificate Authorities from self-managed Apache Kafka to Amazon MSK](https://aws.amazon.com/blogs/big-data/migrating-tls-clients-managed-by-third-party-certificate-authorities-from-self-managed-apache-kafka-to-amazon-msk/) | AWS / AWS Big Data Blog | 373.83 | AWS IAM, Amazon EC2, Amazon MSK, Apache Kafka, Java, migration |
-| 3 | - | [Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink](https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/) | AWS / AWS Big Data Blog | 319.34 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
-| 4 | - | [[다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍](https://techblog.woowahan.com/7894/) | Woowa Brothers / Woowa Tech Blog | 306.65 | Apache Kafka, event-driven architecture, streaming data pipeline |
-| 5 | - | [초보 개발자를 위한 Redis Cluster Migration 가이드라인](https://dev.gmarket.com/71) | Gmarket / Gmarket Tech Blog | 291.18 | Java, Node.js, Redis, Spring Boot, search, migration |
-| 6 | - | [Sharded MySQL Cluster 도입 배경과 개발기 (부제: 우당탕탕 좌충우돌 개발기)](https://dev.gmarket.com/61) | Gmarket / Gmarket Tech Blog | 279.64 | Apache Kafka, JPA, JVM, Java, Kubernetes, Spring Boot |
-| 7 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 256.62 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
-| 8 | - | [사용법과 함께 작성해본 좌충우돌 AWS DMS 사용기 - feat. RDS 통합 이야기](https://blog.banksalad.com/tech/dms/) | Banksalad / Banksalad Blog | 242.42 | Amazon RDS |
-| 9 | - | [여기어때 이벤트 기반 통합 알림 플랫폼 구축기 Part 2. How?](https://techblog.gccompany.co.kr/%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%ED%86%B5%ED%95%A9-%EC%95%8C%EB%A6%BC-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B5%AC%EC%B6%95%EA%B8%B0-part-2-how-11f41bb2b5f2?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 238.76 | Apache Kafka, Redis, migration, observability, event-driven architecture |
-| 10 | - | [Delivering the Future, WOOWACON 2025](https://techblog.woowahan.com/24289/) | Woowa Brothers / Woowa Tech Blog | 237.60 | Apache Kafka, incident response, migration |
+| 1 | expected:3 | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 443.44 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
+| 2 | expected:3 | [Migrating TLS Clients managed by third-party Certificate Authorities from self-managed Apache Kafka to Amazon MSK](https://aws.amazon.com/blogs/big-data/migrating-tls-clients-managed-by-third-party-certificate-authorities-from-self-managed-apache-kafka-to-amazon-msk/) | AWS / AWS Big Data Blog | 380.12 | AWS IAM, Amazon EC2, Amazon MSK, Apache Kafka, Java, migration |
+| 3 | - | [CDC & CDC Sink Platform 개발 3편 - CDC Event Application Consuming 및 Event Stream Join의 구현](https://hyperconnect.github.io/2021/06/21/cdc-event-application-consuming.html) | Hyperconnect / Hyperconnect Tech Blog | 377.04 | Apache Kafka, Java, Kotlin, migration, performance optimization, Change Data Capture |
+| 4 | - | [Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink](https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/) | AWS / AWS Big Data Blog | 320.02 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
+| 5 | - | [[다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍](https://techblog.woowahan.com/7894/) | Woowa Brothers / Woowa Tech Blog | 303.51 | Apache Kafka, event-driven architecture, streaming data pipeline |
+| 6 | - | [초보 개발자를 위한 Redis Cluster Migration 가이드라인](https://dev.gmarket.com/71) | Gmarket / Gmarket Tech Blog | 302.87 | Java, Node.js, Redis, Spring Boot, search, migration |
+| 7 | - | [Sharded MySQL Cluster 도입 배경과 개발기 (부제: 우당탕탕 좌충우돌 개발기)](https://dev.gmarket.com/61) | Gmarket / Gmarket Tech Blog | 276.47 | Apache Kafka, JPA, JVM, Java, Kubernetes, Spring Boot |
+| 8 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 252.95 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
+| 9 | - | [Zero-downtime DynamoDB construct migration: from Table to TableV2 with cdk orphan](https://aws.amazon.com/blogs/database/zero-downtime-dynamodb-construct-migration-from-table-to-tablev2-with-cdk-orphan/) | AWS / AWS Database Blog | 244.84 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Node.js |
+| 10 | - | [여기어때 이벤트 기반 통합 알림 플랫폼 구축기 Part 2. How?](https://techblog.gccompany.co.kr/%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%ED%86%B5%ED%95%A9-%EC%95%8C%EB%A6%BC-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B5%AC%EC%B6%95%EA%B8%B0-part-2-how-11f41bb2b5f2?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 237.13 | Apache Kafka, Redis, migration, observability, event-driven architecture |
 
 #### Top Result Details
 
@@ -1633,22 +1633,24 @@ Highlights:
 - content: Amazon Managed Streaming for **Apache Kafka** (Amazon MSK) is a fully managed streaming data service that handles **Apache Kafka** infrastructure and operations, so developers
 - content: and DevOps managers can run **Apache Kafka** applications on AWS.
 
-##### 3. Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink
+##### 3. CDC & CDC Sink Platform 개발 3편 - CDC Event Application Consuming 및 Event Stream Join의 구현
 
 - match: not expected
-- source: AWS / AWS Big Data Blog
-- url: https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/
-- technologies: AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3, Apache Flink, Apache Kafka, Java, search
-- problem keywords: migration, observability, performance optimization
-- case summary: Amazon Managed Service for Apache Flink에서 Flink 1.x에서 2.2로 마이그레이션하며 Java 17 런타임, 향상된 RocksDB 상태 백엔드, SQL 기반 AI/ML 추론 기능을 도입하여 성능과 운영 효율성을 개선한 사례이다.
-- problem: 기존 Flink 1.x 환경에서 Java 11 지원 종료, 느린 상태 백엔드 성능, 분산된 API 사용으로 인한 유지보수 어려움과 최신 기능 부재 문제가 있었다.
-- solution: Flink 2.2로 업그레이드하여 Java 17과 Python 3.12 지원, RocksDB 8.10.0 적용, 새로운 SQL/테이블 API 기능 활용, 자동 롤백과 스냅샷 기능으로 안정적인 무중단 마이그레이션을 수행하였다.
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2021/06/21/cdc-event-application-consuming.html
+- technologies: Apache Kafka, Java, Kotlin
+- problem keywords: migration, performance optimization
+- case summary: 하이퍼커넥트는 CDC 이벤트를 애플리케이션에서 직접 소비하여 대용량 데이터 마이그레이션과 이벤트 스트림 조인을 구현한 사례를 공유하며, RDB 간, RDB에서 Google BigQuery 및 ScyllaDB로의 마이그레이션 경험과 성능 최적화 방안을 소개합니다.
+- problem: 서로 다른 테이블에서 발생하는 CDC 이벤트 스트림을 단일 테이블로 통합하는 대용량 데이터 마이그레이션과, 이벤트 적재 순서 보장 및 성능 최적화 문제를 해결해야 했습니다.
+- solution: Kafka 기반 CDC 이벤트를 애플리케이션에서 직접 소비하여 Upsert 쿼리를 통한 DB 사이드 스트림 조인을 단발성 마이그레이션에 적용했고, ScyllaDB 마이그레이션 시 이벤트 적재 순서를 보장하는 커맨드 큐와 Kotlin Coroutine을 활용한 CDC Migration Producer를 개발하여 성능과 일관성을 확보했습니다.
 
 Highlights:
 
-- summary: this post, we explain what's new in Amazon Managed Service for Apache Flink 2.2, provide a guided **migration**
-- content: This has state compatibility implications covered in the **migration** section.
-- content: ), "Kinesis Source"); Update connector dependencies: The following AWS connectors have Flink 2.x-compatible releases: Connector Flink 2.x Artifact Version **Apache Kafka**
+- caseSummary: 애플리케이션에서 직접 소비하여 대용량 데이터 마이그레이션과 이벤트 스트림 조인을 구현한 사례를 공유하며, RDB 간, RDB에서 Google BigQuery 및 ScyllaDB로의 **마이그레이션**
+- caseSolution: **Kafka** 기반 CDC 이벤트를 애플리케이션에서 직접 소비하여 Upsert 쿼리를 통한 DB 사이드 스트림 조인을 단발성 마이그레이션에 적용했고, ScyllaDB **마이그레이션** 시 이벤트
+- caseSolution: 적재 순서를 보장하는 커맨드 큐와 Kotlin Coroutine을 활용한 CDC **Migration** Producer를 개발하여 성능과 일관성을 확보했습니다.
+- content: CDC **Migration** Producer 개발 CDC Platform은 Primary Key가 존재하는 CDC Event에 대해 **Kafka** Partition 단위로 적재 순서를 보장합니다.
+- content: 특히, **Migration** 대상 데이터가 많을 경우 처리량 부족으로 **Kafka** retension.ms을 초과하면서 데이터가 소실될 수 있습니다.
 
 
 ### ko-architecture-serverless - `서버리스`
@@ -1659,7 +1661,7 @@ Highlights:
 - precision@5: 0.400
 - recall@10: 1.000
 - mrr: 0.500
-- ndcg@10: 0.598
+- ndcg@10: 0.611
 
 #### Expected URLs
 
@@ -1671,16 +1673,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [Serverless ICYMI Q4 2025](https://aws.amazon.com/blogs/compute/serverless-icymi-q4-2025/) | AWS / AWS Compute Blog | 455.73 | AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EventBridge, Amazon S3 |
-| 2 | expected:2 | [Serverless ICYMI Q1 2026](https://aws.amazon.com/blogs/compute/serverless-icymi-q1-2026/) | AWS / AWS Compute Blog | 434.30 | AWS CDK, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EventBridge, Java |
-| 3 | expected:3 | [Optimizing Compute-Intensive Serverless Workloads with Multi-threaded Rust on AWS Lambda](https://aws.amazon.com/blogs/compute/optimizing-compute-intensive-serverless-workloads-with-multi-threaded-rust-on-aws-lambda/) | AWS / AWS Compute Blog | 350.99 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Node.js, observability |
-| 4 | - | [.NET 10 runtime now available in AWS Lambda](https://aws.amazon.com/blogs/compute/net-10-runtime-now-available-in-aws-lambda/) | AWS / AWS Compute Blog | 328.74 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon EC2, migration, observability |
-| 5 | - | [More room to build: serverless services now support payloads up to 1 MB](https://aws.amazon.com/blogs/compute/more-room-to-build-serverless-services-now-support-payloads-up-to-1-mb/) | AWS / AWS Compute Blog | 318.01 | AWS Lambda, Amazon CloudWatch, Amazon EventBridge, Amazon S3, Apache Kafka, Java |
-| 6 | - | [Google Cloud Next 2024 참관 후기 2편 - Google Cloud Serverless for Java developer](https://tech.kakaopay.com/post/2024-google-cloud-next-2/) | Kakao Pay / Kakao Pay Tech Blog | 308.83 | Java, serverless |
-| 7 | expected:3 | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog | 306.05 | AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon MSK, Amazon OpenSearch Service, Amazon S3 |
-| 8 | - | [Building an end-to-end agentic SRE using AWS DevOps Agent](https://aws.amazon.com/blogs/devops/building-an-end-to-end-agentic-sre-using-aws-devops-agent/) | AWS / AWS DevOps Blog | 295.45 | AWS CDK, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon EventBridge, Amazon VPC |
-| 9 | - | [6,000 AWS accounts, three people, one platform: Lessons learned](https://aws.amazon.com/blogs/architecture/6000-aws-accounts-three-people-one-platform-lessons-learned/) | AWS / AWS Architecture Blog | 293.27 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2 |
-| 10 | - | [Building Memory-Intensive Apps with AWS Lambda Managed Instances](https://aws.amazon.com/blogs/compute/building-memory-intensive-apps-with-aws-lambda-managed-instances/) | AWS / AWS Compute Blog | 293.20 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon S3 |
+| 1 | - | [Serverless ICYMI Q4 2025](https://aws.amazon.com/blogs/compute/serverless-icymi-q4-2025/) | AWS / AWS Compute Blog | 476.04 | AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EventBridge, Amazon S3 |
+| 2 | expected:2 | [Serverless ICYMI Q1 2026](https://aws.amazon.com/blogs/compute/serverless-icymi-q1-2026/) | AWS / AWS Compute Blog | 453.05 | AWS CDK, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EventBridge, Java |
+| 3 | expected:3 | [Optimizing Compute-Intensive Serverless Workloads with Multi-threaded Rust on AWS Lambda](https://aws.amazon.com/blogs/compute/optimizing-compute-intensive-serverless-workloads-with-multi-threaded-rust-on-aws-lambda/) | AWS / AWS Compute Blog | 366.31 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Node.js, observability |
+| 4 | - | [.NET 10 runtime now available in AWS Lambda](https://aws.amazon.com/blogs/compute/net-10-runtime-now-available-in-aws-lambda/) | AWS / AWS Compute Blog | 333.48 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon EC2, migration, observability |
+| 5 | - | [More room to build: serverless services now support payloads up to 1 MB](https://aws.amazon.com/blogs/compute/more-room-to-build-serverless-services-now-support-payloads-up-to-1-mb/) | AWS / AWS Compute Blog | 330.35 | AWS Lambda, Amazon CloudWatch, Amazon EventBridge, Amazon S3, Apache Kafka, Java |
+| 6 | expected:3 | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog | 317.46 | AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon MSK, Amazon OpenSearch Service, Amazon S3 |
+| 7 | - | [Google Cloud Next 2024 참관 후기 2편 - Google Cloud Serverless for Java developer](https://tech.kakaopay.com/post/2024-google-cloud-next-2/) | Kakao Pay / Kakao Pay Tech Blog | 314.95 | Java, serverless |
+| 8 | - | [Building an end-to-end agentic SRE using AWS DevOps Agent](https://aws.amazon.com/blogs/devops/building-an-end-to-end-agentic-sre-using-aws-devops-agent/) | AWS / AWS DevOps Blog | 299.61 | AWS CDK, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon EventBridge, Amazon VPC |
+| 9 | - | [서버리스에서 쿠버네티스로 - Airflow 운영 경험기](https://helloworld.kurly.com/blog/airflow-1/) | Kurly / Kurly Tech Blog | 298.18 | Kubernetes, serverless |
+| 10 | - | [6,000 AWS accounts, three people, one platform: Lessons learned](https://aws.amazon.com/blogs/architecture/6000-aws-accounts-three-people-one-platform-lessons-learned/) | AWS / AWS Architecture Blog | 297.44 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2 |
 
 #### Top Result Details
 
@@ -1749,7 +1751,7 @@ Highlights:
 
 - category: technology
 - intent: 한글 검색어로 EKS 노드 그룹 오토스케일링, Pod 권한, 카나리 배포처럼 Kubernetes 운영 사례를 찾는다.
-- total results: 32
+- total results: 39
 - precision@5: 0.200
 - recall@10: 1.000
 - mrr: 1.000
@@ -1763,16 +1765,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Job 워크로드를 위한 EKS Node Group 오토스케일링 도입기](https://medium.com/daangn/job-%EC%9B%8C%ED%81%AC%EB%A1%9C%EB%93%9C%EB%A5%BC-%EC%9C%84%ED%95%9C-eks-node-group-%EC%98%A4%ED%86%A0%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%A7%81-%EB%8F%84%EC%9E%85%EA%B8%B0-a6a28376d153?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 397.04 | Amazon EC2, Amazon EKS, Amazon VPC, Istio, Kubernetes, cost optimization |
-| 2 | - | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog | 303.37 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EKS, Java |
-| 3 | - | [How Generali Malaysia optimizes operations with Amazon EKS](https://aws.amazon.com/blogs/architecture/how-generali-malaysia-optimizes-operations-with-amazon-eks/) | AWS / AWS Architecture Blog | 289.22 | AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Kubernetes, cost optimization |
-| 4 | - | [Optimizing storage performance for Amazon EKS on AWS Outposts](https://aws.amazon.com/blogs/compute/optimizing-storage-performance-for-amazon-eks-on-aws-outposts/) | AWS / AWS Compute Blog | 276.50 | AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
-| 5 | - | [Spark on Kubernetes로 이관하기](https://techblog.woowahan.com/10291/) | Woowa Brothers / Woowa Tech Blog | 266.85 | AWS Glue, AWS IAM, Amazon EKS, Amazon S3, Kubernetes, migration |
-| 6 | - | [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/) | Woowa Brothers / Woowa Tech Blog | 238.26 | Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS |
-| 7 | - | [Deloitte optimizes EKS environment provisioning and achieves 89% faster testing environments using Amazon EKS and vCluster](https://aws.amazon.com/blogs/architecture/deloitte-optimizes-eks-environment-provisioning-and-achieves-89-faster-testing-environments-using-amazon-eks-and-vcluster/) | AWS / AWS Architecture Blog | 234.10 | AWS IAM, Amazon EC2, Amazon EKS, Amazon VPC, Kubernetes, cost optimization |
-| 8 | - | [EKS Bottlerocket AMI에서 DCGM 오류로 GPU 노드 반복 교체 문제 해결기](https://tech.inflab.com/20250827-bottlerocket-ami-gpu-issue/) | Inflab / Inflab Tech Blog | 233.88 | Amazon EC2, Amazon EKS, Kubernetes, observability |
-| 9 | - | [How Kaltura Accelerates CI/CD Using AWS CodeBuild-hosted Runners](https://aws.amazon.com/blogs/devops/how-kaltura-accelerates-ci-cd-using-aws-codebuild-hosted-runners/) | AWS / AWS DevOps Blog | 228.83 | AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon VPC, Kubernetes, migration |
-| 10 | - | [EKS Anywhere 구축기](https://techblog.woowahan.com/10221/) | Woowa Brothers / Woowa Tech Blog | 216.69 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon S3 |
+| 1 | expected:3 | [Job 워크로드를 위한 EKS Node Group 오토스케일링 도입기](https://medium.com/daangn/job-%EC%9B%8C%ED%81%AC%EB%A1%9C%EB%93%9C%EB%A5%BC-%EC%9C%84%ED%95%9C-eks-node-group-%EC%98%A4%ED%86%A0%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%A7%81-%EB%8F%84%EC%9E%85%EA%B8%B0-a6a28376d153?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 402.62 | Amazon EC2, Amazon EKS, Amazon VPC, Istio, Kubernetes, cost optimization |
+| 2 | - | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog | 321.09 | AWS CDK, AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EKS, Java |
+| 3 | - | [How Generali Malaysia optimizes operations with Amazon EKS](https://aws.amazon.com/blogs/architecture/how-generali-malaysia-optimizes-operations-with-amazon-eks/) | AWS / AWS Architecture Blog | 306.12 | AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Kubernetes, cost optimization |
+| 4 | - | [Optimizing storage performance for Amazon EKS on AWS Outposts](https://aws.amazon.com/blogs/compute/optimizing-storage-performance-for-amazon-eks-on-aws-outposts/) | AWS / AWS Compute Blog | 292.65 | AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
+| 5 | - | [Spark on Kubernetes로 이관하기](https://techblog.woowahan.com/10291/) | Woowa Brothers / Woowa Tech Blog | 263.03 | AWS Glue, AWS IAM, Amazon EKS, Amazon S3, Kubernetes, migration |
+| 6 | - | [Deloitte optimizes EKS environment provisioning and achieves 89% faster testing environments using Amazon EKS and vCluster](https://aws.amazon.com/blogs/architecture/deloitte-optimizes-eks-environment-provisioning-and-achieves-89-faster-testing-environments-using-amazon-eks-and-vcluster/) | AWS / AWS Architecture Blog | 241.79 | AWS IAM, Amazon EC2, Amazon EKS, Amazon VPC, Kubernetes, cost optimization |
+| 7 | - | [EKS Bottlerocket AMI에서 DCGM 오류로 GPU 노드 반복 교체 문제 해결기](https://tech.inflab.com/20250827-bottlerocket-ami-gpu-issue/) | Inflab / Inflab Tech Blog | 238.23 | Amazon EC2, Amazon EKS, Kubernetes, observability |
+| 8 | - | [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/) | Woowa Brothers / Woowa Tech Blog | 232.03 | Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS |
+| 9 | - | [How Kaltura Accelerates CI/CD Using AWS CodeBuild-hosted Runners](https://aws.amazon.com/blogs/devops/how-kaltura-accelerates-ci-cd-using-aws-codebuild-hosted-runners/) | AWS / AWS DevOps Blog | 231.61 | AWS IAM, Amazon CloudWatch, Amazon EKS, Amazon VPC, Kubernetes, migration |
+| 10 | - | [Leverage Agentic AI for Autonomous Incident Response with AWS DevOps Agent](https://aws.amazon.com/blogs/devops/leverage-agentic-ai-for-autonomous-incident-response-with-aws-devops-agent/) | AWS / AWS DevOps Blog | 212.99 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EKS, Amazon S3 |
 
 #### Top Result Details
 
@@ -1838,7 +1840,7 @@ Highlights:
 
 - category: problem
 - intent: 한글 검색어로 관측성, 모니터링, 로그 플랫폼 구축 사례를 찾는다.
-- total results: 340
+- total results: 372
 - precision@5: 0.200
 - recall@10: 0.333
 - mrr: 1.000
@@ -1854,16 +1856,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [옵저버빌리티 Right-Sizing: 여기어때에서 기준을 만드는 법](https://techblog.gccompany.co.kr/%EC%98%B5%EC%A0%80%EB%B2%84%EB%B9%8C%EB%A6%AC%ED%8B%B0-right-sizing-%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C%EC%97%90%EC%84%9C-%EA%B8%B0%EC%A4%80%EC%9D%84-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B2%95-8c9e1b3d3c97?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 316.94 | JVM, Kubernetes, OpenTelemetry, cost optimization, observability, performance optimization |
-| 2 | - | [옵저버빌리티: 로그라고해서 다 같은 로그가 아니다(1/2)](https://netmarble.engineering/observability-logging-a/) | Netmarble / Netmarble Tech Blog | 306.66 | Kubernetes, observability |
-| 3 | - | [옵저버빌리티: 로그라고해서 다 같은 로그가 아니다(2/2)](https://netmarble.engineering/observability-logging-b/) | Netmarble / Netmarble Tech Blog | 301.27 | observability |
-| 4 | - | [PHP 8: Observability baked right in](https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/) | Datadog / Datadog Engineering Blog | 282.08 | observability |
-| 5 | - | [Enhancing network observability with new AWS Outposts racks LAG metrics](https://aws.amazon.com/blogs/compute/enhancing-network-observability-with-new-aws-outposts-racks-lag-metrics/) | AWS / AWS Compute Blog | 234.85 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, high availability, observability |
-| 6 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 234.85 | cost optimization, observability |
-| 7 | - | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 190.49 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
-| 8 | - | [LLMOps로 확장하는 AI플랫폼 2.0](https://techblog.woowahan.com/22839/) | Woowa Brothers / Woowa Tech Blog | 187.35 | LLM, Redis, observability, performance optimization, streaming data pipeline |
-| 9 | - | [Improving trust with Datadog Log Management](https://www.datadoghq.com/blog/engineering/improving-trust-with-datadog-log-management/) | Datadog / Datadog Engineering Blog | 177.24 | observability |
-| 10 | - | [Scaling to Infinity: 한계를 넘어서는 LY Corporation의 관측 가능성 플랫폼 진화기](https://techblog.lycorp.co.jp/ko/the-evolution-of-the-ly-observability-platform) | LY Corporation / LY Corporation Tech Blog | 174.42 | observability |
+| 1 | expected:3 | [옵저버빌리티 Right-Sizing: 여기어때에서 기준을 만드는 법](https://techblog.gccompany.co.kr/%EC%98%B5%EC%A0%80%EB%B2%84%EB%B9%8C%EB%A6%AC%ED%8B%B0-right-sizing-%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C%EC%97%90%EC%84%9C-%EA%B8%B0%EC%A4%80%EC%9D%84-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B2%95-8c9e1b3d3c97?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 328.44 | JVM, Kubernetes, OpenTelemetry, cost optimization, observability, performance optimization |
+| 2 | - | [옵저버빌리티: 로그라고해서 다 같은 로그가 아니다(1/2)](https://netmarble.engineering/observability-logging-a/) | Netmarble / Netmarble Tech Blog | 313.92 | Kubernetes, observability |
+| 3 | - | [옵저버빌리티: 로그라고해서 다 같은 로그가 아니다(2/2)](https://netmarble.engineering/observability-logging-b/) | Netmarble / Netmarble Tech Blog | 313.67 | observability |
+| 4 | - | [PHP 8: Observability baked right in](https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/) | Datadog / Datadog Engineering Blog | 294.21 | observability |
+| 5 | - | [AWS re:Invent 2023, 관심 세션을 중심으로 (2편): Cost Optimization, Observability](https://tech.kakaopay.com/post/2023-aws-reinvent-2/) | Kakao Pay / Kakao Pay Tech Blog | 245.00 | cost optimization, observability |
+| 6 | - | [Enhancing network observability with new AWS Outposts racks LAG metrics](https://aws.amazon.com/blogs/compute/enhancing-network-observability-with-new-aws-outposts-racks-lag-metrics/) | AWS / AWS Compute Blog | 245.00 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, high availability, observability |
+| 7 | - | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 198.62 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
+| 8 | - | [LLMOps로 확장하는 AI플랫폼 2.0](https://techblog.woowahan.com/22839/) | Woowa Brothers / Woowa Tech Blog | 186.72 | LLM, Redis, observability, performance optimization, streaming data pipeline |
+| 9 | - | [Improving trust with Datadog Log Management](https://www.datadoghq.com/blog/engineering/improving-trust-with-datadog-log-management/) | Datadog / Datadog Engineering Blog | 183.20 | observability |
+| 10 | - | [Scaling to Infinity: 한계를 넘어서는 LY Corporation의 관측 가능성 플랫폼 진화기](https://techblog.lycorp.co.jp/ko/the-evolution-of-the-ly-observability-platform) | LY Corporation / LY Corporation Tech Blog | 179.19 | observability |
 
 #### Top Result Details
 
@@ -1925,11 +1927,11 @@ Highlights:
 
 - category: architecture
 - intent: 한글 검색어로 카나리 배포, Blue-Green 배포, Argo Rollouts, Spinnaker 적용 사례를 찾는다.
-- total results: 323
+- total results: 364
 - precision@5: 0.400
 - recall@10: 1.000
 - mrr: 1.000
-- ndcg@10: 1.000
+- ndcg@10: 0.920
 
 #### Expected URLs
 
@@ -1940,16 +1942,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [EKS + ALB 환경에서 Argo Rollouts 503 에러 없는 카나리 배포 적용기](https://techblog.gccompany.co.kr/eks-alb-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-argo-rollouts-503-%EC%97%90%EB%9F%AC-%EC%97%86%EB%8A%94-%EC%B9%B4%EB%82%98%EB%A6%AC-%EB%B0%B0%ED%8F%AC-%EC%A0%81%EC%9A%A9%EA%B8%B0-689eedaf8d1a?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 566.09 | Amazon EKS, Amazon S3, Argo Rollouts, Kubernetes, incident response, observability |
-| 2 | expected:3 | [Istio와 Spinnaker를 활용한 Blue-Green + Canary 자동 배포 전략 도입기](https://tech.devsisters.com/posts/blue-green-canary-deployment) | Devsisters / Devsisters Tech Blog | 181.72 | Argo Rollouts, Go, Istio, JVM, Kubernetes, Redis |
-| 3 | - | [Kubernetes 클러스터에 애플리케이션 배포하기](https://medium.com/naver-cloud-platform/kubernetes-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-494f653341ab?source=rss----c7f2bfeb6b98---4) | NAVER Cloud / NAVER Cloud Platform Tech Blog | 175.08 | Kubernetes, observability, canary deployment |
-| 4 | - | [실험과 기능플래그를 위한 실험플랫폼 구축하기](https://techblog.woowahan.com/9935/) | Woowa Brothers / Woowa Tech Blog | 170.66 | AWS Glue, Amazon RDS, JVM, Java, Kotlin, Redis |
-| 5 | - | [배달의민족 광고데이터 이관기](https://techblog.woowahan.com/14041/) | Woowa Brothers / Woowa Tech Blog | 162.71 | Amazon OpenSearch Service, Elasticsearch, JVM, search, cost optimization, migration |
-| 6 | - | [쿠팡의 머신러닝 플랫폼을 통한 ML 개발 가속화](https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1%EC%9D%98-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%ED%86%B5%ED%95%9C-ml-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%86%8D%ED%99%94-de29804148bb?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 159.80 | Kubernetes, LLM, search, observability, canary deployment, streaming data pipeline |
-| 7 | - | [별로 안 궁금했지만 막상 들어보니 은근 궁금했던 개발 이야기](https://techblog.woowahan.com/6042/) | Woowa Brothers / Woowa Tech Blog | 155.23 | observability, canary deployment |
-| 8 | - | [웹 애플리케이션 페이지를 패키지로 개발해 본 경험](https://techblog.woowahan.com/16910/) | Woowa Brothers / Woowa Tech Blog | 144.43 | Node.js, React, canary deployment |
-| 9 | - | [Choosing between Amazon ECS Blue/Green Native or AWS CodeDeploy in AWS CDK](https://aws.amazon.com/blogs/devops/choosing-between-amazon-ecs-blue-green-native-or-aws-codedeploy-in-aws-cdk/) | AWS / AWS DevOps Blog | 142.87 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon EC2, migration, canary deployment |
-| 10 | - | [Advancing Our Chef Infrastructure: Safety Without Disruption](https://slack.engineering/advancing-our-chef-infrastructure-safety-without-disruption/) | Slack / Engineering at Slack | 135.56 | Amazon EC2, Amazon S3, Kubernetes, high availability, canary deployment |
+| 1 | expected:3 | [EKS + ALB 환경에서 Argo Rollouts 503 에러 없는 카나리 배포 적용기](https://techblog.gccompany.co.kr/eks-alb-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-argo-rollouts-503-%EC%97%90%EB%9F%AC-%EC%97%86%EB%8A%94-%EC%B9%B4%EB%82%98%EB%A6%AC-%EB%B0%B0%ED%8F%AC-%EC%A0%81%EC%9A%A9%EA%B8%B0-689eedaf8d1a?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 575.55 | Amazon EKS, Amazon S3, Argo Rollouts, Kubernetes, incident response, observability |
+| 2 | - | [1년 동안 Workload의 절반을 ARM64로 Migration하기](https://hyperconnect.github.io/2023/07/25/migrate-half-of-workload-in-a-year.html) | Hyperconnect / Hyperconnect Tech Blog | 302.94 | Amazon EC2, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS, Apache Flink, Apache Kafka |
+| 3 | expected:3 | [Istio와 Spinnaker를 활용한 Blue-Green + Canary 자동 배포 전략 도입기](https://tech.devsisters.com/posts/blue-green-canary-deployment) | Devsisters / Devsisters Tech Blog | 179.99 | Argo Rollouts, Go, Istio, JVM, Kubernetes, Redis |
+| 4 | - | [Kubernetes 클러스터에 애플리케이션 배포하기](https://medium.com/naver-cloud-platform/kubernetes-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-494f653341ab?source=rss----c7f2bfeb6b98---4) | NAVER Cloud / NAVER Cloud Platform Tech Blog | 171.35 | Kubernetes, observability, canary deployment |
+| 5 | - | [실험과 기능플래그를 위한 실험플랫폼 구축하기](https://techblog.woowahan.com/9935/) | Woowa Brothers / Woowa Tech Blog | 166.15 | AWS Glue, Amazon RDS, JVM, Java, Kotlin, Redis |
+| 6 | - | [Kubernetes에 Microservice 배포하기 3편 - Canary Deployments with Istio](https://hyperconnect.github.io/2020/08/19/microsrv-deploy-3.html) | Hyperconnect / Hyperconnect Tech Blog | 162.01 | Istio, Kubernetes, Spinnaker, canary deployment |
+| 7 | - | [쿠팡의 머신러닝 플랫폼을 통한 ML 개발 가속화](https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1%EC%9D%98-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%ED%86%B5%ED%95%9C-ml-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%86%8D%ED%99%94-de29804148bb?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 158.43 | Kubernetes, LLM, search, observability, canary deployment, streaming data pipeline |
+| 8 | - | [배달의민족 광고데이터 이관기](https://techblog.woowahan.com/14041/) | Woowa Brothers / Woowa Tech Blog | 158.26 | Amazon OpenSearch Service, Elasticsearch, JVM, search, cost optimization, migration |
+| 9 | - | [별로 안 궁금했지만 막상 들어보니 은근 궁금했던 개발 이야기](https://techblog.woowahan.com/6042/) | Woowa Brothers / Woowa Tech Blog | 153.81 | observability, canary deployment |
+| 10 | - | [웹 애플리케이션 페이지를 패키지로 개발해 본 경험](https://techblog.woowahan.com/16910/) | Woowa Brothers / Woowa Tech Blog | 141.21 | Node.js, React, canary deployment |
 
 #### Top Result Details
 
@@ -1973,7 +1975,25 @@ Highlights:
 - summary: 이후 **카나리** 배포가 필요한 요건이 생겼습니다.
 - summary: Phase 2 — **배포** : **canary** Pod 생성 후 weight를 10% → 30% → … 단계적으로 증가시킵니다.
 
-##### 2. Istio와 Spinnaker를 활용한 Blue-Green + Canary 자동 배포 전략 도입기
+##### 2. 1년 동안 Workload의 절반을 ARM64로 Migration하기
+
+- match: not expected
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2023/07/25/migrate-half-of-workload-in-a-year.html
+- technologies: Amazon EC2, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS, Apache Flink, Apache Kafka, Go, Istio, JVM, Java, Kotlin, Kubernetes, Redis, search
+- problem keywords: cost optimization, incident response, migration, observability, performance optimization
+- case summary: Hyperconnect는 AWS Graviton2 기반 ARM64 아키텍처로 Kubernetes 위의 100개 이상의 마이크로서비스를 1년간 점진적으로 마이그레이션하여 EC2 인스턴스 비용의 약 47%를 절감한 사례를 공유한다.
+- problem: AWS 비용 절감과 성능 최적화를 위해 기존 AMD64 기반 인프라를 ARM64 기반 Graviton 프로세서로 전환하는 과정에서 Kubernetes 클러스터 내 노드, 시스템 컴포넌트, 애플리케이션의 멀티 아키텍처 지원과 안정성 확보가 필요했다.
+- solution: AmazonLinux2와 Bottlerocket OS의 ARM64 이미지 도입, Kubernetes 노드 그룹에 ARM64 노드 추가 및 taint/label 설정, 멀티 아키텍처 도커 이미지 빌드 및 CI/CD 파이프라인 수정, 시스템 컴포넌트와 애플리케이션의 ARM64 호환성 검증 및 점진적 카나리 배포 전략을 적용하여 안정적으로 마이그레이션을 수행했다.
+
+Highlights:
+
+- caseSolution: ARM64 노드 추가 및 taint/label 설정, 멀티 아키텍처 도커 이미지 빌드 및 CI/CD 파이프라인 수정, 시스템 컴포넌트와 애플리케이션의 ARM64 호환성 검증 및 점진적 **카나리**
+- caseSolution: **배포** 전략을 적용하여 안정적으로 마이그레이션을 수행했다.
+- content: 기술 블로그에 소개했던, Istio를 이용한 **canary** **배포** 방법 을 사용하여 두려움 없이 안전하게 배포할 수 있었고, DevOps/SRE가 모든 service의 repository 접근이 가능하며 core system metric 및 business metric을 이해하고, monitoring
+- content: 또한, Hyperconnect에서는 대부분의 Flink cluster가 특정 Kafka topic을 consume 하여 데이터를 처리한 후, 다시 Kafka 등으로 producing 하고 있어 infra-level의 설정을 blue/green이나 **canary** 등의 다양한 **배포** 방법을 적용하기
+
+##### 3. Istio와 Spinnaker를 활용한 Blue-Green + Canary 자동 배포 전략 도입기
 
 - match: expected relevance 3
 - source: Devsisters / Devsisters Tech Blog
@@ -1993,36 +2013,16 @@ Highlights:
 - caseSolution: 자동화된 **배포** 파이프라인을 Spinnaker와 Helm으로 구축했다.
 - summary: 기존 **배포** 전략보다 더 효율적이고 안전한 자동 **배포** 전략을 실제 게임 서비스에 도입한 사례를 소개합니다.
 
-##### 3. Kubernetes 클러스터에 애플리케이션 배포하기
-
-- match: not expected
-- source: NAVER Cloud / NAVER Cloud Platform Tech Blog
-- url: https://medium.com/naver-cloud-platform/kubernetes-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-494f653341ab?source=rss----c7f2bfeb6b98---4
-- technologies: Kubernetes
-- problem keywords: observability
-- case summary: 네이버 클라우드 플랫폼의 Developer Tools를 활용해 Kubernetes 클러스터에 애플리케이션을 빌드, 배포, 자동화하는 DevOps 실습 사례를 다룹니다.
-- problem: DevOps 환경 구축 시 소스 코드 관리, 빌드, 컨테이너 이미지 생성, Kubernetes 클러스터 배포 및 자동화 과정의 복잡성으로 인해 효율적인 개발 및 운영이 어려움.
-- solution: SourceCommit, SourceBuild, SourceDeploy, SourcePipeline 4가지 Developer Tools를 연계하여 소스 코드 복사 및 관리, 도커 이미지 빌드, Kubernetes 클러스터에 롤링 업데이트 배포, CI/CD 자동화 파이프라인 구축을 통해 DevOps 전 과정을 자동화하고 안정적으로 운영함.
-
-Highlights:
-
-- caseSummary: 네이버 클라우드 플랫폼의 Developer Tools를 활용해 Kubernetes 클러스터에 애플리케이션을 빌드, **배포**, 자동화하는 DevOps 실습 사례를 다룹니다.
-- caseProblem: DevOps 환경 구축 시 소스 코드 관리, 빌드, 컨테이너 이미지 생성, Kubernetes 클러스터 **배포** 및 자동화 과정의 복잡성으로 인해 효율적인 개발 및 운영이 어려움.
-- caseSolution: SourceDeploy, SourcePipeline 4가지 Developer Tools를 연계하여 소스 코드 복사 및 관리, 도커 이미지 빌드, Kubernetes 클러스터에 롤링 업데이트 **배포**
-- summary: **배포** 프로젝트 생성 [이미지 14] **배포** 프로젝트 기본 설정하기 (이름 설정) SourceDeploy 콘솔에서 [**배포** 프로젝트 생성] 버튼을 클릭하여 신규 **배포** 프로젝트를 생성합니다
-- summary: [이미지 15] **배포** 환경 설정하기 (real stage 설정 화면) [이미지 16] **배포** 프로젝트 생성 전 최종 정보 확인하기 **배포** 시나리오 생성 **배포** 프로젝트를 생성한 이후 **배포**
-- content: [이미지 18] **배포** 시나리오 생성 > 매니페스트 설정하기 **배포** 전략은 Rolling (롤링), 블루/그린, **Canary** (**카나리**) 를 제공합니다. 롤링 업데이트를 선택하여 애플리케이션이 점진적으로 업데이트 되도록 설정합니다. 최종 확인 이후 **배포** 시나리오의 생성을 완료합니다.
-
 
 ### ko-tech-search - `검색 개선`
 
 - category: technology
 - intent: 한글 검색어로 검색 기능 개선, 검색 시스템 설계, 검색 엔진 분석 사례를 찾는다.
-- total results: 508
+- total results: 566
 - precision@5: 0.400
-- recall@10: 0.364
+- recall@10: 0.273
 - mrr: 1.000
-- ndcg@10: 0.445
+- ndcg@10: 0.401
 
 #### Expected URLs
 
@@ -2042,16 +2042,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 298.63 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
-| 2 | - | [Real-time Service Configuration으로 Consul을 신주소 서비스에 적용한 사례](https://techblog.woowahan.com/2586/) | Woowa Brothers / Woowa Tech Blog | 231.61 | AWS IAM, Amazon VPC, Java, search, high availability |
-| 3 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 226.76 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
-| 4 | expected:3 | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog | 226.76 | LLM, search, performance optimization |
-| 5 | - | [Building the future: highlights from Dropbox’s 2025 summer intern class](https://dropbox.tech/culture/highlights-from-dropbox-2025-summer-intern-class) | Dropbox / Dropbox Tech Blog | 219.70 | search, migration, observability, performance optimization |
-| 6 | - | [Announcing aggregations on Amazon ElastiCache](https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/) | AWS / AWS Database Blog | 214.49 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
-| 7 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 211.62 | Next.js, search, performance optimization |
-| 8 | expected:3 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 210.87 | Elasticsearch, search, high availability, migration, performance optimization |
-| 9 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog | 178.70 | search |
-| 10 | expected:2 | [네이버 통합검색 AIB 도입과 웹 성능 변화 분석](https://d2.naver.com/helloworld/4241703) | NAVER / NAVER D2 | 176.17 | search, performance optimization, streaming data pipeline |
+| 1 | expected:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 311.38 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 2 | - | [Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/156) | NHN Cloud / NHN Cloud Meetup | 258.62 | search |
+| 3 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup | 256.70 | search, log platform |
+| 4 | - | [Real-time Service Configuration으로 Consul을 신주소 서비스에 적용한 사례](https://techblog.woowahan.com/2586/) | Woowa Brothers / Woowa Tech Blog | 236.57 | AWS IAM, Amazon VPC, Java, search, high availability |
+| 5 | expected:3 | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog | 236.51 | LLM, search, performance optimization |
+| 6 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 236.51 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
+| 7 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog | 234.40 | Amazon DynamoDB, Apache Kafka, Elasticsearch, JVM, Java, Kotlin |
+| 8 | - | [Building the future: highlights from Dropbox’s 2025 summer intern class](https://dropbox.tech/culture/highlights-from-dropbox-2025-summer-intern-class) | Dropbox / Dropbox Tech Blog | 221.62 | search, migration, observability, performance optimization |
+| 9 | expected:3 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 219.90 | Elasticsearch, search, high availability, migration, performance optimization |
+| 10 | - | [Announcing aggregations on Amazon ElastiCache](https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/) | AWS / AWS Database Blog | 217.03 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
 
 #### Top Result Details
 
@@ -2074,55 +2074,46 @@ Highlights:
 - content: MongoDB Atlas **Search** 우선 검색엔진으로 사용한 기술에 대해 간략한 소개를 하겠습니다. Atlas **Search** 는 MongoDB full-managed 클라우드 서비스인 MongoDB Atlas 에서 제공하는 전문 **검색** 솔루션입니다.
 - content: returnStoredSource 옵션을 **검색** 쿼리에 넣어서 요청합니다. db . question . aggregate ( [ { $**search** : { text : { query : "강의" , path : [ "title" , "body" , "writer.name" ] } , returnStoredSource
 
-##### 2. Real-time Service Configuration으로 Consul을 신주소 서비스에 적용한 사례
+##### 2. Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup
 
 - match: not expected
-- source: Woowa Brothers / Woowa Tech Blog
-- url: https://techblog.woowahan.com/2586/
-- technologies: AWS IAM, Amazon VPC, Java, search
-- problem keywords: high availability
-- case summary: 배달의민족 주소 검색 서비스의 단일 장애점 문제를 해결하기 위해 Consul 기반 Real-time Service Configuration을 도입하여 외부 지도 API 간 트래픽을 실시간으로 전환하고 환경 설정을 동적으로 관리한 사례입니다.
-- problem: 주소 검색 서비스가 A사 지도 API에 100% 의존하여 장애 발생 시 주문 불가 등 큰 서비스 장애가 발생하는 단일 장애점(SPOF) 문제와 레거시 시스템으로 인한 개선 어려움이 있었습니다.
-- solution: B사 지도 API를 백업 서비스로 추가하고, ALB를 통한 트래픽 우선순위 전환을 구현했으며, Consul을 활용한 Real-time Service Configuration으로 Git 연동 환경 설정 변경 시 1분 이내에 클라이언트 서비스에 실시간 반영되도록 하여 장애 대응과 서비스 복원력을 강화했습니다.
+- source: NHN Cloud / NHN Cloud Meetup
+- url: https://meetup.nhncloud.com/posts/156
+- technologies: search
+- problem keywords: -
+- case summary: NHN Cloud의 Log&Crash Search 서비스에 Network Insight 기능을 도입하여 네트워크 관련 로그와 크래시 데이터를 효과적으로 분석하는 사례를 다룬다.
+- problem: 네트워크 문제로 인한 서비스 장애 원인을 신속하게 파악하고 대응하기 위한 로그 및 크래시 데이터 분석의 어려움.
+- solution: Log&Crash Search에 Network Insight 기능을 추가하여 네트워크 트래픽과 장애 데이터를 통합 분석하고, 문제 발생 지점을 직관적으로 파악할 수 있도록 지원.
 
 Highlights:
 
-- caseSummary: 배달의민족 주소 **검색** 서비스의 단일 장애점 문제를 해결하기 위해 Consul 기반 Real-time Service Configuration을 도입하여 외부 지도 API 간 트래픽을
-- caseProblem: 주소 **검색** 서비스가 A사 지도 API에 100% 의존하여 장애 발생 시 주문 불가 등 큰 서비스 장애가 발생하는 단일 장애점(SPOF) 문제와 레거시 시스템으로 인한 **개선** 어려움이
-- summary: 주소 **검색** 서비스를 개선하면서 Real-time Service Configuration으로 consul을 적용한 사례를 공유하고자 합니다.
-- content: AS-IS 주소 **검색** 서비스 사용자의 주소(장소) 및 위치를 조회하는 시스템(PHP 레거시) A사 Map API(의존도 100%) POI 통합검색 API: 전자지도 위에 표시된 건물과 상점 등 **검색** 역지오 **검색** API: 위경도 좌표 -> 주소 단일 장애점(SPOF – Single Point
-- content: B사 Map API geocode: 주소 -> 좌표 변환 API reverseGeocoding: 좌표 -> 주소 변환 API **search**: 지역별 업체 및 상호 **검색** API 따라서, B사 Map API 3개를 조합하여 A사의 Poi API와 같은 데이터를 내려주도록 작업을 해야 합니다.
+- caseSummary: NHN Cloud의 Log&Crash **Search** 서비스에 Network Insight 기능을 도입하여 네트워크 관련 로그와 크래시 데이터를 효과적으로 분석하는 사례를 다룬다.
 
-##### 3. Full-text, exact-match, range, and hybrid search on Amazon ElastiCache
+##### 3. TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup
 
 - match: not expected
-- source: AWS / AWS Database Blog
-- url: https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/
-- technologies: AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey, search
-- problem keywords: migration, performance optimization
-- case summary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 실시간 전체 텍스트, 정확 일치, 범위, 하이브리드 검색 기능을 구현하여 대규모 데이터에 대해 마이크로초 단위의 저지연 검색을 가능하게 한 사례이다.
-- problem: 대규모 동적 데이터에 대해 별도의 검색 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 검색(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
-- solution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 검색 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을 통해 마이크로초 단위 응답과 높은 QPS를 달성했다.
+- source: NHN Cloud / NHN Cloud Meetup
+- url: https://meetup.nhncloud.com/posts/254
+- technologies: search
+- problem keywords: -
+- case summary: 금융사의 전자금융 거래법 준수를 위해 TOAST Log&Crash Search의 로그 데이터 무결성 검증 기능을 활용하여 로그 위·변조 방지 및 감시 체계를 구축한 사례이다.
+- problem: 금융 시스템에서 발생하는 로그가 법적 요구사항에 따라 위·변조 없이 무결성을 유지해야 하는 상황이었다.
+- solution: TOAST Log&Crash Search 플랫폼의 무결성 검증 기능을 적용하여 로그 데이터의 위·변조 여부를 실시간으로 감시하고 검증하는 체계를 도입하였다.
 
 Highlights:
 
-- title: Full-text, exact-match, range, and hybrid **search** on Amazon ElastiCache
-- caseSummary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 실시간 전체 텍스트, 정확 일치, 범위, 하이브리드 **검색** 기능을 구현하여 대규모 데이터에 대해 마이크로초
-- caseProblem: 대규모 동적 데이터에 대해 별도의 **검색** 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 **검색**(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
-- caseSolution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 **검색** 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을
-- summary: New **search** capabilities are available in ElastiCache version 9.0 for Valkey.
-- summary: In this post, we walk through the new **search** capabilities, show how they work together, and build a **search**
+- caseSolution: TOAST Log&Crash **Search** 플랫폼의 무결성 검증 기능을 적용하여 로그 데이터의 위·변조 여부를 실시간으로 감시하고 검증하는 체계를 도입하였다.
 
 
 ### ko-search-quality-improvement - `검색 품질 개선`
 
 - category: technology
 - intent: 검색 결과 품질, 검색 성능, 결과 없는 검색, 랭킹이나 쿼리 최적화 사례를 찾는다.
-- total results: 568
-- precision@5: 0.600
+- total results: 633
+- precision@5: 0.400
 - recall@10: 0.667
 - mrr: 1.000
-- ndcg@10: 0.631
+- ndcg@10: 0.593
 
 #### Expected URLs
 
@@ -2137,16 +2128,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 298.63 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
-| 2 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 226.76 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
-| 3 | expected:3 | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog | 226.76 | LLM, search, performance optimization |
-| 4 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 211.62 | Next.js, search, performance optimization |
-| 5 | expected:2 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 210.87 | Elasticsearch, search, high availability, migration, performance optimization |
-| 6 | expected:2 | [네이버 통합검색 AIB 도입과 웹 성능 변화 분석](https://d2.naver.com/helloworld/4241703) | NAVER / NAVER D2 | 187.24 | search, performance optimization, streaming data pipeline |
-| 7 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog | 178.70 | search |
-| 8 | - | [쿠팡의 머신러닝 플랫폼을 통한 ML 개발 가속화](https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1%EC%9D%98-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%ED%86%B5%ED%95%9C-ml-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%86%8D%ED%99%94-de29804148bb?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 168.47 | Kubernetes, LLM, search, observability, canary deployment, streaming data pipeline |
-| 9 | - | [Replication redefined: How we built a low-latency, multi-tenant data replication platform](https://www.datadoghq.com/blog/engineering/cdc-replication-search/) | Datadog / Datadog Engineering Blog | 166.97 | search, performance optimization, Change Data Capture |
-| 10 | - | [프롬프트 엔지니어링으로 메뉴 이미지 품질 검수하기: GPT 기반 업무 자동화](https://techblog.woowahan.com/20408/) | Woowa Brothers / Woowa Tech Blog | 162.30 | LLM, search, performance optimization |
+| 1 | expected:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 311.38 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 2 | - | [Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/156) | NHN Cloud / NHN Cloud Meetup | 258.62 | search |
+| 3 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup | 256.70 | search, log platform |
+| 4 | expected:3 | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog | 236.51 | LLM, search, performance optimization |
+| 5 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 236.51 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
+| 6 | expected:2 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 219.90 | Elasticsearch, search, high availability, migration, performance optimization |
+| 7 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 211.73 | Next.js, search, performance optimization |
+| 8 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog | 209.61 | Amazon DynamoDB, Apache Kafka, Elasticsearch, JVM, Java, Kotlin |
+| 9 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog | 182.93 | search |
+| 10 | expected:2 | [네이버 통합검색 AIB 도입과 웹 성능 변화 분석](https://d2.naver.com/helloworld/4241703) | NAVER / NAVER D2 | 180.74 | search, performance optimization, streaming data pipeline |
 
 #### Top Result Details
 
@@ -2169,56 +2160,46 @@ Highlights:
 - content: MongoDB Atlas **Search** 우선 검색엔진으로 사용한 기술에 대해 간략한 소개를 하겠습니다. Atlas **Search** 는 MongoDB full-managed 클라우드 서비스인 MongoDB Atlas 에서 제공하는 전문 **검색** 솔루션입니다.
 - content: returnStoredSource 옵션을 **검색** 쿼리에 넣어서 요청합니다. db . question . aggregate ( [ { $**search** : { text : { query : "강의" , path : [ "title" , "body" , "writer.name" ] } , returnStoredSource
 
-##### 2. Full-text, exact-match, range, and hybrid search on Amazon ElastiCache
+##### 2. Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup
 
 - match: not expected
-- source: AWS / AWS Database Blog
-- url: https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/
-- technologies: AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey, search
-- problem keywords: migration, performance optimization
-- case summary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 실시간 전체 텍스트, 정확 일치, 범위, 하이브리드 검색 기능을 구현하여 대규모 데이터에 대해 마이크로초 단위의 저지연 검색을 가능하게 한 사례이다.
-- problem: 대규모 동적 데이터에 대해 별도의 검색 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 검색(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
-- solution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 검색 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을 통해 마이크로초 단위 응답과 높은 QPS를 달성했다.
+- source: NHN Cloud / NHN Cloud Meetup
+- url: https://meetup.nhncloud.com/posts/156
+- technologies: search
+- problem keywords: -
+- case summary: NHN Cloud의 Log&Crash Search 서비스에 Network Insight 기능을 도입하여 네트워크 관련 로그와 크래시 데이터를 효과적으로 분석하는 사례를 다룬다.
+- problem: 네트워크 문제로 인한 서비스 장애 원인을 신속하게 파악하고 대응하기 위한 로그 및 크래시 데이터 분석의 어려움.
+- solution: Log&Crash Search에 Network Insight 기능을 추가하여 네트워크 트래픽과 장애 데이터를 통합 분석하고, 문제 발생 지점을 직관적으로 파악할 수 있도록 지원.
 
 Highlights:
 
-- title: Full-text, exact-match, range, and hybrid **search** on Amazon ElastiCache
-- caseSummary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 실시간 전체 텍스트, 정확 일치, 범위, 하이브리드 **검색** 기능을 구현하여 대규모 데이터에 대해 마이크로초
-- caseProblem: 대규모 동적 데이터에 대해 별도의 **검색** 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 **검색**(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
-- caseSolution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 **검색** 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을
-- summary: New **search** capabilities are available in ElastiCache version 9.0 for Valkey.
-- summary: In this post, we walk through the new **search** capabilities, show how they work together, and build a **search**
+- caseSummary: NHN Cloud의 Log&Crash **Search** 서비스에 Network Insight 기능을 도입하여 네트워크 관련 로그와 크래시 데이터를 효과적으로 분석하는 사례를 다룬다.
 
-##### 3. Using LLMs to amplify human labeling and improve Dash search relevance
+##### 3. TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup
 
-- match: expected relevance 3
-- source: Dropbox / Dropbox Tech Blog
-- url: https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash
-- technologies: LLM, search
-- problem keywords: performance optimization
-- case summary: Dropbox Dash 검색의 랭킹 모델 학습을 위해 소량의 인간 라벨링 데이터를 대규모 LLM 평가로 증폭시켜 검색 결과의 관련성 품질을 향상시킨 사례이다.
-- problem: 수십억 건에 달하는 기업 내 문서 중에서 사용자의 쿼리에 적합한 문서를 정확히 선별하는 검색 랭킹 모델을 학습하기 위해 고품질의 관련성 라벨 데이터를 대규모로 확보하는 것이 어려웠다.
-- solution: 소량의 내부 인간 라벨링 데이터를 기반으로 LLM에게 관련성 평가를 학습시키고, LLM이 대규모 문서 쌍에 대해 관련성 점수를 자동 생성하도록 하여 인간 라벨링 노력을 100배 이상 증폭시켰다. 또한, LLM 평가 결과를 인간 검토와 반복적 프롬프트 최적화를 통해 보정하며, 내부 조직 맥락을 반영한 도구를 제공해 평가 정확도를 높였다.
+- match: not expected
+- source: NHN Cloud / NHN Cloud Meetup
+- url: https://meetup.nhncloud.com/posts/254
+- technologies: search
+- problem keywords: -
+- case summary: 금융사의 전자금융 거래법 준수를 위해 TOAST Log&Crash Search의 로그 데이터 무결성 검증 기능을 활용하여 로그 위·변조 방지 및 감시 체계를 구축한 사례이다.
+- problem: 금융 시스템에서 발생하는 로그가 법적 요구사항에 따라 위·변조 없이 무결성을 유지해야 하는 상황이었다.
+- solution: TOAST Log&Crash Search 플랫폼의 무결성 검증 기능을 적용하여 로그 데이터의 위·변조 여부를 실시간으로 감시하고 검증하는 체계를 도입하였다.
 
 Highlights:
 
-- title: Using LLMs to amplify human labeling and improve Dash **search** relevance
-- caseSummary: Dropbox Dash 검색의 랭킹 모델 학습을 위해 소량의 인간 라벨링 데이터를 대규모 LLM 평가로 증폭시켜 **검색** 결과의 관련성 품질을 향상시킨 사례이다.
-- caseProblem: 수십억 건에 달하는 기업 내 문서 중에서 사용자의 쿼리에 적합한 문서를 정확히 선별하는 **검색** 랭킹 모델을 학습하기 위해 고품질의 관련성 라벨 데이터를 대규모로 확보하는 것이 어려웠다
-- summary: How we train Dash's **search** ranking models with a mix of human and LLM-assisted labeling.
-- content: When someone uses Dropbox Dash to **search** or ask a question, it follows a retrieval-augmented generation (RAG) pattern.
-- content: Poor evaluations prune entire branches of the **search** tree, while strong evaluations preserve promising lines of play.
+- caseSolution: TOAST Log&Crash **Search** 플랫폼의 무결성 검증 기능을 적용하여 로그 데이터의 위·변조 여부를 실시간으로 감시하고 검증하는 체계를 도입하였다.
 
 
 ### ko-search-elasticsearch-index - `Elasticsearch 인덱스 구조`
 
 - category: technology
 - intent: Elasticsearch 기반 인덱스 구조, 쿼리 최적화, 실시간 인덱싱 설계 사례를 찾는다.
-- total results: 38
-- precision@5: 0.200
-- recall@10: 0.250
+- total results: 44
+- precision@5: 0.400
+- recall@10: 0.500
 - mrr: 1.000
-- ndcg@10: 0.493
+- ndcg@10: 0.705
 
 #### Expected URLs
 
@@ -2231,16 +2212,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog | 283.40 | Elasticsearch, search, performance optimization |
-| 2 | - | [Elasticsearch 병렬 테스트를 향한 여정](https://techblog.woowahan.com/18486/) | Woowa Brothers / Woowa Tech Blog | 243.76 | Elasticsearch, JVM, Java, search, performance optimization |
-| 3 | - | [쿠팡 SCM 워크플로우: 효율적이고 확장 가능한 low-code, no-code 플랫폼 개발](https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1-scm-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B4%EA%B3%A0-%ED%99%95%EC%9E%A5-%EA%B0%80%EB%8A%A5%ED%95%9C-low-code-no-code-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B0%9C%EB%B0%9C-7d997644d14?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 207.59 | Amazon Aurora, Amazon S3, Elasticsearch, search, migration, observability |
-| 4 | - | [Gmarket의 유사이미지 추천 기능 파헤치기](https://dev.gmarket.com/57) | Gmarket / Gmarket Tech Blog | 207.59 | Elasticsearch, Redis, search |
-| 5 | - | [Code With Me를 활용한 페어 프로그래밍](https://tech.inflab.com/202211-pair-programming/) | Inflab / Inflab Tech Blog | 207.59 | Elasticsearch, Spring Boot, search |
-| 6 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 207.59 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
-| 7 | - | [Kafka 이벤트 모니터링이란.. (먼산)](https://dev.gmarket.com/51) | Gmarket / Gmarket Tech Blog | 207.59 | Apache Kafka, Elasticsearch, search, observability, streaming data pipeline |
-| 8 | - | [가파르게 성장하는 서비스를 담당한, 한 품질담당자의 회고](https://techblog.woowahan.com/9220/) | Woowa Brothers / Woowa Tech Blog | 207.59 | Elasticsearch, search |
-| 9 | - | [프로젝트 관리를 위한 JIRA 활용기](https://dev.gmarket.com/43) | Gmarket / Gmarket Tech Blog | 207.59 | Apache Kafka, Elasticsearch, Redis, search |
-| 10 | - | [배민광고리스팅 개발기(feat. 코프링과 DSL 그리고 코루틴)](https://techblog.woowahan.com/7349/) | Woowa Brothers / Woowa Tech Blog | 207.59 | Elasticsearch, JVM, Java, Kotlin, search |
+| 1 | expected:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog | 293.85 | Elasticsearch, search, performance optimization |
+| 2 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog | 258.90 | Amazon DynamoDB, Apache Kafka, Elasticsearch, JVM, Java, Kotlin |
+| 3 | - | [Elasticsearch 병렬 테스트를 향한 여정](https://techblog.woowahan.com/18486/) | Woowa Brothers / Woowa Tech Blog | 253.83 | Elasticsearch, JVM, Java, search, performance optimization |
+| 4 | expected:3 | [검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화](https://techblog.woowahan.com/20161/) | Woowa Brothers / Woowa Tech Blog | 210.46 | Elasticsearch, Spring Boot, search, migration, observability, performance optimization |
+| 5 | - | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 206.61 | Elasticsearch, search, high availability, migration, performance optimization |
+| 6 | - | [우리 서비스와 연결된 MCP Server 빠르게 구현해보기: MCP 해커톤 후기](https://techblog.woowahan.com/22342/) | Woowa Brothers / Woowa Tech Blog | 206.61 | Elasticsearch, LLM, search |
+| 7 | - | [실시간 마케팅을 위한 PoC 개발기](https://techblog.woowahan.com/22043/) | Woowa Brothers / Woowa Tech Blog | 206.61 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
+| 8 | - | [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4) | 29CM / 29CM TEAM | 206.61 | Apache Kafka, Elasticsearch, search, Change Data Capture, event-driven architecture |
+| 9 | - | [데이터카탈로그에서 DataHub를 이용하는 방법](https://techblog.woowahan.com/21434/) | Woowa Brothers / Woowa Tech Blog | 206.61 | Amazon EKS, Amazon OpenSearch Service, Amazon S3, Apache Kafka, Elasticsearch, Java |
+| 10 | - | [지금 매출 얼마인가요?](https://tech.devsisters.com/posts/near-real-time) | Devsisters / Devsisters Tech Blog | 206.61 | Amazon S3, Apache Kafka, Elasticsearch, search, observability, log platform |
 
 #### Top Result Details
 
@@ -2262,7 +2243,24 @@ Highlights:
 - content: 저희는 그 원인을 메뉴 **인덱스** 구조에서 찾았습니다. 1. 메뉴 **인덱스** 데이터 모델 변경 **인덱스** 분리 후, 메뉴 인덱스는 ES 문서 하나가 메뉴 하나에 대응되는 모델을 가지고 있었습니다.
 - content: 최종 **구조** 최적화를 거친 뒤 최종 구조는 위와 같습니다. 기존 인덱스를 가게 **인덱스**, 메뉴 인덱스로 분리하였고, 3-step으로 검색 쿼리를 구성해 주었습니다. 기존보다 10배 높은 인덱싱 성능과, 기존과 비슷하거나 그 이상의 성능을 보이는 검색 성능이 확인되었습니다.
 
-##### 2. Elasticsearch 병렬 테스트를 향한 여정
+##### 2. CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용
+
+- match: not expected
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html
+- technologies: Amazon DynamoDB, Apache Kafka, Elasticsearch, JVM, Java, Kotlin, Redis, search
+- problem keywords: migration, observability, performance optimization
+- case summary: Hyperconnect는 Kafka Connect 기반의 CDC Sink Platform을 개발하여 Kafka에서 변경 이벤트를 읽어 다양한 데이터 소스에 적재하는 시스템을 구축하고, 이를 활용해 CQRS 패턴을 적용하여 RDB의 비효율적인 Full Text Search 문제를 Elasticsearch로 해결한 사례를 공유합니다.
+- problem: RDB의 B-Tree 구조로 인해 Full Text Search가 비효율적이며, 여러 조직의 다양한 조회 요구사항으로 인해 데이터베이스 인덱스가 과도하게 추가되어 성능 저하와 확장성 문제가 발생하는 상황.
+- solution: Kafka Connect를 활용한 CDC Sink Platform을 구축해 Kafka 이벤트를 다양한 데이터 소스에 적재하고, Elasticsearch Sink Connector를 통해 Inverted Index 기반의 검색엔진에 데이터를 실시간 동기화하여 CQRS 패턴으로 명령과 조회 책임을 분리, 효율적인 검색 기능을 구현함.
+
+Highlights:
+
+- caseSolution: Kafka Connect를 활용한 CDC Sink Platform을 구축해 Kafka 이벤트를 다양한 데이터 소스에 적재하고, **Elasticsearch** Sink Connector를
+- content: 아래 스크립트와 같이 **ElasticSearch** Sink Connector 에 필요한 정보를 작성하여 API를 통해 CDC Sink Platform에 등록해야합니다.
+- content: 이러한 환경에서 **ElasticSearch** 검색 기능을 쉽게 통합하기 위해 spring-boot-starter-data-**elasticsearch** 를 사용하였습니다.
+
+##### 3. Elasticsearch 병렬 테스트를 향한 여정
 
 - match: not expected
 - source: Woowa Brothers / Woowa Tech Blog
@@ -2280,28 +2278,12 @@ Highlights:
 - content: 저희는 검색엔진으로 **Elasticsearch**(이하 ES)를 사용합니다. 대부분의 코드가 ES에 의존하고 있으며, 테스트 코드는 주로 통합 테스트 형식으로 작성되었습니다. 작성한 쿼리가 올바르게 동작하는지, 필터링과 정렬이 제대로 수행되는지를 ES의 응답 값을 통해 확인합니다.
 - content: ElasticsearchStatusException[**Elasticsearch** exception [type=illegal_argument_exception, reason=no write index is defined for alias [test-main].
 
-##### 3. 쿠팡 SCM 워크플로우: 효율적이고 확장 가능한 low-code, no-code 플랫폼 개발
-
-- match: not expected
-- source: Coupang / Coupang Engineering Blog
-- url: https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1-scm-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B4%EA%B3%A0-%ED%99%95%EC%9E%A5-%EA%B0%80%EB%8A%A5%ED%95%9C-low-code-no-code-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B0%9C%EB%B0%9C-7d997644d14?source=rss----fb028911af07---4
-- technologies: Amazon Aurora, Amazon S3, Elasticsearch, search
-- problem keywords: migration, observability
-- case summary: 쿠팡 SCM 팀은 복잡한 공급망 데이터 파이프라인과 서비스 운영의 효율성 문제를 해결하기 위해 개발자와 비개발자 모두 쉽게 사용할 수 있는 low-code, no-code 기반 SCM 워크플로우 플랫폼을 구축했다.
-- problem: 다양한 데이터 소스와 빠르게 변하는 비즈니스 요구사항에 대응하기 위해 개발자 의존도를 줄이고, 복잡한 파이프라인 및 서비스 운영의 확장성과 유지보수성을 개선할 필요가 있었다.
-- solution: No-code 데이터 빌더로 비개발자도 데이터 쿼리 및 추출, 시스템 연동을 쉽게 수행하고, Low-code 서비스 빌더로 핵심 알고리즘 개발에 집중할 수 있도록 하여 반복적인 작업을 자동화 및 단순화하는 SCM 워크플로우 플랫폼을 개발했다. 또한, 그래픽 워크플로우 모델링과 확장 가능한 3계층 아키텍처를 적용해 안정성과 확장성을 확보했다.
-
-Highlights:
-
-- summary: SCM 워크플로우는 팀 내에서 사용 중인 다음과 같은 공용 데이터 소스로 접근 가능합니다: Redshift , Hive , Presto , Aurora , MySQL , **Elasticsearch**
-- content: 데이터 프로세서(data processor)로서 SCM 워크플로우는 팀 내에서 사용 중인 다음과 같은 공용 데이터 소스로 접근 가능합니다: Redshift , Hive , Presto , Aurora , MySQL , **Elasticsearch** , S3 .
-
 
 ### ko-search-opensearch-analyzer - `OpenSearch Analyzer`
 
 - category: technology
 - intent: OpenSearch Analyzer를 활용한 텍스트 분석, 색인, 검색 기능 구현 사례를 찾는다.
-- total results: 309
+- total results: 331
 - precision@5: 0.400
 - recall@10: 1.000
 - mrr: 1.000
@@ -2316,16 +2298,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [OpenSearch Analyzer를 활용한 검색기능 알아보기](https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/) | Kakao Pay / Kakao Pay Tech Blog | 588.99 | Amazon OpenSearch Service, search |
-| 2 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 447.21 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
-| 3 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 415.24 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
-| 4 | expected:1 | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 391.39 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
-| 5 | - | [Detect and resolve HBase inconsistencies faster with AI on Amazon EMR](https://aws.amazon.com/blogs/big-data/detect-and-resolve-hbase-inconsistencies-faster-with-ai-on-amazon-emr/) | AWS / AWS Big Data Blog | 366.41 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon OpenSearch Service |
-| 6 | - | [비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입](https://d2.naver.com/helloworld/0004394) | NAVER / NAVER D2 | 299.60 | Amazon OpenSearch Service, Apache Kafka, Java, search, observability, log platform |
-| 7 | - | [MySQL 3분 vs ClickHouse 0.3초 — 같은 쿼리입니다](https://meetup.nhncloud.com/posts/414) | NHN Cloud / NHN Cloud Meetup | 299.60 | Amazon OpenSearch Service, Apache Kafka, search, cost optimization, migration, observability |
-| 8 | - | [How to consolidate cross-Region S3 data into OpenSearch](https://aws.amazon.com/blogs/big-data/how-to-consolidate-cross-region-s3-data-into-opensearch/) | AWS / AWS Big Data Blog | 299.60 | AWS IAM, Amazon OpenSearch Service, Amazon S3, Amazon VPC, search, observability |
-| 9 | - | [Migrate to Apache Flink 2.2 on Amazon Managed Service for Apache Flink](https://aws.amazon.com/blogs/big-data/migrate-to-apache-flink-2-2-on-amazon-managed-service-for-apache-flink/) | AWS / AWS Big Data Blog | 299.60 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
-| 10 | - | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog | 299.60 | AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon MSK, Amazon OpenSearch Service, Amazon S3 |
+| 1 | expected:3 | [OpenSearch Analyzer를 활용한 검색기능 알아보기](https://tech.kakaopay.com/post/kakaopayins-opensearch-analyzer/) | Kakao Pay / Kakao Pay Tech Blog | 602.67 | Amazon OpenSearch Service, search |
+| 2 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 461.36 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 3 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 414.53 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
+| 4 | expected:1 | [Unified observability in Amazon OpenSearch Service: metrics, traces, and AI agent debugging in a single interface](https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/) | AWS / AWS Big Data Blog | 391.14 | AWS IAM, Amazon OpenSearch Service, LLM, OpenTelemetry, search, observability |
+| 5 | - | [Detect and resolve HBase inconsistencies faster with AI on Amazon EMR](https://aws.amazon.com/blogs/big-data/detect-and-resolve-hbase-inconsistencies-faster-with-ai-on-amazon-emr/) | AWS / AWS Big Data Blog | 364.95 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EC2, Amazon OpenSearch Service |
+| 6 | - | [사내 DB 관리 규정을 AI로 적용하다 : Amazon Bedrock 기반 DBA 리뷰봇 개발기](https://techblog.yogiyo.co.kr/%EC%82%AC%EB%82%B4-db-%EA%B4%80%EB%A6%AC-%EA%B7%9C%EC%A0%95%EC%9D%84-ai%EB%A1%9C-%EC%A0%81%EC%9A%A9%ED%95%98%EB%8B%A4-amazon-bedrock-%EA%B8%B0%EB%B0%98-dba-%EB%A6%AC%EB%B7%B0%EB%B4%87-%EA%B0%9C%EB%B0%9C%EA%B8%B0-f845508e6055?source=rss----c1b33ccbbc42---4) | YOGIYO / YOGIYO Tech Blog | 307.35 | AWS Lambda, Amazon OpenSearch Service, Amazon S3, LLM, search, Change Data Capture |
+| 7 | - | [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/) | Woowa Brothers / Woowa Tech Blog | 307.35 | Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS |
+| 8 | - | [실시간 마케팅을 위한 PoC 개발기](https://techblog.woowahan.com/22043/) | Woowa Brothers / Woowa Tech Blog | 307.35 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon OpenSearch Service, Amazon S3 |
+| 9 | - | [데이터카탈로그에서 DataHub를 이용하는 방법](https://techblog.woowahan.com/21434/) | Woowa Brothers / Woowa Tech Blog | 307.35 | Amazon EKS, Amazon OpenSearch Service, Amazon S3, Apache Kafka, Elasticsearch, Java |
+| 10 | - | [실시간 반응형 추천 개발 일지 2부: 벡터 검색, 그리고 숨겨진 요구사항과 기술 도입 의사 결정을 다루는 방법](https://techblog.woowahan.com/21027/) | Woowa Brothers / Woowa Tech Blog | 307.35 | AWS Lambda, Amazon OpenSearch Service, Amazon RDS, Kubernetes, LLM, Redis |
 
 #### Top Result Details
 
@@ -2384,11 +2366,11 @@ Highlights:
 
 - category: architecture
 - intent: 실시간 검색 색인, 검색 인덱스 갱신, 이벤트 기반 색인 파이프라인 사례를 찾는다.
-- total results: 454
+- total results: 500
 - precision@5: 0.200
-- recall@10: 0.600
-- mrr: 0.333
-- ndcg@10: 0.321
+- recall@10: 0.400
+- mrr: 0.200
+- ndcg@10: 0.213
 
 #### Expected URLs
 
@@ -2402,16 +2384,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 298.63 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
-| 2 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 238.33 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
-| 3 | expected:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog | 234.28 | Elasticsearch, search, performance optimization |
-| 4 | - | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog | 226.76 | LLM, search, performance optimization |
-| 5 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 211.62 | Next.js, search, performance optimization |
-| 6 | expected:2 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 210.87 | Elasticsearch, search, high availability, migration, performance optimization |
-| 7 | expected:2 | [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4) | 29CM / 29CM TEAM | 208.31 | Apache Kafka, Elasticsearch, search, Change Data Capture, event-driven architecture |
-| 8 | - | [실시간 반응형 추천 개발 일지 2부: 벡터 검색, 그리고 숨겨진 요구사항과 기술 도입 의사 결정을 다루는 방법](https://techblog.woowahan.com/21027/) | Woowa Brothers / Woowa Tech Blog | 194.74 | AWS Lambda, Amazon OpenSearch Service, Amazon RDS, Kubernetes, LLM, Redis |
-| 9 | - | [Replication redefined: How we built a low-latency, multi-tenant data replication platform](https://www.datadoghq.com/blog/engineering/cdc-replication-search/) | Datadog / Datadog Engineering Blog | 182.77 | search, performance optimization, Change Data Capture |
-| 10 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog | 178.70 | search |
+| 1 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 311.38 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 2 | - | [Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/156) | NHN Cloud / NHN Cloud Meetup | 258.62 | search |
+| 3 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup | 256.70 | search, log platform |
+| 4 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog | 247.14 | AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey |
+| 5 | expected:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog | 245.04 | Elasticsearch, search, performance optimization |
+| 6 | - | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog | 236.51 | LLM, search, performance optimization |
+| 7 | expected:2 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering | 219.90 | Elasticsearch, search, high availability, migration, performance optimization |
+| 8 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 211.73 | Next.js, search, performance optimization |
+| 9 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog | 209.61 | Amazon DynamoDB, Apache Kafka, Elasticsearch, JVM, Java, Kotlin |
+| 10 | - | [실시간 반응형 추천 개발 일지 2부: 벡터 검색, 그리고 숨겨진 요구사항과 기술 도입 의사 결정을 다루는 방법](https://techblog.woowahan.com/21027/) | Woowa Brothers / Woowa Tech Blog | 203.50 | AWS Lambda, Amazon OpenSearch Service, Amazon RDS, Kubernetes, LLM, Redis |
 
 #### Top Result Details
 
@@ -2434,56 +2416,46 @@ Highlights:
 - content: MongoDB Atlas **Search** 우선 검색엔진으로 사용한 기술에 대해 간략한 소개를 하겠습니다. Atlas **Search** 는 MongoDB full-managed 클라우드 서비스인 MongoDB Atlas 에서 제공하는 전문 **검색** 솔루션입니다.
 - content: AWS에서 제공하는 OpenSearch 와 같이 Apache Lucene **검색** 라이브러리를 탑재하고 있으며 **실시간** 모니터링 및 로그 분석을 지원합니다.
 
-##### 2. Full-text, exact-match, range, and hybrid search on Amazon ElastiCache
+##### 2. Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup
 
 - match: not expected
-- source: AWS / AWS Database Blog
-- url: https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/
-- technologies: AWS IAM, Amazon EC2, Amazon ElastiCache, Amazon VPC, Redis, Valkey, search
-- problem keywords: migration, performance optimization
-- case summary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 실시간 전체 텍스트, 정확 일치, 범위, 하이브리드 검색 기능을 구현하여 대규모 데이터에 대해 마이크로초 단위의 저지연 검색을 가능하게 한 사례이다.
-- problem: 대규모 동적 데이터에 대해 별도의 검색 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 검색(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
-- solution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 검색 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을 통해 마이크로초 단위 응답과 높은 QPS를 달성했다.
+- source: NHN Cloud / NHN Cloud Meetup
+- url: https://meetup.nhncloud.com/posts/156
+- technologies: search
+- problem keywords: -
+- case summary: NHN Cloud의 Log&Crash Search 서비스에 Network Insight 기능을 도입하여 네트워크 관련 로그와 크래시 데이터를 효과적으로 분석하는 사례를 다룬다.
+- problem: 네트워크 문제로 인한 서비스 장애 원인을 신속하게 파악하고 대응하기 위한 로그 및 크래시 데이터 분석의 어려움.
+- solution: Log&Crash Search에 Network Insight 기능을 추가하여 네트워크 트래픽과 장애 데이터를 통합 분석하고, 문제 발생 지점을 직관적으로 파악할 수 있도록 지원.
 
 Highlights:
 
-- title: Full-text, exact-match, range, and hybrid **search** on Amazon ElastiCache
-- caseSummary: Amazon ElastiCache 9.0 버전에서 Valkey 엔진을 활용해 **실시간** 전체 텍스트, 정확 일치, 범위, 하이브리드 **검색** 기능을 구현하여 대규모 데이터에 대해 마이크로초
-- caseProblem: 대규모 동적 데이터에 대해 별도의 **검색** 서비스 없이 캐시 내에서 저지연, 고처리량의 다양한 **검색**(전체 텍스트, 정확 일치, 범위, 벡터 유사도)을 지원해야 하는 상황.
-- caseSolution: ElastiCache 9.0의 Valkey 엔진을 사용해 해시 기반 문서 인덱싱과 텍스트, 태그, 숫자, 벡터 필드를 결합한 복합 **검색** 인덱스를 구축하고, 동기식 인덱싱과 멀티스레딩을
-- summary: New **search** capabilities are available in ElastiCache version 9.0 for Valkey.
-- summary: In this post, we walk through the new **search** capabilities, show how they work together, and build a **search**
+- caseSummary: NHN Cloud의 Log&Crash **Search** 서비스에 Network Insight 기능을 도입하여 네트워크 관련 로그와 크래시 데이터를 효과적으로 분석하는 사례를 다룬다.
 
-##### 3. 실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서
+##### 3. TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup
 
-- match: expected relevance 3
-- source: Woowa Brothers / Woowa Tech Blog
-- url: https://techblog.woowahan.com/7425/
-- technologies: Elasticsearch, search
-- problem keywords: performance optimization
-- case summary: 우아한형제들은 Elasticsearch 인덱스 구조를 가게 정보와 메뉴 정보로 분리하고, 검색 쿼리를 여러 단계로 나누어 실시간 인덱싱과 검색 성능 문제를 해결하였다.
-- problem: 가게 수 증가와 기능 고도화로 인해 Elasticsearch의 인덱싱 및 검색 성능이 저하되고, 특히 가게 문서 업데이트 시 메뉴가 모두 재인덱싱되는 쓰기 증폭과 검색 쿼리의 높은 tail latency 문제가 발생하였다.
-- solution: 가게와 메뉴 데이터를 별도 인덱스로 분리하고, 검색 쿼리를 query, decision, fetch의 여러 단계로 나누어 처리하였으며, 메뉴 인덱스는 nested document 구조로 변경하여 aggregation 비용을 줄이고, shard 수 조정 및 쿼리 단계 병합으로 성능을 최적화하였다.
+- match: not expected
+- source: NHN Cloud / NHN Cloud Meetup
+- url: https://meetup.nhncloud.com/posts/254
+- technologies: search
+- problem keywords: -
+- case summary: 금융사의 전자금융 거래법 준수를 위해 TOAST Log&Crash Search의 로그 데이터 무결성 검증 기능을 활용하여 로그 위·변조 방지 및 감시 체계를 구축한 사례이다.
+- problem: 금융 시스템에서 발생하는 로그가 법적 요구사항에 따라 위·변조 없이 무결성을 유지해야 하는 상황이었다.
+- solution: TOAST Log&Crash Search 플랫폼의 무결성 검증 기능을 적용하여 로그 데이터의 위·변조 여부를 실시간으로 감시하고 검증하는 체계를 도입하였다.
 
 Highlights:
 
-- title: **실시간** 인덱싱을 위한 Elasticsearch 구조를 찾아서
-- caseSummary: 우아한형제들은 Elasticsearch 인덱스 구조를 가게 정보와 메뉴 정보로 분리하고, **검색** 쿼리를 여러 단계로 나누어 **실시간** 인덱싱과 **검색** 성능 문제를 해결하였다.
-- caseProblem: 가게 수 증가와 기능 고도화로 인해 Elasticsearch의 **인덱싱** 및 **검색** 성능이 저하되고, 특히 가게 문서 업데이트 시 메뉴가 모두 재인덱싱되는 쓰기 증폭과 **검색** 쿼리의 높은
-- caseSolution: 가게와 메뉴 데이터를 별도 인덱스로 분리하고, **검색** 쿼리를 query, decision, fetch의 여러 단계로 나누어 처리하였으며, 메뉴 인덱스는 nested document 구조로
-- summary: 저희 팀에서는 배달의민족 **검색** 시스템을 담당하고 있고, 사용자가 원하는 **실시간** 결과를 빠르게 제공하기 위해 노력하고 있습니다.
-- summary: 지난 블로그 글에서 늘어나는 이벤트에 대응하여, 배민 **검색** 시스템에 bulk processing을 도입한 경험을 공유드렸습니다.
+- caseSolution: TOAST Log&Crash **Search** 플랫폼의 무결성 검증 기능을 적용하여 로그 데이터의 위·변조 여부를 실시간으로 감시하고 검증하는 체계를 도입하였다.
 
 
 ### ko-search-platform-kafka - `검색 플랫폼 Kafka`
 
 - category: architecture
 - intent: Kafka를 활용한 검색 플랫폼, 검색 색인 파이프라인, 이벤트 기반 검색 연동 사례를 찾는다.
-- total results: 491
+- total results: 539
 - precision@5: 0.000
 - recall@10: 0.333
-- mrr: 0.111
-- ndcg@10: 0.163
+- mrr: 0.100
+- ndcg@10: 0.157
 
 #### Expected URLs
 
@@ -2495,20 +2467,40 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 356.84 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
-| 2 | - | [[다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍](https://techblog.woowahan.com/7894/) | Woowa Brothers / Woowa Tech Blog | 306.65 | Apache Kafka, event-driven architecture, streaming data pipeline |
-| 3 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 298.63 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
-| 4 | - | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 291.67 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
-| 5 | - | [지금 매출 얼마인가요?](https://tech.devsisters.com/posts/near-real-time) | Devsisters / Devsisters Tech Blog | 290.11 | Amazon S3, Apache Kafka, Elasticsearch, search, observability, log platform |
-| 6 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 289.48 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
-| 7 | - | [프로젝트 관리를 위한 JIRA 활용기](https://dev.gmarket.com/43) | Gmarket / Gmarket Tech Blog | 283.14 | Apache Kafka, Elasticsearch, Redis, search |
-| 8 | - | [Kafka 이벤트 모니터링이란.. (먼산)](https://dev.gmarket.com/51) | Gmarket / Gmarket Tech Blog | 277.37 | Apache Kafka, Elasticsearch, search, observability, streaming data pipeline |
-| 9 | expected:3 | [컬리 검색이 카프카를 들여다본 이야기 2](https://helloworld.kurly.com/blog/search-system-with-kafka-2/) | Kurly / Kurly Tech Blog | 276.91 | Apache Kafka, search |
-| 10 | - | [우아한테크캠프 6기 교육생들의 최종 회고](https://techblog.woowahan.com/14969/) | Woowa Brothers / Woowa Tech Blog | 276.87 | Apache Kafka, JPA, Java, search, observability |
+| 1 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog | 370.73 | Amazon DynamoDB, Apache Kafka, Elasticsearch, JVM, Java, Kotlin |
+| 2 | - | [엔지니어링 프로젝트 임팩트 산정하기](https://medium.com/wantedjobs/%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9E%84%ED%8C%A9%ED%8A%B8-%EC%82%B0%EC%A0%95%ED%95%98%EA%B8%B0-cfc2bf8574eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 357.27 | Apache Kafka, search, Change Data Capture, streaming data pipeline |
+| 3 | - | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog | 311.38 | Amazon OpenSearch Service, Elasticsearch, Java, search, observability |
+| 4 | - | [[다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍](https://techblog.woowahan.com/7894/) | Woowa Brothers / Woowa Tech Blog | 303.51 | Apache Kafka, event-driven architecture, streaming data pipeline |
+| 5 | - | [카프카 생태계 기반의 비즈니스 메트릭 생성하기](https://hyperconnect.github.io/2022/10/14/grafana-with-ksqlDB.html) | Hyperconnect / Hyperconnect Tech Blog | 302.75 | Amazon CloudWatch, Apache Kafka, Elasticsearch, Java, search, observability |
+| 6 | - | [Migrate third-party and self-managed Apache Kafka clusters to Amazon MSK Express brokers with Amazon MSK Replicator](https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/) | AWS / AWS Big Data Blog | 294.37 | AWS IAM, Amazon CloudWatch, Amazon MSK, Amazon S3, Amazon VPC, Apache Kafka |
+| 7 | - | [지금 매출 얼마인가요?](https://tech.devsisters.com/posts/near-real-time) | Devsisters / Devsisters Tech Blog | 292.20 | Amazon S3, Apache Kafka, Elasticsearch, search, observability, log platform |
+| 8 | - | [How to build a cross-Region resilience for Amazon OpenSearch Service with Amazon MSK](https://aws.amazon.com/blogs/big-data/how-to-build-a-cross-region-resilience-for-amazon-opensearch-service-with-amazon-msk/) | AWS / AWS Big Data Blog | 288.55 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon MSK, Amazon OpenSearch Service |
+| 9 | - | [Kafka 이벤트 모니터링이란.. (먼산)](https://dev.gmarket.com/51) | Gmarket / Gmarket Tech Blog | 282.34 | Apache Kafka, Elasticsearch, search, observability, streaming data pipeline |
+| 10 | expected:3 | [컬리 검색이 카프카를 들여다본 이야기 2](https://helloworld.kurly.com/blog/search-system-with-kafka-2/) | Kurly / Kurly Tech Blog | 281.33 | Apache Kafka, search |
 
 #### Top Result Details
 
-##### 1. 엔지니어링 프로젝트 임팩트 산정하기
+##### 1. CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용
+
+- match: not expected
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html
+- technologies: Amazon DynamoDB, Apache Kafka, Elasticsearch, JVM, Java, Kotlin, Redis, search
+- problem keywords: migration, observability, performance optimization
+- case summary: Hyperconnect는 Kafka Connect 기반의 CDC Sink Platform을 개발하여 Kafka에서 변경 이벤트를 읽어 다양한 데이터 소스에 적재하는 시스템을 구축하고, 이를 활용해 CQRS 패턴을 적용하여 RDB의 비효율적인 Full Text Search 문제를 Elasticsearch로 해결한 사례를 공유합니다.
+- problem: RDB의 B-Tree 구조로 인해 Full Text Search가 비효율적이며, 여러 조직의 다양한 조회 요구사항으로 인해 데이터베이스 인덱스가 과도하게 추가되어 성능 저하와 확장성 문제가 발생하는 상황.
+- solution: Kafka Connect를 활용한 CDC Sink Platform을 구축해 Kafka 이벤트를 다양한 데이터 소스에 적재하고, Elasticsearch Sink Connector를 통해 Inverted Index 기반의 검색엔진에 데이터를 실시간 동기화하여 CQRS 패턴으로 명령과 조회 책임을 분리, 효율적인 검색 기능을 구현함.
+
+Highlights:
+
+- caseSummary: Hyperconnect는 **Kafka** Connect 기반의 CDC Sink Platform을 개발하여 Kafka에서 변경 이벤트를 읽어 다양한 데이터 소스에 적재하는 시스템을 구축하고
+- caseSummary: , 이를 활용해 CQRS 패턴을 적용하여 RDB의 비효율적인 Full Text **Search** 문제를 Elasticsearch로 해결한 사례를 공유합니다.
+- caseSolution: **Kafka** Connect를 활용한 CDC Sink Platform을 구축해 **Kafka** 이벤트를 다양한 데이터 소스에 적재하고, Elasticsearch Sink Connector를
+- caseSolution: 통해 Inverted Index 기반의 검색엔진에 데이터를 실시간 동기화하여 CQRS 패턴으로 명령과 조회 책임을 분리, 효율적인 **검색** 기능을 구현함.
+- content: CDC Sink Platform 활용 - CQRS Pattern의 구현 Admin에서 Full Text **Search** 즉, 통합 **검색** 기능을 지원해야 하는 요구사항이 있었습니다.
+- content: CQRS Pattern의 구현 Full Text **Search** 요구사항에 대해 Inverted Index 기반의 **검색** 엔진을 활용하여 **검색** 기능을 제공 Full Text **Search** Time Complexity 기존 - B-Tree 개선 - Inverted Index CDC Sink Platform
+
+##### 2. 엔지니어링 프로젝트 임팩트 산정하기
 
 - match: not expected
 - source: Wantedlab / Wantedlab Tech Blog
@@ -2526,22 +2518,6 @@ Highlights:
 - summary: 실시간 인프라의 부재를 크게 느껴 여러 조사를 해보았고, **Apache Kafka**(실시간으로 이벤트를 처리할 수 있는 데이터 스트리밍 **플랫폼**)가 적합하다는 판단 하에 도입을 하였습니다
 - content: 위버를 한 마디로 표현하면 다양한 문제를 해결하기 위한 데이터 팀의 **Apache Kafka** 운용 프로젝트 입니다. 위버 도입 전까지 저희는 대부분의 데이터를 배치로 처리하고 있었고, 실시간성이 필요한 사용자 행동 데이터의 경우 외부 툴(amplitude)에 의존해왔습니다.
 - content: 실시간 인프라의 부재를 크게 느껴 여러 조사를 해보았고, **Apache Kafka**(실시간으로 이벤트를 처리할 수 있는 데이터 스트리밍 **플랫폼**)가 적합하다는 판단 하에 도입을 하였습니다.
-
-##### 2. [다시보기] 3월 우아한테크세미나｜실시간 음식배달 플랫폼에서 활용한 분산 이벤트 스트리밍
-
-- match: not expected
-- source: Woowa Brothers / Woowa Tech Blog
-- url: https://techblog.woowahan.com/7894/
-- technologies: Apache Kafka
-- problem keywords: -
-- case summary: 우아한형제들의 실시간 음식배달 플랫폼에서 대량의 트랜잭션과 상태변경 데이터를 효율적으로 처리하기 위해 Apache Kafka Streams 기반의 분산 이벤트 스트리밍 아키텍처를 도입한 사례입니다.
-- problem: 음식배달 주문과 관련된 수십 배에 달하는 대량의 실시간 트랜잭션과 30분 내외의 상태변경 데이터를 효율적으로 처리하고 분석하는 것이 필요했습니다.
-- solution: Apache Kafka Streams를 활용한 분산 이벤트 스트리밍 아키텍처를 구축하여, 여러 지역에서 발생하는 데이터를 최대한 격리하지 않고 최적화하여 자원 효율성을 극대화하고 실시간 데이터 처리 및 분석을 가능하게 했습니다.
-
-Highlights:
-
-- caseSummary: 우아한형제들의 실시간 음식배달 플랫폼에서 대량의 트랜잭션과 상태변경 데이터를 효율적으로 처리하기 위해 **Apache Kafka** Streams 기반의 분산 이벤트 스트리밍 아키텍처를 도입한
-- caseSolution: **Apache Kafka** Streams를 활용한 분산 이벤트 스트리밍 아키텍처를 구축하여, 여러 지역에서 발생하는 데이터를 최대한 격리하지 않고 최적화하여 자원 효율성을 극대화하고 실시간
 
 ##### 3. MongoDB Atlas Search 정렬이슈 해결기
 
@@ -2567,11 +2543,11 @@ Highlights:
 
 - category: architecture
 - intent: 한글 검색어로 대용량 로그 처리, 로그 파이프라인, 실시간 로그 플랫폼 사례를 찾는다.
-- total results: 454
+- total results: 508
 - precision@5: 0.400
 - recall@10: 0.600
-- mrr: 0.333
-- ndcg@10: 0.377
+- mrr: 0.500
+- ndcg@10: 0.399
 
 #### Expected URLs
 
@@ -2585,55 +2561,38 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | - | [MySQL 3분 vs ClickHouse 0.3초 — 같은 쿼리입니다](https://meetup.nhncloud.com/posts/414) | NHN Cloud / NHN Cloud Meetup | 177.37 | Amazon OpenSearch Service, Apache Kafka, search, cost optimization, migration, observability |
-| 2 | - | [우아한테크캠프 7기: 데모데이 1위 팀의 로그 매니저 프로젝트를 소개합니다!](https://techblog.woowahan.com/19370/) | Woowa Brothers / Woowa Tech Blog | 172.95 | AWS Lambda, Amazon EC2, Amazon RDS, Amazon VPC, JPA, Java |
-| 3 | expected:2 | [로그 데이터로 유저 이해하기](https://techblog.woowahan.com/2536/) | Woowa Brothers / Woowa Tech Blog | 171.61 | cost optimization, log platform |
-| 4 | - | [실험과 기능플래그를 위한 실험플랫폼 구축하기](https://techblog.woowahan.com/9935/) | Woowa Brothers / Woowa Tech Blog | 151.48 | AWS Glue, Amazon RDS, JVM, Java, Kotlin, Redis |
-| 5 | expected:3 | [로그 파이프라인 개선기 - 기존 파이프라인 문제 정의 및 해결 방안 적용](https://tech.socarcorp.kr/data/2025/02/25/log-pipeline-revamp.html) | SOCAR / SOCAR Tech Blog | 150.71 | AWS Lambda, Amazon MSK, Amazon S3, Apache Flink, Apache Kafka, Java |
-| 6 | - | [지금 매출 얼마인가요?](https://tech.devsisters.com/posts/near-real-time) | Devsisters / Devsisters Tech Blog | 137.20 | Amazon S3, Apache Kafka, Elasticsearch, search, observability, log platform |
-| 7 | expected:3 | [비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입](https://d2.naver.com/helloworld/0004394) | NAVER / NAVER D2 | 136.88 | Amazon OpenSearch Service, Apache Kafka, Java, search, observability, log platform |
-| 8 | - | [따끈따끈한 전사 로그 시스템 전환기: ELK Stack에서 Loki로 전환한 이유](https://techblog.woowahan.com/14505/) | Woowa Brothers / Woowa Tech Blog | 128.97 | Amazon S3, Elasticsearch, OpenTelemetry, search, cost optimization, incident response |
-| 9 | - | [AI 데이터 분석가 ‘물어보새’ 등장 – 2부. Data Discovery](https://techblog.woowahan.com/18362/) | Woowa Brothers / Woowa Tech Blog | 127.16 | LLM, search, log platform |
-| 10 | - | [쿠키런: 킹덤 데이터베이스 스토리지 레이어 복원기](https://tech.devsisters.com/posts/crk-launch-storage-postmortem) | Devsisters / Devsisters Tech Blog | 123.56 | Amazon EC2, Amazon RDS, incident response, observability, log platform |
+| 1 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup | 185.82 | search, log platform |
+| 2 | expected:2 | [로그 데이터로 유저 이해하기](https://techblog.woowahan.com/2536/) | Woowa Brothers / Woowa Tech Blog | 177.38 | cost optimization, log platform |
+| 3 | - | [우아한테크캠프 7기: 데모데이 1위 팀의 로그 매니저 프로젝트를 소개합니다!](https://techblog.woowahan.com/19370/) | Woowa Brothers / Woowa Tech Blog | 169.93 | AWS Lambda, Amazon EC2, Amazon RDS, Amazon VPC, JPA, Java |
+| 4 | - | [실험과 기능플래그를 위한 실험플랫폼 구축하기](https://techblog.woowahan.com/9935/) | Woowa Brothers / Woowa Tech Blog | 155.45 | AWS Glue, Amazon RDS, JVM, Java, Kotlin, Redis |
+| 5 | expected:3 | [로그 파이프라인 개선기 - 기존 파이프라인 문제 정의 및 해결 방안 적용](https://tech.socarcorp.kr/data/2025/02/25/log-pipeline-revamp.html) | SOCAR / SOCAR Tech Blog | 154.98 | AWS Lambda, Amazon MSK, Amazon S3, Apache Flink, Apache Kafka, Java |
+| 6 | - | [지금 매출 얼마인가요?](https://tech.devsisters.com/posts/near-real-time) | Devsisters / Devsisters Tech Blog | 140.90 | Amazon S3, Apache Kafka, Elasticsearch, search, observability, log platform |
+| 7 | expected:3 | [비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입](https://d2.naver.com/helloworld/0004394) | NAVER / NAVER D2 | 138.23 | Amazon OpenSearch Service, Apache Kafka, Java, search, observability, log platform |
+| 8 | - | [따끈따끈한 전사 로그 시스템 전환기: ELK Stack에서 Loki로 전환한 이유](https://techblog.woowahan.com/14505/) | Woowa Brothers / Woowa Tech Blog | 130.90 | Amazon S3, Elasticsearch, OpenTelemetry, search, cost optimization, incident response |
+| 9 | - | [AI 데이터 분석가 ‘물어보새’ 등장 – 2부. Data Discovery](https://techblog.woowahan.com/18362/) | Woowa Brothers / Woowa Tech Blog | 128.24 | LLM, search, log platform |
+| 10 | - | [쿠키런: 킹덤 데이터베이스 스토리지 레이어 복원기](https://tech.devsisters.com/posts/crk-launch-storage-postmortem) | Devsisters / Devsisters Tech Blog | 125.23 | Amazon EC2, Amazon RDS, incident response, observability, log platform |
 
 #### Top Result Details
 
-##### 1. MySQL 3분 vs ClickHouse 0.3초 — 같은 쿼리입니다
+##### 1. TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup
 
 - match: not expected
 - source: NHN Cloud / NHN Cloud Meetup
-- url: https://meetup.nhncloud.com/posts/414
-- technologies: Amazon OpenSearch Service, Apache Kafka, search
-- problem keywords: cost optimization, migration, observability
-- case summary: NHN Cloud는 MySQL의 대용량 집계 쿼리 성능 한계를 극복하기 위해 ClickHouse를 도입하여, 대량 데이터 분석 및 집계 쿼리 처리 속도를 수백 배 향상시키고, 저장 용량 절감과 대량 적재 성능 개선을 달성했다.
-- problem: MySQL 기반 서비스에서 수천만 건 이상의 대용량 데이터에 대한 집계 쿼리 수행 시 30초 이상 지연 및 타임아웃 발생, 동시 처리 한계와 저장 공간 비효율 문제가 발생했다.
-- solution: ClickHouse의 열 저장 구조와 병렬 처리, 파티션 및 정렬 키 기반 범위 축소, 배치 INSERT 최적화, 열 단위 압축 기술을 활용해 대량 데이터 집계 쿼리 성능을 극대화하고, MySQL과 역할 분담을 통해 OLTP와 OLAP 워크로드를 분리 운영했다. 또한, NHN Cloud 내 여러 서비스에 ClickHouse를 적용해 슬로 쿼리 해소, 데이터 적재 파이프라인 단순화, 멱등성 보장, 대규모 인증 이력 통계 조회 고성능화 등의 효과를 얻었다.
+- url: https://meetup.nhncloud.com/posts/254
+- technologies: search
+- problem keywords: -
+- case summary: 금융사의 전자금융 거래법 준수를 위해 TOAST Log&Crash Search의 로그 데이터 무결성 검증 기능을 활용하여 로그 위·변조 방지 및 감시 체계를 구축한 사례이다.
+- problem: 금융 시스템에서 발생하는 로그가 법적 요구사항에 따라 위·변조 없이 무결성을 유지해야 하는 상황이었다.
+- solution: TOAST Log&Crash Search 플랫폼의 무결성 검증 기능을 적용하여 로그 데이터의 위·변조 여부를 실시간으로 감시하고 검증하는 체계를 도입하였다.
 
 Highlights:
 
-- summary: Resource Watcher](https://www.nhncloud.com/kr/service/governance-audit/resource-watcher)는 NHN Cloud의 **로그**
-- summary: 대표적인 사례를 소개합니다. | 회사 | 도입 목적 | 처리 규모 | 핵심 성과 | | --- | --- | --- | --- | | 카카오페이 증권 | **로그 플랫폼** 전환 (OpenSearch
+- title: TOAST **Log**&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup
+- caseSummary: 금융사의 전자금융 거래법 준수를 위해 TOAST **Log**&Crash Search의 **로그** 데이터 무결성 검증 기능을 활용하여 **로그** 위·변조 방지 및 감시 체계를 구축한 사례이다.
+- caseSolution: TOAST **Log**&Crash Search 플랫폼의 무결성 검증 기능을 적용하여 **로그** 데이터의 위·변조 여부를 실시간으로 감시하고 검증하는 체계를 도입하였다.
+- summary: 금융사는 전자금융 거래법이나 전자금융 감독규정에 따라 운영 시스템에서 발생하는 로그가 위·변조되지 않도록 **로그** 데이터에 대한 무결성을 검증하고 감시하는 기능이 필요합니다.
 
-##### 2. 우아한테크캠프 7기: 데모데이 1위 팀의 로그 매니저 프로젝트를 소개합니다!
-
-- match: not expected
-- source: Woowa Brothers / Woowa Tech Blog
-- url: https://techblog.woowahan.com/19370/
-- technologies: AWS Lambda, Amazon EC2, Amazon RDS, Amazon VPC, JPA, Java, Node.js, Spring Boot
-- problem keywords: performance optimization
-- case summary: 우아한테크캠프 7기 팀이 Spring 기반 로그 매니저 'Log Bat'를 개발하며, 대량 로그 처리 시 발생하는 DB 커넥션 병목 문제를 버퍼링과 캐시 도입, 싱글 스레드 큐 구조 개선으로 해결하고 AWS Lambda 부하 테스트를 통해 성능 최적화를 이뤘다.
-- problem: 다수의 클라이언트에서 발생하는 로그를 한 곳에 모아 빠르게 저장하고 조회하는 로그 관리 시스템을 구축하는 과정에서, 특히 DB 커넥션 풀 부족과 큐 락 경합으로 인한 병목 현상과 높은 동시성 부하 처리 문제에 직면했다.
-- solution: JavaScript와 Java SDK에서 로그를 버퍼링해 배치 전송하도록 개선하고, DB 저장 시 Bulk Insert와 AppKey 검증 캐시 도입으로 DB 커넥션 사용을 최소화했으며, 큐 삽입을 싱글 스레드로 제한해 락 경합을 해소하는 파이프라인 구조를 적용했다. 또한 AWS Lambda 기반 부하 테스트로 병목 지점을 확인하고, 성능 최적화를 반복 수행했다.
-
-Highlights:
-
-- title: 우아한테크캠프 7기: 데모데이 1위 팀의 **로그** 매니저 프로젝트를 소개합니다!
-- caseSummary: 우아한테크캠프 7기 팀이 Spring 기반 **로그** 매니저 '**Log** Bat'를 개발하며, 대량 **로그** 처리 시 발생하는 DB 커넥션 병목 문제를 버퍼링과 캐시 도입, 싱글 스레드 큐 구조
-- caseProblem: 다수의 클라이언트에서 발생하는 로그를 한 곳에 모아 빠르게 저장하고 조회하는 **로그** 관리 시스템을 구축하는 과정에서, 특히 DB 커넥션 풀 부족과 큐 락 경합으로 인한 병목 현상과 높은
-- content: 저희가 준비한 최종 프로젝트 ‘**Log** Bat’는 토이 프로젝트나 사이드 프로젝트를 진행할 때 추가적인 인프라 없이 간편하게 로그를 모아볼 수 있는 **로그** 매니저(**Log** Manager)입니다. 프로젝트 주제로 선정한 이유를 소개합니다.
-- content: 예시로 사용자 100만 명이 있는 서비스 앱이 이 **로그** 시스템을 사용하게 될 경우, 100만 개의 서로 다른 인스턴스에서 **로그** 요청이 들어오게 됩니다.
-
-##### 3. 로그 데이터로 유저 이해하기
+##### 2. 로그 데이터로 유저 이해하기
 
 - match: expected relevance 2
 - source: Woowa Brothers / Woowa Tech Blog
@@ -2653,12 +2612,31 @@ Highlights:
 - caseSolution: 앱 기능과 시나리오를 상세히 파악하여 체계적인 **로그** 설계 및 JSON 형태의 **로그** 수집 환경을 구축하고, 데이터 품질 검증 및 오류 수정에 집중하였다.
 - summary: 이를 위해 **로그** 설계/수집/분석에 이르는 전반적 과정에 직/간접적으로 관여하고 있으며, 입사후 4개월간 경험한 내용과 생각을 공유하고자 합니다. 1.
 
+##### 3. 우아한테크캠프 7기: 데모데이 1위 팀의 로그 매니저 프로젝트를 소개합니다!
+
+- match: not expected
+- source: Woowa Brothers / Woowa Tech Blog
+- url: https://techblog.woowahan.com/19370/
+- technologies: AWS Lambda, Amazon EC2, Amazon RDS, Amazon VPC, JPA, Java, Node.js, Spring Boot
+- problem keywords: performance optimization
+- case summary: 우아한테크캠프 7기 팀이 Spring 기반 로그 매니저 'Log Bat'를 개발하며, 대량 로그 처리 시 발생하는 DB 커넥션 병목 문제를 버퍼링과 캐시 도입, 싱글 스레드 큐 구조 개선으로 해결하고 AWS Lambda 부하 테스트를 통해 성능 최적화를 이뤘다.
+- problem: 다수의 클라이언트에서 발생하는 로그를 한 곳에 모아 빠르게 저장하고 조회하는 로그 관리 시스템을 구축하는 과정에서, 특히 DB 커넥션 풀 부족과 큐 락 경합으로 인한 병목 현상과 높은 동시성 부하 처리 문제에 직면했다.
+- solution: JavaScript와 Java SDK에서 로그를 버퍼링해 배치 전송하도록 개선하고, DB 저장 시 Bulk Insert와 AppKey 검증 캐시 도입으로 DB 커넥션 사용을 최소화했으며, 큐 삽입을 싱글 스레드로 제한해 락 경합을 해소하는 파이프라인 구조를 적용했다. 또한 AWS Lambda 기반 부하 테스트로 병목 지점을 확인하고, 성능 최적화를 반복 수행했다.
+
+Highlights:
+
+- title: 우아한테크캠프 7기: 데모데이 1위 팀의 **로그** 매니저 프로젝트를 소개합니다!
+- caseSummary: 우아한테크캠프 7기 팀이 Spring 기반 **로그** 매니저 '**Log** Bat'를 개발하며, 대량 **로그** 처리 시 발생하는 DB 커넥션 병목 문제를 버퍼링과 캐시 도입, 싱글 스레드 큐 구조
+- caseProblem: 다수의 클라이언트에서 발생하는 로그를 한 곳에 모아 빠르게 저장하고 조회하는 **로그** 관리 시스템을 구축하는 과정에서, 특히 DB 커넥션 풀 부족과 큐 락 경합으로 인한 병목 현상과 높은
+- content: 저희가 준비한 최종 프로젝트 ‘**Log** Bat’는 토이 프로젝트나 사이드 프로젝트를 진행할 때 추가적인 인프라 없이 간편하게 로그를 모아볼 수 있는 **로그** 매니저(**Log** Manager)입니다. 프로젝트 주제로 선정한 이유를 소개합니다.
+- content: 예시로 사용자 100만 명이 있는 서비스 앱이 이 **로그** 시스템을 사용하게 될 경우, 100만 개의 서로 다른 인스턴스에서 **로그** 요청이 들어오게 됩니다.
+
 
 ### ko-problem-jvm-latency - `JVM 응답 지연`
 
 - category: problem
 - intent: 한글 검색어로 JVM 웜업, 메모리 누수, 배포 직후 지연 같은 JVM 운영 문제 해결 사례를 찾는다.
-- total results: 412
+- total results: 454
 - precision@5: 0.400
 - recall@10: 1.000
 - mrr: 1.000
@@ -2673,16 +2651,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:2 | [도움이 될수도 있는 JVM memory leak 이야기](https://techblog.woowahan.com/2628/) | Woowa Brothers / Woowa Tech Blog | 371.77 | JVM, Java, migration, observability, performance optimization |
-| 2 | expected:3 | [배포 직후 발생하는 응답 지연을 해결하기 위한 여정 (feat. JVM 웜업)](https://tech.kakaopay.com/post/jvm-warm-up/) | Kakao Pay / Kakao Pay Tech Blog | 333.83 | JVM, performance optimization |
-| 3 | - | [[요기요 카오스 엔지니어링 (2)] 카오스 실험 결과 정리하기](https://techblog.yogiyo.co.kr/%EC%9A%94%EA%B8%B0%EC%9A%94-%EC%B9%B4%EC%98%A4%EC%8A%A4-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-2-%EC%B9%B4%EC%98%A4%EC%8A%A4-%EC%8B%A4%ED%97%98-%EA%B2%B0%EA%B3%BC-%EA%B3%B5%EC%9C%A0-7b09c0b2183b?source=rss----c1b33ccbbc42---4) | YOGIYO / YOGIYO Tech Blog | 314.95 | Amazon EKS, Istio, JVM, Redis, observability, performance optimization |
-| 4 | - | [온디바이스 AI 얼굴 식별 파이프라인 최적화](https://hyperconnect.github.io/2026/01/23/On-device-Face-Verification-Pipeline-Optimization.html) | Hyperconnect / Hyperconnect Tech Blog | 304.38 | JVM, Java, Kotlin, performance optimization |
-| 5 | - | [신규 포인트 시스템 전환기 #2 – 오픈 준비 단계](https://techblog.woowahan.com/2588/) | Woowa Brothers / Woowa Tech Blog | 284.20 | Amazon CloudWatch, Amazon RDS, JVM, Java, Redis, migration |
-| 6 | - | [Java Logger의 또다른 식구, tinylog](https://dev.gmarket.com/67) | Gmarket / Gmarket Tech Blog | 269.85 | AWS Lambda, JVM, Java, Kotlin, Spring Boot, performance optimization |
-| 7 | - | [Building Resilient, High Performance ScyllaDB Clusters with Super Disk](https://hyperconnect.github.io/2025/05/15/Building-Resilient-High-Performance-ScyllaDB-Clusters-with-Super-Disk.html) | Hyperconnect / Hyperconnect Tech Blog | 259.09 | Amazon EC2, Amazon EKS, JVM, Kubernetes, Node.js, cost optimization |
-| 8 | - | [Sharded MySQL Cluster 도입 배경과 개발기 (부제: 우당탕탕 좌충우돌 개발기)](https://dev.gmarket.com/61) | Gmarket / Gmarket Tech Blog | 243.88 | Apache Kafka, JPA, JVM, Java, Kubernetes, Spring Boot |
-| 9 | - | [JDBC setReadOnly 호출 이슈 해결기](https://tech.inflab.com/20240901-jdbc-set-readonly-issue/) | Inflab / Inflab Tech Blog | 243.25 | Amazon Aurora, JVM, Node.js, Spring Boot, observability |
-| 10 | - | [Istio와 Spinnaker를 활용한 Blue-Green + Canary 자동 배포 전략 도입기](https://tech.devsisters.com/posts/blue-green-canary-deployment) | Devsisters / Devsisters Tech Blog | 241.03 | Argo Rollouts, Go, Istio, JVM, Kubernetes, Redis |
+| 1 | expected:2 | [도움이 될수도 있는 JVM memory leak 이야기](https://techblog.woowahan.com/2628/) | Woowa Brothers / Woowa Tech Blog | 371.74 | JVM, Java, migration, observability, performance optimization |
+| 2 | expected:3 | [배포 직후 발생하는 응답 지연을 해결하기 위한 여정 (feat. JVM 웜업)](https://tech.kakaopay.com/post/jvm-warm-up/) | Kakao Pay / Kakao Pay Tech Blog | 328.95 | JVM, performance optimization |
+| 3 | - | [온디바이스 AI 얼굴 식별 파이프라인 최적화](https://hyperconnect.github.io/2026/01/23/On-device-Face-Verification-Pipeline-Optimization.html) | Hyperconnect / Hyperconnect Tech Blog | 301.53 | JVM, Java, Kotlin, performance optimization |
+| 4 | - | [[요기요 카오스 엔지니어링 (2)] 카오스 실험 결과 정리하기](https://techblog.yogiyo.co.kr/%EC%9A%94%EA%B8%B0%EC%9A%94-%EC%B9%B4%EC%98%A4%EC%8A%A4-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-2-%EC%B9%B4%EC%98%A4%EC%8A%A4-%EC%8B%A4%ED%97%98-%EA%B2%B0%EA%B3%BC-%EA%B3%B5%EC%9C%A0-7b09c0b2183b?source=rss----c1b33ccbbc42---4) | YOGIYO / YOGIYO Tech Blog | 297.17 | Amazon EKS, Istio, JVM, Redis, observability, performance optimization |
+| 5 | - | [JVM + Container 환경에서 수상한 Memory 사용량 증가 현상 분석하기](https://hyperconnect.github.io/2022/07/19/suspicious-jvm-memory-in-container.html) | Hyperconnect / Hyperconnect Tech Blog | 296.76 | JVM, Java, Kubernetes, observability, performance optimization |
+| 6 | - | [신규 포인트 시스템 전환기 #2 – 오픈 준비 단계](https://techblog.woowahan.com/2588/) | Woowa Brothers / Woowa Tech Blog | 279.47 | Amazon CloudWatch, Amazon RDS, JVM, Java, Redis, migration |
+| 7 | - | [Java Logger의 또다른 식구, tinylog](https://dev.gmarket.com/67) | Gmarket / Gmarket Tech Blog | 268.75 | AWS Lambda, JVM, Java, Kotlin, Spring Boot, performance optimization |
+| 8 | - | [Building Resilient, High Performance ScyllaDB Clusters with Super Disk](https://hyperconnect.github.io/2025/05/15/Building-Resilient-High-Performance-ScyllaDB-Clusters-with-Super-Disk.html) | Hyperconnect / Hyperconnect Tech Blog | 257.06 | Amazon EC2, Amazon EKS, JVM, Kubernetes, Node.js, cost optimization |
+| 9 | - | [GraalVM, Spring Native 맛보기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/273) | NHN Cloud / NHN Cloud Meetup | 249.84 | JVM |
+| 10 | - | [JDBC setReadOnly 호출 이슈 해결기](https://tech.inflab.com/20240901-jdbc-set-readonly-issue/) | Inflab / Inflab Tech Blog | 248.97 | Amazon Aurora, JVM, Node.js, Spring Boot, observability |
 
 #### Top Result Details
 
@@ -2725,31 +2703,29 @@ Highlights:
 - caseSolution: **JVM** 웜업 과정을 사전에 실행하거나 최적화하여 배포 후 즉시 안정적인 **응답** 성능을 확보하는 방식을 도입했습니다.
 - summary: 굿딜 서비스를 운영하며 마주친 배포 직후 **응답** **지연** 문제를 해결하기 위한 과정을 공유하고자 합니다.
 
-##### 3. [요기요 카오스 엔지니어링 (2)] 카오스 실험 결과 정리하기
+##### 3. 온디바이스 AI 얼굴 식별 파이프라인 최적화
 
 - match: not expected
-- source: YOGIYO / YOGIYO Tech Blog
-- url: https://techblog.yogiyo.co.kr/%EC%9A%94%EA%B8%B0%EC%9A%94-%EC%B9%B4%EC%98%A4%EC%8A%A4-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81-2-%EC%B9%B4%EC%98%A4%EC%8A%A4-%EC%8B%A4%ED%97%98-%EA%B2%B0%EA%B3%BC-%EA%B3%B5%EC%9C%A0-7b09c0b2183b?source=rss----c1b33ccbbc42---4
-- technologies: Amazon EKS, Istio, JVM, Redis
-- problem keywords: observability, performance optimization
-- case summary: 요기요는 Stage 환경에서 AWS FIS를 활용해 Pod 네트워크 지연과 외부 API 장애를 주입하는 카오스 엔지니어링 실험을 수행하여, Redis 연결 병목과 Istio의 빠른 실패 처리 영향, 그리고 멤버십 서비스의 장애 내성을 분석했다.
-- problem: 24/7 운영되는 멤버십 서비스에서 네트워크 지연과 외부 API 장애가 발생했을 때 서비스 처리량 저하, 장애 전파, 사용자 경험 저하 문제를 파악하고 개선점을 찾는 것이 필요했다.
-- solution: 운영 환경과 유사한 Stage 환경에서 Locust로 트래픽을 재현하며 Pod 네트워크 지연(250ms, 500ms)과 외부 API 차단 장애를 주입하고, 인프라, 애플리케이션 로그, Istio 로그, 클라이언트 지표를 종합 분석해 Redis 연결 리소스 부족, Istio의 Unhealthy Upstream Host 처리, 장애 영향 범위 및 개선 포인트를 도출했다.
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2026/01/23/On-device-Face-Verification-Pipeline-Optimization.html
+- technologies: JVM, Java, Kotlin
+- problem keywords: performance optimization
+- case summary: 하이퍼커넥트는 안드로이드 온디바이스 AI 얼굴 식별 파이프라인에서 모델 외부 병목을 분석하고, 디코딩 최적화, top-K 알고리즘 개선, JNI 호출 최소화, 스레드 풀 크기 조정, 모델 인스턴스 병렬화 등을 통해 응답 시간 37% 단축과 처리량 530% 향상을 달성했다.
+- problem: 사용자 갤러리 내 수천 장 사진에서 얼굴을 식별하는 온디바이스 AI 파이프라인의 실행 속도 및 처리량 병목 문제와 민감한 개인 정보 보호를 위한 네트워크 비전송 요구 조건.
+- solution: 디코딩 과정에서 불필요한 후보 영역 조기 필터링(Predicate Pushdown), Min Heap 기반 top-K 후보 선택 알고리즘 적용, TensorBuffer의 getFloatValue 대신 floatArray 사용으로 JNI 호출 오버헤드 감소, TensorFlow Lite 스레드 풀 크기 최적화 및 여러 모델 인터프리터 병렬 실행으로 처리량 증대 등 모델 구조 변경 없이 실행 구조와 연산 방식을 최적화함.
 
 Highlights:
 
-- caseSolution: 운영 환경과 유사한 Stage 환경에서 Locust로 트래픽을 재현하며 Pod 네트워크 **지연**(250ms, 500ms)과 외부 API 차단 장애를 주입하고, 인프라, 애플리케이션 로그
-- summary: Locust는 응답을 받으면 해당 **응답** 시간을 기준으로 RPS를 조정합니다.
-- summary: Check CPU usage of the **JVM**. Try to increase nettyThreads setting.
-- content: Locust는 응답을 받으면 해당 **응답** 시간을 기준으로 RPS를 조정합니다. 그런데 RPS가 이 정도로 요동친다는 점은 일반적인 “**지연** 증가”만으로는 설명이 어려워, 뒤에서 추가 분석을 통해 원인을 더 살펴보겠습니다. 3.
-- content: Check CPU usage of the **JVM**. Try to increase nettyThreads setting.
+- caseSummary: AI 얼굴 식별 파이프라인에서 모델 외부 병목을 분석하고, 디코딩 최적화, top-K 알고리즘 개선, JNI 호출 최소화, 스레드 풀 크기 조정, 모델 인스턴스 병렬화 등을 통해 **응답**
+- content: 연산 Thread Pool Size = 1일 때 평균 **응답** 시간 (ms) Thread Pool Size = 2일 때 평균 **응답** 시간 (ms) 비고 Binary Elementwise (ND):0 0.2 1.4 7.7배 **지연** Binary Elementwise (ND):1 0.2 1.4 7.8배
+- content: 결과적으로, 스레드 풀의 크기가 4일 때 69ms인 **응답** 시간이 풀 크기를 1로 고정하자 60ms로 약 12.5% **응답** 시간이 개선되었습니다.
 
 
 ### ko-game-server - `게임 서버`
 
 - category: technology
 - intent: 한글 검색어로 게임 서버 개발, Scala 게임 서버, 게임 서비스 장애 회고 사례를 찾는다.
-- total results: 41
+- total results: 42
 - precision@5: 0.400
 - recall@10: 0.667
 - mrr: 1.000
@@ -2765,16 +2741,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [게임 서버 개발에 스칼라 사용하기](https://tech.devsisters.com/posts/scala-for-game-server-development-kr) | Devsisters / Devsisters Tech Blog | 390.21 | Apache Kafka, Java, Redis |
-| 2 | expected:3 | [데브시스터즈 엔지니어링 데이 - 게임 서버 돌아보기](https://tech.devsisters.com/posts/2025-engineering-day-game-server) | Devsisters / Devsisters Tech Blog | 368.72 | incident response |
-| 3 | - | [게임 서버 시스템을 위한 JDBC와 Timeout 이해하기](https://netmarble.engineering/jdbc-timeout-for-game-server/) | Netmarble / Netmarble Tech Blog | 356.62 | search |
-| 4 | - | [게임 서버 시스템을 위한 HikariCP 옵션 및 권장 설정](https://netmarble.engineering/hikaricp-options-optimization-for-game-server/) | Netmarble / Netmarble Tech Blog | 341.54 |  |
-| 5 | - | [Scala for Game Server Development](https://tech.devsisters.com/posts/scala-for-game-server-development) | Devsisters / Devsisters Tech Blog | 256.09 | Apache Kafka, Redis |
-| 6 | - | [새로운 팀의 코드베이스 적응기: 내 코드로 만들어가는 과정](https://tech.devsisters.com/posts/adapt-to-new-codebase) | Devsisters / Devsisters Tech Blog | 250.69 |  |
-| 7 | - | [[Windows 컨테이너] 4: 베이스 이미지, 격리 방식에 대한 이해](https://tech.devsisters.com/posts/windows-container-basics) | Devsisters / Devsisters Tech Blog | 230.04 | Amazon EC2, Go, Kubernetes, migration |
-| 8 | - | [PerfView를 활용한 .NET GC 프로파일링](https://netmarble.engineering/profiling-dotnet-gc-with-perfview/) | Netmarble / Netmarble Tech Blog | 126.56 |  |
-| 9 | - | [Istio와 Spinnaker를 활용한 Blue-Green + Canary 자동 배포 전략 도입기](https://tech.devsisters.com/posts/blue-green-canary-deployment) | Devsisters / Devsisters Tech Blog | 106.43 | Argo Rollouts, Go, Istio, JVM, Kubernetes, Redis |
-| 10 | - | [타입스크립트스럽게 성능과 생산성 두 마리 토끼 모두 잡기](https://tech.devsisters.com/posts/typescript-ish-way-to-improve-performance) | Devsisters / Devsisters Tech Blog | 78.94 | Next.js, Node.js |
+| 1 | expected:3 | [게임 서버 개발에 스칼라 사용하기](https://tech.devsisters.com/posts/scala-for-game-server-development-kr) | Devsisters / Devsisters Tech Blog | 399.51 | Apache Kafka, Java, Redis |
+| 2 | expected:3 | [데브시스터즈 엔지니어링 데이 - 게임 서버 돌아보기](https://tech.devsisters.com/posts/2025-engineering-day-game-server) | Devsisters / Devsisters Tech Blog | 377.66 | incident response |
+| 3 | - | [게임 서버 시스템을 위한 JDBC와 Timeout 이해하기](https://netmarble.engineering/jdbc-timeout-for-game-server/) | Netmarble / Netmarble Tech Blog | 366.44 | search |
+| 4 | - | [게임 서버 시스템을 위한 HikariCP 옵션 및 권장 설정](https://netmarble.engineering/hikaricp-options-optimization-for-game-server/) | Netmarble / Netmarble Tech Blog | 351.18 |  |
+| 5 | - | [Scala for Game Server Development](https://tech.devsisters.com/posts/scala-for-game-server-development) | Devsisters / Devsisters Tech Blog | 263.14 | Apache Kafka, Redis |
+| 6 | - | [새로운 팀의 코드베이스 적응기: 내 코드로 만들어가는 과정](https://tech.devsisters.com/posts/adapt-to-new-codebase) | Devsisters / Devsisters Tech Blog | 257.37 |  |
+| 7 | - | [[Windows 컨테이너] 4: 베이스 이미지, 격리 방식에 대한 이해](https://tech.devsisters.com/posts/windows-container-basics) | Devsisters / Devsisters Tech Blog | 235.51 | Amazon EC2, Go, Kubernetes, migration |
+| 8 | - | [PerfView를 활용한 .NET GC 프로파일링](https://netmarble.engineering/profiling-dotnet-gc-with-perfview/) | Netmarble / Netmarble Tech Blog | 129.45 |  |
+| 9 | - | [Istio와 Spinnaker를 활용한 Blue-Green + Canary 자동 배포 전략 도입기](https://tech.devsisters.com/posts/blue-green-canary-deployment) | Devsisters / Devsisters Tech Blog | 108.07 | Argo Rollouts, Go, Istio, JVM, Kubernetes, Redis |
+| 10 | - | [타입스크립트스럽게 성능과 생산성 두 마리 토끼 모두 잡기](https://tech.devsisters.com/posts/typescript-ish-way-to-improve-performance) | Devsisters / Devsisters Tech Blog | 83.68 | Next.js, Node.js |
 
 #### Top Result Details
 
@@ -2837,7 +2813,7 @@ Highlights:
 
 - category: architecture
 - intent: 한글 검색어로 이벤트 기반 아키텍처가 커머스, 알림, 상품 조회에 적용된 사례를 찾는다.
-- total results: 891
+- total results: 1015
 - precision@5: 0.200
 - recall@10: 0.333
 - mrr: 1.000
@@ -2853,16 +2829,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4) | 29CM / 29CM TEAM | 667.69 | Apache Kafka, Elasticsearch, search, Change Data Capture, event-driven architecture |
-| 2 | - | [Building event-driven architecture for member system](https://techblog.woowahan.com/10320/) | Woowa Brothers / Woowa Tech Blog | 621.84 | high availability, performance optimization, event-driven architecture |
-| 3 | - | [Mastering millisecond latency and millions of events: The event-driven architecture behind the Amazon Key Suite](https://aws.amazon.com/blogs/architecture/mastering-millisecond-latency-and-millions-of-events-the-event-driven-architecture-behind-the-amazon-key-suite/) | AWS / AWS Architecture Blog | 425.13 | AWS CDK, AWS IAM, Amazon EventBridge, migration, observability, performance optimization |
-| 4 | - | [Build a multi-tenant configuration system with tagged storage patterns](https://aws.amazon.com/blogs/architecture/build-a-multi-tenant-configuration-system-with-tagged-storage-patterns/) | AWS / AWS Architecture Blog | 336.69 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon ElastiCache |
-| 5 | - | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog | 321.40 | AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon MSK, Amazon OpenSearch Service, Amazon S3 |
-| 6 | - | [VLOps:Event-driven MLOps & Omni-Evaluator](https://d2.naver.com/helloworld/0931890) | NAVER / NAVER D2 | 160.64 | observability, event-driven architecture |
-| 7 | - | [postgres_fdw로 마이그레이션 생산성 높이기](https://techblog.woowahan.com/20371/) | Woowa Brothers / Woowa Tech Blog | 158.89 | Amazon RDS, migration, performance optimization, event-driven architecture |
-| 8 | - | [[배민스토어] 배민스토어에 이벤트 기반 아키텍처를 곁들인…](https://techblog.woowahan.com/13101/) | Woowa Brothers / Woowa Tech Blog | 145.67 | Amazon DynamoDB, Apache Kafka, Kotlin, Redis, search, high availability |
-| 9 | - | [(youtube)Event Streaming 도입과 앞으로의 활용](https://medium.com/29cm/youtube-event-streaming-%EB%8F%84%EC%9E%85%EA%B3%BC-%EC%95%9E%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%9C%EC%9A%A9-806f2002586a?source=rss----fbd022693005---4) | 29CM / 29CM TEAM | 144.89 | event-driven architecture |
-| 10 | - | [오픈마켓 여행 플랫폼의 실전 API 연동 노하우](https://dev.gmarket.com/115) | Gmarket / Gmarket Tech Blog | 144.13 | performance optimization, event-driven architecture |
+| 1 | expected:3 | [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4) | 29CM / 29CM TEAM | 681.50 | Apache Kafka, Elasticsearch, search, Change Data Capture, event-driven architecture |
+| 2 | - | [Building event-driven architecture for member system](https://techblog.woowahan.com/10320/) | Woowa Brothers / Woowa Tech Blog | 638.60 | high availability, performance optimization, event-driven architecture |
+| 3 | - | [Mastering millisecond latency and millions of events: The event-driven architecture behind the Amazon Key Suite](https://aws.amazon.com/blogs/architecture/mastering-millisecond-latency-and-millions-of-events-the-event-driven-architecture-behind-the-amazon-key-suite/) | AWS / AWS Architecture Blog | 437.38 | AWS CDK, AWS IAM, Amazon EventBridge, migration, observability, performance optimization |
+| 4 | - | [Build a multi-tenant configuration system with tagged storage patterns](https://aws.amazon.com/blogs/architecture/build-a-multi-tenant-configuration-system-with-tagged-storage-patterns/) | AWS / AWS Architecture Blog | 333.91 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon ElastiCache |
+| 5 | - | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog | 314.71 | AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon MSK, Amazon OpenSearch Service, Amazon S3 |
+| 6 | - | [postgres_fdw로 마이그레이션 생산성 높이기](https://techblog.woowahan.com/20371/) | Woowa Brothers / Woowa Tech Blog | 164.75 | Amazon RDS, migration, performance optimization, event-driven architecture |
+| 7 | - | [VLOps:Event-driven MLOps & Omni-Evaluator](https://d2.naver.com/helloworld/0931890) | NAVER / NAVER D2 | 162.14 | observability, event-driven architecture |
+| 8 | - | [오픈마켓 여행 플랫폼의 실전 API 연동 노하우](https://dev.gmarket.com/115) | Gmarket / Gmarket Tech Blog | 151.07 | performance optimization, event-driven architecture |
+| 9 | - | [[배민스토어] 배민스토어에 이벤트 기반 아키텍처를 곁들인…](https://techblog.woowahan.com/13101/) | Woowa Brothers / Woowa Tech Blog | 147.26 | Amazon DynamoDB, Apache Kafka, Kotlin, Redis, search, high availability |
+| 10 | - | [(youtube)Event Streaming 도입과 앞으로의 활용](https://medium.com/29cm/youtube-event-streaming-%EB%8F%84%EC%9E%85%EA%B3%BC-%EC%95%9E%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%9C%EC%9A%A9-806f2002586a?source=rss----fbd022693005---4) | 29CM / 29CM TEAM | 146.54 | event-driven architecture |
 
 #### Top Result Details
 
@@ -2930,7 +2906,7 @@ Highlights:
 
 - category: problem
 - intent: 한글 검색어로 동시성 상황에서 데이터 정합성을 유지하는 방법과 낙관적 락 적용 사례를 찾는다.
-- total results: 2
+- total results: 3
 - precision@5: 0.200
 - recall@10: 1.000
 - mrr: 1.000
@@ -2944,8 +2920,9 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [뱅크샐러드가 게임을 만들 때 데이터 정합성을 유지하는 법 (feat. 낙관적 락)](https://blog.banksalad.com/tech/banksalad-optimistic-lock/) | Banksalad / Banksalad Blog | 462.33 |  |
-| 2 | - | [프로모션 시스템 엿보기: 파일럿 프로젝트](https://techblog.woowahan.com/10795/) | Woowa Brothers / Woowa Tech Blog | 86.43 | JPA, Redis, Spring Boot, search |
+| 1 | expected:3 | [뱅크샐러드가 게임을 만들 때 데이터 정합성을 유지하는 법 (feat. 낙관적 락)](https://blog.banksalad.com/tech/banksalad-optimistic-lock/) | Banksalad / Banksalad Blog | 467.92 |  |
+| 2 | - | [프로모션 시스템 엿보기: 파일럿 프로젝트](https://techblog.woowahan.com/10795/) | Woowa Brothers / Woowa Tech Blog | 79.56 | JPA, Redis, Spring Boot, search |
+| 3 | - | [Spring Session + Custom Session Repository 기반 세션 저장소의 메모리 누수 해결](https://hyperconnect.github.io/2023/01/09/redis-session.html) | Hyperconnect / Hyperconnect Tech Blog | 78.34 | Redis, search, migration |
 
 #### Top Result Details
 
@@ -2981,16 +2958,32 @@ Highlights:
 - content: 이를 해결하기 위한 방법으로 메시지 큐나 Redis를 이용한 글로벌 락과 같은 방법도 있겠지만 파일럿 프로젝트이기에 WAS, DB 이외에 추가적인 인프라 리소스를 활용하지 않고, 코드 레벨 혹은 DB만을 가지고 해결이 가능한 비관적 **락**, **낙관적 락** 2가지 방법을 고려하였습니다.
 - content: 이러한 비관적 락은 DB row에 Exclusive Lock 을 걸기에 속도가 많이 저하되는 문제가 있지만, **낙관적** 락을 사용하지 않은 이유는 다음과 같습니다. 개인적으로 **낙관적** 락은 “선착순 1명”과 같이 여러 요청 중 하나의 요청만을 성공시켜야 할 때 적절한 방법이라고 생각합니다.
 
+##### 3. Spring Session + Custom Session Repository 기반 세션 저장소의 메모리 누수 해결
+
+- match: not expected
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2023/01/09/redis-session.html
+- technologies: Redis, search
+- problem keywords: migration
+- case summary: Spring Session과 Custom Session Repository를 사용한 Redis 기반 세션 저장소에서 발생한 메모리 누수 문제를 Redis 동시성 이슈와 TTL 미설정 문제로 진단하고, Lua 스크립트를 활용한 원자적 세션 저장 방식으로 해결한 사례입니다.
+- problem: 트래픽 최고점 시간대에 Redis 세션 클러스터의 메모리 사용량이 비정상적으로 증가하며 메모리 누수가 발생했고, 일부 세션에 TTL이 설정되지 않아 세션 데이터가 삭제되지 않는 현상이 발생했습니다. 이는 동시 요청 시 로그아웃 처리와 세션 변경 저장이 충돌하여 TTL이 설정되지 않은 세션이 Redis에 저장되는 동시성 문제 때문이었습니다.
+- solution: Redis 트랜잭션 대신 Lua 스크립트를 사용해 세션 저장 로직을 원자적으로 처리하도록 변경하여, 세션 키가 존재할 때만 변경사항을 저장하고 TTL이 올바르게 설정되도록 했습니다. 또한, TTL이 없는 기존 세션 키들에 대해 스크립트를 이용해 TTL을 일괄 설정하여 메모리 누수를 해소했습니다. 직렬화 문제는 Lua 스크립트 내 키와 값의 인자 전달 방식을 수정해 해결했습니다.
+
+Highlights:
+
+- content: WATCH 명령어를 사용하면 특정 키에 대해 **낙관적** 락을 걸 수 있습니다. **낙관적** 락을 통해 다른 클라이언트 혹은 트랜잭션에서 1회까지만 값을 변경할 수 있음을 보장합니다.
+- content: 만약 WATCH 명령어에 의해 **낙관적** 락이 걸린 키의 값이 2회 이상 변경을 시도하는 경우 해당 명령어들은 모두 실행이 되지 않고 nil 을 반환합니다. [5] lua-script 를 사용하는 방법 역시 Redis Transaction 과 마찬가지로 한 번에 여러 명령어들이 수행되게 하는
+
 
 ### ko-architecture-pr-preview - `PR Preview Argo CD Linkerd`
 
 - category: architecture
 - intent: 한글/영문 혼합 검색어로 QA 병목을 줄이기 위한 PR Preview 환경과 GitOps 기반 배포 사례를 찾는다.
-- total results: 223
-- precision@5: 0.400
-- recall@10: 1.000
+- total results: 256
+- precision@5: 0.200
+- recall@10: 0.500
 - mrr: 1.000
-- ndcg@10: 0.918
+- ndcg@10: 0.787
 
 #### Expected URLs
 
@@ -3001,16 +2994,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Argo CD, Linkerd 기반 QA 병목 제거: PR Preview 환경 구축](https://tech.inflab.com/20251121-pr-preview/) | Inflab / Inflab Tech Blog | 520.54 | Kubernetes, cost optimization, migration, observability |
-| 2 | - | [CI 소요시간을 최대 4.6배 개선하는 방법](https://tech.inflab.com/20231101-optimizing-ci-pipeline/) | Inflab / Inflab Tech Blog | 47.59 | AWS Lambda, Amazon EC2, Amazon S3, Node.js, observability, serverless |
-| 3 | - | [누구나 찾아볼 수 있는 중고거래 서버 LLM 릴리즈 노트 도입기](https://medium.com/daangn/%EB%88%84%EA%B5%AC%EB%82%98-%EC%B0%BE%EC%95%84%EB%B3%BC-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%A4%91%EA%B3%A0%EA%B1%B0%EB%9E%98-%EC%84%9C%EB%B2%84-llm-%EB%A6%B4%EB%A6%AC%EC%A6%88-%EB%85%B8%ED%8A%B8-%EB%8F%84%EC%9E%85%EA%B8%B0-93afe203d766?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 43.11 | Java, LLM |
-| 4 | - | [ODW #1: AI로 리뷰 정체를 해소하다 - PR 리뷰 지원과 사내 워크숍으로 리뷰 문화 바꾸기](https://techblog.lycorp.co.jp/ko/resolving-pr-review-bottlenecks-with-ai-and-transforming-review-culture) | LY Corporation / LY Corporation Tech Blog | 42.23 |  |
-| 5 | expected:2 | [EKS + ALB 환경에서 Argo Rollouts 503 에러 없는 카나리 배포 적용기](https://techblog.gccompany.co.kr/eks-alb-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-argo-rollouts-503-%EC%97%90%EB%9F%AC-%EC%97%86%EB%8A%94-%EC%B9%B4%EB%82%98%EB%A6%AC-%EB%B0%B0%ED%8F%AC-%EC%A0%81%EC%9A%A9%EA%B8%B0-689eedaf8d1a?source=rss----18356045d353---4) | GC Company / GC Company Tech Blog | 42.00 | Amazon EKS, Amazon S3, Argo Rollouts, Kubernetes, incident response, observability |
-| 6 | - | [라이더스 개발팀 모바일에서 CI/CD 도입](https://techblog.woowahan.com/2579/) | Woowa Brothers / Woowa Tech Blog | 41.61 | search |
-| 7 | - | [AWX를 이용한 CI/CD Pipeline: Pylon](https://tech.kakaopay.com/post/sre-re-pylon/) | Kakao Pay / Kakao Pay Tech Blog | 41.61 |  |
-| 8 | - | [Yarn Classic에서 Pnpm으로 전환하기 with TurboRepo](https://medium.com/wantedjobs/yarn-classic%EC%97%90%EC%84%9C-pnpm%EC%9C%BC%EB%A1%9C-%EC%A0%84%ED%99%98%ED%95%98%EA%B8%B0-with-turborepo-7c0c37cb3f9e?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 40.90 | AWS Lambda, React, migration, serverless |
-| 9 | - | [https://www.upstage.ai/blog/ko/solar-pro-2-preview-introduction](https://www.upstage.ai/blog/ko/solar-pro-2-preview-introduction) | Upstage / Upstage Blog | 40.82 |  |
-| 10 | - | [Linger 로 오버헤드 줄이기](https://dev.gmarket.com/26) | Gmarket / Gmarket Tech Blog | 40.41 | Apache Kafka |
+| 1 | expected:3 | [Argo CD, Linkerd 기반 QA 병목 제거: PR Preview 환경 구축](https://tech.inflab.com/20251121-pr-preview/) | Inflab / Inflab Tech Blog | 538.88 | Kubernetes, cost optimization, migration, observability |
+| 2 | - | [Github PR을 올리면 자동으로 테스트가? 심지어 멀티 프로젝트에도 가능하다! : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/212) | NHN Cloud / NHN Cloud Meetup | 49.69 |  |
+| 3 | - | [CI 소요시간을 최대 4.6배 개선하는 방법](https://tech.inflab.com/20231101-optimizing-ci-pipeline/) | Inflab / Inflab Tech Blog | 47.60 | AWS Lambda, Amazon EC2, Amazon S3, Node.js, observability, serverless |
+| 4 | - | [누구나 찾아볼 수 있는 중고거래 서버 LLM 릴리즈 노트 도입기](https://medium.com/daangn/%EB%88%84%EA%B5%AC%EB%82%98-%EC%B0%BE%EC%95%84%EB%B3%BC-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%A4%91%EA%B3%A0%EA%B1%B0%EB%9E%98-%EC%84%9C%EB%B2%84-llm-%EB%A6%B4%EB%A6%AC%EC%A6%88-%EB%85%B8%ED%8A%B8-%EB%8F%84%EC%9E%85%EA%B8%B0-93afe203d766?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog | 42.24 | Java, LLM |
+| 5 | - | [ODW #1: AI로 리뷰 정체를 해소하다 - PR 리뷰 지원과 사내 워크숍으로 리뷰 문화 바꾸기](https://techblog.lycorp.co.jp/ko/resolving-pr-review-bottlenecks-with-ai-and-transforming-review-culture) | LY Corporation / LY Corporation Tech Blog | 42.06 |  |
+| 6 | - | [AWX를 이용한 CI/CD Pipeline: Pylon](https://tech.kakaopay.com/post/sre-re-pylon/) | Kakao Pay / Kakao Pay Tech Blog | 41.79 |  |
+| 7 | - | [라이더스 개발팀 모바일에서 CI/CD 도입](https://techblog.woowahan.com/2579/) | Woowa Brothers / Woowa Tech Blog | 41.79 | search |
+| 8 | - | [https://www.upstage.ai/blog/ko/solar-pro-2-preview-introduction](https://www.upstage.ai/blog/ko/solar-pro-2-preview-introduction) | Upstage / Upstage Blog | 41.33 |  |
+| 9 | - | [Linger 로 오버헤드 줄이기](https://dev.gmarket.com/26) | Gmarket / Gmarket Tech Blog | 40.84 | Apache Kafka |
+| 10 | - | [Kubernetes 환경을 위한 자바 에이전트 개발기](https://hyperconnect.github.io/2020/03/25/kube-agent.html) | Hyperconnect / Hyperconnect Tech Blog | 40.38 | Istio, JVM, Java, Kubernetes |
 
 #### Top Result Details
 
@@ -3034,7 +3027,25 @@ Highlights:
 - content: 이를 해결하기 위해 **Argo** **CD** ApplicationSet 의 동적 환경 생성 능력과 **Linkerd** 의 트래픽 라우팅 기능을 조합했습니다. 1. **Argo** **CD** ApplicationSet: 동적 환경 생성 PR마다 자동으로 환경을 만들려면 두 가지 조건이 필요했습니다.
 - content: 이제 개발자가 PR에 라벨만 붙이면, **Argo** CD가 알아서 inflearn-courses-fe-**pr**-<번호> 와 같은 이름의 Application을 생성하고 배포를 시작합니다. **Preview** 환경은 기능 테스트가 목적이므로 개발/운영 환경과 동일한 스펙일 필요가 없습니다.
 
-##### 2. CI 소요시간을 최대 4.6배 개선하는 방법
+##### 2. Github PR을 올리면 자동으로 테스트가? 심지어 멀티 프로젝트에도 가능하다! : NHN Cloud Meetup
+
+- match: not expected
+- source: NHN Cloud / NHN Cloud Meetup
+- url: https://meetup.nhncloud.com/posts/212
+- technologies: -
+- problem keywords: -
+- case summary: NHN Cloud 팀이 멀티 프로젝트 환경에서 GitHub PR 생성 시 자동으로 테스트가 실행되도록 Jenkins를 활용한 CI/CD 파이프라인 구축 사례를 공유한다.
+- problem: 멀티 프로젝트 환경에서 GitHub PR 생성 시 자동으로 테스트를 실행하는 효율적인 CI/CD 파이프라인 구축이 필요했다.
+- solution: Jenkins를 CI/CD 도구로 활용하여 GitHub PR 이벤트를 트리거로 자동 테스트를 수행하는 멀티 프로젝트 지원 파이프라인을 설계 및 구현했다.
+
+Highlights:
+
+- caseSummary: NHN Cloud 팀이 멀티 프로젝트 환경에서 GitHub **PR** 생성 시 자동으로 테스트가 실행되도록 Jenkins를 활용한 CI/**CD** 파이프라인 구축 사례를 공유한다.
+- caseProblem: 멀티 프로젝트 환경에서 GitHub **PR** 생성 시 자동으로 테스트를 실행하는 효율적인 CI/**CD** 파이프라인 구축이 필요했다.
+- caseSolution: Jenkins를 CI/**CD** 도구로 활용하여 GitHub **PR** 이벤트를 트리거로 자동 테스트를 수행하는 멀티 프로젝트 지원 파이프라인을 설계 및 구현했다.
+- summary: 저희 팀을 비롯하여 많은 분들이 사내에서 Jenkins를 CI/**CD** 도구로 사용하고 있습니다.
+
+##### 3. CI 소요시간을 최대 4.6배 개선하는 방법
 
 - match: not expected
 - source: Inflab / Inflab Tech Blog
@@ -3052,36 +3063,16 @@ Highlights:
 - content: 여러분은 혹시 CI 파이프라인이 너무 오래 동작해서 **PR** 리뷰에 영향을 받은 적 있으신가요? 프로젝트 규모가 커질수록 늘어나는 CI / **CD** 파이프라인의 소요시간으로 고민한 적이 있으신가요? 이번 글에서 소요시간을 최대 4.6배 까지 개선할 수 있었던 노하우를 공유해 드리겠습니다.
 - content: 이로 인해 rallit_frontend 의 **PR**#15242, **PR**#15243 모두 같은 경로( /tmp/.pnpm-store )를 바라보게 됩니다.
 
-##### 3. 누구나 찾아볼 수 있는 중고거래 서버 LLM 릴리즈 노트 도입기
-
-- match: not expected
-- source: Daangn / Daangn Tech Blog
-- url: https://medium.com/daangn/%EB%88%84%EA%B5%AC%EB%82%98-%EC%B0%BE%EC%95%84%EB%B3%BC-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%A4%91%EA%B3%A0%EA%B1%B0%EB%9E%98-%EC%84%9C%EB%B2%84-llm-%EB%A6%B4%EB%A6%AC%EC%A6%88-%EB%85%B8%ED%8A%B8-%EB%8F%84%EC%9E%85%EA%B8%B0-93afe203d766?source=rss----4505f82a2dbd---4
-- technologies: Java, LLM
-- problem keywords: -
-- case summary: 당근마켓 중고거래 서버에서 배포 내역을 비개발자도 쉽게 이해할 수 있도록 LLM과 기존 도구를 활용해 자동 요약 및 릴리즈 노트 생성 파이프라인을 구축한 사례입니다.
-- problem: 배포 시점과 변경 내용을 개발자만 이해 가능한 git log와 PR 목록에서 일일이 확인해야 하는 비효율과, 기술 용어가 비개발자에게 전달되지 않아 팀 전체 커뮤니케이션 비용이 증가하는 문제를 겪었습니다.
-- solution: GitHub Actions와 Rails 기반 rake task로 배포 시점에 PR 목록과 설명을 Notion에 정형화해 저장하고, 사내 GenAI 플랫폼인 Prompt Studio를 통해 LLM으로 비개발자도 이해할 수 있는 릴리즈 노트를 자동 생성하는 2단계 파이프라인을 구축했습니다. PR description은 AI 요약 도구(CodeRabbit)로 사전 정제하여 LLM 토큰 비용과 품질 문제를 해결했고, 프롬프트를 코드 외부에서 관리해 용어 변환과 분류 규칙을 지속적으로 개선했습니다.
-
-Highlights:
-
-- caseProblem: 배포 시점과 변경 내용을 개발자만 이해 가능한 git log와 **PR** 목록에서 일일이 확인해야 하는 비효율과, 기술 용어가 비개발자에게 전달되지 않아 팀 전체 커뮤니케이션 비용이 증가하는
-- caseSolution: GitHub Actions와 Rails 기반 rake task로 배포 시점에 **PR** 목록과 설명을 Notion에 정형화해 저장하고, 사내 GenAI 플랫폼인 Prompt Studio를
-- caseSolution: **PR** description은 AI 요약 도구(CodeRabbit)로 사전 정제하여 LLM 토큰 비용과 품질 문제를 해결했고, 프롬프트를 코드 외부에서 관리해 용어 변환과 분류 규칙을
-- summary: “**PR** 하나가 어떤 기능을 적용·수정했고 어떻게 바뀌었는지”를 **PR** 단위로 정리한 문서가 그 형태예요.
-- summary: 여기서 **PR** 본문은 GitHub에서 다시 가져오는 게 아니라, Stage 1에서 이미 Notion **PR** DB에 저장해둔 본문을 그대로 읽어요.
-- content: 여기서 **PR** 본문은 GitHub에서 다시 가져오는 게 아니라, Stage 1에서 이미 Notion **PR** DB에 저장해둔 본문을 그대로 읽어요. **PR** 정보를 한 번만 가져오면 그다음부터는 Notion이 우리 데이터 소스가 되는 거예요.
-
 
 ### ko-problem-s3-cdn-cost - `S3 비용 이미지 CDN 최적화`
 
 - category: problem
 - intent: 한글 검색어로 S3 보관 비용, 이미지 CDN 트래픽, CloudFront 비용 효율화 사례를 찾는다.
-- total results: 125
-- precision@5: 0.400
+- total results: 134
+- precision@5: 0.200
 - recall@10: 1.000
 - mrr: 1.000
-- ndcg@10: 0.918
+- ndcg@10: 0.900
 
 #### Expected URLs
 
@@ -3092,16 +3083,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Amazon S3 보관 비용과 이미지 CDN 트래픽 최적화](https://tech.inflab.com/20251029-optimize-s3/) | Inflab / Inflab Tech Blog | 391.04 | AWS Lambda, Amazon S3, search, cost optimization, observability |
-| 2 | - | [Optimize Amazon S3 Tables queries with Amazon Redshift](https://aws.amazon.com/blogs/big-data/optimize-amazon-s3-tables-queries-with-amazon-redshift/) | AWS / AWS Big Data Blog | 295.37 | AWS Glue, AWS IAM, Amazon S3, Apache Iceberg, migration, observability |
-| 3 | - | [Enable real-time mainframe analytics with Precisely Connect and Amazon S3](https://aws.amazon.com/blogs/big-data/enable-real-time-mainframe-analytics-with-precisely-connect-and-amazon-s3/) | AWS / AWS Big Data Blog | 259.88 | AWS Glue, Amazon MSK, Amazon RDS, Amazon S3, Apache Iceberg, migration |
-| 4 | - | [AWS re:Invent 2024 Recap: Database, Storage](https://tech.kakaopay.com/post/aws-reinvent-2024-database-and-storage/) | Kakao Pay / Kakao Pay Tech Blog | 259.65 | Amazon Aurora, Amazon S3 |
-| 5 | expected:2 | [CloudFront의 숨은 힘: 캐싱 없이도 극대화 되는 성능과 비용 효율성](https://medium.com/wantedjobs/cloudfront%EC%9D%98-%EC%88%A8%EC%9D%80-%ED%9E%98-%EC%BA%90%EC%8B%B1-%EC%97%86%EC%9D%B4%EB%8F%84-%EA%B7%B9%EB%8C%80%ED%99%94-%EB%90%98%EB%8A%94-%EC%84%B1%EB%8A%A5%EA%B3%BC-%EB%B9%84%EC%9A%A9-%ED%9A%A8%EC%9C%A8%EC%84%B1-44f66701d1eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 251.16 | Amazon EC2, Amazon S3, cost optimization, performance optimization |
-| 6 | - | [Query billion-scale vectors with SQL: Integrating Amazon S3 Vectors and Aurora PostgreSQL](https://aws.amazon.com/blogs/database/query-billion-scale-vectors-with-sql-integrating-amazon-s3-vectors-and-aurora-postgresql/) | AWS / AWS Database Blog | 242.74 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon RDS |
-| 7 | - | [How to use streamlined permissions for Amazon S3 Tables and Iceberg materialized views](https://aws.amazon.com/blogs/big-data/how-to-use-streamlined-permissions-for-amazon-s3-tables-and-iceberg-materialized-views/) | AWS / AWS Big Data Blog | 241.20 | AWS CloudFormation, AWS Glue, AWS IAM, Amazon S3, Apache Iceberg, serverless |
-| 8 | - | [데이터 분석 라이브러리 개발기 (2) - 통합 테스팅과 문서화를 동시에 잡는 방법](https://tech.devsisters.com/posts/testing-devplay-analytics-library) | Devsisters / Devsisters Tech Blog | 231.66 | Amazon S3, Java |
-| 9 | - | [스타트업 엔지니어의 AWS 비용 최적화 경험기](https://tech.inflab.com/20240227-finops-for-startup/) | Inflab / Inflab Tech Blog | 226.15 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon DynamoDB |
-| 10 | - | [Streamlined monitoring and debugging for Amazon EMR on EC2](https://aws.amazon.com/blogs/big-data/streamlined-monitoring-and-debugging-for-amazon-emr-on-ec2/) | AWS / AWS Big Data Blog | 194.13 | Amazon CloudWatch, Amazon EC2, Amazon S3, JVM, high availability, migration |
+| 1 | expected:3 | [Amazon S3 보관 비용과 이미지 CDN 트래픽 최적화](https://tech.inflab.com/20251029-optimize-s3/) | Inflab / Inflab Tech Blog | 416.66 | AWS Lambda, Amazon S3, search, cost optimization, observability |
+| 2 | - | [Optimize Amazon S3 Tables queries with Amazon Redshift](https://aws.amazon.com/blogs/big-data/optimize-amazon-s3-tables-queries-with-amazon-redshift/) | AWS / AWS Big Data Blog | 312.31 | AWS Glue, AWS IAM, Amazon S3, Apache Iceberg, migration, observability |
+| 3 | - | [Enable real-time mainframe analytics with Precisely Connect and Amazon S3](https://aws.amazon.com/blogs/big-data/enable-real-time-mainframe-analytics-with-precisely-connect-and-amazon-s3/) | AWS / AWS Big Data Blog | 274.74 | AWS Glue, Amazon MSK, Amazon RDS, Amazon S3, Apache Iceberg, migration |
+| 4 | - | [AWS re:Invent 2024 Recap: Database, Storage](https://tech.kakaopay.com/post/aws-reinvent-2024-database-and-storage/) | Kakao Pay / Kakao Pay Tech Blog | 269.40 | Amazon Aurora, Amazon S3 |
+| 5 | - | [How to use streamlined permissions for Amazon S3 Tables and Iceberg materialized views](https://aws.amazon.com/blogs/big-data/how-to-use-streamlined-permissions-for-amazon-s3-tables-and-iceberg-materialized-views/) | AWS / AWS Big Data Blog | 254.94 | AWS CloudFormation, AWS Glue, AWS IAM, Amazon S3, Apache Iceberg, serverless |
+| 6 | - | [Query billion-scale vectors with SQL: Integrating Amazon S3 Vectors and Aurora PostgreSQL](https://aws.amazon.com/blogs/database/query-billion-scale-vectors-with-sql-integrating-amazon-s3-vectors-and-aurora-postgresql/) | AWS / AWS Database Blog | 254.94 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon RDS |
+| 7 | expected:2 | [CloudFront의 숨은 힘: 캐싱 없이도 극대화 되는 성능과 비용 효율성](https://medium.com/wantedjobs/cloudfront%EC%9D%98-%EC%88%A8%EC%9D%80-%ED%9E%98-%EC%BA%90%EC%8B%B1-%EC%97%86%EC%9D%B4%EB%8F%84-%EA%B7%B9%EB%8C%80%ED%99%94-%EB%90%98%EB%8A%94-%EC%84%B1%EB%8A%A5%EA%B3%BC-%EB%B9%84%EC%9A%A9-%ED%9A%A8%EC%9C%A8%EC%84%B1-44f66701d1eb?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog | 240.51 | Amazon EC2, Amazon S3, cost optimization, performance optimization |
+| 8 | - | [데이터 분석 라이브러리 개발기 (2) - 통합 테스팅과 문서화를 동시에 잡는 방법](https://tech.devsisters.com/posts/testing-devplay-analytics-library) | Devsisters / Devsisters Tech Blog | 239.41 | Amazon S3, Java |
+| 9 | - | [스타트업 엔지니어의 AWS 비용 최적화 경험기](https://tech.inflab.com/20240227-finops-for-startup/) | Inflab / Inflab Tech Blog | 233.95 | AWS CDK, AWS CloudFormation, AWS Lambda, Amazon Aurora, Amazon CloudWatch, Amazon DynamoDB |
+| 10 | - | [Streamlined monitoring and debugging for Amazon EMR on EC2](https://aws.amazon.com/blogs/big-data/streamlined-monitoring-and-debugging-for-amazon-emr-on-ec2/) | AWS / AWS Big Data Blog | 195.66 | Amazon CloudWatch, Amazon EC2, Amazon S3, JVM, high availability, migration |
 
 #### Top Result Details
 
@@ -3166,11 +3157,11 @@ Highlights:
 
 - category: problem
 - intent: 한글/영문 혼합 검색어로 EKS Bottlerocket GPU 노드 운영 문제와 이미지 캐싱 최적화 사례를 찾는다.
-- total results: 160
+- total results: 183
 - precision@5: 0.400
 - recall@10: 1.000
 - mrr: 1.000
-- ndcg@10: 1.000
+- ndcg@10: 0.956
 
 #### Expected URLs
 
@@ -3181,16 +3172,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [EKS Bottlerocket AMI에서 DCGM 오류로 GPU 노드 반복 교체 문제 해결기](https://tech.inflab.com/20250827-bottlerocket-ami-gpu-issue/) | Inflab / Inflab Tech Blog | 441.51 | Amazon EC2, Amazon EKS, Kubernetes, observability |
-| 2 | expected:2 | [EKS Bottlerocket에서 이미지 캐싱으로 Pull 시간 줄이기](https://tech.inflab.com/20250421-bottlerocket-volume-image-cache/) | Inflab / Inflab Tech Blog | 63.83 | AWS CloudFormation, Amazon EC2, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
-| 3 | - | [쿠팡의 머신러닝 플랫폼을 통한 ML 개발 가속화](https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1%EC%9D%98-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%ED%86%B5%ED%95%9C-ml-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%86%8D%ED%99%94-de29804148bb?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 42.81 | Kubernetes, LLM, search, observability, canary deployment, streaming data pipeline |
-| 4 | - | [AI 플랫폼 GPU 도입부터 Kubeflow까지 도입기](https://tech.kakaopay.com/post/ai-platform/) | Kakao Pay / Kakao Pay Tech Blog | 42.76 |  |
-| 5 | - | [Kurly만의 MLOps 구축하기 - 초석 다지기](https://helloworld.kurly.com/blog/first-mlops/) | Kurly / Kurly Tech Blog | 42.54 |  |
-| 6 | - | [EKS Anywhere 구축기](https://techblog.woowahan.com/10221/) | Woowa Brothers / Woowa Tech Blog | 42.36 | AWS CloudFormation, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon EKS, Amazon S3 |
-| 7 | - | [변화에 유연한 HTTP 클라이언트 만들기](https://tech.inflab.com/20230723-pure-http-client/) | Inflab / Inflab Tech Blog | 41.52 | JVM, Node.js |
-| 8 | - | [디자인 생산성을 높이는 피그마 플러그인을 만들어보자 2부: 개발 편](https://techblog.woowahan.com/21850/) | Woowa Brothers / Woowa Tech Blog | 41.30 | Amazon S3, React, search |
-| 9 | - | [하마터면 못생겨질 뻔했다 - 토스 프론트 2 제작기](https://toss.tech/article/toss_front) | Toss / Toss Tech | 41.09 |  |
-| 10 | - | [Meet Coupang’s Machine Learning Platform](https://medium.com/coupang-engineering/meet-coupangs-machine-learning-platform-cd00e9ccc172?source=rss----fb028911af07---4) | Coupang / Coupang Engineering Blog | 40.64 | Kubernetes, LLM, search, observability, performance optimization, canary deployment |
+| 1 | expected:3 | [EKS Bottlerocket AMI에서 DCGM 오류로 GPU 노드 반복 교체 문제 해결기](https://tech.inflab.com/20250827-bottlerocket-ami-gpu-issue/) | Inflab / Inflab Tech Blog | 447.48 | Amazon EC2, Amazon EKS, Kubernetes, observability |
+| 2 | - | [Bottlerocket in Production Kubernetes Cluster](https://hyperconnect.github.io/2021/03/08/bottlerocket-on-kubernetes.html) | Hyperconnect / Hyperconnect Tech Blog | 64.83 | Amazon EC2, Amazon EKS, Amazon VPC, Kubernetes, migration, observability |
+| 3 | expected:2 | [EKS Bottlerocket에서 이미지 캐싱으로 Pull 시간 줄이기](https://tech.inflab.com/20250421-bottlerocket-volume-image-cache/) | Inflab / Inflab Tech Blog | 60.82 | AWS CloudFormation, Amazon EC2, Amazon EKS, Amazon S3, Kubernetes, cost optimization |
+| 4 | - | [ImagePullSecrets 없이 안전하게 Private Registry 사용하기!](https://hyperconnect.github.io/2022/02/21/no-more-image-pull-secrets.html) | Hyperconnect / Hyperconnect Tech Blog | 55.18 | AWS IAM, Amazon EC2, Amazon EKS, Go, Kubernetes |
+| 5 | - | [초고성능 딥러닝 클러스터 구축하기 1편](https://hyperconnect.github.io/2020/12/21/deep-learning-cluster-1.html) | Hyperconnect / Hyperconnect Tech Blog | 50.60 | observability, performance optimization |
+| 6 | - | [GPU 인스턴스 알아보기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/250) | NHN Cloud / NHN Cloud Meetup | 47.35 |  |
+| 7 | - | [Shell 없는 Container, Live 환경에서 Debugging해보기!](https://hyperconnect.github.io/2021/09/15/kubectl-debug-on-bottlerocket.html) | Hyperconnect / Hyperconnect Tech Blog | 46.72 | Amazon EKS, Go, Istio, JVM, Java, Kubernetes |
+| 8 | - | [1년 동안 Workload의 절반을 ARM64로 Migration하기](https://hyperconnect.github.io/2023/07/25/migrate-half-of-workload-in-a-year.html) | Hyperconnect / Hyperconnect Tech Blog | 43.44 | Amazon EC2, Amazon ElastiCache, Amazon OpenSearch Service, Amazon RDS, Apache Flink, Apache Kafka |
+| 9 | - | [AI 플랫폼 GPU 도입부터 Kubeflow까지 도입기](https://tech.kakaopay.com/post/ai-platform/) | Kakao Pay / Kakao Pay Tech Blog | 42.68 |  |
+| 10 | - | [머신러닝 모델 서빙 비용 1/4로 줄이기](https://hyperconnect.github.io/2022/12/13/infra-cost-optimization-with-aws-inferentia.html) | Hyperconnect / Hyperconnect Tech Blog | 42.65 | Amazon EC2, Kubernetes, cost optimization, observability, performance optimization |
 
 #### Top Result Details
 
@@ -3214,7 +3205,27 @@ Highlights:
 - caseSolution: **GPU** 노드의 반복 교체를 막고 안정적인 **GPU** 워크로드 운영을 유지했습니다.
 - summary: 최근 인프런의 ”클린 코더스: 실전 객체 지향 프로그래밍과 TDD 마스터 클래스” 강의 영상 업스케일링 작업을 위해 **GPU** 클러스터를 운영하던 중, 예상치 못한 문제에 직면했습니다.
 
-##### 2. EKS Bottlerocket에서 이미지 캐싱으로 Pull 시간 줄이기
+##### 2. Bottlerocket in Production Kubernetes Cluster
+
+- match: not expected
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2021/03/08/bottlerocket-on-kubernetes.html
+- technologies: Amazon EC2, Amazon EKS, Amazon VPC, Kubernetes
+- problem keywords: migration, observability
+- case summary: Hyperconnect은 AWS Bottlerocket OS를 production Kubernetes 클러스터 노드 운영체제로 도입하며, 보안 강화와 운영 효율성 개선을 위해 OS 커스터마이징과 Kubernetes 설정 확장을 수행했다.
+- problem: 기존 Amazon Linux 2 기반 Kubernetes 노드에서 Bottlerocket으로 마이그레이션 시, 제한된 OS 환경과 설정 지원 부족으로 인해 private registry 인증, kubelet 설정, 디버깅 도구 설치 등 필수 기능 적용에 어려움이 발생했다.
+- solution: Bottlerocket 소스코드를 직접 수정하여 CRI registry 인증 정보 지원, kubelet 설정 파일 기반 구성, ec2-instance-connect 설치 등 기능을 추가하고, Terraform과 ASG를 활용해 AMI 업데이트 자동화 및 노드 그룹 분리, taint/label 설정으로 안정적 운영을 구현했다.
+
+Highlights:
+
+- title: **Bottlerocket** in Production Kubernetes Cluster
+- caseSummary: Hyperconnect은 AWS **Bottlerocket** OS를 production Kubernetes 클러스터 **노드** 운영체제로 도입하며, 보안 강화와 운영 효율성 개선을 위해 OS
+- caseProblem: 기존 Amazon Linux 2 기반 Kubernetes 노드에서 **Bottlerocket으로** 마이그레이션 시, 제한된 OS 환경과 설정 지원 부족으로 인해 private registry
+- caseSolution: **Bottlerocket** 소스코드를 직접 수정하여 CRI registry 인증 정보 지원, kubelet 설정 파일 기반 구성, ec2-instance-connect 설치 등 기능을
+- caseSolution: 추가하고, Terraform과 ASG를 활용해 AMI 업데이트 자동화 및 **노드** 그룹 분리, taint/label 설정으로 안정적 운영을 구현했다.
+- summary: AWS에서 container를 위해 새로 만든 운영체제인 **Bottlerocket을** production Kubernetes cluster에 적용한 과정을 공유합니다.
+
+##### 3. EKS Bottlerocket에서 이미지 캐싱으로 Pull 시간 줄이기
 
 - match: expected relevance 2
 - source: Inflab / Inflab Tech Blog
@@ -3234,34 +3245,16 @@ Highlights:
 - content: **Bottlerocket** OS 우선, **Bottlerocket** 은 AWS에서 컨테이너 호스팅에 최적화하여 제작한 Linux 기반의 오픈소스 운영체제입니다. 환경 구축시 **Bottlerocket을** 사용한 이유는 다음과 같습니다.
 - content: snapshotID : { snapshot - id } # 필요한 로드 성능에 따라 값 조정 iops : 3000 # **gp3** 기본값 3000 throughput : 750 # **gp3** 기본값 125MiB/s 마무리 이번 개선 작업을 통해 **Bottlerocket의** 구조적 장점과 EBS 스냅샷을
 
-##### 3. 쿠팡의 머신러닝 플랫폼을 통한 ML 개발 가속화
-
-- match: not expected
-- source: Coupang / Coupang Engineering Blog
-- url: https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1%EC%9D%98-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%ED%86%B5%ED%95%9C-ml-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%86%8D%ED%99%94-de29804148bb?source=rss----fb028911af07---4
-- technologies: Kubernetes, LLM, search
-- problem keywords: observability
-- case summary: 쿠팡은 머신러닝 개발의 복잡성과 시간 소모 문제를 해결하기 위해 통합 ML 플랫폼을 구축하여 개발 속도와 운영 효율성을 크게 향상시켰다.
-- problem: 기존 ML 개발은 데이터 준비, 분산 훈련, 모델 배포 등에서 복잡한 설정과 높은 엔지니어링 요구로 인해 개발 및 적용 시간이 길고 비용이 많이 들었다.
-- solution: 쿠팡은 관리형 Jupyter Notebook, 피처 스토어, 컨테이너 기반 모델 훈련 및 추론, Kubernetes 기반 배포, 모니터링, 하이브리드 온프레미스-클라우드 인프라를 통합한 ML 플랫폼을 도입하여 개발과 배포를 표준화하고 자동화했다.
-
-Highlights:
-
-- summary: 쿠팡은 다중 **GPU를** 사용한 학습으로 모델 훈련 작업 속도를 크게 향상시켰습니다.
-- summary: 이를 통해 다양한 모델 프레임워크, 런타임 및 하드웨어(CPU 및 **GPU** 서빙 포함)를 폭넓게 지원합니다.
-- content: 트레이닝 클러스터의 **GPU** 사용률 모니터링 훈련에는 대용량 메모리가 있는 인스턴스, **GPU와** 같은 가속기, 분산 훈련을 위한 **노드** 간 고대역폭 연결, 그리고 훈련 데이터 및 모델 체크포인트와 같은 출력 아티팩트를 저장하기 위한 공유 스토리지 클러스터가 필요합니다.
-- content: A100 **GPU의** 다중 **GPU** 분산 훈련을 통해 이전 세대의 GPU들과 훈련 전략에 비해 버트(BERT)의 훈련 속도가 10배 향상되었습니다.
-
 
 ### ko-tech-redis-stream - `Redis Stream`
 
 - category: technology
 - intent: Redis Stream과 Redis 운영, Kubernetes 구성, connection 이슈, cluster migration 사례를 찾는다.
-- total results: 93
-- precision@5: 0.800
+- total results: 118
+- precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
-- ndcg@10: 0.914
+- ndcg@10: 0.901
 
 #### Expected URLs
 
@@ -3276,16 +3269,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Redis Stream 적용기](https://dev.gmarket.com/113) | Gmarket / Gmarket Tech Blog | 1236.06 | Apache Kafka, Redis, Redis Stream, Spring Boot, high availability, streaming data pipeline |
-| 2 | - | [Server-Sent Events로 실시간 알림 전달하기](https://techblog.woowahan.com/23199/) | Woowa Brothers / Woowa Tech Blog | 634.63 | Apache Kafka, MQTT, Redis, Redis Stream, observability |
-| 3 | expected:3 | [Redis New Connection 증가 이슈 돌아보기](https://techblog.woowahan.com/23121/) | Woowa Brothers / Woowa Tech Blog | 207.13 | Amazon ElastiCache, Redis, Spring Boot, Valkey, observability |
-| 4 | expected:2 | [Redis on Kubernetes 플랫폼을 구성해 나가기](https://tech.kakaopay.com/post/kakaopaysec-redis-on-kubernetes/) | Kakao Pay / Kakao Pay Tech Blog | 207.13 | Kubernetes, Redis |
-| 5 | expected:2 | [DevOps 엔지니어의 Redis Test 분투기 - Part 1](https://helloworld.kurly.com/blog/redis-fight-part-1/) | Kurly / Kurly Tech Blog | 197.61 | Redis |
-| 6 | expected:2 | [초보 개발자를 위한 Redis Cluster Migration 가이드라인](https://dev.gmarket.com/71) | Gmarket / Gmarket Tech Blog | 197.61 | Java, Node.js, Redis, Spring Boot, search, migration |
-| 7 | expected:2 | [Redis Lua Script를 이용해서 API Rate Limiter개발](https://dev.gmarket.com/69) | Gmarket / Gmarket Tech Blog | 197.61 | Java, Redis |
-| 8 | - | [[배민스토어] 신입 개발자 배민스토어 6개월 생존기](https://techblog.woowahan.com/12987/) | Woowa Brothers / Woowa Tech Blog | 193.11 | Java, Kotlin, Redis, search, migration, event-driven architecture |
-| 9 | - | [How Our Team Uses Kafka](https://techblog.woowahan.com/20078/) | Woowa Brothers / Woowa Tech Blog | 191.61 | Amazon S3, Apache Kafka, Java, Redis, performance optimization, Change Data Capture |
-| 10 | - | [이제 Redis를 멈춰보겠습니다: @CacheEvict 파헤치기](https://techblog.woowahan.com/23138/) | Woowa Brothers / Woowa Tech Blog | 191.03 | Java, Redis, Spring Boot, incident response |
+| 1 | expected:3 | [Redis Stream 적용기](https://dev.gmarket.com/113) | Gmarket / Gmarket Tech Blog | 1242.44 | Apache Kafka, Redis, Redis Stream, Spring Boot, high availability, streaming data pipeline |
+| 2 | - | [Server-Sent Events로 실시간 알림 전달하기](https://techblog.woowahan.com/23199/) | Woowa Brothers / Woowa Tech Blog | 638.19 | Apache Kafka, MQTT, Redis, Redis Stream, observability |
+| 3 | expected:3 | [Redis New Connection 증가 이슈 돌아보기](https://techblog.woowahan.com/23121/) | Woowa Brothers / Woowa Tech Blog | 210.33 | Amazon ElastiCache, Redis, Spring Boot, Valkey, observability |
+| 4 | expected:2 | [Redis on Kubernetes 플랫폼을 구성해 나가기](https://tech.kakaopay.com/post/kakaopaysec-redis-on-kubernetes/) | Kakao Pay / Kakao Pay Tech Blog | 210.33 | Kubernetes, Redis |
+| 5 | - | [Spring Session + Custom Session Repository 기반 세션 저장소의 메모리 누수 해결](https://hyperconnect.github.io/2023/01/09/redis-session.html) | Hyperconnect / Hyperconnect Tech Blog | 205.73 | Redis, search, migration |
+| 6 | expected:2 | [초보 개발자를 위한 Redis Cluster Migration 가이드라인](https://dev.gmarket.com/71) | Gmarket / Gmarket Tech Blog | 200.71 | Java, Node.js, Redis, Spring Boot, search, migration |
+| 7 | expected:2 | [Redis Lua Script를 이용해서 API Rate Limiter개발](https://dev.gmarket.com/69) | Gmarket / Gmarket Tech Blog | 200.71 | Java, Redis |
+| 8 | expected:2 | [DevOps 엔지니어의 Redis Test 분투기 - Part 1](https://helloworld.kurly.com/blog/redis-fight-part-1/) | Kurly / Kurly Tech Blog | 200.71 | Redis |
+| 9 | - | [[배민스토어] 신입 개발자 배민스토어 6개월 생존기](https://techblog.woowahan.com/12987/) | Woowa Brothers / Woowa Tech Blog | 187.23 | Java, Kotlin, Redis, search, migration, event-driven architecture |
+| 10 | - | [How Our Team Uses Kafka](https://techblog.woowahan.com/20078/) | Woowa Brothers / Woowa Tech Blog | 185.16 | Amazon S3, Apache Kafka, Java, Redis, performance optimization, Change Data Capture |
 
 #### Top Result Details
 
@@ -3350,11 +3343,11 @@ Highlights:
 
 - category: technology
 - intent: 쿠버네티스 오퍼레이터를 Java 또는 Golang으로 구현하거나 적용한 사례를 찾는다.
-- total results: 372
+- total results: 446
 - precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
-- ndcg@10: 1.000
+- ndcg@10: 0.967
 
 #### Expected URLs
 
@@ -3366,16 +3359,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [쿠버네티스 오퍼레이터를 Java로 개발해보기](https://dev.gmarket.com/112) | Gmarket / Gmarket Tech Blog | 392.23 | Go, Java, Kubernetes, Spring Boot |
-| 2 | expected:2 | [쿠버네티스 오퍼레이터를 Golang으로 개발해보기](https://dev.gmarket.com/102) | Gmarket / Gmarket Tech Blog | 371.93 | Go, Java, Kubernetes, Spring Boot |
-| 3 | expected:2 | [쿠버네티스 오퍼레이터 적용하기](https://dev.gmarket.com/65) | Gmarket / Gmarket Tech Blog | 286.39 | Amazon S3, Kubernetes, Redis, search, incident response, migration |
-| 4 | - | [Kubernetes 클러스터에 애플리케이션 배포하기](https://medium.com/naver-cloud-platform/kubernetes-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-494f653341ab?source=rss----c7f2bfeb6b98---4) | NAVER Cloud / NAVER Cloud Platform Tech Blog | 281.27 | Kubernetes, observability, canary deployment |
-| 5 | - | [Java Enum 활용기](https://techblog.woowahan.com/2527/) | Woowa Brothers / Woowa Tech Blog | 277.69 | JPA, Java, search |
-| 6 | - | [막내 개발자의 Sell POD PD 생활](https://dev.gmarket.com/11) | Gmarket / Gmarket Tech Blog | 258.93 | Apache Kafka, Elasticsearch, JPA, Java, Kubernetes, Spring Boot |
-| 7 | - | [쿠버네티스를 이용해 테스팅 환경 구현해보기](https://techblog.woowahan.com/2562/) | Woowa Brothers / Woowa Tech Blog | 253.33 | Amazon EC2, Amazon S3, Amazon VPC, JVM, Java, Kubernetes |
-| 8 | - | [Redis on Kubernetes 플랫폼을 구성해 나가기](https://tech.kakaopay.com/post/kakaopaysec-redis-on-kubernetes/) | Kakao Pay / Kakao Pay Tech Blog | 252.23 | Kubernetes, Redis |
-| 9 | - | [Java Logger의 또다른 식구, tinylog](https://dev.gmarket.com/67) | Gmarket / Gmarket Tech Blog | 247.26 | AWS Lambda, JVM, Java, Kotlin, Spring Boot, performance optimization |
-| 10 | - | [Java Generic 을 파헤쳐보자 - 활용편](https://dev.gmarket.com/50) | Gmarket / Gmarket Tech Blog | 247.26 | Java |
+| 1 | expected:3 | [쿠버네티스 오퍼레이터를 Java로 개발해보기](https://dev.gmarket.com/112) | Gmarket / Gmarket Tech Blog | 382.10 | Go, Java, Kubernetes, Spring Boot |
+| 2 | expected:2 | [쿠버네티스 오퍼레이터를 Golang으로 개발해보기](https://dev.gmarket.com/102) | Gmarket / Gmarket Tech Blog | 363.78 | Go, Java, Kubernetes, Spring Boot |
+| 3 | - | [Kubernetes 환경을 위한 자바 에이전트 개발기](https://hyperconnect.github.io/2020/03/25/kube-agent.html) | Hyperconnect / Hyperconnect Tech Blog | 295.07 | Istio, JVM, Java, Kubernetes |
+| 4 | - | [NHN Kubernetes Service(NKS) Certified Kubernetes 획득 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/318) | NHN Cloud / NHN Cloud Meetup | 290.16 | Kubernetes |
+| 5 | expected:2 | [쿠버네티스 오퍼레이터 적용하기](https://dev.gmarket.com/65) | Gmarket / Gmarket Tech Blog | 283.22 | Amazon S3, Kubernetes, Redis, search, incident response, migration |
+| 6 | - | [Java Enum 활용기](https://techblog.woowahan.com/2527/) | Woowa Brothers / Woowa Tech Blog | 279.39 | JPA, Java, search |
+| 7 | - | [JVM + Container 환경에서 수상한 Memory 사용량 증가 현상 분석하기](https://hyperconnect.github.io/2022/07/19/suspicious-jvm-memory-in-container.html) | Hyperconnect / Hyperconnect Tech Blog | 264.83 | JVM, Java, Kubernetes, observability, performance optimization |
+| 8 | - | [Kubernetes 클러스터에 애플리케이션 배포하기](https://medium.com/naver-cloud-platform/kubernetes-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0-494f653341ab?source=rss----c7f2bfeb6b98---4) | NAVER Cloud / NAVER Cloud Platform Tech Blog | 260.72 | Kubernetes, observability, canary deployment |
+| 9 | - | [Kubernetes Custom AuthN + AuthZ](https://hyperconnect.github.io/2019/12/17/kubehook.html) | Hyperconnect / Hyperconnect Tech Blog | 260.72 | AWS IAM, Amazon EC2, Amazon EKS, Amazon RDS, Istio, Kubernetes |
+| 10 | - | [막내 개발자의 Sell POD PD 생활](https://dev.gmarket.com/11) | Gmarket / Gmarket Tech Blog | 251.26 | Apache Kafka, Elasticsearch, JPA, Java, Kubernetes, Spring Boot |
 
 #### Top Result Details
 
@@ -3419,32 +3412,32 @@ Highlights:
 - summary: 예전에 지형님이 소개했었던 **쿠버네티스** **오퍼레이터** 적용하기를 본 독자들이 있을 겁니다.
 - content: 이번 포스트는 **쿠버네티스** 오퍼레이터를 직접 구현해 보고, 개발한 오퍼레이터를 로컬 **쿠버네티스** 클러스터에 적용하는 과정까지 설명드리려고 합니다. 예전에 지형님이 소개했었던 **쿠버네티스** **오퍼레이터** 적용하기 를 본 독자들이 있을 겁니다.
 
-##### 3. 쿠버네티스 오퍼레이터 적용하기
+##### 3. Kubernetes 환경을 위한 자바 에이전트 개발기
 
-- match: expected relevance 2
-- source: Gmarket / Gmarket Tech Blog
-- url: https://dev.gmarket.com/65
-- technologies: Amazon S3, Kubernetes, Redis, search
-- problem keywords: incident response, migration, observability
-- case summary: 지마켓은 Red Hat Openshift 기반 쿠버네티스 클러스터에서 오퍼레이터 패턴을 적용해 Single Sign-On, 3Scale API 관리, Jenkins CI/CD 자동화 사례를 경험하며 운영 자동화와 관리 편의성을 검토하였다.
-- problem: 쿠버네티스 환경에서 스테이트풀 애플리케이션의 복잡한 운영과 업그레이드, 백업, 스케일링 등 관리 포인트가 많아 수동 작업 부담이 크고, 기존 템플릿 기반 리소스의 CRD 마이그레이션과 오퍼레이터의 한계로 인해 운영 자동화가 어려웠다.
-- solution: Red Hat OperatorHub를 활용해 공식 오퍼레이터 패키지를 설치하고, 커스텀 리소스 정의(CRD)와 컨트롤러를 통해 선언적 관리 및 자동화를 시도했으며, SSO와 3Scale API 서비스에 오퍼레이터를 적용해 업그레이드 및 운영 편의성을 개선하였으나, Jenkins Operator는 Openshift 지원 문제로 적용을 포기하였다.
+- match: not expected
+- source: Hyperconnect / Hyperconnect Tech Blog
+- url: https://hyperconnect.github.io/2020/03/25/kube-agent.html
+- technologies: Istio, JVM, Java, Kubernetes
+- problem keywords: -
+- case summary: 하이퍼커넥트는 Kubernetes 환경에서 Istio 기반 Distributed tracing을 위해 자바 바이트코드 변환을 활용한 재사용성과 확장성을 갖춘 자바 에이전트를 직접 개발했다.
+- problem: Kubernetes 마이크로서비스에서 Istio가 주입한 트레이싱 헤더를 어플리케이션 레벨에서 전파해야 했으나, 스프링 AOP나 AspectJ LTW 방식은 재사용성, 독립성, 확장성 요구를 충족하지 못했다.
+- solution: ASM 라이브러리를 이용한 Bytecode Instrumentation 방식으로 자바 에이전트를 직접 구현해, 어플리케이션 코드와 독립적이며 확장 가능한 구조를 설계하고, HTTP 헤더 전파 및 Hystrix 스레드 로컬 전파 문제를 해결했다.
 
 Highlights:
 
-- title: **쿠버네티스** **오퍼레이터** 적용하기
-- caseSummary: 지마켓은 Red Hat Openshift 기반 **쿠버네티스** 클러스터에서 **오퍼레이터** 패턴을 적용해 Single Sign-On, 3Scale API 관리, Jenkins CI/CD 자동화
-- caseProblem: **쿠버네티스** 환경에서 스테이트풀 애플리케이션의 복잡한 운영과 업그레이드, 백업, 스케일링 등 관리 포인트가 많아 수동 작업 부담이 크고, 기존 템플릿 기반 리소스의 CRD 마이그레이션과
-- caseSolution: Red Hat OperatorHub를 활용해 공식 **오퍼레이터** 패키지를 설치하고, 커스텀 리소스 정의(CRD)와 컨트롤러를 통해 선언적 관리 및 자동화를 시도했으며, SSO와 3Scale
-- summary: 지마켓의 원활한 서비스 운영을 위해 **쿠버네티스** 인프라를 운영 업무를 하고 있는 Platform Technology 팀 김지형입니다.Red Hat Openshift 기반의 **쿠버네티스**
-- summary: 클러스터를 운영하게 되면서 자연스럽게 적용하게 된 **쿠버네티스** 오퍼레이터에 대한 사례와 경험을 기술하고자 합니다.
+- title: **Kubernetes** 환경을 위한 자바 에이전트 개발기
+- caseSummary: 하이퍼커넥트는 **Kubernetes** 환경에서 Istio 기반 Distributed tracing을 위해 자바 바이트코드 변환을 활용한 재사용성과 확장성을 갖춘 자바 에이전트를 직접 개발했다
+- caseProblem: **Kubernetes** 마이크로서비스에서 Istio가 주입한 트레이싱 헤더를 어플리케이션 레벨에서 전파해야 했으나, 스프링 AOP나 AspectJ LTW 방식은 재사용성, 독립성, 확장성
+- summary: **쿠버네티스** 환경에서 Distributed tracing 기능을 개발하며 한 고민들과 자바 바이트코드 변환을 이용해 재사용성 높은 자바 에이전트를 개발한 경험을 공유합니다.
+- content: 이 글에서는 **Kubernetes** 환경에 종속적인 Distributed tracing 기능을 개발하며 고민했던 내용과 자바 바이트코드 변환을 이용해 재사용성 높은 자바 에이전트를 구현한 경험을 공유합니다.
+- content: 글의 전반부에서는 배경과 어떤 요구를 위해 어떤 구현을 했는지에 대해 설명하고, 뒤의 부록에서는 자바 바이트코드를 최적화한 내용에 대해 설명합니다, 배경 하이퍼커넥트에서는 **Kubernetes** 환경을 사용하고 있습니다.
 
 
 ### ko-tech-document-parse - `문서 파싱 Document Parse`
 
 - category: technology
 - intent: Document Parse, Document AI, 문서 파싱 기술을 실제 업무 자동화에 적용한 사례를 찾는다.
-- total results: 335
+- total results: 363
 - precision@5: 0.600
 - recall@10: 1.000
 - mrr: 1.000
@@ -3460,16 +3453,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [Document Parse Enhanced \| 복잡한 문서를 실제 업무에 바로 활용하는 새로운 문서 파싱 방식](https://www.upstage.ai/blog/ko/document-parse-enhanced) | Upstage / Upstage Blog | 362.31 | LLM, search, performance optimization |
-| 2 | expected:3 | [복잡한 문서를 지능형 데이터로, 강력한 문서 파싱 기술 - 업스테이지 도큐먼트 파스(Document Parse)](https://www.upstage.ai/blog/ko/introduce-upstage-document-parse) | Upstage / Upstage Blog | 357.95 | LLM, search |
-| 3 | - | [https://www.upstage.ai/blog/ko/langchain-llamaindex-latest-updates](https://www.upstage.ai/blog/ko/langchain-llamaindex-latest-updates) | Upstage / Upstage Blog | 107.97 | LLM |
-| 4 | - | [전처리가 AI 에이전트 성공률을 좌우한다 \| 광고심의 자동화 사례](https://www.upstage.ai/blog/ko/ai-agent-preprocessing-pipeline-success) | Upstage / Upstage Blog | 57.07 | search |
-| 5 | expected:2 | [Document AI로 문서 검토 한방에 끝내기](https://tech.kakaopay.com/post/ifkakao2024-document-ai/) | Kakao Pay / Kakao Pay Tech Blog | 51.50 |  |
-| 6 | - | [AI 프로젝트 하는데 Document Parse를 안 쓴다고?! 정확하고 효율적인 데이터 전처리 및 자산화를 위한 필수 솔루션!](https://www.upstage.ai/blog/ko/introduction-upstage-document-parse2) | Upstage / Upstage Blog | 49.36 | LLM, search |
-| 7 | - | [Layout Analyzer를 소개합니다.](https://www.upstage.ai/blog/ko/introducing-layout-analysis) | Upstage / Upstage Blog | 47.32 | LLM |
-| 8 | - | [Orchestrating large-scale document processing with AWS Step Functions and Amazon Bedrock batch inference](https://aws.amazon.com/blogs/compute/orchestrating-large-scale-document-processing-with-aws-step-functions-and-amazon-bedrock-batch-inference/) | AWS / AWS Compute Blog | 46.21 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EventBridge |
-| 9 | - | [https://www.upstage.ai/blog/ko/upstage-console-faq-series-1](https://www.upstage.ai/blog/ko/upstage-console-faq-series-1) | Upstage / Upstage Blog | 45.48 |  |
-| 10 | - | [Securing client confidentiality at scale: Automated data discovery and governed analytics for legal workloads](https://aws.amazon.com/blogs/big-data/securing-client-confidentiality-at-scale-automated-data-discovery-and-governed-analytics-for-legal-workloads/) | AWS / AWS Big Data Blog | 44.92 | AWS Glue, AWS IAM, AWS Lambda, Amazon EventBridge, Amazon S3, search |
+| 1 | expected:3 | [Document Parse Enhanced \| 복잡한 문서를 실제 업무에 바로 활용하는 새로운 문서 파싱 방식](https://www.upstage.ai/blog/ko/document-parse-enhanced) | Upstage / Upstage Blog | 369.00 | LLM, search, performance optimization |
+| 2 | expected:3 | [복잡한 문서를 지능형 데이터로, 강력한 문서 파싱 기술 - 업스테이지 도큐먼트 파스(Document Parse)](https://www.upstage.ai/blog/ko/introduce-upstage-document-parse) | Upstage / Upstage Blog | 364.88 | LLM, search |
+| 3 | - | [https://www.upstage.ai/blog/ko/langchain-llamaindex-latest-updates](https://www.upstage.ai/blog/ko/langchain-llamaindex-latest-updates) | Upstage / Upstage Blog | 110.65 | LLM |
+| 4 | - | [전처리가 AI 에이전트 성공률을 좌우한다 \| 광고심의 자동화 사례](https://www.upstage.ai/blog/ko/ai-agent-preprocessing-pipeline-success) | Upstage / Upstage Blog | 57.20 | search |
+| 5 | expected:2 | [Document AI로 문서 검토 한방에 끝내기](https://tech.kakaopay.com/post/ifkakao2024-document-ai/) | Kakao Pay / Kakao Pay Tech Blog | 51.87 |  |
+| 6 | - | [Document Recognizer: 신분증 분석 기능 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/349) | NHN Cloud / NHN Cloud Meetup | 49.53 |  |
+| 7 | - | [AI 프로젝트 하는데 Document Parse를 안 쓴다고?! 정확하고 효율적인 데이터 전처리 및 자산화를 위한 필수 솔루션!](https://www.upstage.ai/blog/ko/introduction-upstage-document-parse2) | Upstage / Upstage Blog | 49.43 | LLM, search |
+| 8 | - | [Document Recognizer 서비스 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/301) | NHN Cloud / NHN Cloud Meetup | 49.11 |  |
+| 9 | - | [Layout Analyzer를 소개합니다.](https://www.upstage.ai/blog/ko/introducing-layout-analysis) | Upstage / Upstage Blog | 47.23 | LLM |
+| 10 | - | [Orchestrating large-scale document processing with AWS Step Functions and Amazon Bedrock batch inference](https://aws.amazon.com/blogs/compute/orchestrating-large-scale-document-processing-with-aws-step-functions-and-amazon-bedrock-batch-inference/) | AWS / AWS Compute Blog | 45.79 | AWS CDK, AWS CloudFormation, AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EventBridge |
 
 #### Top Result Details
 
@@ -3535,11 +3528,11 @@ Highlights:
 
 - category: architecture
 - intent: 한글 검색어로 데이터 파이프라인 설계, 분석 데이터 배포, 기본 원칙 사례를 찾는다.
-- total results: 802
+- total results: 935
 - precision@5: 0.600
 - recall@10: 0.833
 - mrr: 1.000
-- ndcg@10: 0.899
+- ndcg@10: 0.891
 
 #### Expected URLs
 
@@ -3554,16 +3547,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [데이터 분석가가 직접 정의, 배포, 관리하는 뱅크샐러드 데이터 파이프라인](https://blog.banksalad.com/tech/datapipe/) | Banksalad / Banksalad Blog | 447.62 | streaming data pipeline |
-| 2 | expected:3 | [데이터 파이프라인 기본 원리와 원칙은 시간이 지나도 유효해야 한다(2/2)](https://netmarble.engineering/data-pipeline-design-principles-b/) | Netmarble / Netmarble Tech Blog | 379.59 | streaming data pipeline |
-| 3 | expected:3 | [데이터 파이프라인 기본 원리와 원칙은 시간이 지나도 유효해야 한다(1/2)](https://netmarble.engineering/data-pipeline-design-principles-a/) | Netmarble / Netmarble Tech Blog | 379.59 | streaming data pipeline |
-| 4 | - | [[여의도 43층 사람들] Data Engineer 에게 무엇이든 물어보세요!](https://blog.banksalad.com/pnc/team-interview-de/) | Banksalad / Banksalad Blog | 373.38 |  |
-| 5 | - | [데브시스터즈 엔지니어링 데이 - Data 돌아보기](https://tech.devsisters.com/posts/2025-engineering-day-data) | Devsisters / Devsisters Tech Blog | 335.17 | LLM, incident response, log platform, streaming data pipeline |
-| 6 | - | [게임별 다양한 지표 추출을 위한 데이터 적재 파이프라인, Bigwave](https://netmarble.engineering/data-pipeline-bigwave/) | Netmarble / Netmarble Tech Blog | 327.30 |  |
-| 7 | expected:2 | [Building unified data pipelines with Apache Iceberg and Apache Flink](https://aws.amazon.com/blogs/big-data/building-unified-data-pipelines-with-apache-iceberg-and-apache-flink/) | AWS / AWS Big Data Blog | 321.76 | AWS Glue, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon S3, Amazon VPC |
-| 8 | expected:3 | [Building Jetflow: a framework for flexible, performant data pipelines at Cloudflare](https://blog.cloudflare.com/building-jetflow-a-framework-for-flexible-performant-data-pipelines-at-cloudflare/) | Cloudflare / Cloudflare Engineering | 311.38 | Apache Kafka, migration, observability, performance optimization |
-| 9 | - | [Getting started with Change Data Capture in Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/getting-started-with-change-data-capture-in-amazon-aurora-dsql/) | AWS / AWS Database Blog | 308.12 | AWS IAM, AWS Lambda, Amazon Aurora, Apache Kafka, React, search |
-| 10 | - | [LINE 서비스의 대규모 광고 데이터를 처리하기 위한 Spark on Kubernetes 적용기](https://techblog.lycorp.co.jp/ko/processing-large-scale-data-with-spark-on-kubernetes) | LY Corporation / LY Corporation Tech Blog | 289.20 | Kubernetes, streaming data pipeline |
+| 1 | expected:3 | [데이터 분석가가 직접 정의, 배포, 관리하는 뱅크샐러드 데이터 파이프라인](https://blog.banksalad.com/tech/datapipe/) | Banksalad / Banksalad Blog | 460.20 | streaming data pipeline |
+| 2 | expected:3 | [데이터 파이프라인 기본 원리와 원칙은 시간이 지나도 유효해야 한다(2/2)](https://netmarble.engineering/data-pipeline-design-principles-b/) | Netmarble / Netmarble Tech Blog | 390.37 | streaming data pipeline |
+| 3 | expected:3 | [데이터 파이프라인 기본 원리와 원칙은 시간이 지나도 유효해야 한다(1/2)](https://netmarble.engineering/data-pipeline-design-principles-a/) | Netmarble / Netmarble Tech Blog | 390.37 | streaming data pipeline |
+| 4 | - | [[여의도 43층 사람들] Data Engineer 에게 무엇이든 물어보세요!](https://blog.banksalad.com/pnc/team-interview-de/) | Banksalad / Banksalad Blog | 381.02 |  |
+| 5 | - | [데브시스터즈 엔지니어링 데이 - Data 돌아보기](https://tech.devsisters.com/posts/2025-engineering-day-data) | Devsisters / Devsisters Tech Blog | 338.92 | LLM, incident response, log platform, streaming data pipeline |
+| 6 | - | [게임별 다양한 지표 추출을 위한 데이터 적재 파이프라인, Bigwave](https://netmarble.engineering/data-pipeline-bigwave/) | Netmarble / Netmarble Tech Blog | 337.92 |  |
+| 7 | - | [DataFlow 서비스 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/353) | NHN Cloud / NHN Cloud Meetup | 327.80 |  |
+| 8 | expected:2 | [Building unified data pipelines with Apache Iceberg and Apache Flink](https://aws.amazon.com/blogs/big-data/building-unified-data-pipelines-with-apache-iceberg-and-apache-flink/) | AWS / AWS Big Data Blog | 323.87 | AWS Glue, AWS IAM, Amazon CloudWatch, Amazon EC2, Amazon S3, Amazon VPC |
+| 9 | expected:3 | [Building Jetflow: a framework for flexible, performant data pipelines at Cloudflare](https://blog.cloudflare.com/building-jetflow-a-framework-for-flexible-performant-data-pipelines-at-cloudflare/) | Cloudflare / Cloudflare Engineering | 316.51 | Apache Kafka, migration, observability, performance optimization |
+| 10 | - | [Getting started with Change Data Capture in Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/getting-started-with-change-data-capture-in-amazon-aurora-dsql/) | AWS / AWS Database Blog | 309.18 | AWS IAM, AWS Lambda, Amazon Aurora, Apache Kafka, React, search |
 
 #### Top Result Details
 
@@ -3628,7 +3621,7 @@ Highlights:
 
 - category: technology
 - intent: AWS DMS와 RDS를 이용한 데이터베이스 통합, 마이그레이션, 운영 경험을 찾는다.
-- total results: 49
+- total results: 61
 - precision@5: 0.400
 - recall@10: 1.000
 - mrr: 1.000
@@ -3643,16 +3636,16 @@ Highlights:
 
 | Rank | Match | Title | Source | Score | Keywords |
 |---:|---|---|---|---:|---|
-| 1 | expected:3 | [사용법과 함께 작성해본 좌충우돌 AWS DMS 사용기 - feat. RDS 통합 이야기](https://blog.banksalad.com/tech/dms/) | Banksalad / Banksalad Blog | 465.30 | Amazon RDS |
-| 2 | - | [Connect to Amazon RDS for Db2 from your laptop](https://aws.amazon.com/blogs/database/connect-to-amazon-rds-for-db2-from-your-laptop/) | AWS / AWS Database Blog | 282.34 | AWS IAM, Amazon EC2, Amazon RDS, Amazon S3, Amazon VPC |
-| 3 | - | [Upgrade strategies for Amazon RDS for MySQL 8.0 to 8.4](https://aws.amazon.com/blogs/database/upgrade-strategies-for-amazon-rds-for-mysql-8-0-to-8-4/) | AWS / AWS Database Blog | 270.57 | Amazon Aurora, Amazon CloudWatch, Amazon RDS, Amazon S3, migration, observability |
-| 4 | expected:1 | [[다시보기] 2월 우아한테크세미나: 우아한형제들의 RDS Aurora Graviton2 성능 이슈 해결 사례와 RDS를 모니터링하는 방법](https://techblog.woowahan.com/10645/) | Woowa Brothers / Woowa Tech Blog | 259.37 | Amazon Aurora, Amazon RDS, observability, performance optimization, streaming data pipeline |
-| 5 | - | [Migrating Amazon RDS for PostgreSQL to Amazon Aurora using seeded logical replication](https://aws.amazon.com/blogs/database/migrating-amazon-rds-for-postgresql-to-amazon-aurora-using-seeded-logical-replication/) | AWS / AWS Database Blog | 255.07 | AWS IAM, Amazon Aurora, Amazon CloudWatch, Amazon RDS, Amazon VPC, high availability |
-| 6 | - | [Troubleshoot Amazon RDS for Oracle to Amazon Redshift DMS migrations with AWS DevOps Agent](https://aws.amazon.com/blogs/database/troubleshoot-amazon-rds-for-oracle-to-amazon-redshift-dms-migrations-with-aws-devops-agent/) | AWS / AWS Database Blog | 233.00 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EventBridge, Amazon RDS, incident response |
-| 7 | - | [Best practices for upgrading Amazon RDS for MySQL 8.0 to 8.4 with prechecks, Blue/Green, and rollback](https://aws.amazon.com/blogs/database/best-practices-for-upgrading-amazon-rds-for-mysql-8-0-to-8-4-with-prechecks-blue-green-and-rollback/) | AWS / AWS Database Blog | 232.39 | AWS IAM, Amazon Aurora, Amazon EC2, Amazon RDS, Amazon VPC, Java |
-| 8 | - | [실험과 기능플래그를 위한 실험플랫폼 구축하기](https://techblog.woowahan.com/9935/) | Woowa Brothers / Woowa Tech Blog | 194.09 | AWS Glue, Amazon RDS, JVM, Java, Kotlin, Redis |
-| 9 | - | [쿠키런: 킹덤 데이터베이스 스토리지 레이어 복원기](https://tech.devsisters.com/posts/crk-launch-storage-postmortem) | Devsisters / Devsisters Tech Blog | 194.09 | Amazon EC2, Amazon RDS, incident response, observability, log platform |
-| 10 | - | [PostgreSQL Vacuum에 대한 거의 모든 것](https://techblog.woowahan.com/9478/) | Woowa Brothers / Woowa Tech Blog | 194.09 | Amazon Aurora, Amazon RDS, observability |
+| 1 | expected:3 | [사용법과 함께 작성해본 좌충우돌 AWS DMS 사용기 - feat. RDS 통합 이야기](https://blog.banksalad.com/tech/dms/) | Banksalad / Banksalad Blog | 473.16 | Amazon RDS |
+| 2 | - | [Connect to Amazon RDS for Db2 from your laptop](https://aws.amazon.com/blogs/database/connect-to-amazon-rds-for-db2-from-your-laptop/) | AWS / AWS Database Blog | 292.65 | AWS IAM, Amazon EC2, Amazon RDS, Amazon S3, Amazon VPC |
+| 3 | - | [Upgrade strategies for Amazon RDS for MySQL 8.0 to 8.4](https://aws.amazon.com/blogs/database/upgrade-strategies-for-amazon-rds-for-mysql-8-0-to-8-4/) | AWS / AWS Database Blog | 280.47 | Amazon Aurora, Amazon CloudWatch, Amazon RDS, Amazon S3, migration, observability |
+| 4 | expected:1 | [[다시보기] 2월 우아한테크세미나: 우아한형제들의 RDS Aurora Graviton2 성능 이슈 해결 사례와 RDS를 모니터링하는 방법](https://techblog.woowahan.com/10645/) | Woowa Brothers / Woowa Tech Blog | 263.80 | Amazon Aurora, Amazon RDS, observability, performance optimization, streaming data pipeline |
+| 5 | - | [Migrating Amazon RDS for PostgreSQL to Amazon Aurora using seeded logical replication](https://aws.amazon.com/blogs/database/migrating-amazon-rds-for-postgresql-to-amazon-aurora-using-seeded-logical-replication/) | AWS / AWS Database Blog | 259.30 | AWS IAM, Amazon Aurora, Amazon CloudWatch, Amazon RDS, Amazon VPC, high availability |
+| 6 | - | [Troubleshoot Amazon RDS for Oracle to Amazon Redshift DMS migrations with AWS DevOps Agent](https://aws.amazon.com/blogs/database/troubleshoot-amazon-rds-for-oracle-to-amazon-redshift-dms-migrations-with-aws-devops-agent/) | AWS / AWS Database Blog | 241.53 | AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon EventBridge, Amazon RDS, incident response |
+| 7 | - | [Best practices for upgrading Amazon RDS for MySQL 8.0 to 8.4 with prechecks, Blue/Green, and rollback](https://aws.amazon.com/blogs/database/best-practices-for-upgrading-amazon-rds-for-mysql-8-0-to-8-4-with-prechecks-blue-green-and-rollback/) | AWS / AWS Database Blog | 235.58 | AWS IAM, Amazon Aurora, Amazon EC2, Amazon RDS, Amazon VPC, Java |
+| 8 | - | [Streamlining access to powerful disaster recovery capabilities of AWS](https://aws.amazon.com/blogs/architecture/streamlining-access-to-powerful-disaster-recovery-capabilities-of-aws/) | AWS / AWS Architecture Blog | 189.30 | AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon EC2, Amazon EKS, Amazon EventBridge |
+| 9 | - | [6,000 AWS accounts, three people, one platform: Lessons learned](https://aws.amazon.com/blogs/architecture/6000-aws-accounts-three-people-one-platform-lessons-learned/) | AWS / AWS Architecture Blog | 189.30 | AWS CloudFormation, AWS IAM, AWS Lambda, Amazon CloudWatch, Amazon DynamoDB, Amazon EC2 |
+| 10 | - | [How Convera built fine-grained API authorization with Amazon Verified Permissions](https://aws.amazon.com/blogs/architecture/how-convera-built-fine-grained-api-authorization-with-amazon-verified-permissions/) | AWS / AWS Architecture Blog | 189.30 | AWS IAM, AWS Lambda, Amazon DynamoDB, Amazon RDS, Kubernetes, observability |
 
 #### Top Result Details
 

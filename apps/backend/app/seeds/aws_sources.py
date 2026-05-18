@@ -346,12 +346,14 @@ KOREAN_TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = (
         name="Hyperconnect Tech Blog",
         slug="hyperconnect-tech-blog",
         company_name="Hyperconnect",
-        feed_url="https://hyperconnect.github.io/feed.xml",
+        feed_url="https://hyperconnect.github.io/sitemap.xml",
         site_url="https://hyperconnect.github.io",
         description=(
             "Hyperconnect AI, media, realtime communication, mobile, "
             "backend, and infrastructure engineering cases."
         ),
+        collection_strategy="sitemap",
+        content_strategy="article_fetch",
         language="ko",
         country="KR",
     ),
@@ -372,12 +374,14 @@ KOREAN_TECH_BLOG_SOURCES: tuple[SourceSeed, ...] = (
         name="NHN Cloud Meetup",
         slug="nhn-cloud-meetup",
         company_name="NHN Cloud",
-        feed_url="https://meetup.nhncloud.com/rss",
+        feed_url="https://meetup.nhncloud.com/sitemap.xml",
         site_url="https://meetup.nhncloud.com",
         description=(
             "NHN Cloud infrastructure, database, security, cloud, "
             "backend, and platform engineering cases."
         ),
+        collection_strategy="sitemap",
+        content_strategy="article_fetch",
         language="ko",
         country="KR",
     ),

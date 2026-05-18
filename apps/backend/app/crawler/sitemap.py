@@ -23,6 +23,8 @@ SITEMAP_NAMESPACE = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 ARTICLE_PATH_PATTERN = re.compile(r"/\d+/?$")
 SOURCE_ARTICLE_PATH_PATTERNS = {
     "gmarket-tech-blog": re.compile(r"/\d+/?$"),
+    "hyperconnect-tech-blog": re.compile(r"/\d{4}/\d{2}/\d{2}/[^/]+\.html$"),
+    "nhn-cloud-meetup": re.compile(r"/posts/\d+/?$"),
     "upstage-blog": re.compile(r"/blog/ko/[^/]+/?$"),
 }
 

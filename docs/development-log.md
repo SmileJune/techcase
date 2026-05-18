@@ -3504,3 +3504,164 @@ ndcg@10:     0.788 -> 0.784
 ```
 
 신규 source는 AI, 추천, MLOps, ClickHouse, 인증서/보안, 클라우드 비용 최적화 사례를 보강합니다. 평가셋에는 아직 이 신규 의도가 충분히 반영되지 않았으므로, 다음에는 `추천 시스템`, `MLOps`, `ClickHouse`, `mTLS`, `클라우드 비용 최적화` 같은 query를 추가하는 것이 좋습니다.
+
+## 73. Hyperconnect/NHN Cloud sitemap 기반 전체 수집
+
+RSS 기준으로는 Hyperconnect, Watcha, NHN Cloud가 각각 최신 10개만 내려왔습니다. 수집량이 너무 적어 RSS 외 확장 수집 가능성을 확인했습니다.
+
+확인 결과:
+
+```text
+hyperconnect sitemap.xml = 200, loc 312개
+nhn-cloud sitemap.xml    = 200, loc 421개
+watcha archive           = 403
+watcha medium rss        = 10개
+```
+
+Watcha는 Medium archive가 403으로 막혀 있고, Medium 전체 sitemap에서 publication별 URL을 안전하게 좁히기 어려워 이번 라운드에서는 RSS 10개를 유지했습니다.
+
+Hyperconnect와 NHN Cloud는 sitemap에서 article URL 패턴을 안정적으로 확인했습니다.
+
+```text
+hyperconnect-tech-blog: /YYYY/MM/DD/{slug}.html
+nhn-cloud-meetup:       /posts/{id}
+```
+
+변경:
+
+```text
+hyperconnect-tech-blog: rss -> sitemap / article_fetch
+nhn-cloud-meetup:       rss -> sitemap / article_fetch
+```
+
+수집 결과:
+
+```text
+hyperconnect-tech-blog = fetched 113, created 103, updated 10, failed 0
+nhn-cloud-meetup       = fetched 420, created 410, updated 10, failed 0
+```
+
+두 source에서 총 513개 article을 추가 확보했습니다.
+
+현재 source별 article 수:
+
+```text
+hyperconnect-tech-blog = 113
+nhn-cloud-meetup       = 420
+watcha-tech-blog       = 10
+```
+
+재처리:
+
+```bash
+npm run db:seed
+npm run crawl:sitemap -- --source hyperconnect-tech-blog
+npm run crawl:sitemap -- --source nhn-cloud-meetup
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+npm run search:audit
+```
+
+재처리 결과:
+
+```text
+articles = 2216
+keywords = 4034
+indexed articles = 2216
+indexed suggestions = 90
+```
+
+검색 평가:
+
+```text
+average precision@5 = 0.459
+average recall@10 = 0.823
+average mrr = 0.875
+average ndcg@10 = 0.780
+```
+
+직전 평가와 비교:
+
+```text
+precision@5: 0.473 -> 0.459
+recall@10:   0.834 -> 0.823
+mrr:         0.862 -> 0.875
+ndcg@10:     0.784 -> 0.780
+```
+
+대량 source 유입으로 검색 후보 풀이 넓어져 일부 기존 평가 지표는 낮아졌습니다. 다음에는 Hyperconnect/NHN Cloud에서 새로 들어온 AI, 추천, 보안, ClickHouse, 클라우드 운영 사례를 평가셋에 반영해야 합니다.
+
+이번 라운드에서는 article fetch와 검색 색인까지 완료했고, 새로 추가된 513개 article 전체 LLM 요약은 아직 실행하지 않았습니다. 비용과 시간이 큰 작업이므로 기존처럼 100개 단위로 나누어 별도 진행하는 것이 좋습니다.
+
+## 74. Hyperconnect/NHN Cloud 신규 article LLM 요약
+
+sitemap 확장으로 새로 추가된 Hyperconnect/NHN Cloud article을 100개 단위로 나누어 LLM 요약했습니다.
+
+실행 단위:
+
+```text
+hyperconnect-tech-blog 100개
+hyperconnect-tech-blog 3개
+nhn-cloud-meetup 100개
+nhn-cloud-meetup 100개
+nhn-cloud-meetup 100개
+nhn-cloud-meetup 100개
+nhn-cloud-meetup 11개
+```
+
+처리 결과:
+
+```text
+hyperconnect-tech-blog = 103 generated / 0 failed
+nhn-cloud-meetup       = 411 generated / 1 transient timeout, retry success
+```
+
+NHN Cloud 3차 배치에서 `What's New in iOS11` 글이 read timeout으로 1회 실패했지만, 다음 배치에서 재시도되어 성공했습니다.
+
+실행:
+
+```bash
+npm run llm:summarize -- --source hyperconnect-tech-blog --limit 100
+npm run llm:summarize -- --source hyperconnect-tech-blog --limit 100
+npm run llm:summarize -- --source nhn-cloud-meetup --limit 100
+npm run llm:summarize -- --source nhn-cloud-meetup --limit 100
+npm run llm:summarize -- --source nhn-cloud-meetup --limit 100
+npm run llm:summarize -- --source nhn-cloud-meetup --limit 100
+npm run llm:summarize -- --source nhn-cloud-meetup --limit 100
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+npm run search:evaluate
+npm run search:audit
+```
+
+재처리 결과:
+
+```text
+articles = 2216
+keywords = 4034
+indexed articles = 2216
+indexed suggestions = 90
+```
+
+검색 평가:
+
+```text
+average precision@5 = 0.463
+average recall@10 = 0.837
+average mrr = 0.877
+average ndcg@10 = 0.786
+```
+
+sitemap 확장 직후 평가와 비교:
+
+```text
+precision@5: 0.459 -> 0.463
+recall@10:   0.823 -> 0.837
+mrr:         0.875 -> 0.877
+ndcg@10:     0.780 -> 0.786
+```
+
+요약 반영 후 검색 후보의 문제/해결/기술 맥락이 보강되면서 평가 지표가 일부 회복되었습니다. 다만 NHN Cloud 글 중 일부 title이 URL로 저장된 항목이 있어, 다음에는 NHN Cloud article title 추출 보정이 필요합니다.
