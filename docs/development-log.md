@@ -2903,3 +2903,312 @@ tech-nextjs recall@10 = 1.000
 tech-nextjs mrr = 1.000
 tech-nextjs ndcg@10 = 1.000
 ```
+
+## 63. Query-only alias audit 명령 추가
+
+`next -> Next.js`처럼 검색어 자체는 일반 단어지만 사용자는 특정 기술을 기대하는 경우를 계속 안전하게 관리하기 위해 alias 전용 audit 명령을 추가했습니다.
+
+추가 명령:
+
+```bash
+npm run search:alias-audit
+```
+
+점검 항목:
+
+```text
+query-only alias가 기대 keyword로 매칭되는지 확인
+검색 query expansion에 반영되는지 확인
+검색 상위 결과에 해당 기술 keyword가 포함되는지 확인
+자동완성 prefix에서도 같은 기술이 노출되는지 확인
+```
+
+검증 결과:
+
+```text
+PASS next -> Next.js
+matched = yes
+top = 5/5
+suggest(nex) = Next.js
+expanded = next next.js
+```
+
+이후 `go`, `r`, `spring`, `node`, `next`처럼 일반 단어와 기술명이 충돌할 수 있는 검색어를 추가할 때는 이 명령으로 검색/자동완성 회귀를 함께 확인합니다.
+
+## 64. 모호한 짧은 검색어 audit 명령 추가
+
+`next` 외에도 `go`, `spring`, `node`, `ai`, `r`처럼 짧거나 일반 단어와 겹치는 검색어가 있습니다. 이런 단어는 바로 기술 alias로 추가하면 오탐이 커질 수 있으므로, 먼저 현재 검색 결과와 자동완성 후보를 확인하는 audit 명령을 추가했습니다.
+
+추가 명령:
+
+```bash
+npm run search:ambiguous-audit
+```
+
+기본 점검 query:
+
+```text
+next
+go
+golang
+spring
+node
+ai
+r
+```
+
+현재 관찰 결과:
+
+```text
+next:
+  Next.js로 query expansion, 상위 5개 모두 Next.js 글
+
+go:
+  뱅크샐러드 Go 코딩 컨벤션이 1위지만 Go 기술 keyword는 아직 없음
+  go를 일반 alias로 추가하면 영어 동사 go 오탐 가능성이 큼
+
+golang:
+  Golang 관련 글이 검색되지만 기술 keyword와 자동완성 후보가 없음
+
+spring:
+  Spring Boot 자동완성은 나오지만 spring 검색 자체는 keyword 매칭이 없음
+  Spring Batch, Spring Statemachine, Spring AOP 등 Spring 계열 글이 섞임
+
+node:
+  Node.js 자동완성은 나오지만 node 검색 상위는 EKS Node Group 글이 우세
+  Node.js 의도와 Kubernetes node 의도가 충돌함
+
+ai:
+  결과는 많지만 LLM, MLOps, 제품 소식, AI 리터러시 등이 섞여 있어 단일 기술 alias로 보기 어려움
+
+r:
+  너무 짧아 검색/자동완성 모두 의도가 불명확함
+```
+
+다음 개선 후보:
+
+```text
+Golang/Go 기술 키워드 추가 여부 검토
+go는 일반 alias가 아니라 query-only alias 또는 title 중심 추출 전략 검토
+node는 Node.js query-only alias로 둘지, Kubernetes node 의도를 별도 처리할지 검토
+spring은 Spring Boot보다 넓은 Spring Framework 키워드를 둘지 검토
+```
+
+## 65. Go/Golang 검색 개선
+
+`go` 검색에서는 실제 Go 언어 글이 1위로 나오고 있었지만 기술 keyword가 붙지 않았고, `golang` 검색에서도 자동완성 후보가 없었습니다. 반면 `go`를 일반 alias로 추가하면 영어 동사 `go`가 본문에 자주 등장해 오탐이 크게 늘어날 수 있었습니다.
+
+개선:
+
+```text
+Go 기술 keyword 추가
+일반 alias는 golang, go language, go programming language만 등록
+go 단독 검색은 query-only alias로 Go에 연결
+제목에 단독 Go가 있는 경우에만 title-only alias로 Go keyword 추출
+query-only alias 검색은 원문 단어의 넓은 본문 검색보다 canonical keyword 중심으로 ranking
+```
+
+재처리:
+
+```bash
+npm run keywords:extract
+npm run search:reindex
+npm run suggest:reindex
+```
+
+재처리 결과:
+
+```text
+articles = 1539
+keywords = 3327
+indexed articles = 1539
+indexed suggestions = 82
+```
+
+검증:
+
+```text
+go -> Go query expansion
+golang -> Go keyword 매칭
+go -> Go 자동완성 후보 노출
+뱅크샐러드 Go 코딩 컨벤션 -> Go keyword 추출
+```
+
+alias audit:
+
+```text
+PASS go -> Go
+matched = yes
+top = 5/5
+suggest(go) = Go
+expanded = go golang
+
+PASS next -> Next.js
+matched = yes
+top = 5/5
+suggest(nex) = Next.js
+expanded = next next.js
+```
+
+평가셋:
+
+```text
+tech-go query 추가
+query = go
+expected result = Go/Golang 관련 사례 4개
+```
+
+평가 결과:
+
+```text
+tech-go precision@5 = 0.600
+tech-go recall@10 = 1.000
+tech-go mrr = 1.000
+tech-go ndcg@10 = 0.955
+average precision@5 = 0.445
+average recall@10 = 0.830
+average mrr = 0.866
+average ndcg@10 = 0.774
+```
+
+남은 과제:
+
+```text
+go/golang 검색 상위에는 Go가 부분적으로 언급된 인프라 글도 포함됨
+Go 언어가 주제인 글과 보조적으로 언급된 글을 구분하려면 title/summary 중심성 또는 LLM summary의 technologies confidence가 필요함
+```
+
+## 66. Node.js 검색 충돌 개선
+
+`node` 검색은 사용자가 Node.js를 기대할 가능성이 크지만, 기존에는 Kubernetes/EKS node 문맥의 글이 상위에 노출되었습니다. `node.js`, `nodejs` 검색은 이미 Node.js 사례가 잘 나오고 있었으므로, `node` 단독 입력만 query-only alias로 보정했습니다.
+
+개선:
+
+```text
+node -> Node.js query-only alias 추가
+Node.js 일반 alias는 node.js, nodejs, node js 유지
+node.js/nodejs 명시 검색 동작은 유지
+node 단독 검색은 canonical keyword 중심 ranking 적용
+```
+
+평가셋:
+
+```text
+tech-nodejs query 추가
+query = node
+expected result = Node.js 런타임/서버 개발 관련 사례 5개
+```
+
+검증:
+
+```text
+node -> Node.js query expansion
+node -> Node.js 자동완성 후보 노출
+node 검색 상위 5개가 Node.js keyword 포함 글로 변경
+EKS Node Group 글은 상위 5 밖으로 밀림
+```
+
+alias audit:
+
+```text
+PASS node -> Node.js
+matched = yes
+top = 5/5
+suggest(nod) = Node.js
+expanded = node node.js
+```
+
+평가 결과:
+
+```text
+tech-nodejs precision@5 = 0.800
+tech-nodejs recall@10 = 1.000
+tech-nodejs mrr = 1.000
+tech-nodejs ndcg@10 = 0.972
+average precision@5 = 0.454
+average recall@10 = 0.834
+average mrr = 0.869
+average ndcg@10 = 0.779
+```
+
+주의:
+
+```text
+node는 Kubernetes node 의미로도 중요한 검색어임
+향후 Kubernetes node를 찾는 사용자를 위해 "EKS node group", "Kubernetes node", "GPU node" 같은 더 구체적인 query/keyword를 별도 평가셋으로 관리해야 함
+```
+
+## 67. 기업별 최신 글 탐색 UI 추가
+
+검색어 없이도 특정 기업의 기술 블로그 글을 최신순으로 훑어볼 수 있도록 회사 선택 UI를 검색창 아래에 추가했습니다.
+
+개선:
+
+```text
+검색창 아래에 "기업별 최신 글" 회사 chip 영역 추가
+회사 chip 선택 시 검색어를 비우고 최신순으로 전환
+선택한 회사 source 필터만 적용해 해당 기업 글 목록 노출
+여러 기업을 함께 선택할 수 있도록 전체 회사 facet 목록을 프론트 상태에 보존
+기존 상세 필터 패널의 회사 필터는 유지
+```
+
+동작:
+
+```text
+초기 화면: 최신 기업 기술 블로그 전체 목록
+회사 선택: 선택한 기업의 최신 글 목록
+회사 추가 선택: 선택한 여러 기업의 최신 글 목록
+회사 선택 해제: 남은 선택 기업 기준 최신 글 목록
+전체 해제: 다시 최신 기업 기술 블로그 전체 목록
+```
+
+검증:
+
+```bash
+pnpm --dir apps/web exec tsc --noEmit
+npm run build:web
+```
+
+추가 보정:
+
+```text
+회사 선택 chip을 텍스트 중심에서 로고 중심 버튼으로 변경
+hover 시 브라우저 기본 title로 회사명 노출
+로고 파일이 없는 회사는 기존 fallback 로고 표시
+나중에 실제 로고 파일을 추가하면 companyLogos 매핑의 imageSrc만 채우면 됨
+```
+
+## 68. 로컬 즐겨찾기 기능 추가
+
+로그인 없이도 같은 컴퓨터/브라우저에서 원하는 사례를 계속 모아볼 수 있도록 `localStorage` 기반 즐겨찾기 기능을 추가했습니다.
+
+구현:
+
+```text
+검색 결과 카드에 즐겨찾기 버튼 추가
+즐겨찾기한 article id와 카드 표시용 데이터를 localStorage에 저장
+상단 toolbar에 즐겨찾기 개수와 "즐겨찾기만 보기" 토글 추가
+즐겨찾기 모드에서는 현재 검색 결과와 무관하게 저장된 사례 목록 표시
+즐겨찾기 해제 시 localStorage에서도 제거
+```
+
+저장 키:
+
+```text
+techcase.favorites.v1
+```
+
+선택 이유:
+
+```text
+sessionStorage는 탭 세션이 끝나면 사라질 수 있음
+localStorage는 같은 브라우저/컴퓨터에서 계속 유지됨
+로그인 없는 MVP 즐겨찾기에 더 적합함
+```
+
+검증:
+
+```bash
+pnpm --dir apps/web exec tsc --noEmit
+npm run build:web
+```

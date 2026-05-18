@@ -8,7 +8,9 @@ from app.search.indexes import ARTICLES_INDEX
 SearchSort = Literal["relevance", "latest"]
 KEYWORD_LABEL_BY_NORMALIZED = {rule.keyword.casefold(): rule.keyword for rule in KEYWORD_RULES}
 QUERY_ONLY_KEYWORD_ALIASES = {
+    "go": "Go",
     "next": "Next.js",
+    "node": "Node.js",
 }
 GENERIC_FACET_VALUES = {
     "java",
@@ -346,6 +348,9 @@ def build_sort(sort: SearchSort) -> list[dict[str, Any]] | None:
 
 
 def build_search_query(query: str) -> dict[str, Any]:
+    if is_query_only_alias(query):
+        return build_query_only_alias_search_query(query)
+
     expanded_query = expand_query(query)
     matched_keywords = matched_rule_keywords(query)
     should_queries = [
@@ -371,6 +376,32 @@ def build_search_query(query: str) -> dict[str, Any]:
     }
 
     return apply_content_type_ranking(base_query)
+
+
+def build_query_only_alias_search_query(query: str) -> dict[str, Any]:
+    expanded_query = expand_query(query)
+    matched_keywords = matched_rule_keywords(query)
+    should_queries = [
+        keyword_terms_query(matched_keywords),
+        canonical_keyword_match_query(matched_keywords),
+        title_phrase_match_query(query),
+    ]
+
+    if expanded_query != query:
+        should_queries.append(multi_match_query(expanded_query, operator="or", boost=1))
+
+    base_query = {
+        "bool": {
+            "should": should_queries,
+            "minimum_should_match": 1,
+        }
+    }
+
+    return apply_content_type_ranking(base_query)
+
+
+def is_query_only_alias(query: str) -> bool:
+    return normalize_text(query) in QUERY_ONLY_KEYWORD_ALIASES
 
 
 def apply_content_type_ranking(query: dict[str, Any]) -> dict[str, Any]:
@@ -462,6 +493,21 @@ def phrase_match_query(query: str) -> dict[str, Any]:
             "type": "phrase",
             "slop": 1,
             "boost": 3,
+        }
+    }
+
+
+def title_phrase_match_query(query: str) -> dict[str, Any]:
+    return {
+        "multi_match": {
+            "query": query,
+            "fields": [
+                "title^8",
+                "summary^2",
+            ],
+            "type": "phrase",
+            "slop": 1,
+            "boost": 2,
         }
     }
 

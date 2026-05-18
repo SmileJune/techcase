@@ -84,6 +84,10 @@ type SuggestResponse = {
   items: SuggestionItem[];
 };
 
+type FavoriteItem = SearchResultItem & {
+  favoritedAt: string;
+};
+
 type CompanyLogo = {
   label: string;
   background: string;
@@ -116,13 +120,28 @@ const emptyFilters: SearchFilters = {
 };
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+const favoritesStorageKey = "techcase.favorites.v1";
 
 const companyLogos: Record<string, CompanyLogo> = {
   "29cm": { label: "29", background: "#111111", foreground: "#ffffff" },
   aws: { label: "AWS", background: "#232f3e", foreground: "#ff9900" },
+  banksalad: {
+    label: "BS",
+    background: "#ffffff",
+    foreground: "#00c27a",
+    border: "#d8e1dc",
+    imageSrc: "/logos/banksalad.png",
+  },
   daangn: { label: "당근", background: "#ff6f0f", foreground: "#ffffff" },
   devsisters: { label: "DS", background: "#e72d2c", foreground: "#ffffff" },
   "gc company": { label: "GC", background: "#00a676", foreground: "#ffffff" },
+  gmarket: {
+    label: "G",
+    background: "#ffffff",
+    foreground: "#00a676",
+    border: "#d8e1dc",
+    imageSrc: "/logos/gmarket.svg",
+  },
   kakao: {
     label: "K",
     background: "#fee500",
@@ -130,8 +149,20 @@ const companyLogos: Record<string, CompanyLogo> = {
     border: "#dfc900",
     imageSrc: "/logos/kakao.png",
   },
-  "kakao pay": { label: "PAY", background: "#ffeb00", foreground: "#111111", border: "#dfcf00" },
-  kurly: { label: "K", background: "#5f0080", foreground: "#ffffff" },
+  "kakao pay": {
+    label: "PAY",
+    background: "#ffffff",
+    foreground: "#111111",
+    border: "#d8e1dc",
+    imageSrc: "/logos/kakaopay.svg",
+  },
+  kurly: {
+    label: "K",
+    background: "#ffffff",
+    foreground: "#5f0080",
+    border: "#d8e1dc",
+    imageSrc: "/logos/kurly.png",
+  },
   "ly corporation": { label: "LY", background: "#06c755", foreground: "#ffffff" },
   musinsa: { label: "M", background: "#000000", foreground: "#ffffff" },
   naver: {
@@ -149,7 +180,20 @@ const companyLogos: Record<string, CompanyLogo> = {
     border: "#d8e1dc",
     imageSrc: "/logos/toss.png",
   },
-  "woowa brothers": { label: "배민", background: "#2ac1bc", foreground: "#ffffff" },
+  upstage: {
+    label: "UP",
+    background: "#ffffff",
+    foreground: "#111111",
+    border: "#d8e1dc",
+    imageSrc: "/logos/upstage.svg",
+  },
+  "woowa brothers": {
+    label: "배민",
+    background: "#ffffff",
+    foreground: "#2ac1bc",
+    border: "#d8e1dc",
+    imageSrc: "/logos/woowa.svg",
+  },
   yogiyo: { label: "Y", background: "#fa0050", foreground: "#ffffff" },
 };
 
@@ -244,13 +288,17 @@ function formatContentType(value?: string | null): string | null {
 }
 
 function getCompanyLogo(item: SearchResultItem): CompanyLogo {
-  const normalizedCompany = item.company.trim().toLowerCase();
-  const normalizedSlug = item.sourceSlug.trim().toLowerCase();
+  return getCompanyLogoByName(item.company, item.sourceSlug);
+}
+
+function getCompanyLogoByName(company: string, sourceSlug = ""): CompanyLogo {
+  const normalizedCompany = company.trim().toLowerCase();
+  const normalizedSlug = sourceSlug.trim().toLowerCase();
 
   return (
     companyLogos[normalizedCompany] ??
     (normalizedSlug.startsWith("aws-") ? companyLogos.aws : undefined) ?? {
-      label: item.company.slice(0, 2).toUpperCase(),
+      label: company.slice(0, 2).toUpperCase(),
       background: "#eef2ef",
       foreground: "#2c5f4f",
       border: "#d8e1dc",
@@ -291,12 +339,57 @@ function bestSnippet(item: SearchResultItem): string {
   return item.caseSummary ?? item.summary ?? "요약 정보가 아직 없습니다.";
 }
 
+function loadFavoriteItems(): FavoriteItem[] {
+  try {
+    const rawValue = window.localStorage.getItem(favoritesStorageKey);
+
+    if (!rawValue) {
+      return [];
+    }
+
+    const parsedValue = JSON.parse(rawValue);
+
+    if (!Array.isArray(parsedValue)) {
+      return [];
+    }
+
+    return parsedValue.filter(isFavoriteItem);
+  } catch {
+    return [];
+  }
+}
+
+function saveFavoriteItems(items: FavoriteItem[]) {
+  window.localStorage.setItem(favoritesStorageKey, JSON.stringify(items));
+}
+
+function isFavoriteItem(value: unknown): value is FavoriteItem {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const item = value as Partial<FavoriteItem>;
+
+  return (
+    typeof item.id === "string" &&
+    typeof item.title === "string" &&
+    typeof item.url === "string" &&
+    typeof item.company === "string" &&
+    typeof item.source === "string" &&
+    typeof item.sourceSlug === "string" &&
+    typeof item.favoritedAt === "string"
+  );
+}
+
 export function SearchExperience() {
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<SearchSort>("latest");
   const [filters, setFilters] = useState<SearchFilters>(emptyFilters);
   const [currentPage, setCurrentPage] = useState(1);
   const [result, setResult] = useState<SearchResponse | null>(null);
+  const [companyFacets, setCompanyFacets] = useState<FacetItem[]>([]);
+  const [favoriteItems, setFavoriteItems] = useState<FavoriteItem[]>([]);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [suggestions, setSuggestions] = useState<SuggestionItem[]>([]);
@@ -307,6 +400,7 @@ export function SearchExperience() {
 
   useEffect(() => {
     void runSearch("", "latest", emptyFilters, 1);
+    setFavoriteItems(loadFavoriteItems());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -398,6 +492,9 @@ export function SearchExperience() {
 
       const data = (await response.json()) as SearchResponse;
       setResult(data);
+      if (nextFilters.sources.length === 0) {
+        setCompanyFacets(data.facets.sources);
+      }
     } catch (error) {
       setResult(null);
       setErrorMessage(error instanceof Error ? error.message : "검색 중 오류가 발생했습니다.");
@@ -422,6 +519,16 @@ export function SearchExperience() {
     void runSearch(query, sortOrder, nextFilters, 1);
   }
 
+  function handleCompanyToggle(value: string) {
+    const nextFilters = {
+      ...emptyFilters,
+      sources: toggleValue(filters.sources, value),
+    };
+    setFilters(nextFilters);
+
+    void runSearch("", "latest", nextFilters, 1);
+  }
+
   function handleClearFilters() {
     setFilters(emptyFilters);
     void runSearch(query, sortOrder, emptyFilters, 1);
@@ -429,6 +536,23 @@ export function SearchExperience() {
 
   function handlePageChange(nextPage: number) {
     void runSearch(query, sortOrder, filters, nextPage);
+  }
+
+  function handleFavoriteToggle(item: SearchResultItem) {
+    setFavoriteItems((currentItems) => {
+      const isAlreadyFavorite = currentItems.some((favorite) => favorite.id === item.id);
+      const nextItems = isAlreadyFavorite
+        ? currentItems.filter((favorite) => favorite.id !== item.id)
+        : [{ ...item, favoritedAt: new Date().toISOString() }, ...currentItems];
+
+      saveFavoriteItems(nextItems);
+
+      if (showFavoritesOnly && nextItems.length === 0) {
+        setShowFavoritesOnly(false);
+      }
+
+      return nextItems;
+    });
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -510,7 +634,23 @@ export function SearchExperience() {
         ))}
       </div>
 
+      {companyFacets.length > 0 ? (
+        <CompanyExplorer
+          facets={companyFacets}
+          selectedValues={filters.sources}
+          onToggle={handleCompanyToggle}
+        />
+      ) : null}
+
       <div className="search-toolbar" aria-label="검색 정렬">
+        <button
+          className={`favorite-filter-button${showFavoritesOnly ? " is-active" : ""}`}
+          type="button"
+          aria-pressed={showFavoritesOnly}
+          onClick={() => setShowFavoritesOnly((current) => !current)}
+        >
+          즐겨찾기 {favoriteItems.length}
+        </button>
         <span>정렬</span>
         <div className="sort-control" role="radiogroup" aria-label="검색 결과 정렬">
           {sortOptions.map((option) => (
@@ -541,6 +681,10 @@ export function SearchExperience() {
         isLoading={isLoading}
         errorMessage={errorMessage}
         currentPage={currentPage}
+        favoriteItems={favoriteItems}
+        showFavoritesOnly={showFavoritesOnly}
+        favoriteIds={new Set(favoriteItems.map((item) => item.id))}
+        onFavoriteToggle={handleFavoriteToggle}
         onPageChange={handlePageChange}
       />
     </section>
@@ -559,15 +703,16 @@ function toggleFilter(
   key: keyof SearchFilters,
   value: string,
 ): SearchFilters {
-  const currentValues = filters[key];
-  const nextValues = currentValues.includes(value)
-    ? currentValues.filter((currentValue) => currentValue !== value)
-    : [...currentValues, value];
-
   return {
     ...filters,
-    [key]: nextValues,
+    [key]: toggleValue(filters[key], value),
   };
+}
+
+function toggleValue(values: string[], value: string): string[] {
+  return values.includes(value)
+    ? values.filter((currentValue) => currentValue !== value)
+    : [...values, value];
 }
 
 function selectedFilterCount(filters: SearchFilters): number {
@@ -611,19 +756,91 @@ function SuggestionList({
   );
 }
 
+function CompanyExplorer({
+  facets,
+  selectedValues,
+  onToggle,
+}: {
+  facets: FacetItem[];
+  selectedValues: string[];
+  onToggle: (value: string) => void;
+}) {
+  const visibleCompanies = mergeSelectedFacets(facets, selectedValues).slice(0, 16);
+
+  if (visibleCompanies.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="company-explorer" aria-label="기업별 최신 글 탐색">
+      <div className="company-explorer-header">
+        <span>기업별 최신 글</span>
+      </div>
+      <div className="company-chip-list">
+        {visibleCompanies.map((facet) => {
+          const isSelected = selectedValues.includes(facet.value);
+          const logo = getCompanyLogoByName(facet.label, facet.value);
+
+          return (
+            <button
+              className={`company-chip${isSelected ? " is-active" : ""}`}
+              type="button"
+              key={`company-${facet.value}`}
+              aria-pressed={isSelected}
+              aria-label={`${facet.label} 최신 글 보기`}
+              title={facet.label}
+              onClick={() => onToggle(facet.value)}
+            >
+              <CompanyLogoMark logo={logo} label={facet.label} />
+              <span>{facet.count}</span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function SearchState({
   result,
   isLoading,
   errorMessage,
   currentPage,
+  favoriteItems,
+  showFavoritesOnly,
+  favoriteIds,
+  onFavoriteToggle,
   onPageChange,
 }: {
   result: SearchResponse | null;
   isLoading: boolean;
   errorMessage: string | null;
   currentPage: number;
+  favoriteItems: FavoriteItem[];
+  showFavoritesOnly: boolean;
+  favoriteIds: Set<string>;
+  onFavoriteToggle: (item: SearchResultItem) => void;
   onPageChange: (page: number) => void;
 }) {
+  if (showFavoritesOnly) {
+    if (favoriteItems.length === 0) {
+      return <p className="result-empty">아직 즐겨찾기한 사례가 없습니다.</p>;
+    }
+
+    return (
+      <div className="results">
+        <div className="result-summary">
+          즐겨찾기한 사례 <strong>{favoriteItems.length}</strong>개를 보고 있습니다.
+        </div>
+        <ResultList
+          items={favoriteItems}
+          favoriteIds={favoriteIds}
+          onFavoriteToggle={onFavoriteToggle}
+        />
+      </div>
+    );
+  }
+
   if (isLoading) {
     return <p className="result-empty">검색 결과를 불러오는 중입니다.</p>;
   }
@@ -654,57 +871,104 @@ function SearchState({
           </>
         ) : (
           <>
-            최신 기업 기술 블로그 <strong>{result.total}</strong>개 중{" "}
-            {formatResultRange(result)}를 보고 있습니다.
+            {result.filters.sources.length > 0 ? "선택한 기업의 최신 글" : "최신 기업 기술 블로그"}{" "}
+            <strong>{result.total}</strong>개 중 {formatResultRange(result)}를 보고 있습니다.
           </>
         )}
       </div>
       <ResultOverview result={result} />
-      <div className="result-list">
-        {result.items.map((item) => (
-          <article className="result-card" key={item.id}>
-            <div className="result-card-header">
-              <div className="source-heading">
-                <CompanyLogo item={item} />
-                <div>
-                  <div className="source-company">{item.company}</div>
-                  <div className="result-meta">
-                    <span>{item.source}</span>
-                    <span>{formatDate(item.publishedAt)}</span>
-                  </div>
-                </div>
-              </div>
-              {formatContentType(item.contentType) ? (
-                <span className="result-type">{formatContentType(item.contentType)}</span>
-              ) : null}
-            </div>
-            <h2>
-              <a href={item.url} target="_blank" rel="noreferrer">
-                <HighlightedText value={highlightOrText(item, "title", item.title)} />
-              </a>
-            </h2>
-            <section className="case-summary" aria-label="사례 요약">
-              <p>
-                {bestSnippet(item)}
-              </p>
-            </section>
-            <CaseDetails item={item} />
-            <KeywordList item={item} />
-            <div className="result-card-footer">
-              <MatchEvidenceDetails item={item} />
-              <a className="source-link" href={item.url} target="_blank" rel="noreferrer">
-                원문 보기
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
+      <ResultList
+        items={result.items}
+        favoriteIds={favoriteIds}
+        onFavoriteToggle={onFavoriteToggle}
+      />
       <PaginationControls
         page={currentPage}
         totalPages={result.totalPages}
         onPageChange={onPageChange}
       />
     </div>
+  );
+}
+
+function ResultList({
+  items,
+  favoriteIds,
+  onFavoriteToggle,
+}: {
+  items: SearchResultItem[];
+  favoriteIds: Set<string>;
+  onFavoriteToggle: (item: SearchResultItem) => void;
+}) {
+  return (
+    <div className="result-list">
+      {items.map((item) => (
+        <ResultCard
+          item={item}
+          isFavorite={favoriteIds.has(item.id)}
+          key={item.id}
+          onFavoriteToggle={onFavoriteToggle}
+        />
+      ))}
+    </div>
+  );
+}
+
+function ResultCard({
+  item,
+  isFavorite,
+  onFavoriteToggle,
+}: {
+  item: SearchResultItem;
+  isFavorite: boolean;
+  onFavoriteToggle: (item: SearchResultItem) => void;
+}) {
+  const contentType = formatContentType(item.contentType);
+
+  return (
+    <article className="result-card">
+      <div className="result-card-header">
+        <div className="source-heading">
+          <CompanyLogo item={item} />
+          <div>
+            <div className="source-company">{item.company}</div>
+            <div className="result-meta">
+              <span>{item.source}</span>
+              <span>{formatDate(item.publishedAt)}</span>
+            </div>
+          </div>
+        </div>
+        <div className="result-card-actions">
+          {contentType ? <span className="result-type">{contentType}</span> : null}
+          <button
+            className={`favorite-button${isFavorite ? " is-active" : ""}`}
+            type="button"
+            aria-pressed={isFavorite}
+            aria-label={isFavorite ? "즐겨찾기 해제" : "즐겨찾기 추가"}
+            title={isFavorite ? "즐겨찾기 해제" : "즐겨찾기 추가"}
+            onClick={() => onFavoriteToggle(item)}
+          >
+            ★
+          </button>
+        </div>
+      </div>
+      <h2>
+        <a href={item.url} target="_blank" rel="noreferrer">
+          <HighlightedText value={highlightOrText(item, "title", item.title)} />
+        </a>
+      </h2>
+      <section className="case-summary" aria-label="사례 요약">
+        <p>{bestSnippet(item)}</p>
+      </section>
+      <CaseDetails item={item} />
+      <KeywordList item={item} />
+      <div className="result-card-footer">
+        <MatchEvidenceDetails item={item} />
+        <a className="source-link" href={item.url} target="_blank" rel="noreferrer">
+          원문 보기
+        </a>
+      </div>
+    </article>
   );
 }
 
@@ -948,6 +1212,10 @@ function HighlightedText({ value }: { value: string }) {
 function CompanyLogo({ item }: { item: SearchResultItem }) {
   const logo = getCompanyLogo(item);
 
+  return <CompanyLogoMark logo={logo} label={item.company} />;
+}
+
+function CompanyLogoMark({ logo, label }: { logo: CompanyLogo; label: string }) {
   return (
     <span
       className="company-logo"
@@ -958,8 +1226,8 @@ function CompanyLogo({ item }: { item: SearchResultItem }) {
           "--logo-border": logo.border ?? logo.background,
         } as CSSProperties
       }
-      aria-label={`${item.company} 로고`}
-      title={item.company}
+      aria-label={`${label} 로고`}
+      title={label}
     >
       {logo.imageSrc ? <img src={logo.imageSrc} alt="" /> : logo.label}
     </span>

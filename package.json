@@ -17,6 +17,8 @@
     "search:reindex": "cd apps/backend && uv run python -m app.search.indexer",
     "suggest:reindex": "cd apps/backend && uv run python -m app.search.suggestions",
     "suggest:audit": "cd apps/backend && uv run python -m app.search.suggestion_audit",
+    "search:alias-audit": "cd apps/backend && uv run python -m app.search.query_alias_audit",
+    "search:ambiguous-audit": "cd apps/backend && uv run python -m app.search.ambiguous_query_audit",
     "search:evaluate": "cd apps/backend && uv run python -m app.search.evaluation.evaluator",
     "search:audit": "cd apps/backend && uv run python -m app.search.evaluation.audit",
     "infra:up": "docker compose -f infra/docker-compose.yml up -d",

@@ -5,7 +5,6 @@ export default function Home() {
     <main className="page-shell">
       <header className="topbar">
         <div className="brand">TechCase</div>
-        <div className="status-pill">AWS 기술 블로그 MVP</div>
       </header>
 
       <section className="hero">

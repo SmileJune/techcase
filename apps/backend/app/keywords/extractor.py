@@ -12,6 +12,9 @@ from app.models.article import Article
 from app.models.article_keyword import ArticleKeyword
 
 MATCHED_BY = "dictionary_v1"
+TITLE_ONLY_ALIASES = {
+    "Go": ("go",),
+}
 
 
 @dataclass(frozen=True)
@@ -45,12 +48,30 @@ def extract_keywords(article: Article) -> list[ExtractedKeyword]:
                         confidence=confidence,
                     )
 
+            if field_name == "title" and matches_title_only_alias(text, rule):
+                key = (rule.keyword, rule.keyword_type)
+                previous = extracted.get(key)
+                if previous is None or previous.confidence < 0.95:
+                    extracted[key] = ExtractedKeyword(
+                        keyword=rule.keyword,
+                        keyword_type=rule.keyword_type,
+                        confidence=0.95,
+                    )
+
     return sorted(extracted.values(), key=lambda item: (item.keyword_type, item.keyword))
 
 
 def matches_rule(text: str, rule: KeywordRule) -> bool:
     normalized_text = normalize_text(text)
     return any(contains_alias(normalized_text, alias) for alias in rule.aliases)
+
+
+def matches_title_only_alias(text: str, rule: KeywordRule) -> bool:
+    normalized_text = normalize_text(text)
+    return any(
+        contains_alias(normalized_text, alias)
+        for alias in TITLE_ONLY_ALIASES.get(rule.keyword, ())
+    )
 
 
 def normalize_text(value: str) -> str:

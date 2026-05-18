@@ -698,6 +698,195 @@ average precision@5, ndcg@10 악화 없음
 상위 5개 결과가 사람이 봐도 query intent와 맞음
 ```
 
+## Query-only alias audit
+
+일부 기술명은 일반 단어와 충돌합니다. 예를 들어 `next`를 기술 사전 alias로 그대로 등록하면 `next step`, `Google Cloud Next` 같은 맥락까지 `Next.js`로 과하게 해석될 수 있습니다. 반대로 `next`를 완전히 무시하면 사용자가 `Next.js`를 기대하고 검색했을 때 원하는 결과가 늦게 나옵니다.
+
+이런 케이스는 일반 `KeywordRule` alias가 아니라 `QUERY_ONLY_KEYWORD_ALIASES`로 관리합니다.
+
+```text
+next -> Next.js
+```
+
+운영 원칙:
+
+```text
+일반 alias에는 명확한 표기만 넣는다. 예: next.js, nextjs
+짧거나 일반적인 단어는 query-only alias로만 둔다. 예: next
+문장 안 부분 매칭은 하지 않는다. 예: next step은 Next.js로 보지 않음
+검색 결과와 자동완성이 모두 기대대로 동작하는지 audit으로 확인한다.
+```
+
+점검 명령:
+
+```bash
+npm run search:alias-audit
+```
+
+현재 이 명령은 다음을 확인합니다.
+
+```text
+alias 입력이 기대 keyword로 매칭되는가
+query expansion에 반영되는가
+상위 검색 결과에 기대 keyword가 포함되는가
+자동완성 prefix에서도 기대 keyword가 노출되는가
+```
+
+예시 결과:
+
+```text
+PASS next -> Next.js
+expanded: next next.js
+top: 5/5
+suggestions(nex): Next.js
+```
+
+## Ambiguous query audit
+
+`query-only alias`로 승격하기 전에는 짧고 모호한 검색어의 현재 동작을 먼저 확인합니다. 이를 위해 별도 audit 명령을 둡니다.
+
+```bash
+npm run search:ambiguous-audit
+```
+
+기본 점검 대상:
+
+```text
+next
+go
+golang
+spring
+node
+ai
+r
+```
+
+이 명령은 각 query에 대해 다음 정보를 출력합니다.
+
+```text
+total result count
+query expansion 결과
+matched keyword 목록
+자동완성 후보
+상위 검색 결과 제목, source, score, technologies
+```
+
+판단 기준:
+
+```text
+검색 상위 결과가 사용자의 일반적인 기술 의도와 맞는가
+기술 keyword가 제대로 붙어 facet과 ranking에 활용되는가
+자동완성 후보가 사용자를 더 명확한 기술명으로 유도하는가
+일반 alias로 추가했을 때 본문 오탐이 커지지 않는가
+query-only alias 또는 별도 추출 전략이 필요한가
+```
+
+현재 관찰된 주의 케이스:
+
+```text
+go:
+  Go 언어 글은 검색되지만 기술 keyword가 없음
+  일반 alias로 go를 추가하면 영어 동사 go 오탐 가능성이 큼
+
+node:
+  node 검색 상위가 EKS Node Group 중심으로 올라옴
+  Node.js 의도와 Kubernetes node 의도를 구분해야 함
+
+spring:
+  Spring Boot 자동완성은 가능하지만 spring 자체는 keyword 매칭이 아님
+  Spring Framework, Spring Batch, Spring Cloud 등 더 넓은 분류가 필요할 수 있음
+
+ai:
+  LLM, MLOps, AI 제품 소식, 리터러시 글이 섞임
+  기술 alias보다 content type, technology, problem facet로 좁히는 편이 안전함
+```
+
+### Go/Golang 처리 방식
+
+`go`는 대표적인 모호 검색어입니다. 기술명으로는 Go 언어를 뜻하지만, 영어 본문에서는 일반 동사로도 매우 자주 등장합니다. 따라서 TechCase는 `go`를 일반 사전 alias로 두지 않습니다.
+
+현재 처리:
+
+```text
+Keyword: Go
+normal aliases: golang, go language, go programming language
+query-only alias: go -> Go
+title-only extraction alias: Go 제목 안의 단독 go
+```
+
+의도:
+
+```text
+golang처럼 명확한 표현은 본문/요약/제목에서 Go keyword로 추출
+go 단독 검색은 사용자의 기술 검색 의도로 보고 Go로 query expansion
+본문 속 일반 동사 go는 Go keyword로 추출하지 않음
+제목의 Go는 기술 글 제목일 가능성이 높으므로 keyword로 추출
+```
+
+`query-only alias` 검색에서는 원문 단어를 넓게 본문 검색하지 않고 canonical keyword 중심으로 랭킹합니다. 이를 통해 `next`, `go`처럼 짧은 단어가 본문에서 우연히 등장해 상위로 올라오는 현상을 줄입니다.
+
+검증 기준:
+
+```text
+npm run search:alias-audit
+npm run search:ambiguous-audit
+npm run search:evaluate
+```
+
+현재 결과:
+
+```text
+go -> Go 자동완성 노출
+go 검색 상위 5개 모두 Go keyword 포함
+tech-go precision@5 = 0.600
+tech-go recall@10 = 1.000
+tech-go ndcg@10 = 0.955
+```
+
+아직 완벽한 상태는 아닙니다. Go가 글의 주제인지, 본문에서 보조적으로 언급된 기술인지 구분하려면 keyword confidence나 LLM summary의 technologies confidence를 ranking에 반영할 필요가 있습니다.
+
+### Node.js 처리 방식
+
+`node`도 모호한 검색어입니다. JavaScript 런타임인 Node.js를 뜻할 수도 있고, Kubernetes/EKS node를 뜻할 수도 있습니다. TechCase의 일반 검색창에서는 `node` 단독 입력을 Node.js 기술 검색 의도로 우선 해석하되, 인프라 node 검색은 더 구체적인 query로 다루는 방향을 택했습니다.
+
+현재 처리:
+
+```text
+Keyword: Node.js
+normal aliases: node.js, nodejs, node js
+query-only alias: node -> Node.js
+```
+
+의도:
+
+```text
+node.js/nodejs처럼 명확한 표현은 기존처럼 Node.js keyword로 추출
+node 단독 검색은 Node.js로 query expansion
+본문 속 일반 node만으로는 Node.js keyword를 추출하지 않음
+Kubernetes node 문맥은 Kubernetes, Amazon EKS, node group 관련 query로 별도 관리
+```
+
+검증 결과:
+
+```text
+node -> Node.js 자동완성 노출
+node 검색 상위 5개 모두 Node.js keyword 포함
+tech-nodejs precision@5 = 0.800
+tech-nodejs recall@10 = 1.000
+tech-nodejs ndcg@10 = 0.972
+```
+
+남은 설계 과제:
+
+```text
+EKS node group
+Kubernetes node
+GPU node
+node autoscaling
+```
+
+위와 같은 인프라 node 의도는 Node.js와 다른 평가셋으로 관리해야 합니다. 이를 분리하지 않으면 `node` 한 단어에 서로 다른 사용자 의도가 섞입니다.
+
 ## 검색 품질 검증 쿼리
 
 MVP 검색 품질은 다음 쿼리로 반복 검증합니다.
