@@ -1,0 +1,678 @@
+{
+  "version": 1,
+  "description": "Broad keyword probe set for TechCase search quality checks. This dataset is for automated triage, not judged relevance metrics.",
+  "queries": [
+    {
+      "query": "Kafka",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["카프카", "Apache Kafka", "MSK"],
+      "intent": "Kafka가 메시징, 이벤트 처리, CDC, 로그 파이프라인, 스트리밍 맥락에서 사용된 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["kafka", "카프카", "msk", "event", "cdc", "stream", "log"]
+    },
+    {
+      "query": "카프카",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["Kafka", "Apache Kafka", "MSK"],
+      "intent": "한글 기술명으로 검색해도 Kafka 기반 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["kafka", "카프카", "msk", "이벤트", "스트리밍"]
+    },
+    {
+      "query": "Redis",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["레디스", "Redis Stream", "ElastiCache"],
+      "intent": "캐시뿐 아니라 Redis Stream, Redis Cluster, 커넥션, 운영 이슈 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["redis", "레디스", "elasticache", "cache", "stream", "cluster"]
+    },
+    {
+      "query": "레디스",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["Redis", "Redis Stream"],
+      "intent": "한글 기술명으로 Redis 사례가 검색되어야 한다.",
+      "intendedTerms": ["redis", "레디스", "cache", "stream"]
+    },
+    {
+      "query": "Kubernetes",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["쿠버네티스", "k8s", "EKS"],
+      "intent": "쿠버네티스 운영, 배포, 오퍼레이터, EKS 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["kubernetes", "쿠버네티스", "k8s", "eks", "operator"]
+    },
+    {
+      "query": "쿠버네티스",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["Kubernetes", "k8s", "EKS"],
+      "intent": "한글 기술명으로 Kubernetes 사례가 검색되어야 한다.",
+      "intendedTerms": ["kubernetes", "쿠버네티스", "k8s", "eks"]
+    },
+    {
+      "query": "k8s",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["Kubernetes", "쿠버네티스"],
+      "intent": "약어로 검색해도 Kubernetes 관련 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["kubernetes", "쿠버네티스", "k8s", "eks"]
+    },
+    {
+      "query": "Docker",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["도커", "container", "컨테이너"],
+      "intent": "컨테이너 기반 개발, 배포, 운영 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["docker", "도커", "container", "컨테이너"]
+    },
+    {
+      "query": "Terraform",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["테라폼", "IaC", "infrastructure as code"],
+      "intent": "인프라 자동화, IaC, 배포 일관성 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["terraform", "테라폼", "iac", "infrastructure"]
+    },
+    {
+      "query": "Elasticsearch",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["엘라스틱서치", "elastic search", "elastic-search"],
+      "intent": "검색 인덱스, 검색 품질, 실시간 색인, ES 운영 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["elasticsearch", "엘라스틱", "elastic", "search", "index"]
+    },
+    {
+      "query": "엘라스틱서치",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["Elasticsearch", "elastic search"],
+      "intent": "한글 기술명으로 Elasticsearch 사례가 검색되어야 한다.",
+      "intendedTerms": ["elasticsearch", "엘라스틱", "elastic", "검색", "인덱스"]
+    },
+    {
+      "query": "elastic search",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["Elasticsearch", "엘라스틱서치"],
+      "intent": "띄어쓴 표현으로도 Elasticsearch 사례가 검색되어야 한다.",
+      "intendedTerms": ["elasticsearch", "elastic", "search"]
+    },
+    {
+      "query": "OpenSearch",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["오픈서치", "Amazon OpenSearch Service"],
+      "intent": "OpenSearch Analyzer, 검색, 관측성, 운영 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["opensearch", "오픈서치", "analyzer", "search"]
+    },
+    {
+      "query": "오픈서치",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["OpenSearch", "Amazon OpenSearch Service"],
+      "intent": "한글 표현으로 OpenSearch 사례가 검색되어야 한다.",
+      "intendedTerms": ["opensearch", "오픈서치", "search", "검색"]
+    },
+    {
+      "query": "MySQL",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["mysql", "RDS MySQL", "Aurora MySQL"],
+      "intent": "MySQL 성능, 운영, 마이그레이션, 대용량 쿼리 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["mysql", "rds", "aurora", "query", "쿼리"]
+    },
+    {
+      "query": "PostgreSQL",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["postgres", "postgresql", "RDS PostgreSQL"],
+      "intent": "PostgreSQL 운영, 마이그레이션, 쿼리 최적화 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["postgresql", "postgres", "rds", "query"]
+    },
+    {
+      "query": "ClickHouse",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["클릭하우스", "OLAP"],
+      "intent": "ClickHouse 대용량 분석, 집계, OLAP 성능 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["clickhouse", "클릭하우스", "olap", "집계", "분석"]
+    },
+    {
+      "query": "MongoDB",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["몽고디비", "MongoDB Atlas"],
+      "intent": "MongoDB 운영, Atlas Search, 데이터 모델링 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["mongodb", "mongo", "atlas", "search"]
+    },
+    {
+      "query": "DynamoDB",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["Amazon DynamoDB", "다이나모DB"],
+      "intent": "DynamoDB 설계, 마이그레이션, 분석 연동 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["dynamodb", "dynamo", "nosql"]
+    },
+    {
+      "query": "S3",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["Amazon S3", "Object Storage"],
+      "intent": "S3 비용, CDN, 데이터 저장, 파이프라인 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["s3", "storage", "cdn", "비용"]
+    },
+    {
+      "query": "Lambda",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["AWS Lambda", "람다", "serverless"],
+      "intent": "Lambda 서버리스, 이벤트 처리, 운영 최적화 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["lambda", "람다", "serverless", "서버리스"]
+    },
+    {
+      "query": "ECS",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["Amazon ECS", "Fargate"],
+      "intent": "ECS/Fargate 컨테이너 운영, 배포 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["ecs", "fargate", "container"]
+    },
+    {
+      "query": "EKS",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["Amazon EKS", "Kubernetes"],
+      "intent": "EKS 기반 Kubernetes 운영, 비용, 자동화 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["eks", "kubernetes", "쿠버네티스"]
+    },
+    {
+      "query": "Spring Boot",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["스프링 부트", "springboot"],
+      "intent": "Spring Boot 기반 백엔드, 운영, 성능 개선 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["spring boot", "spring", "스프링"]
+    },
+    {
+      "query": "JPA",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["Hibernate", "ORM"],
+      "intent": "JPA/Hibernate 성능, 쿼리, 도메인 모델링 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["jpa", "hibernate", "orm"]
+    },
+    {
+      "query": "React",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["리액트", "React.js"],
+      "intent": "React 프론트엔드, 마이그레이션, 성능, 상태관리 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["react", "리액트", "frontend", "프론트"]
+    },
+    {
+      "query": "Next.js",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["Next", "nextjs", "넥스트"],
+      "intent": "Next.js 관련 기술 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["next.js", "nextjs", "next", "react"]
+    },
+    {
+      "query": "Next",
+      "category": "ambiguous_technology",
+      "priority": "high",
+      "aliases": ["Next.js", "nextjs", "넥스트"],
+      "intent": "일반 단어 next가 아니라 Next.js 기술 사례가 우선되어야 한다.",
+      "intendedTerms": ["next.js", "nextjs", "react"]
+    },
+    {
+      "query": "Node.js",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["Node", "nodejs", "노드"],
+      "intent": "Node.js 런타임, 서버 개발, 프론트엔드 빌드 도구 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["node.js", "nodejs", "node", "javascript"]
+    },
+    {
+      "query": "Node",
+      "category": "ambiguous_technology",
+      "priority": "medium",
+      "aliases": ["Node.js", "nodejs", "노드"],
+      "intent": "일반 node가 아니라 Node.js 런타임 관련 사례가 우선되어야 한다.",
+      "intendedTerms": ["node.js", "nodejs", "javascript"]
+    },
+    {
+      "query": "FastAPI",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["fast api", "Python API"],
+      "intent": "FastAPI 기반 API 서버 사례가 검색되어야 한다.",
+      "intendedTerms": ["fastapi", "fast api", "python"]
+    },
+    {
+      "query": "GraphQL",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["그래프QL", "Apollo"],
+      "intent": "GraphQL API 설계와 운영 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["graphql", "apollo", "api"]
+    },
+    {
+      "query": "gRPC",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["grpc", "Protocol Buffers", "protobuf"],
+      "intent": "gRPC, protobuf, 서비스 간 통신 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["grpc", "protobuf", "protocol buffer"]
+    },
+    {
+      "query": "Java",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["자바", "JVM"],
+      "intent": "Java/JVM 기반 백엔드와 운영 이슈 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["java", "자바", "jvm"]
+    },
+    {
+      "query": "Go",
+      "category": "ambiguous_technology",
+      "priority": "high",
+      "aliases": ["Golang", "고", "고랭"],
+      "intent": "일반 동사 go가 아니라 Go/Golang 기술 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["golang", "go", "고랭"]
+    },
+    {
+      "query": "Python",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["파이썬"],
+      "intent": "Python 기반 데이터, API, 자동화 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["python", "파이썬"]
+    },
+    {
+      "query": "Kotlin",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["코틀린"],
+      "intent": "Kotlin 백엔드, Android, Spring 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["kotlin", "코틀린"]
+    },
+    {
+      "query": "TypeScript",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["타입스크립트", "TS"],
+      "intent": "TypeScript 프론트엔드/백엔드 개발 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["typescript", "타입스크립트"]
+    },
+    {
+      "query": "LLM",
+      "category": "technology",
+      "priority": "high",
+      "aliases": ["Large Language Model", "생성형 AI", "GenAI"],
+      "intent": "LLM을 실제 서비스나 내부 도구에 적용한 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["llm", "ai", "rag", "생성형", "language model"]
+    },
+    {
+      "query": "RAG",
+      "category": "architecture",
+      "priority": "high",
+      "aliases": ["검색 증강 생성", "retrieval augmented generation"],
+      "intent": "RAG 기반 검색/문서/AI 도구 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["rag", "retrieval", "검색", "llm"]
+    },
+    {
+      "query": "Vector DB",
+      "category": "technology",
+      "priority": "medium",
+      "aliases": ["벡터DB", "vector database", "embedding"],
+      "intent": "벡터 검색, 임베딩, LLM 검색 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["vector", "벡터", "embedding", "임베딩"]
+    },
+    {
+      "query": "장애 대응",
+      "category": "problem",
+      "priority": "high",
+      "aliases": ["incident response", "장애 분석", "장애 복구"],
+      "intent": "실제 장애 원인 분석, 대응, 재발 방지 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["장애", "incident", "복구", "대응", "재발"]
+    },
+    {
+      "query": "incident response",
+      "category": "problem",
+      "priority": "medium",
+      "aliases": ["장애 대응", "장애 분석"],
+      "intent": "영문 문제 키워드로도 장애 대응 사례가 검색되어야 한다.",
+      "intendedTerms": ["incident", "장애", "response", "복구"]
+    },
+    {
+      "query": "성능 최적화",
+      "category": "problem",
+      "priority": "high",
+      "aliases": ["performance optimization", "성능 개선", "병목 개선"],
+      "intent": "응답 지연, 쿼리 성능, 처리량 개선 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["성능", "performance", "최적화", "latency", "지연"]
+    },
+    {
+      "query": "비용 최적화",
+      "category": "problem",
+      "priority": "high",
+      "aliases": ["cost optimization", "비용 절감", "FinOps"],
+      "intent": "클라우드 비용 절감, 리소스 효율화, FinOps 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["비용", "cost", "finops", "절감", "optimization"]
+    },
+    {
+      "query": "마이그레이션",
+      "category": "problem",
+      "priority": "high",
+      "aliases": ["migration", "전환", "이관"],
+      "intent": "기술 전환, 데이터 이관, 버전 업그레이드 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["migration", "마이그레이션", "전환", "이관"]
+    },
+    {
+      "query": "대용량 트래픽",
+      "category": "problem",
+      "priority": "high",
+      "aliases": ["high traffic", "traffic spike", "대규모 트래픽"],
+      "intent": "대규모 트래픽 처리, 스케일링, 병목 해결 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["트래픽", "traffic", "scale", "스케일"]
+    },
+    {
+      "query": "데이터 정합성",
+      "category": "problem",
+      "priority": "high",
+      "aliases": ["data consistency", "consistency", "정합성"],
+      "intent": "동시성, 트랜잭션, 정합성 보장 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["정합성", "consistency", "transaction", "동시성"]
+    },
+    {
+      "query": "배포 자동화",
+      "category": "problem",
+      "priority": "medium",
+      "aliases": ["deployment automation", "CI/CD", "자동 배포"],
+      "intent": "CI/CD, 배포 자동화, 운영 효율화 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["배포", "deploy", "ci", "cd", "automation"]
+    },
+    {
+      "query": "모니터링",
+      "category": "problem",
+      "priority": "medium",
+      "aliases": ["monitoring", "observability", "관측성"],
+      "intent": "모니터링, 관측성, 지표/로그/트레이싱 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["monitoring", "observability", "모니터링", "관측성"]
+    },
+    {
+      "query": "로그 수집",
+      "category": "problem",
+      "priority": "high",
+      "aliases": ["log pipeline", "로그 파이프라인", "logging"],
+      "intent": "로그 수집, 로그 파이프라인, 분석 플랫폼 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["로그", "log", "pipeline", "파이프라인"]
+    },
+    {
+      "query": "검색 품질 개선",
+      "category": "problem",
+      "priority": "high",
+      "aliases": ["search relevance", "검색 개선", "검색 랭킹"],
+      "intent": "검색 랭킹, 인덱스, analyzer, relevance 개선 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["검색", "search", "relevance", "ranking", "analyzer"]
+    },
+    {
+      "query": "캐시 전략",
+      "category": "problem",
+      "priority": "medium",
+      "aliases": ["cache strategy", "캐싱", "caching"],
+      "intent": "캐시 설계, Redis, CDN, 성능 개선 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["cache", "캐시", "caching", "redis", "cdn"]
+    },
+    {
+      "query": "병목 개선",
+      "category": "problem",
+      "priority": "medium",
+      "aliases": ["bottleneck", "bottleneck improvement"],
+      "intent": "성능 병목을 분석하고 개선한 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["병목", "bottleneck", "성능", "latency"]
+    },
+    {
+      "query": "운영 자동화",
+      "category": "problem",
+      "priority": "medium",
+      "aliases": ["operation automation", "ops automation"],
+      "intent": "운영 업무 자동화, 플랫폼 자동화 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["자동화", "automation", "운영", "ops"]
+    },
+    {
+      "query": "이벤트 기반 아키텍처",
+      "category": "architecture",
+      "priority": "high",
+      "aliases": ["event-driven architecture", "EDA", "이벤트 기반"],
+      "intent": "이벤트 기반 설계, 비동기 처리, 메시징 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["event", "이벤트", "kafka", "비동기"]
+    },
+    {
+      "query": "비동기 처리",
+      "category": "architecture",
+      "priority": "high",
+      "aliases": ["async processing", "asynchronous", "비동기"],
+      "intent": "비동기 메시징, 큐, 이벤트 처리 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["비동기", "async", "queue", "event", "kafka"]
+    },
+    {
+      "query": "데이터 파이프라인",
+      "category": "architecture",
+      "priority": "high",
+      "aliases": ["data pipeline", "streaming data pipeline"],
+      "intent": "데이터 수집, 처리, 적재 파이프라인 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["데이터", "pipeline", "파이프라인", "stream"]
+    },
+    {
+      "query": "CDC",
+      "category": "architecture",
+      "priority": "medium",
+      "aliases": ["Change Data Capture", "변경 데이터 캡처"],
+      "intent": "CDC 기반 데이터 동기화, 이벤트 발행, 마이그레이션 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["cdc", "change data capture", "동기화"]
+    },
+    {
+      "query": "MSA",
+      "category": "architecture",
+      "priority": "medium",
+      "aliases": ["microservices", "마이크로서비스"],
+      "intent": "마이크로서비스 전환, 서비스 분리, 운영 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["msa", "microservice", "마이크로서비스"]
+    },
+    {
+      "query": "서버리스",
+      "category": "architecture",
+      "priority": "medium",
+      "aliases": ["serverless", "Lambda"],
+      "intent": "서버리스 아키텍처, Lambda, 이벤트 기반 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["serverless", "서버리스", "lambda"]
+    },
+    {
+      "query": "CQRS",
+      "category": "architecture",
+      "priority": "low",
+      "aliases": ["Command Query Responsibility Segregation"],
+      "intent": "CQRS 패턴 또는 읽기/쓰기 모델 분리 사례가 검색되어야 한다.",
+      "intendedTerms": ["cqrs", "command", "query"]
+    },
+    {
+      "query": "Saga",
+      "category": "architecture",
+      "priority": "low",
+      "aliases": ["사가 패턴", "saga pattern"],
+      "intent": "분산 트랜잭션, Saga 패턴 사례가 검색되어야 한다.",
+      "intendedTerms": ["saga", "transaction", "트랜잭션"]
+    },
+    {
+      "query": "API Gateway",
+      "category": "architecture",
+      "priority": "medium",
+      "aliases": ["API 게이트웨이"],
+      "intent": "API Gateway 기반 라우팅, 인증, 마이크로서비스 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["api gateway", "gateway", "게이트웨이"]
+    },
+    {
+      "query": "Service Mesh",
+      "category": "architecture",
+      "priority": "medium",
+      "aliases": ["서비스 메시", "Istio", "Linkerd"],
+      "intent": "Service Mesh, mTLS, 트래픽 제어 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["service mesh", "서비스 메시", "istio", "linkerd", "mtls"]
+    },
+    {
+      "query": "GitOps",
+      "category": "architecture",
+      "priority": "medium",
+      "aliases": ["Argo CD", "ArgoCD"],
+      "intent": "GitOps, Argo CD, 선언형 배포 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["gitops", "argo", "argocd"]
+    },
+    {
+      "query": "Blue Green 배포",
+      "category": "architecture",
+      "priority": "low",
+      "aliases": ["blue-green deployment", "blue green"],
+      "intent": "Blue Green 배포와 무중단 배포 사례가 검색되어야 한다.",
+      "intendedTerms": ["blue", "green", "배포", "deployment"]
+    },
+    {
+      "query": "Canary 배포",
+      "category": "architecture",
+      "priority": "medium",
+      "aliases": ["canary deployment", "카나리 배포"],
+      "intent": "Canary 배포, 점진 배포, 트래픽 전환 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["canary", "카나리", "배포"]
+    },
+    {
+      "query": "결제",
+      "category": "domain",
+      "priority": "medium",
+      "aliases": ["payment", "payments"],
+      "intent": "결제 도메인의 안정성, 정합성, 아키텍처 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["결제", "payment", "정합성"]
+    },
+    {
+      "query": "주문",
+      "category": "domain",
+      "priority": "medium",
+      "aliases": ["order", "ordering"],
+      "intent": "주문 도메인 이벤트 처리, 정합성, 트래픽 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["주문", "order", "event", "정합성"]
+    },
+    {
+      "query": "검색",
+      "category": "domain",
+      "priority": "high",
+      "aliases": ["search", "검색 시스템"],
+      "intent": "서비스 검색 시스템, 검색 품질, 검색 인프라 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["검색", "search", "elasticsearch", "opensearch"]
+    },
+    {
+      "query": "추천",
+      "category": "domain",
+      "priority": "medium",
+      "aliases": ["recommendation", "추천 시스템"],
+      "intent": "추천 시스템, 추천 모델, 개인화 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["추천", "recommend", "model", "모델"]
+    },
+    {
+      "query": "광고",
+      "category": "domain",
+      "priority": "low",
+      "aliases": ["ad", "ads", "advertising"],
+      "intent": "광고 시스템, 타겟팅, 데이터 처리 사례가 검색되어야 한다.",
+      "intendedTerms": ["광고", "ad", "ads", "advertising"]
+    },
+    {
+      "query": "물류",
+      "category": "domain",
+      "priority": "medium",
+      "aliases": ["logistics", "배송"],
+      "intent": "물류/배송 도메인의 최적화, 데이터, 운영 사례가 검색되어야 한다.",
+      "intendedTerms": ["물류", "배송", "logistics"]
+    },
+    {
+      "query": "인증",
+      "category": "domain",
+      "priority": "medium",
+      "aliases": ["authentication", "auth", "certificate"],
+      "intent": "인증, 보안, 인증서, mTLS 사례가 상위에 나와야 한다.",
+      "intendedTerms": ["인증", "auth", "certificate", "mtls", "인증서"]
+    },
+    {
+      "query": "우아한형제들",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["Woowa Brothers", "우아한테크블로그"],
+      "intent": "우아한형제들 기술 블로그 사례가 최신순 또는 관련도순으로 나와야 한다.",
+      "intendedTerms": ["woowa", "우아한", "배민"]
+    },
+    {
+      "query": "카카오페이",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["Kakao Pay"],
+      "intent": "카카오페이 기술 블로그 사례가 나와야 한다.",
+      "intendedTerms": ["kakao", "카카오페이"]
+    },
+    {
+      "query": "NHN Cloud",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["NHN", "NHN Cloud Meetup"],
+      "intent": "NHN Cloud Meetup 글이 실제 제목으로 나와야 한다.",
+      "intendedTerms": ["nhn", "cloud", "meetup"]
+    },
+    {
+      "query": "컬리",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["Kurly", "마켓컬리"],
+      "intent": "컬리 기술 블로그 사례가 나와야 한다.",
+      "intendedTerms": ["kurly", "컬리"]
+    },
+    {
+      "query": "토스",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["Toss", "토스 기술 블로그"],
+      "intent": "토스 기술 블로그 사례가 나와야 한다.",
+      "intendedTerms": ["toss", "토스"]
+    },
+    {
+      "query": "뱅크샐러드",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["Banksalad"],
+      "intent": "뱅크샐러드 기술 블로그 사례가 나와야 한다.",
+      "intendedTerms": ["banksalad", "뱅크샐러드"]
+    },
+    {
+      "query": "네이버",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["NAVER", "NAVER D2"],
+      "intent": "NAVER D2 기술 사례가 나와야 한다.",
+      "intendedTerms": ["naver", "네이버", "d2"]
+    },
+    {
+      "query": "G마켓",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["Gmarket", "지마켓"],
+      "intent": "G마켓 기술 블로그 사례가 나와야 한다.",
+      "intendedTerms": ["gmarket", "g마켓", "지마켓"]
+    },
+    {
+      "query": "업스테이지",
+      "category": "company",
+      "priority": "medium",
+      "aliases": ["Upstage"],
+      "intent": "업스테이지 기술/AI 블로그 사례가 나와야 한다.",
+      "intendedTerms": ["upstage", "업스테이지"]
+    }
+  ]
+}

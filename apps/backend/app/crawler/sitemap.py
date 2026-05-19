@@ -139,6 +139,15 @@ def clean_title(value: str | None) -> str | None:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def first_heading_title(soup: BeautifulSoup) -> str | None:
+    for heading in soup.find_all("h1"):
+        title = clean_title(heading.get_text(" ", strip=True))
+        if title:
+            return title
+
+    return None
+
+
 def extract_nhn_cloud_payload(
     client: httpx.Client, source: Source, entry: SitemapEntry
 ) -> dict[str, Any]:
@@ -205,6 +214,7 @@ def extract_article_payload(url: str, html: str, lastmod: str | None) -> dict[st
         meta_content(soup, ("property", "og:title"), ("name", "twitter:title"))
         or document.short_title()
         or (soup.title.get_text(" ", strip=True) if soup.title else None)
+        or first_heading_title(soup)
     )
     if not title:
         title = url

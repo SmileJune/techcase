@@ -21,6 +21,7 @@
     "search:ambiguous-audit": "cd apps/backend && uv run python -m app.search.ambiguous_query_audit",
     "search:evaluate": "cd apps/backend && uv run python -m app.search.evaluation.evaluator",
     "search:audit": "cd apps/backend && uv run python -m app.search.evaluation.audit",
+    "search:keyword-probe": "cd apps/backend && uv run python -m app.search.evaluation.keyword_probe",
     "infra:up": "docker compose -f infra/docker-compose.yml up -d",
     "infra:down": "docker compose -f infra/docker-compose.yml down"
   }
