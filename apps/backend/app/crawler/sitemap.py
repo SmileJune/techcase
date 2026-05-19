@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import httpx
 from bs4 import BeautifulSoup
@@ -42,8 +42,13 @@ class SitemapCrawlSummary:
     created_count: int
     updated_count: int
     unchanged_count: int
+    skipped_count: int
     failed_count: int
     status: str
+
+
+class SkippedArticleError(Exception):
+    """Raised when a sitemap URL is not a usable article page."""
 
 
 def parse_sitemap(xml_text: str) -> list[SitemapEntry]:
@@ -134,6 +139,62 @@ def clean_title(value: str | None) -> str | None:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def extract_nhn_cloud_payload(
+    client: httpx.Client, source: Source, entry: SitemapEntry
+) -> dict[str, Any]:
+    parsed = urlparse(entry.url)
+    match = re.search(r"/posts/(\d+)/?$", parsed.path)
+    if not match:
+        raise ValueError(f"Unsupported NHN Cloud post URL: {entry.url}")
+
+    post_id = match.group(1)
+    api_url = urljoin(source.site_url, f"/tcblog/v1.0/posts/{post_id}")
+    response = client.get(
+        api_url,
+        headers={
+            "Accept": "application/json, text/plain, */*",
+            "Referer": entry.url,
+        },
+    )
+    response.raise_for_status()
+    data = response.json()
+
+    blog_post = data.get("blogPost")
+    if not isinstance(blog_post, dict):
+        raise SkippedArticleError(f"NHN Cloud post API returned no blogPost: {entry.url}")
+
+    post_per_lang = blog_post.get("postPerLang")
+    if not isinstance(post_per_lang, dict):
+        raise SkippedArticleError(f"NHN Cloud post API returned no postPerLang: {entry.url}")
+
+    title = clean_title(post_per_lang.get("title"))
+    if not title:
+        raise ValueError(f"NHN Cloud post API returned no title: {entry.url}")
+    if "NHN Cloud Meetup" not in title:
+        title = f"{title} : NHN Cloud Meetup"
+
+    content_html = post_per_lang.get("content") or ""
+    content_text = clean_feed_text(content_html)
+    summary = clean_feed_text(post_per_lang.get("description") or "")
+    published_at = parse_datetime(blog_post.get("publishTime") or blog_post.get("regTime"))
+
+    return {
+        "url": entry.url,
+        "title": title,
+        "author": blog_post.get("regId"),
+        "published_at": published_at or parse_datetime(entry.lastmod),
+        "summary": summary or None,
+        "content_html": content_html or None,
+        "content_text": content_text or None,
+        "raw_metadata": {
+            "sitemap_lastmod": entry.lastmod,
+            "collection_strategy": "sitemap",
+            "article_api_url": api_url,
+            "post_id": post_id,
+        },
+    }
+
+
 def extract_article_payload(url: str, html: str, lastmod: str | None) -> dict[str, Any]:
     soup = BeautifulSoup(html, "html.parser")
     document = Document(html)
@@ -177,7 +238,12 @@ def extract_article_payload(url: str, html: str, lastmod: str | None) -> dict[st
     }
 
 
-def fetch_article_payload(client: httpx.Client, entry: SitemapEntry) -> dict[str, Any]:
+def fetch_article_payload(
+    client: httpx.Client, source: Source, entry: SitemapEntry
+) -> dict[str, Any]:
+    if source.slug == "nhn-cloud-meetup":
+        return extract_nhn_cloud_payload(client, source, entry)
+
     response = client.get(entry.url)
     response.raise_for_status()
     return extract_article_payload(entry.url, response.text, entry.lastmod)
@@ -240,6 +306,7 @@ def crawl_sitemap_source(
     created_count = 0
     updated_count = 0
     unchanged_count = 0
+    skipped_count = 0
     failed_count = 0
     error_message: str | None = None
 
@@ -267,7 +334,7 @@ def crawl_sitemap_source(
         with httpx.Client(timeout=20.0, follow_redirects=True, headers=headers) as client:
             for entry in entries:
                 try:
-                    payload = fetch_article_payload(client, entry)
+                    payload = fetch_article_payload(client, source, entry)
                     result = upsert_article_payload(db, source, payload, collected_at)
                     if result == "created":
                         created_count += 1
@@ -275,6 +342,8 @@ def crawl_sitemap_source(
                         updated_count += 1
                     else:
                         unchanged_count += 1
+                except SkippedArticleError:
+                    skipped_count += 1
                 except Exception:
                     failed_count += 1
 
@@ -295,6 +364,7 @@ def crawl_sitemap_source(
         "sitemap_url": source.feed_url,
         "collection_strategy": source.collection_strategy,
         "content_strategy": source.content_strategy,
+        "skipped_count": skipped_count,
     }
 
     return SitemapCrawlSummary(
@@ -303,6 +373,7 @@ def crawl_sitemap_source(
         created_count=created_count,
         updated_count=updated_count,
         unchanged_count=unchanged_count,
+        skipped_count=skipped_count,
         failed_count=failed_count,
         status=status,
     )
@@ -343,6 +414,7 @@ def main() -> None:
             f"created={summary.created_count}, "
             f"updated={summary.updated_count}, "
             f"unchanged={summary.unchanged_count}, "
+            f"skipped={summary.skipped_count}, "
             f"failed={summary.failed_count}"
         )
 

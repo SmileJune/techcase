@@ -23,6 +23,14 @@ def ensure_articles_index() -> None:
     client.indices.create(index=ARTICLES_INDEX, **ARTICLES_INDEX_SETTINGS)
 
 
+def reset_articles_index() -> None:
+    client = get_elasticsearch_client()
+    if client.indices.exists(index=ARTICLES_INDEX):
+        client.indices.delete(index=ARTICLES_INDEX)
+
+    client.indices.create(index=ARTICLES_INDEX, **ARTICLES_INDEX_SETTINGS)
+
+
 def article_actions(articles: list[Article]) -> list[dict[str, object]]:
     return [
         {
@@ -36,7 +44,7 @@ def article_actions(articles: list[Article]) -> list[dict[str, object]]:
 
 
 def reindex_articles() -> int:
-    ensure_articles_index()
+    reset_articles_index()
     client = get_elasticsearch_client()
 
     with SessionLocal() as db:
