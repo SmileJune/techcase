@@ -28,6 +28,36 @@
           "url": "https://www.datadoghq.com/blog/engineering/datadog-lambda-extension-rust/",
           "title": "Squeezing every millisecond: How we rebuilt the Datadog Lambda Extension in Rust",
           "relevance": 3
+        },
+        {
+          "url": "https://medium.com/zigbang/lambda-edge%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%9B%8C%ED%84%B0%EB%A7%88%ED%82%B9-41f1cb282682?source=rss----2f055286701b---4",
+          "title": "lambda@edge를 활용한 이미지 워터마킹",
+          "relevance": 3
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/compute/building-fault-tolerant-long-running-application-with-aws-lambda-durable-functions/",
+          "title": "Building fault-tolerant applications with AWS Lambda durable functions",
+          "relevance": 3
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/compute/build-high-performance-apps-with-aws-lambda-managed-instances/",
+          "title": "Build high-performance apps with AWS Lambda Managed Instances",
+          "relevance": 2
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/devops/automate-aws-lambda-runtime-upgrades-with-aws-transform-custom/",
+          "title": "Automate AWS Lambda Runtime Upgrades with AWS Transform custom",
+          "relevance": 2
+        },
+        {
+          "url": "https://helloworld.kurly.com/blog/study-in-lambda/",
+          "title": "잘못 작성된 람다 코드를 삭제하기까지의 여정",
+          "relevance": 2
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/compute/optimizing-compute-intensive-serverless-workloads-with-multi-threaded-rust-on-aws-lambda/",
+          "title": "Optimizing Compute-Intensive Serverless Workloads with Multi-threaded Rust on AWS Lambda",
+          "relevance": 3
         }
       ]
     },
@@ -277,6 +307,11 @@
           "url": "https://aws.amazon.com/blogs/architecture/how-generali-malaysia-optimizes-operations-with-amazon-eks/",
           "title": "How Generali Malaysia optimizes operations with Amazon EKS",
           "relevance": 2
+        },
+        {
+          "url": "https://medium.com/coupang-engineering/cloud-expenditure-optimization-for-cost-efficiency-44e9bea3d91b?source=rss----fb028911af07---4",
+          "title": "Cloud expenditure optimization for cost efficiency",
+          "relevance": 3
         }
       ]
     },
@@ -536,6 +571,41 @@
           "url": "https://aws.amazon.com/blogs/devops/automating-incident-investigation-with-aws-devops-agent-and-salesforce-mcp-server/",
           "title": "Automating Incident Investigation with AWS DevOps Agent and Salesforce MCP Server",
           "relevance": 2
+        },
+        {
+          "url": "https://tech.devsisters.com/posts/incident-management-principles",
+          "title": "데브시스터즈의 장애 대응 원칙과 방법",
+          "relevance": 3
+        },
+        {
+          "url": "https://www.datadoghq.com/blog/engineering/2023-03-08-deep-dive-into-incident-response/",
+          "title": "2023-03-08 incident: A deep dive into our incident response",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/24488/",
+          "title": "우아한형제들이 장애를 놓치지 않고 탐지하는 방법",
+          "relevance": 3
+        },
+        {
+          "url": "https://hyperconnect.github.io/2024/11/12/sre-incident-training.html",
+          "title": "장애 모의 훈련 그리고 배운 점",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/4886/",
+          "title": "우아~한 장애대응",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.devsisters.com/posts/2025-engineering-day-infra-sre",
+          "title": "데브시스터즈 엔지니어링 데이 - Infra/SRE 돌아보기",
+          "relevance": 2
+        },
+        {
+          "url": "https://techblog.woowahan.com/21604/",
+          "title": "선제적 장애 대응을 위한 Sentry 최적화 적용기",
+          "relevance": 3
         }
       ]
     },
@@ -613,6 +683,41 @@
           "url": "https://d2.naver.com/helloworld/0004394",
           "title": "비용, 성능, 안정성을 목표로 한 지능형 로그 파이프라인 도입",
           "relevance": 2
+        },
+        {
+          "url": "https://netmarble.engineering/observability-logging-a/",
+          "title": "옵저버빌리티: 로그라고해서 다 같은 로그가 아니다(1/2)",
+          "relevance": 3
+        },
+        {
+          "url": "https://netmarble.engineering/observability-logging-b/",
+          "title": "옵저버빌리티: 로그라고해서 다 같은 로그가 아니다(2/2)",
+          "relevance": 3
+        },
+        {
+          "url": "https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/",
+          "title": "PHP 8: Observability baked right in",
+          "relevance": 2
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/compute/enhancing-network-observability-with-new-aws-outposts-racks-lag-metrics/",
+          "title": "Enhancing network observability with new AWS Outposts racks LAG metrics",
+          "relevance": 2
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/big-data/unified-observability-in-amazon-opensearch-service-metrics-traces-and-ai-agent-debugging-in-a-single-interface/",
+          "title": "Unified observability in Amazon OpenSearch Service: Metrics, traces, and AI agent debugging in a single interface",
+          "relevance": 2
+        },
+        {
+          "url": "https://www.datadoghq.com/blog/engineering/improving-trust-with-datadog-log-management/",
+          "title": "Improving trust with Datadog Log Management",
+          "relevance": 2
+        },
+        {
+          "url": "https://techblog.lycorp.co.jp/ko/the-evolution-of-the-ly-observability-platform",
+          "title": "Scaling to Infinity: The Evolution of the LY Observability Platform",
+          "relevance": 3
         }
       ]
     },
@@ -803,6 +908,11 @@
           "relevance": 3
         },
         {
+          "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-1/",
+          "title": "컬리 검색이 카프카를 들여다본 이야기 1",
+          "relevance": 3
+        },
+        {
           "url": "https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4",
           "title": "쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축",
           "relevance": 2
@@ -823,6 +933,11 @@
         {
           "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-2/",
           "title": "컬리 검색이 카프카를 들여다본 이야기 2",
+          "relevance": 3
+        },
+        {
+          "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-1/",
+          "title": "컬리 검색이 카프카를 들여다본 이야기 1",
           "relevance": 3
         },
         {
@@ -907,6 +1022,26 @@
         {
           "url": "https://tech.devsisters.com/posts/crk-hot-range-postmortem",
           "title": "쿠키런: 킹덤 길드 업데이트 이후 서비스 이슈 되돌아보기",
+          "relevance": 2
+        },
+        {
+          "url": "https://netmarble.engineering/jdbc-timeout-for-game-server/",
+          "title": "게임 서버 시스템을 위한 JDBC와 Timeout 이해하기",
+          "relevance": 3
+        },
+        {
+          "url": "https://netmarble.engineering/hikaricp-options-optimization-for-game-server/",
+          "title": "게임 서버 시스템을 위한 HikariCP 옵션 및 권장 설정",
+          "relevance": 3
+        },
+        {
+          "url": "https://tech.devsisters.com/posts/scala-for-game-server-development",
+          "title": "Scala for Game Server Development",
+          "relevance": 3
+        },
+        {
+          "url": "https://netmarble.engineering/profiling-dotnet-gc-with-perfview/",
+          "title": "PerfView를 이용한 .NET GC CPU 프로파일링",
           "relevance": 2
         }
       ]

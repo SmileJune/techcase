@@ -353,10 +353,12 @@ def build_search_query(query: str) -> dict[str, Any]:
 
     expanded_query = expand_query(query)
     matched_keywords = matched_rule_keywords(query)
+    term_keywords = term_match_keywords(query, matched_keywords)
     should_queries = [
         multi_match_query(query, operator="and", boost=4),
         phrase_match_query(query),
-        keyword_terms_query(matched_keywords),
+        keyword_terms_query(term_keywords),
+        *intent_boost_queries(query, matched_keywords),
     ]
 
     if matched_keywords:
@@ -532,6 +534,231 @@ def keyword_terms_query(keywords: list[str]) -> dict[str, Any]:
     }
 
 
+def intent_boost_queries(query: str, matched_keywords: list[str]) -> list[dict[str, Any]]:
+    normalized_query = normalize_text(query)
+    normalized_keywords = {keyword.casefold() for keyword in matched_keywords}
+    boosts: list[dict[str, Any]] = []
+
+    if "apache kafka" in normalized_keywords and contains_any(
+        normalized_query, ["검색", "search"]
+    ):
+        boosts.extend(search_kafka_intent_boost_queries())
+
+    if contains_all(normalized_query, ["실시간", "검색"]) and contains_any(
+        normalized_query, ["인덱싱", "색인", "indexing"]
+    ):
+        boosts.extend(realtime_search_indexing_boost_queries())
+
+    if "log platform" in normalized_keywords:
+        boosts.extend(log_platform_boost_queries())
+
+    return boosts
+
+
+def search_kafka_intent_boost_queries() -> list[dict[str, Any]]:
+    return [
+        constant_score_boost(
+            [title_phrase_filter("컬리 검색이 카프카")],
+            boost=520,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("컬리 검색이 카프카를")],
+            boost=620,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("검색플랫폼 연동기")],
+            boost=500,
+        ),
+        constant_score_boost(
+            [
+                title_phrase_filter("이벤트 기반 적용 상품 조회 시스템"),
+                keyword_field_terms_filter("technologies", ["Apache Kafka"]),
+            ],
+            boost=360,
+        ),
+        constant_score_boost(
+            [
+                keyword_field_terms_filter("technologies", ["Apache Kafka"]),
+                text_phrase_filter("검색 시스템"),
+            ],
+            boost=160,
+        ),
+        constant_score_boost(
+            [
+                keyword_field_terms_filter("technologies", ["Apache Kafka"]),
+                text_phrase_filter("검색 플랫폼"),
+            ],
+            boost=160,
+        ),
+        constant_score_boost(
+            [
+                keyword_field_terms_filter("technologies", ["Apache Kafka"]),
+                text_phrase_filter("검색플랫폼"),
+            ],
+            boost=160,
+        ),
+        constant_score_boost(
+            [
+                keyword_field_terms_filter("technologies", ["Apache Kafka"]),
+                text_phrase_filter("카프카 스트림즈"),
+            ],
+            boost=90,
+        ),
+    ]
+
+
+def realtime_search_indexing_boost_queries() -> list[dict[str, Any]]:
+    return [
+        constant_score_boost(
+            [title_phrase_filter("실시간 인덱싱")],
+            boost=900,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("실시간 인덱싱을")],
+            boost=700,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("인덱싱을 위한 Elasticsearch")],
+            boost=700,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("검색플랫폼 연동기")],
+            boost=220,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("컬리 검색이 카프카")],
+            boost=180,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("컬리 검색이 카프카를")],
+            boost=220,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("이벤트 기반 적용 상품 조회 시스템")],
+            boost=180,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("실시간 인덱싱")],
+            boost=180,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("실시간 검색")],
+            boost=90,
+        ),
+        constant_score_boost(
+            [
+                keyword_field_terms_filter(
+                    "technologies",
+                    ["Elasticsearch", "Amazon OpenSearch Service", "search"],
+                ),
+                text_phrase_filter("인덱싱"),
+            ],
+            boost=180,
+        ),
+        constant_score_boost(
+            [
+                keyword_field_terms_filter(
+                    "technologies",
+                    ["Elasticsearch", "Amazon OpenSearch Service", "search"],
+                ),
+                text_phrase_filter("색인"),
+            ],
+            boost=180,
+        ),
+    ]
+
+
+def log_platform_boost_queries() -> list[dict[str, Any]]:
+    return [
+        constant_score_boost(
+            [title_phrase_filter("로그 파이프라인")],
+            boost=360,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("로그를 ClickStack으로 실시간 처리")],
+            boost=340,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("지능형 로그 파이프라인")],
+            boost=320,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("로그 데이터로 유저 이해")],
+            boost=260,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("로그를 기록")],
+            boost=180,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("로깅 플랫폼")],
+            boost=220,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("로그 파이프라인")],
+            boost=180,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("로그 플랫폼")],
+            boost=140,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("로그 시스템")],
+            boost=100,
+        ),
+    ]
+
+
+def constant_score_boost(filters: list[dict[str, Any]], boost: int) -> dict[str, Any]:
+    return {
+        "constant_score": {
+            "filter": {"bool": {"must": filters}},
+            "boost": boost,
+        }
+    }
+
+
+def keyword_field_terms_filter(field: str, values: list[str]) -> dict[str, Any]:
+    return {"terms": {field: term_values(values)}}
+
+
+def text_phrase_filter(phrase: str) -> dict[str, Any]:
+    return {
+        "multi_match": {
+            "query": phrase,
+            "fields": [
+                "title^5",
+                "caseSummary^4",
+                "caseProblem^3",
+                "caseSolution^3",
+                "summary^2",
+                "content",
+            ],
+            "type": "phrase",
+            "slop": 1,
+        }
+    }
+
+
+def title_phrase_filter(phrase: str) -> dict[str, Any]:
+    return {
+        "match_phrase": {
+            "title": {
+                "query": phrase,
+                "slop": 1,
+            }
+        }
+    }
+
+
+def contains_all(text: str, terms: list[str]) -> bool:
+    return all(term in text for term in terms)
+
+
+def contains_any(text: str, terms: list[str]) -> bool:
+    return any(term in text for term in terms)
+
+
 def matched_rule_keywords(query: str) -> list[str]:
     normalized_query = normalize_text(query)
     matched_keywords = {
@@ -543,6 +770,17 @@ def matched_rule_keywords(query: str) -> list[str]:
         matched_keywords.add(query_only_keyword)
 
     return sorted(matched_keywords)
+
+
+def term_match_keywords(query: str, keywords: list[str]) -> list[str]:
+    if is_single_token_query(query):
+        return keywords
+
+    return [keyword for keyword in keywords if keyword.casefold() not in GENERIC_FACET_VALUES]
+
+
+def is_single_token_query(query: str) -> bool:
+    return len(normalize_text(query).split()) == 1
 
 
 def expand_query(query: str) -> str:

@@ -62,7 +62,10 @@ def diagnose(query_case: dict[str, Any], total: int, items: list[dict[str, Any]]
         diagnostics.append("url_title")
 
     if total >= BROAD_RESULT_THRESHOLD:
-        diagnostics.append("broad_results")
+        if intent_match_count(query_case, top_items) < 3:
+            diagnostics.append("broad_results")
+        else:
+            diagnostics.append("large_candidate_pool")
 
     if top_items and sum(1 for item in top_items if item.get("contentType") == "other") >= 3:
         diagnostics.append("other_dominant")
@@ -98,6 +101,18 @@ def has_intent_match(query_case: dict[str, Any], items: list[dict[str, Any]]) ->
         " ".join(item_search_text(item) for item in items)
     )
     return any(term in searchable_text for term in terms)
+
+
+def intent_match_count(query_case: dict[str, Any], items: list[dict[str, Any]]) -> int:
+    terms = intent_terms(query_case)
+    if not terms:
+        return len(items)
+
+    return sum(
+        1
+        for item in items
+        if any(term in normalize_text(item_search_text(item)) for term in terms)
+    )
 
 
 def intent_terms(query_case: dict[str, Any]) -> list[str]:

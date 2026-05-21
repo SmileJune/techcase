@@ -59,7 +59,8 @@ uv run python -m app.search.evaluation.keyword_probe --limit 20
 
 - `no_results`: 검색 결과가 0개
 - `url_title`: 상위 결과 제목이 URL 형태
-- `broad_results`: 결과가 지나치게 많아 검색어가 넓게 매칭됨
+- `broad_results`: 결과가 지나치게 많고 상위 결과의 의도 매칭도 약함
+- `large_candidate_pool`: 결과 수는 많지만 상위 결과가 의도와 대체로 맞음
 - `other_dominant`: 상위 5개 중 `other` 타입이 3개 이상
 - `weak_intent_match`: 상위 결과 텍스트에서 query, alias, intendedTerms가 거의 확인되지 않음
 - `missing_case_summary`: 상위 결과에 LLM 사례 요약이 없음

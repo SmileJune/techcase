@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-19T01:47:32.389978+00:00",
+  "generatedAt": "2026-05-21T09:21:19.542778+00:00",
   "topSize": 5,
   "summary": {
     "queryCount": 84,
     "diagnostics": {
-      "broad_results": 7,
+      "large_candidate_pool": 7,
       "single_source_dominance": 17
     },
     "categories": {
@@ -4500,7 +4500,7 @@
       "intent": "응답 지연, 쿼리 성능, 처리량 개선 사례가 상위에 나와야 한다.",
       "total": 658,
       "diagnostics": [
-        "broad_results"
+        "large_candidate_pool"
       ],
       "topResults": [
         {
@@ -5352,7 +5352,7 @@
       "intent": "검색 랭킹, 인덱스, analyzer, relevance 개선 사례가 상위에 나와야 한다.",
       "total": 709,
       "diagnostics": [
-        "broad_results"
+        "large_candidate_pool"
       ],
       "topResults": [
         {
@@ -5373,7 +5373,7 @@
           "problemKeywords": [
             "observability"
           ],
-          "score": 311.1071
+          "score": 303.1071
         },
         {
           "rank": 2,
@@ -5388,7 +5388,7 @@
           ],
           "architectureKeywords": [],
           "problemKeywords": [],
-          "score": 257.9513
+          "score": 249.95131
         },
         {
           "rank": 3,
@@ -5406,7 +5406,7 @@
             "log platform"
           ],
           "problemKeywords": [],
-          "score": 257.05615
+          "score": 249.05617
         },
         {
           "rank": 4,
@@ -5432,7 +5432,7 @@
             "migration",
             "performance optimization"
           ],
-          "score": 236.89825
+          "score": 228.89825
         },
         {
           "rank": 5,
@@ -5450,7 +5450,7 @@
           "problemKeywords": [
             "performance optimization"
           ],
-          "score": 236.89825
+          "score": 228.89825
         }
       ]
     },
@@ -5741,7 +5741,7 @@
       "intent": "이벤트 기반 설계, 비동기 처리, 메시징 사례가 상위에 나와야 한다.",
       "total": 1076,
       "diagnostics": [
-        "broad_results"
+        "large_candidate_pool"
       ],
       "topResults": [
         {
@@ -5976,7 +5976,7 @@
       "intent": "데이터 수집, 처리, 적재 파이프라인 사례가 상위에 나와야 한다.",
       "total": 1044,
       "diagnostics": [
-        "broad_results"
+        "large_candidate_pool"
       ],
       "topResults": [
         {
@@ -6059,7 +6059,7 @@
       "intent": "CDC 기반 데이터 동기화, 이벤트 발행, 마이그레이션 사례가 상위에 나와야 한다.",
       "total": 581,
       "diagnostics": [
-        "broad_results"
+        "large_candidate_pool"
       ],
       "topResults": [
         {
@@ -6645,7 +6645,7 @@
       "intent": "API Gateway 기반 라우팅, 인증, 마이크로서비스 사례가 상위에 나와야 한다.",
       "total": 802,
       "diagnostics": [
-        "broad_results"
+        "large_candidate_pool"
       ],
       "topResults": [
         {
@@ -8048,7 +8048,7 @@
       "intent": "NHN Cloud Meetup 글이 실제 제목으로 나와야 한다.",
       "total": 533,
       "diagnostics": [
-        "broad_results",
+        "large_candidate_pool",
         "single_source_dominance"
       ],
       "topResults": [

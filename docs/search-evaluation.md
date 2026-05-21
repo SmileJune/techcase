@@ -155,6 +155,8 @@ queries.json 로드
 검색 결과 URL과 expectedResults URL 비교
 Precision@5, Recall@10, MRR, NDCG@10 계산
 전체 평균 점수 출력
+JSON 평가 결과 저장
+낮은 점수 쿼리 리포트 저장
 ```
 
 실행 전에는 Elasticsearch에 `articles` index가 생성되어 있고 문서가 색인되어 있어야 합니다.
@@ -163,6 +165,50 @@ Precision@5, Recall@10, MRR, NDCG@10 계산
 npm run search:reindex
 npm run search:evaluate
 ```
+
+기본 산출물은 다음 위치에 생성됩니다.
+
+```text
+docs/search-evaluation-results.json
+docs/search-evaluation-low-score.md
+```
+
+`search-evaluation-results.json`은 검색 튜닝 전후 비교에 사용할 수 있는 구조화된 결과입니다.
+
+`search-evaluation-low-score.md`는 다음 기본 기준을 만족하지 못한 쿼리를 우선 검토 대상으로 분리합니다.
+
+```text
+Precision@5 >= 0.4
+Recall@10 >= 0.8
+MRR >= 0.5
+NDCG@10 >= 0.7
+```
+
+기준값은 직접 실행 시 옵션으로 조정할 수 있습니다.
+
+```bash
+cd apps/backend
+uv run python -m app.search.evaluation.evaluator \
+  --min-precision-at-5 0.5 \
+  --min-recall-at-10 0.8 \
+  --min-mrr 0.7 \
+  --min-ndcg-at-10 0.75
+```
+
+파일을 쓰지 않고 콘솔 표만 보고 싶을 때는 다음 옵션을 사용합니다.
+
+```bash
+cd apps/backend
+uv run python -m app.search.evaluation.evaluator --no-write
+```
+
+낮은 점수 쿼리를 검토한 뒤에는 다음 문서에서 원인을 분류합니다.
+
+```text
+docs/search-evaluation-triage.md
+```
+
+이 문서는 낮은 점수 원인을 `evaluation_dataset`, `ranking`, `query_scope`로 분리해 다음 작업 순서를 정하는 데 사용합니다.
 
 ## 현재 기준 점수
 

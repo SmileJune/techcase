@@ -1,24 +1,24 @@
 # Search Keyword Probe Report
 
-- generated at: 2026-05-19T01:47:32.388185+00:00
+- generated at: 2026-05-21T09:21:19.540719+00:00
 - queries: 84
-- diagnostics: broad_results=7, single_source_dominance=17
+- diagnostics: large_candidate_pool=7, single_source_dominance=17
 
 ## Review Priority
 
 | priority | query | category | total | diagnostics | top result |
 | --- | --- | --- | ---: | --- | --- |
 | high | Elasticsearch | technology | 48 | single_source_dominance | [Elasticsearch 병렬 테스트를 향한 여정](https://techblog.woowahan.com/18486/) |
-| high | 검색 품질 개선 | problem | 709 | broad_results | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) |
-| high | 데이터 파이프라인 | architecture | 1044 | broad_results | [데이터 분석가가 직접 정의, 배포, 관리하는 뱅크샐러드 데이터 파이프라인](https://blog.banksalad.com/tech/datapipe/) |
-| high | 성능 최적화 | problem | 658 | broad_results | [고성능 ML 백엔드를 위한 10가지 Python 성능 최적화 팁](https://hyperconnect.github.io/2023/05/30/Python-Performance-Tips.html) |
+| high | 검색 품질 개선 | problem | 709 | large_candidate_pool | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) |
+| high | 데이터 파이프라인 | architecture | 1044 | large_candidate_pool | [데이터 분석가가 직접 정의, 배포, 관리하는 뱅크샐러드 데이터 파이프라인](https://blog.banksalad.com/tech/datapipe/) |
+| high | 성능 최적화 | problem | 658 | large_candidate_pool | [고성능 ML 백엔드를 위한 10가지 Python 성능 최적화 팁](https://hyperconnect.github.io/2023/05/30/Python-Performance-Tips.html) |
 | high | 엘라스틱서치 | technology | 48 | single_source_dominance | [Elasticsearch 병렬 테스트를 향한 여정](https://techblog.woowahan.com/18486/) |
-| high | 이벤트 기반 아키텍처 | architecture | 1076 | broad_results | [Building event-driven architecture for member system](https://techblog.woowahan.com/10320/) |
-| medium | API Gateway | architecture | 802 | broad_results | [짧고 굵게 지마켓 API Gateway 사용하기](https://dev.gmarket.com/42) |
-| medium | CDC | architecture | 581 | broad_results | [Getting started with Change Data Capture in Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/getting-started-with-change-data-capture-in-amazon-aurora-dsql/) |
+| high | 이벤트 기반 아키텍처 | architecture | 1076 | large_candidate_pool | [Building event-driven architecture for member system](https://techblog.woowahan.com/10320/) |
+| medium | API Gateway | architecture | 802 | large_candidate_pool | [짧고 굵게 지마켓 API Gateway 사용하기](https://dev.gmarket.com/42) |
+| medium | CDC | architecture | 581 | large_candidate_pool | [Getting started with Change Data Capture in Amazon Aurora DSQL](https://aws.amazon.com/blogs/database/getting-started-with-change-data-capture-in-amazon-aurora-dsql/) |
 | medium | G마켓 | company | 7 | single_source_dominance | [G마켓 쿠폰적용가 도입기 - 캐시를 중심으로](https://dev.gmarket.com/89) |
 | medium | Java | technology | 444 | single_source_dominance | [Java Enum 활용기](https://techblog.woowahan.com/2527/) |
-| medium | NHN Cloud | company | 533 | broad_results, single_source_dominance | [NHN Cloud Plugin 개발기 \| Cloudforet 오픈소스 프로젝트 후기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/387) |
+| medium | NHN Cloud | company | 533 | large_candidate_pool, single_source_dominance | [NHN Cloud Plugin 개발기 \| Cloudforet 오픈소스 프로젝트 후기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/387) |
 | medium | 레디스 | technology | 127 | single_source_dominance | [레디스 버전6 뉴피처와 주요 기능 테스트 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/245) |
 | medium | 물류 | domain | 28 | single_source_dominance | [컬리의 Virtual 물류 센터](https://helloworld.kurly.com/blog/picking-simulation/) |
 | medium | 뱅크샐러드 | company | 51 | single_source_dominance | [뱅크샐러드 Go 코딩 컨벤션](https://blog.banksalad.com/tech/go-best-practice-in-banksalad/) |
@@ -727,7 +727,7 @@
 - category: problem
 - priority: high
 - total: 658
-- diagnostics: broad_results
+- diagnostics: large_candidate_pool
 - intent: 응답 지연, 쿼리 성능, 처리량 개선 사례가 상위에 나와야 한다.
 
 | rank | title | company/source | content type | keywords |
@@ -855,7 +855,7 @@
 - category: problem
 - priority: high
 - total: 709
-- diagnostics: broad_results
+- diagnostics: large_candidate_pool
 - intent: 검색 랭킹, 인덱스, analyzer, relevance 개선 사례가 상위에 나와야 한다.
 
 | rank | title | company/source | content type | keywords |
@@ -919,7 +919,7 @@
 - category: architecture
 - priority: high
 - total: 1076
-- diagnostics: broad_results
+- diagnostics: large_candidate_pool
 - intent: 이벤트 기반 설계, 비동기 처리, 메시징 사례가 상위에 나와야 한다.
 
 | rank | title | company/source | content type | keywords |
@@ -951,7 +951,7 @@
 - category: architecture
 - priority: high
 - total: 1044
-- diagnostics: broad_results
+- diagnostics: large_candidate_pool
 - intent: 데이터 수집, 처리, 적재 파이프라인 사례가 상위에 나와야 한다.
 
 | rank | title | company/source | content type | keywords |
@@ -967,7 +967,7 @@
 - category: architecture
 - priority: medium
 - total: 581
-- diagnostics: broad_results
+- diagnostics: large_candidate_pool
 - intent: CDC 기반 데이터 동기화, 이벤트 발행, 마이그레이션 사례가 상위에 나와야 한다.
 
 | rank | title | company/source | content type | keywords |
@@ -1047,7 +1047,7 @@
 - category: architecture
 - priority: medium
 - total: 802
-- diagnostics: broad_results
+- diagnostics: large_candidate_pool
 - intent: API Gateway 기반 라우팅, 인증, 마이크로서비스 사례가 상위에 나와야 한다.
 
 | rank | title | company/source | content type | keywords |
@@ -1271,7 +1271,7 @@
 - category: company
 - priority: medium
 - total: 533
-- diagnostics: broad_results, single_source_dominance
+- diagnostics: large_candidate_pool, single_source_dominance
 - intent: NHN Cloud Meetup 글이 실제 제목으로 나와야 한다.
 
 | rank | title | company/source | content type | keywords |
