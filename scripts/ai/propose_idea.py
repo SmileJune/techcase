@@ -198,7 +198,9 @@ def api_idea() -> dict[str, str]:
                     "role": "system",
                     "content": (
                         "Return only valid JSON. Propose one small, safe, high-leverage "
-                        "DevLoop idea. Do not propose forbidden changes."
+                        "DevLoop idea. Do not propose forbidden changes. Write every "
+                        "JSON field value in Korean, except product names, file paths, "
+                        "commands, and technical keywords that are normally written in English."
                     ),
                 },
                 {
@@ -213,6 +215,7 @@ def api_idea() -> dict[str, str]:
 
                         Return a JSON object with exactly these string fields:
                         title, problem, rationale, scope, non_goals, risks, validation.
+                        All field values must be written in Korean. Keep the title concise.
                         """
                     ).strip(),
                 },
@@ -251,12 +254,12 @@ def load_idea() -> dict[str, str]:
 
 def build_issue_body(idea: dict[str, str]) -> str:
     fields = {
-        "Problem": idea["problem"],
-        "Why This Fits Now": idea["rationale"],
-        "Proposed Scope": idea["scope"],
-        "Non-Goals": idea["non_goals"],
-        "Risks / Guardrails": idea["risks"],
-        "Validation": idea["validation"],
+        "문제": idea["problem"],
+        "지금 필요한 이유": idea["rationale"],
+        "제안 범위": idea["scope"],
+        "하지 않을 일": idea["non_goals"],
+        "위험 요소 / 가드레일": idea["risks"],
+        "검증 방법": idea["validation"],
     }
     fingerprint_source = "\n".join([idea["title"], idea["problem"], idea["scope"]])
     fingerprint = hashlib.sha256(fingerprint_source.encode("utf-8")).hexdigest()[:12]
@@ -267,10 +270,10 @@ def build_issue_body(idea: dict[str, str]) -> str:
     sections.append(
         textwrap.dedent(
             f"""
-            ## Human Approval
+            ## 승인 방법
 
-            Comment with `/ai approve` to allow DevLoop to create an `ai/` branch and
-            PR scaffold for this idea.
+            이 아이디어를 진행하려면 이슈 댓글에 정확히 `/ai approve`를 남겨주세요.
+            승인 후 DevLoop가 `ai/` 브랜치와 PR scaffold를 생성합니다.
 
             DevLoop fingerprint: `{fingerprint}`
             """

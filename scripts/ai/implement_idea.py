@@ -123,26 +123,26 @@ def create_plan_file(repo: str, token: str, branch: str, issue: dict[str, Any]) 
     path = f"docs/ai-ideas/issue-{number}.md"
     content = textwrap.dedent(
         f"""
-        # DevLoop Idea #{number}: {title}
+        # DevLoop 아이디어 #{number}: {title}
 
-        This file is a PR scaffold created after human approval in the GitHub
-        Issue. It intentionally does not modify service code.
+        이 파일은 GitHub Issue에서 사람이 승인한 뒤 생성된 PR scaffold입니다.
+        의도적으로 실제 서비스 코드는 수정하지 않습니다.
 
-        ## Approved Issue
+        ## 승인된 이슈
 
-        - Issue: #{number}
-        - Title: {title}
+        - 이슈: #{number}
+        - 제목: {title}
 
-        ## Original Proposal
+        ## 원본 제안
 
         {body}
 
-        ## Implementation Notes
+        ## 구현 메모
 
-        - Keep changes within the approved scope.
-        - Do not touch auth, billing, database migrations, or infrastructure.
-        - Do not enable automatic merge.
-        - Add validation notes before requesting human review.
+        - 승인된 범위 안에서만 변경합니다.
+        - 인증, 결제, 데이터베이스 마이그레이션, 인프라는 건드리지 않습니다.
+        - 자동 머지는 활성화하지 않습니다.
+        - 사람 리뷰를 요청하기 전에 검증 메모를 남깁니다.
         """
     ).strip() + "\n"
 
@@ -190,29 +190,29 @@ def create_pr(repo: str, token: str, base: str, branch: str, issue: dict[str, An
         f"/repos/{repo}/pulls",
         token,
         {
-            "title": f"[DevLoop] Scaffold approved idea #{number}",
+            "title": f"[DevLoop] 승인된 아이디어 #{number} scaffold",
             "head": branch,
             "base": base,
             "body": textwrap.dedent(
                 f"""
-                ## Approved Idea
+                ## 승인된 아이디어
 
                 Closes #{number}
 
-                ## What Changed
+                ## 변경 사항
 
-                - Added `{plan_path}` as a documentation-only PR scaffold for the approved idea.
+                - 승인된 아이디어에 대한 문서 전용 PR scaffold로 `{plan_path}`를 추가했습니다.
 
-                ## Intentionally Left Out
+                ## 의도적으로 제외한 것
 
-                - No service code changes.
-                - No automatic merge.
-                - No auth, billing, database migration, or infrastructure changes.
+                - 실제 서비스 코드 변경은 없습니다.
+                - 자동 머지는 없습니다.
+                - 인증, 결제, 데이터베이스 마이그레이션, 인프라 변경은 없습니다.
 
-                ## Validation
+                ## 검증
 
-                - Confirm this PR only contains the approved scaffold.
-                - Confirm follow-up implementation stays within `AI_POLICY.md`.
+                - 이 PR이 승인된 scaffold만 포함하는지 확인합니다.
+                - 후속 구현이 `AI_POLICY.md` 범위 안에 있는지 확인합니다.
                 """
             ).strip(),
         },
@@ -265,7 +265,7 @@ def main() -> int:
         repo,
         token,
         issue_number,
-        f"DevLoop created a PR scaffold for this approved idea: {pr_url}",
+        f"DevLoop가 승인된 아이디어의 PR scaffold를 생성했습니다: {pr_url}",
     )
     print(f"Created or found PR: {pr_url}")
     return 0
