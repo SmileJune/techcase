@@ -61,6 +61,18 @@ KEYWORD_RULES = [
     KeywordRule("JPA", "technology", ("jpa", "java persistence api")),
     KeywordRule("LLM", "technology", ("llm", "large language model", "대규모 언어 모델")),
     KeywordRule(
+        "RAG",
+        "architecture",
+        (
+            "rag",
+            "retrieval augmented generation",
+            "retrieval-augmented generation",
+            "retrieval-augmented-generation",
+            "검색 증강 생성",
+            "검색 기반 생성",
+        ),
+    ),
+    KeywordRule(
         "serverless",
         "architecture",
         ("serverless", "serverless architecture", "serverless workloads", "서버리스"),

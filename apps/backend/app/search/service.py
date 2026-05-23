@@ -549,6 +549,21 @@ def intent_boost_queries(query: str, matched_keywords: list[str]) -> list[dict[s
     ):
         boosts.extend(realtime_search_indexing_boost_queries())
 
+    if "search" in normalized_keywords and contains_any(
+        normalized_query, ["개선", "품질", "quality", "relevance", "성능"]
+    ):
+        boosts.extend(search_quality_boost_queries())
+
+    if "elasticsearch" in normalized_keywords and contains_any(
+        normalized_query, ["인덱스", "index", "구조", "structure"]
+    ):
+        boosts.extend(elasticsearch_index_boost_queries())
+
+    if "event-driven architecture" in normalized_keywords and contains_any(
+        normalized_query, ["상품", "조회", "커머스", "commerce"]
+    ):
+        boosts.extend(event_driven_commerce_boost_queries())
+
     if "log platform" in normalized_keywords:
         boosts.extend(log_platform_boost_queries())
 
@@ -664,6 +679,101 @@ def realtime_search_indexing_boost_queries() -> list[dict[str, Any]]:
                 text_phrase_filter("색인"),
             ],
             boost=180,
+        ),
+    ]
+
+
+def search_quality_boost_queries() -> list[dict[str, Any]]:
+    return [
+        constant_score_boost(
+            [title_phrase_filter("검색 성능 개선")],
+            boost=460,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("검색 품질")],
+            boost=420,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("search relevance")],
+            boost=380,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("search architecture")],
+            boost=260,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("Atlas Search 정렬이슈")],
+            boost=260,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("검색 성능 개선")],
+            boost=180,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("검색 품질 개선")],
+            boost=180,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("search relevance")],
+            boost=160,
+        ),
+    ]
+
+
+def elasticsearch_index_boost_queries() -> list[dict[str, Any]]:
+    return [
+        constant_score_boost(
+            [title_phrase_filter("Elasticsearch 인덱스 구조")],
+            boost=680,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("실시간 인덱싱을 위한 Elasticsearch")],
+            boost=560,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("Elasticsearch 병렬 테스트")],
+            boost=180,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("Elasticsearch 인덱스 구조")],
+            boost=220,
+        ),
+        constant_score_boost(
+            [text_phrase_filter("검색 성능 개선")],
+            boost=160,
+        ),
+    ]
+
+
+def event_driven_commerce_boost_queries() -> list[dict[str, Any]]:
+    return [
+        constant_score_boost(
+            [title_phrase_filter("이벤트 기반 적용 상품 조회 시스템")],
+            boost=720,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("배민스토어에 이벤트 기반 아키텍처")],
+            boost=320,
+        ),
+        constant_score_boost(
+            [title_phrase_filter("이벤트 기반 통합 알림 플랫폼")],
+            boost=420,
+        ),
+        constant_score_boost(
+            [
+                text_phrase_filter("상품 조회"),
+                text_phrase_filter("이벤트 기반"),
+            ],
+            boost=260,
+        ),
+        constant_score_boost(
+            [
+                keyword_field_terms_filter(
+                    "architectureKeywords", ["event-driven architecture"]
+                ),
+                text_phrase_filter("상품"),
+            ],
+            boost=160,
         ),
     ]
 

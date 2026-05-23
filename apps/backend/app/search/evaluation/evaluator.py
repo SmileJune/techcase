@@ -261,7 +261,12 @@ def low_score_reasons(
     min_ndcg_at_10: float,
 ) -> list[str]:
     reasons = []
-    if score.precision_at_5 < min_precision_at_5:
+    if (
+        can_reach_precision_threshold(
+            score.expected_count, TOP_K_PRECISION, min_precision_at_5
+        )
+        and score.precision_at_5 < min_precision_at_5
+    ):
         reasons.append("low_precision")
     if score.recall_at_10 < min_recall_at_10:
         reasons.append("low_recall")
@@ -270,6 +275,15 @@ def low_score_reasons(
     if score.ndcg_at_10 < min_ndcg_at_10:
         reasons.append("low_ndcg")
     return reasons
+
+
+def can_reach_precision_threshold(
+    expected_count: int, k: int, threshold: float
+) -> bool:
+    if k <= 0:
+        return False
+
+    return min(expected_count, k) / k >= threshold
 
 
 def low_score_detail(score: QueryScore, reasons: list[str]) -> list[str]:

@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-05-21T09:20:08.164466+00:00",
+  "generatedAt": "2026-05-22T14:25:07.195654+00:00",
   "summary": {
-    "queryCount": 41,
-    "averagePrecisionAt5": 0.5463414634146341,
-    "averageRecallAt10": 0.8830799282018795,
-    "averageMrr": 0.926829268292683,
-    "averageNdcgAt10": 0.8433067069481294
+    "queryCount": 42,
+    "averagePrecisionAt5": 0.5761904761904761,
+    "averageRecallAt10": 0.9118377654091939,
+    "averageMrr": 0.9285714285714286,
+    "averageNdcgAt10": 0.8626573335360452
   },
   "queries": [
     {
@@ -1357,7 +1357,7 @@
           "source": "Datadog Engineering Blog",
           "sourceSlug": "datadog-engineering-blog",
           "contentType": "technical_case",
-          "score": 965.84515,
+          "score": 968.16815,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -1369,7 +1369,7 @@
           "source": "AWS DevOps Blog",
           "sourceSlug": "aws-devops-blog",
           "contentType": "technical_case",
-          "score": 912.0118,
+          "score": 914.3348,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -1393,7 +1393,7 @@
           "source": "AWS DevOps Blog",
           "sourceSlug": "aws-devops-blog",
           "contentType": "technical_case",
-          "score": 657.3635,
+          "score": 659.6865,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -1405,7 +1405,7 @@
           "source": "AWS DevOps Blog",
           "sourceSlug": "aws-devops-blog",
           "contentType": "technical_case",
-          "score": 639.8238,
+          "score": 642.1468,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1417,7 +1417,7 @@
           "source": "AWS DevOps Blog",
           "sourceSlug": "aws-devops-blog",
           "contentType": "technical_case",
-          "score": 380.99924,
+          "score": 383.32224,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -1429,7 +1429,7 @@
           "source": "AWS Architecture Blog",
           "sourceSlug": "aws-architecture-blog",
           "contentType": "technical_case",
-          "score": 246.76059,
+          "score": 249.08359,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1441,7 +1441,7 @@
           "source": "AWS DevOps Blog",
           "sourceSlug": "aws-devops-blog",
           "contentType": "technical_case",
-          "score": 245.60524,
+          "score": 247.92824,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1453,7 +1453,7 @@
           "source": "Cloudflare Engineering",
           "sourceSlug": "cloudflare-engineering-blog",
           "contentType": "technical_case",
-          "score": 236.0867,
+          "score": 238.4097,
           "isExpected": true,
           "expectedRelevance": 2
         },
@@ -1465,7 +1465,7 @@
           "source": "AWS DevOps Blog",
           "sourceSlug": "aws-devops-blog",
           "contentType": "technical_case",
-          "score": 228.80295,
+          "score": 231.12595,
           "isExpected": false,
           "expectedRelevance": null
         }
@@ -1478,9 +1478,9 @@
       "totalResults": 107,
       "expectedCount": 4,
       "precisionAt5": 0.4,
-      "recallAt10": 0.75,
+      "recallAt10": 1.0,
       "mrr": 0.5,
-      "ndcgAt10": 0.6323729901145431,
+      "ndcgAt10": 0.685875315967158,
       "topResults": [
         {
           "rank": 1,
@@ -1490,7 +1490,7 @@
           "source": "AWS Database Blog",
           "sourceSlug": "aws-database-blog",
           "contentType": "technical_case",
-          "score": 209.59529,
+          "score": 211.57407,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1502,7 +1502,7 @@
           "source": "AWS Big Data Blog",
           "sourceSlug": "aws-big-data-blog",
           "contentType": "technical_case",
-          "score": 206.57355,
+          "score": 208.55232,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -1514,7 +1514,7 @@
           "source": "AWS Big Data Blog",
           "sourceSlug": "aws-big-data-blog",
           "contentType": "technical_case",
-          "score": 200.4099,
+          "score": 202.38867,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -1592,15 +1592,15 @@
         },
         {
           "rank": 10,
-          "title": "프로젝트 관리를 위한 JIRA 활용기",
-          "url": "https://dev.gmarket.com/43",
-          "company": "Gmarket",
-          "source": "Gmarket Tech Blog",
-          "sourceSlug": "gmarket-tech-blog",
+          "title": "Streaming CloudWatch metrics to VPC-based OpenTelemetry collectors using Lambda",
+          "url": "https://aws.amazon.com/blogs/architecture/streaming-cloudwatch-metrics-to-vpc-based-opentelemetry-collectors-using-lambda/",
+          "company": "AWS",
+          "source": "AWS Architecture Blog",
+          "sourceSlug": "aws-architecture-blog",
           "contentType": "technical_case",
-          "score": 73.38521,
-          "isExpected": false,
-          "expectedRelevance": null
+          "score": 74.45244,
+          "isExpected": true,
+          "expectedRelevance": 2
         }
       ]
     },
@@ -1671,7 +1671,7 @@
           "source": "AWS Database Blog",
           "sourceSlug": "aws-database-blog",
           "contentType": "technical_case",
-          "score": 157.44493,
+          "score": 159.65878,
           "isExpected": true,
           "expectedRelevance": 2
         },
@@ -1683,7 +1683,7 @@
           "source": "Wantedlab Tech Blog",
           "sourceSlug": "wantedlab-tech-blog",
           "contentType": "technical_case",
-          "score": 154.75284,
+          "score": 156.96669,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1695,7 +1695,7 @@
           "source": "Gmarket Tech Blog",
           "sourceSlug": "gmarket-tech-blog",
           "contentType": "technical_case",
-          "score": 153.0945,
+          "score": 155.30835,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1707,7 +1707,7 @@
           "source": "Watcha Tech Blog",
           "sourceSlug": "watcha-tech-blog",
           "contentType": "technical_case",
-          "score": 151.52393,
+          "score": 153.7378,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1719,7 +1719,7 @@
           "source": "AWS Database Blog",
           "sourceSlug": "aws-database-blog",
           "contentType": "technical_case",
-          "score": 142.84325,
+          "score": 145.0571,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1731,7 +1731,7 @@
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 140.8925,
+          "score": 144.43466,
           "isExpected": false,
           "expectedRelevance": null
         }
@@ -1804,7 +1804,7 @@
           "source": "AWS Architecture Blog",
           "sourceSlug": "aws-architecture-blog",
           "contentType": "technical_case",
-          "score": 277.8123,
+          "score": 280.06702,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1816,7 +1816,7 @@
           "source": "AWS Database Blog",
           "sourceSlug": "aws-database-blog",
           "contentType": "technical_case",
-          "score": 267.16483,
+          "score": 269.41956,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1828,7 +1828,7 @@
           "source": "AWS Big Data Blog",
           "sourceSlug": "aws-big-data-blog",
           "contentType": "technical_case",
-          "score": 226.36845,
+          "score": 229.97603,
           "isExpected": true,
           "expectedRelevance": 2
         },
@@ -1840,7 +1840,7 @@
           "source": "AWS DevOps Blog",
           "sourceSlug": "aws-devops-blog",
           "contentType": "technical_case",
-          "score": 217.37332,
+          "score": 220.9809,
           "isExpected": true,
           "expectedRelevance": 2
         },
@@ -1852,7 +1852,7 @@
           "source": "AWS Database Blog",
           "sourceSlug": "aws-database-blog",
           "contentType": "technical_case",
-          "score": 216.51227,
+          "score": 220.11984,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -1864,7 +1864,7 @@
           "source": "AWS Big Data Blog",
           "sourceSlug": "aws-big-data-blog",
           "contentType": "technical_case",
-          "score": 207.19405,
+          "score": 210.8016,
           "isExpected": false,
           "expectedRelevance": null
         }
@@ -2499,6 +2499,18 @@
         },
         {
           "rank": 8,
+          "title": "서버리스에서 쿠버네티스로 - Airflow 운영 경험기",
+          "url": "https://helloworld.kurly.com/blog/airflow-1/",
+          "company": "Kurly",
+          "source": "Kurly Tech Blog",
+          "sourceSlug": "kurly-tech-blog",
+          "contentType": "technical_case",
+          "score": 299.5961,
+          "isExpected": false,
+          "expectedRelevance": null
+        },
+        {
+          "rank": 9,
           "title": "Building an end-to-end agentic SRE using AWS DevOps Agent",
           "url": "https://aws.amazon.com/blogs/devops/building-an-end-to-end-agentic-sre-using-aws-devops-agent/",
           "company": "AWS",
@@ -2506,18 +2518,6 @@
           "sourceSlug": "aws-devops-blog",
           "contentType": "technical_case",
           "score": 298.93515,
-          "isExpected": false,
-          "expectedRelevance": null
-        },
-        {
-          "rank": 9,
-          "title": "서버리스에서 쿠버네티스로 - Airflow 운영 경험기",
-          "url": "https://helloworld.kurly.com/blog/airflow-1/",
-          "company": "Kurly",
-          "source": "Kurly Tech Blog",
-          "sourceSlug": "kurly-tech-blog",
-          "contentType": "technical_case",
-          "score": 297.52908,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -2820,7 +2820,7 @@
           "source": "GC Company Tech Blog",
           "sourceSlug": "gc-company-tech-blog",
           "contentType": "technical_case",
-          "score": 575.61774,
+          "score": 577.79315,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -2832,7 +2832,7 @@
           "source": "Hyperconnect Tech Blog",
           "sourceSlug": "hyperconnect-tech-blog",
           "contentType": "technical_case",
-          "score": 303.34402,
+          "score": 305.51944,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -2844,7 +2844,7 @@
           "source": "Devsisters Tech Blog",
           "sourceSlug": "devsisters-tech-blog",
           "contentType": "technical_case",
-          "score": 179.1903,
+          "score": 181.36572,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -2856,7 +2856,7 @@
           "source": "NAVER Cloud Platform Tech Blog",
           "sourceSlug": "naver-cloud-platform-tech-blog",
           "contentType": "technical_case",
-          "score": 170.8843,
+          "score": 173.05971,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -2868,7 +2868,7 @@
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 169.54892,
+          "score": 171.72433,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -2880,7 +2880,7 @@
           "source": "Hyperconnect Tech Blog",
           "sourceSlug": "hyperconnect-tech-blog",
           "contentType": "technical_case",
-          "score": 161.4051,
+          "score": 163.58052,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -2892,7 +2892,7 @@
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 159.27858,
+          "score": 161.454,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -2904,7 +2904,7 @@
           "source": "Coupang Engineering Blog",
           "sourceSlug": "coupang-engineering-blog",
           "contentType": "technical_case",
-          "score": 158.91069,
+          "score": 161.0861,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -2916,7 +2916,7 @@
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 153.25705,
+          "score": 155.43246,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -2928,7 +2928,7 @@
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 142.80582,
+          "score": 144.98123,
           "isExpected": false,
           "expectedRelevance": null
         }
@@ -2940,25 +2940,61 @@
       "category": "technology",
       "totalResults": 640,
       "expectedCount": 11,
-      "precisionAt5": 0.4,
-      "recallAt10": 0.2727272727272727,
+      "precisionAt5": 0.8,
+      "recallAt10": 0.36363636363636365,
       "mrr": 1.0,
-      "ndcgAt10": 0.4047006805030181,
+      "ndcgAt10": 0.6089837562253468,
       "topResults": [
         {
           "rank": 1,
+          "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
+          "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
+          "company": "Dropbox",
+          "source": "Dropbox Tech Blog",
+          "sourceSlug": "dropbox-tech-blog",
+          "contentType": "technical_case",
+          "score": 768.89825,
+          "isExpected": true,
+          "expectedRelevance": 3
+        },
+        {
+          "rank": 2,
           "title": "MongoDB Atlas Search 정렬이슈 해결기",
           "url": "https://tech.inflab.com/202211-mongodb-atlas-search/",
           "company": "Inflab",
           "source": "Inflab Tech Blog",
           "sourceSlug": "inflab-tech-blog",
           "contentType": "technical_case",
-          "score": 303.1071,
+          "score": 563.10706,
           "isExpected": true,
           "expectedRelevance": 3
         },
         {
-          "rank": 2,
+          "rank": 3,
+          "title": "How we rebuilt the search architecture for high availability in GitHub Enterprise Server",
+          "url": "https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/",
+          "company": "GitHub",
+          "source": "GitHub Engineering",
+          "sourceSlug": "github-engineering-blog",
+          "contentType": "technical_case",
+          "score": 472.37952,
+          "isExpected": true,
+          "expectedRelevance": 3
+        },
+        {
+          "rank": 4,
+          "title": "배민상회와 검색플랫폼 연동기",
+          "url": "https://techblog.woowahan.com/11732/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 344.23984,
+          "isExpected": true,
+          "expectedRelevance": 3
+        },
+        {
+          "rank": 5,
           "title": "Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup",
           "url": "https://meetup.nhncloud.com/posts/156",
           "company": "NHN Cloud",
@@ -2970,7 +3006,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 3,
+          "rank": 6,
           "title": "TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup",
           "url": "https://meetup.nhncloud.com/posts/254",
           "company": "NHN Cloud",
@@ -2982,7 +3018,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 4,
+          "rank": 7,
           "title": "Full-text, exact-match, range, and hybrid search on Amazon ElastiCache",
           "url": "https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/",
           "company": "AWS",
@@ -2994,19 +3030,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 5,
-          "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
-          "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
-          "company": "Dropbox",
-          "source": "Dropbox Tech Blog",
-          "sourceSlug": "dropbox-tech-blog",
-          "contentType": "technical_case",
-          "score": 228.89825,
-          "isExpected": true,
-          "expectedRelevance": 3
-        },
-        {
-          "rank": 6,
+          "rank": 8,
           "title": "Real-time Service Configuration으로 Consul을 신주소 서비스에 적용한 사례",
           "url": "https://techblog.woowahan.com/2586/",
           "company": "Woowa Brothers",
@@ -3018,7 +3042,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 7,
+          "rank": 9,
           "title": "CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용",
           "url": "https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html",
           "company": "Hyperconnect",
@@ -3030,19 +3054,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 8,
-          "title": "How we rebuilt the search architecture for high availability in GitHub Enterprise Server",
-          "url": "https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/",
-          "company": "GitHub",
-          "source": "GitHub Engineering",
-          "sourceSlug": "github-engineering-blog",
-          "contentType": "technical_case",
-          "score": 212.37952,
-          "isExpected": true,
-          "expectedRelevance": 3
-        },
-        {
-          "rank": 9,
+          "rank": 10,
           "title": "Building the future: highlights from Dropbox’s 2025 summer intern class",
           "url": "https://dropbox.tech/culture/highlights-from-dropbox-2025-summer-intern-class",
           "company": "Dropbox",
@@ -3050,18 +3062,6 @@
           "sourceSlug": "dropbox-tech-blog",
           "contentType": "technical_case",
           "score": 211.31483,
-          "isExpected": false,
-          "expectedRelevance": null
-        },
-        {
-          "rank": 10,
-          "title": "Announcing aggregations on Amazon ElastiCache",
-          "url": "https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/",
-          "company": "AWS",
-          "source": "AWS Database Blog",
-          "sourceSlug": "aws-database-blog",
-          "contentType": "technical_case",
-          "score": 206.73253,
           "isExpected": false,
           "expectedRelevance": null
         }
@@ -3073,25 +3073,61 @@
       "category": "technology",
       "totalResults": 709,
       "expectedCount": 6,
-      "precisionAt5": 0.4,
-      "recallAt10": 0.6666666666666666,
+      "precisionAt5": 0.6,
+      "recallAt10": 0.5,
       "mrr": 1.0,
-      "ndcgAt10": 0.5775565829313616,
+      "ndcgAt10": 0.6406863352467497,
       "topResults": [
         {
           "rank": 1,
+          "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
+          "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
+          "company": "Dropbox",
+          "source": "Dropbox Tech Blog",
+          "sourceSlug": "dropbox-tech-blog",
+          "contentType": "technical_case",
+          "score": 768.89825,
+          "isExpected": true,
+          "expectedRelevance": 3
+        },
+        {
+          "rank": 2,
           "title": "MongoDB Atlas Search 정렬이슈 해결기",
           "url": "https://tech.inflab.com/202211-mongodb-atlas-search/",
           "company": "Inflab",
           "source": "Inflab Tech Blog",
           "sourceSlug": "inflab-tech-blog",
           "contentType": "technical_case",
-          "score": 303.1071,
+          "score": 563.10706,
           "isExpected": true,
           "expectedRelevance": 3
         },
         {
-          "rank": 2,
+          "rank": 3,
+          "title": "How we rebuilt the search architecture for high availability in GitHub Enterprise Server",
+          "url": "https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/",
+          "company": "GitHub",
+          "source": "GitHub Engineering",
+          "sourceSlug": "github-engineering-blog",
+          "contentType": "technical_case",
+          "score": 472.37952,
+          "isExpected": true,
+          "expectedRelevance": 2
+        },
+        {
+          "rank": 4,
+          "title": "배민상회와 검색플랫폼 연동기",
+          "url": "https://techblog.woowahan.com/11732/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 310.50034,
+          "isExpected": false,
+          "expectedRelevance": null
+        },
+        {
+          "rank": 5,
           "title": "Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup",
           "url": "https://meetup.nhncloud.com/posts/156",
           "company": "NHN Cloud",
@@ -3103,7 +3139,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 3,
+          "rank": 6,
           "title": "TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup",
           "url": "https://meetup.nhncloud.com/posts/254",
           "company": "NHN Cloud",
@@ -3115,7 +3151,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 4,
+          "rank": 7,
           "title": "Full-text, exact-match, range, and hybrid search on Amazon ElastiCache",
           "url": "https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/",
           "company": "AWS",
@@ -3127,31 +3163,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 5,
-          "title": "Using LLMs to amplify human labeling and improve Dash search relevance",
-          "url": "https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash",
-          "company": "Dropbox",
-          "source": "Dropbox Tech Blog",
-          "sourceSlug": "dropbox-tech-blog",
-          "contentType": "technical_case",
-          "score": 228.89825,
-          "isExpected": true,
-          "expectedRelevance": 3
-        },
-        {
-          "rank": 6,
-          "title": "How we rebuilt the search architecture for high availability in GitHub Enterprise Server",
-          "url": "https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/",
-          "company": "GitHub",
-          "source": "GitHub Engineering",
-          "sourceSlug": "github-engineering-blog",
-          "contentType": "technical_case",
-          "score": 212.37952,
-          "isExpected": true,
-          "expectedRelevance": 2
-        },
-        {
-          "rank": 7,
+          "rank": 8,
           "title": "SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정",
           "url": "https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4",
           "company": "Wantedlab",
@@ -3163,7 +3175,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 8,
+          "rank": 9,
           "title": "CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용",
           "url": "https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html",
           "company": "Hyperconnect",
@@ -3175,7 +3187,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 9,
+          "rank": 10,
           "title": "[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest",
           "url": "https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest",
           "company": "Upstage",
@@ -3185,18 +3197,6 @@
           "score": 174.60165,
           "isExpected": false,
           "expectedRelevance": null
-        },
-        {
-          "rank": 10,
-          "title": "네이버 통합검색 AIB 도입과 웹 성능 변화 분석",
-          "url": "https://d2.naver.com/helloworld/4241703",
-          "company": "NAVER",
-          "source": "NAVER D2",
-          "sourceSlug": "naver-d2",
-          "contentType": "technical_case",
-          "score": 170.91043,
-          "isExpected": true,
-          "expectedRelevance": 2
         }
       ]
     },
@@ -3207,9 +3207,9 @@
       "totalResults": 48,
       "expectedCount": 4,
       "precisionAt5": 0.4,
-      "recallAt10": 0.5,
+      "recallAt10": 0.75,
       "mrr": 1.0,
-      "ndcgAt10": 0.6832490214923531,
+      "ndcgAt10": 0.8013660245103041,
       "topResults": [
         {
           "rank": 1,
@@ -3219,12 +3219,24 @@
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 292.9397,
+          "score": 852.9397,
           "isExpected": true,
           "expectedRelevance": 3
         },
         {
           "rank": 2,
+          "title": "배민상회와 검색플랫폼 연동기",
+          "url": "https://techblog.woowahan.com/11732/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 368.66763,
+          "isExpected": true,
+          "expectedRelevance": 2
+        },
+        {
+          "rank": 3,
           "title": "CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용",
           "url": "https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html",
           "company": "Hyperconnect",
@@ -3236,7 +3248,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 3,
+          "rank": 4,
           "title": "Elasticsearch 병렬 테스트를 향한 여정",
           "url": "https://techblog.woowahan.com/18486/",
           "company": "Woowa Brothers",
@@ -3248,7 +3260,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 4,
+          "rank": 5,
           "title": "Trino로 타임아웃 개선하기 : NHN Cloud Meetup",
           "url": "https://meetup.nhncloud.com/posts/391",
           "company": "NHN Cloud",
@@ -3260,7 +3272,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 5,
+          "rank": 6,
           "title": "검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화",
           "url": "https://techblog.woowahan.com/20161/",
           "company": "Woowa Brothers",
@@ -3272,7 +3284,7 @@
           "expectedRelevance": 3
         },
         {
-          "rank": 6,
+          "rank": 7,
           "title": "How we rebuilt the search architecture for high availability in GitHub Enterprise Server",
           "url": "https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/",
           "company": "GitHub",
@@ -3284,7 +3296,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 7,
+          "rank": 8,
           "title": "우리 서비스와 연결된 MCP Server 빠르게 구현해보기: MCP 해커톤 후기",
           "url": "https://techblog.woowahan.com/22342/",
           "company": "Woowa Brothers",
@@ -3296,7 +3308,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 8,
+          "rank": 9,
           "title": "실시간 마케팅을 위한 PoC 개발기",
           "url": "https://techblog.woowahan.com/22043/",
           "company": "Woowa Brothers",
@@ -3308,24 +3320,12 @@
           "expectedRelevance": null
         },
         {
-          "rank": 9,
+          "rank": 10,
           "title": "쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축",
           "url": "https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4",
           "company": "29CM",
           "source": "29CM TEAM",
           "sourceSlug": "29cm-team",
-          "contentType": "technical_case",
-          "score": 208.66763,
-          "isExpected": false,
-          "expectedRelevance": null
-        },
-        {
-          "rank": 10,
-          "title": "데이터카탈로그에서 DataHub를 이용하는 방법",
-          "url": "https://techblog.woowahan.com/21434/",
-          "company": "Woowa Brothers",
-          "source": "Woowa Tech Blog",
-          "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
           "score": 208.66763,
           "isExpected": false,
@@ -3751,7 +3751,7 @@
           "source": "NAVER D2",
           "sourceSlug": "naver-d2",
           "contentType": "technical_case",
-          "score": 995.9712,
+          "score": 998.19244,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -3763,7 +3763,7 @@
           "source": "SOCAR Tech Blog",
           "sourceSlug": "socar-tech-blog",
           "contentType": "technical_case",
-          "score": 691.5511,
+          "score": 693.77234,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -3787,7 +3787,7 @@
           "source": "NHN Cloud Meetup",
           "sourceSlug": "nhn-cloud-meetup",
           "contentType": "technical_case",
-          "score": 299.94162,
+          "score": 302.16287,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -3799,7 +3799,7 @@
           "source": "Devsisters Tech Blog",
           "sourceSlug": "devsisters-tech-blog",
           "contentType": "technical_case",
-          "score": 294.10117,
+          "score": 296.32242,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -3823,7 +3823,7 @@
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 228.79214,
+          "score": 231.01338,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -3835,7 +3835,7 @@
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 226.06895,
+          "score": 228.29019,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -3859,7 +3859,7 @@
           "source": "NHN Cloud Meetup",
           "sourceSlug": "nhn-cloud-meetup",
           "contentType": "technical_case",
-          "score": 183.38495,
+          "score": 185.6062,
           "isExpected": false,
           "expectedRelevance": null
         }
@@ -4132,15 +4132,148 @@
       ]
     },
     {
+      "queryId": "architecture-rag",
+      "query": "rag",
+      "category": "architecture",
+      "totalResults": 35,
+      "expectedCount": 6,
+      "precisionAt5": 0.8,
+      "recallAt10": 1.0,
+      "mrr": 1.0,
+      "ndcgAt10": 0.9483502086482233,
+      "topResults": [
+        {
+          "rank": 1,
+          "title": "RAG, 들어는 봤는데… 내 서비스엔 어떻게 쓰지?",
+          "url": "https://techblog.woowahan.com/25900/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 489.50705,
+          "isExpected": true,
+          "expectedRelevance": 3
+        },
+        {
+          "rank": 2,
+          "title": "ODW #5: 벡터 DB와 에이전트 스킬로 RAG 시스템 만들기",
+          "url": "https://techblog.lycorp.co.jp/ko/building-rag-system-with-vector-db-and-agent-skills",
+          "company": "LY Corporation",
+          "source": "LY Corporation Tech Blog",
+          "sourceSlug": "ly-corporation-tech-blog",
+          "contentType": "technical_case",
+          "score": 444.48285,
+          "isExpected": true,
+          "expectedRelevance": 3
+        },
+        {
+          "rank": 3,
+          "title": "신한DS가 업스테이지에 전한 감사",
+          "url": "https://www.upstage.ai/blog/ko/enterprise-solution-case-shinhands",
+          "company": "Upstage",
+          "source": "Upstage Blog",
+          "sourceSlug": "upstage-blog",
+          "contentType": "technical_case",
+          "score": 349.80853,
+          "isExpected": true,
+          "expectedRelevance": 2
+        },
+        {
+          "rank": 4,
+          "title": "GPT를 활용한 카탈로그 아이템 생성",
+          "url": "https://techblog.woowahan.com/21294/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 343.7019,
+          "isExpected": true,
+          "expectedRelevance": 2
+        },
+        {
+          "rank": 5,
+          "title": "Solar Pro 2 프롬프트 가이드",
+          "url": "https://www.upstage.ai/blog/ko/solar-pro-2-prompting-handbook",
+          "company": "Upstage",
+          "source": "Upstage Blog",
+          "sourceSlug": "upstage-blog",
+          "contentType": "technical_case",
+          "score": 322.35605,
+          "isExpected": false,
+          "expectedRelevance": null
+        },
+        {
+          "rank": 6,
+          "title": "안녕하세요! AI UX라이터 제민희입니다. 무엇을 도와드릴까요?",
+          "url": "https://techblog.woowahan.com/23836/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 316.42715,
+          "isExpected": true,
+          "expectedRelevance": 2
+        },
+        {
+          "rank": 7,
+          "title": "AI 데이터 분석가 ‘물어보새’- 3부. Agent로 더 넓고 깊은 지식 공유하기",
+          "url": "https://techblog.woowahan.com/23273/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 294.56573,
+          "isExpected": false,
+          "expectedRelevance": null
+        },
+        {
+          "rank": 8,
+          "title": "AI 데이터 분석가 ‘물어보새’ 등장 – 1부. RAG와 Text-To-SQL 활용",
+          "url": "https://techblog.woowahan.com/18144/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 285.48993,
+          "isExpected": true,
+          "expectedRelevance": 3
+        },
+        {
+          "rank": 9,
+          "title": "AI 데이터 분석가 ‘물어보새’ 등장 – 2부. Data Discovery",
+          "url": "https://techblog.woowahan.com/18362/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 275.87897,
+          "isExpected": false,
+          "expectedRelevance": null
+        },
+        {
+          "rank": 10,
+          "title": "전처리가 AI 에이전트 성공률을 좌우한다 | 광고심의 자동화 사례",
+          "url": "https://www.upstage.ai/blog/ko/ai-agent-preprocessing-pipeline-success",
+          "company": "Upstage",
+          "source": "Upstage Blog",
+          "sourceSlug": "upstage-blog",
+          "contentType": "technical_case",
+          "score": 239.72354,
+          "isExpected": false,
+          "expectedRelevance": null
+        }
+      ]
+    },
+    {
       "queryId": "ko-event-driven-commerce",
       "query": "이벤트 기반 상품 조회",
       "category": "architecture",
       "totalResults": 1109,
       "expectedCount": 3,
-      "precisionAt5": 0.2,
-      "recallAt10": 0.3333333333333333,
+      "precisionAt5": 0.6,
+      "recallAt10": 1.0,
       "mrr": 1.0,
-      "ndcgAt10": 0.6735439182299785,
+      "ndcgAt10": 0.9421945763140684,
       "topResults": [
         {
           "rank": 1,
@@ -4150,7 +4283,7 @@
           "source": "29CM TEAM",
           "sourceSlug": "29cm-team",
           "contentType": "technical_case",
-          "score": 682.5767,
+          "score": 1824.6049,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -4168,6 +4301,30 @@
         },
         {
           "rank": 3,
+          "title": "여기어때 이벤트 기반 통합 알림 플랫폼 구축기 Part 2. How?",
+          "url": "https://techblog.gccompany.co.kr/%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%ED%86%B5%ED%95%A9-%EC%95%8C%EB%A6%BC-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B5%AC%EC%B6%95%EA%B8%B0-part-2-how-11f41bb2b5f2?source=rss----18356045d353---4",
+          "company": "GC Company",
+          "source": "GC Company Tech Blog",
+          "sourceSlug": "gc-company-tech-blog",
+          "contentType": "technical_case",
+          "score": 553.3704,
+          "isExpected": true,
+          "expectedRelevance": 2
+        },
+        {
+          "rank": 4,
+          "title": "여기어때 이벤트 기반 통합 알림 플랫폼 구축기 Part 1. Why?",
+          "url": "https://techblog.gccompany.co.kr/%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%ED%86%B5%ED%95%A9-%EC%95%8C%EB%A6%BC-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EA%B5%AC%EC%B6%95%EA%B8%B0-part-1-why-3d2961d1e849?source=rss----18356045d353---4",
+          "company": "GC Company",
+          "source": "GC Company Tech Blog",
+          "sourceSlug": "gc-company-tech-blog",
+          "contentType": "technical_case",
+          "score": 553.3704,
+          "isExpected": true,
+          "expectedRelevance": 2
+        },
+        {
+          "rank": 5,
           "title": "Mastering millisecond latency and millions of events: The event-driven architecture behind the Amazon Key Suite",
           "url": "https://aws.amazon.com/blogs/architecture/mastering-millisecond-latency-and-millions-of-events-the-event-driven-architecture-behind-the-amazon-key-suite/",
           "company": "AWS",
@@ -4179,7 +4336,7 @@
           "expectedRelevance": null
         },
         {
-          "rank": 4,
+          "rank": 6,
           "title": "Build a multi-tenant configuration system with tagged storage patterns",
           "url": "https://aws.amazon.com/blogs/architecture/build-a-multi-tenant-configuration-system-with-tagged-storage-patterns/",
           "company": "AWS",
@@ -4191,7 +4348,19 @@
           "expectedRelevance": null
         },
         {
-          "rank": 5,
+          "rank": 7,
+          "title": "postgres_fdw로 마이그레이션 생산성 높이기",
+          "url": "https://techblog.woowahan.com/20371/",
+          "company": "Woowa Brothers",
+          "source": "Woowa Tech Blog",
+          "sourceSlug": "woowa-tech-blog",
+          "contentType": "technical_case",
+          "score": 323.5269,
+          "isExpected": false,
+          "expectedRelevance": null
+        },
+        {
+          "rank": 8,
           "title": "Modernizing KYC with AWS serverless solutions and agentic AI for financial services",
           "url": "https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/",
           "company": "AWS",
@@ -4203,62 +4372,26 @@
           "expectedRelevance": null
         },
         {
-          "rank": 6,
-          "title": "VLOps:Event-driven MLOps & Omni-Evaluator",
-          "url": "https://d2.naver.com/helloworld/0931890",
-          "company": "NAVER",
-          "source": "NAVER D2",
-          "sourceSlug": "naver-d2",
-          "contentType": "technical_case",
-          "score": 161.76416,
-          "isExpected": false,
-          "expectedRelevance": null
-        },
-        {
-          "rank": 7,
-          "title": "postgres_fdw로 마이그레이션 생산성 높이기",
-          "url": "https://techblog.woowahan.com/20371/",
-          "company": "Woowa Brothers",
-          "source": "Woowa Tech Blog",
-          "sourceSlug": "woowa-tech-blog",
-          "contentType": "technical_case",
-          "score": 161.49876,
-          "isExpected": false,
-          "expectedRelevance": null
-        },
-        {
-          "rank": 8,
+          "rank": 9,
           "title": "오픈마켓 여행 플랫폼의 실전 API 연동 노하우",
           "url": "https://dev.gmarket.com/115",
           "company": "Gmarket",
           "source": "Gmarket Tech Blog",
           "sourceSlug": "gmarket-tech-blog",
           "contentType": "technical_case",
-          "score": 147.2261,
+          "score": 309.2542,
           "isExpected": false,
           "expectedRelevance": null
         },
         {
-          "rank": 9,
+          "rank": 10,
           "title": "[배민스토어] 배민스토어에 이벤트 기반 아키텍처를 곁들인…",
           "url": "https://techblog.woowahan.com/13101/",
           "company": "Woowa Brothers",
           "source": "Woowa Tech Blog",
           "sourceSlug": "woowa-tech-blog",
           "contentType": "technical_case",
-          "score": 146.8658,
-          "isExpected": false,
-          "expectedRelevance": null
-        },
-        {
-          "rank": 10,
-          "title": "(youtube)Event Streaming 도입과 앞으로의 활용",
-          "url": "https://medium.com/29cm/youtube-event-streaming-%EB%8F%84%EC%9E%85%EA%B3%BC-%EC%95%9E%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%9C%EC%9A%A9-806f2002586a?source=rss----fbd022693005---4",
-          "company": "29CM",
-          "source": "29CM TEAM",
-          "sourceSlug": "29cm-team",
-          "contentType": "technical_case",
-          "score": 146.0374,
+          "score": 308.89392,
           "isExpected": false,
           "expectedRelevance": null
         }
@@ -5130,7 +5263,7 @@
           "source": "Banksalad Blog",
           "sourceSlug": "banksalad-blog",
           "contentType": "technical_case",
-          "score": 458.3861,
+          "score": 460.36487,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -5142,7 +5275,7 @@
           "source": "Netmarble Tech Blog",
           "sourceSlug": "netmarble-tech-blog",
           "contentType": "technical_case",
-          "score": 389.5018,
+          "score": 391.48056,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -5154,7 +5287,7 @@
           "source": "Netmarble Tech Blog",
           "sourceSlug": "netmarble-tech-blog",
           "contentType": "technical_case",
-          "score": 389.5018,
+          "score": 391.48056,
           "isExpected": true,
           "expectedRelevance": 3
         },
@@ -5172,6 +5305,18 @@
         },
         {
           "rank": 5,
+          "title": "데브시스터즈 엔지니어링 데이 - Data 돌아보기",
+          "url": "https://tech.devsisters.com/posts/2025-engineering-day-data",
+          "company": "Devsisters",
+          "source": "Devsisters Tech Blog",
+          "sourceSlug": "devsisters-tech-blog",
+          "contentType": "technical_case",
+          "score": 338.62662,
+          "isExpected": false,
+          "expectedRelevance": null
+        },
+        {
+          "rank": 6,
           "title": "게임별 다양한 지표 추출을 위한 데이터 적재 파이프라인, Bigwave",
           "url": "https://netmarble.engineering/data-pipeline-bigwave/",
           "company": "Netmarble",
@@ -5179,18 +5324,6 @@
           "sourceSlug": "netmarble-tech-blog",
           "contentType": "technical_case",
           "score": 337.05362,
-          "isExpected": false,
-          "expectedRelevance": null
-        },
-        {
-          "rank": 6,
-          "title": "데브시스터즈 엔지니어링 데이 - Data 돌아보기",
-          "url": "https://tech.devsisters.com/posts/2025-engineering-day-data",
-          "company": "Devsisters",
-          "source": "Devsisters Tech Blog",
-          "sourceSlug": "devsisters-tech-blog",
-          "contentType": "technical_case",
-          "score": 336.64786,
           "isExpected": false,
           "expectedRelevance": null
         },
@@ -5214,7 +5347,7 @@
           "source": "AWS Big Data Blog",
           "sourceSlug": "aws-big-data-blog",
           "contentType": "technical_case",
-          "score": 322.23984,
+          "score": 324.21863,
           "isExpected": true,
           "expectedRelevance": 2
         },
@@ -5238,7 +5371,7 @@
           "source": "AWS Database Blog",
           "sourceSlug": "aws-database-blog",
           "contentType": "technical_case",
-          "score": 308.17337,
+          "score": 310.15213,
           "isExpected": false,
           "expectedRelevance": null
         }

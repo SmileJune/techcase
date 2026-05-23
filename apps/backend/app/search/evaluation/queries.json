@@ -1047,6 +1047,44 @@
       ]
     },
     {
+      "id": "architecture-rag",
+      "query": "rag",
+      "category": "architecture",
+      "intent": "RAG 기반 검색, 문서 이해, AI 내부 도구 적용 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://techblog.woowahan.com/25900/",
+          "title": "RAG, 들어는 봤는데… 내 서비스엔 어떻게 쓰지?",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.lycorp.co.jp/ko/building-rag-system-with-vector-db-and-agent-skills",
+          "title": "ODW #5: 벡터 DB와 에이전트 스킬로 RAG 시스템 만들기",
+          "relevance": 3
+        },
+        {
+          "url": "https://www.upstage.ai/blog/ko/enterprise-solution-case-shinhands",
+          "title": "신한DS가 업스테이지에 전한 감사",
+          "relevance": 2
+        },
+        {
+          "url": "https://techblog.woowahan.com/21294/",
+          "title": "GPT를 활용한 카탈로그 아이템 생성",
+          "relevance": 2
+        },
+        {
+          "url": "https://techblog.woowahan.com/23836/",
+          "title": "안녕하세요! AI UX라이터 제민희입니다. 무엇을 도와드릴까요?",
+          "relevance": 2
+        },
+        {
+          "url": "https://techblog.woowahan.com/18144/",
+          "title": "AI 데이터 분석가 ‘물어보새’ 등장 – 1부. RAG와 Text-To-SQL 활용",
+          "relevance": 3
+        }
+      ]
+    },
+    {
       "id": "ko-event-driven-commerce",
       "query": "이벤트 기반 상품 조회",
       "category": "architecture",

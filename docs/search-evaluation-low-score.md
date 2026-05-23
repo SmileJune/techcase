@@ -1,50 +1,27 @@
 # Search Evaluation Low Score Report
 
-- generated at: 2026-05-21T09:20:08.166723+00:00
-- queries: 41
-- low score queries: 14
+- generated at: 2026-05-22T14:25:07.197176+00:00
+- queries: 42
+- low score queries: 11
 - thresholds: p@5>=0.4, r@10>=0.8, mrr>=0.5, ndcg@10>=0.7
 
 ## Review Targets
 
 | query_id | query | category | total | p@5 | r@10 | mrr | ndcg@10 | reasons |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| ko-event-driven-commerce | 이벤트 기반 상품 조회 | architecture | 1109 | 0.200 | 0.333 | 1.000 | 0.674 | low_precision, low_recall, low_ndcg |
 | architecture-cross-region-resilience | cross-Region resilience | architecture | 278 | 0.200 | 1.000 | 1.000 | 0.861 | low_precision |
 | ko-architecture-pr-preview | PR Preview Argo CD Linkerd | architecture | 306 | 0.200 | 1.000 | 1.000 | 0.889 | low_precision |
 | ko-problem-s3-cdn-cost | S3 비용 이미지 CDN 최적화 | problem | 139 | 0.200 | 1.000 | 1.000 | 0.900 | low_precision |
-| ko-problem-data-consistency | 낙관적 락 | problem | 3 | 0.200 | 1.000 | 1.000 | 1.000 | low_precision |
-| ko-tech-eks-autoscaling | EKS 오토스케일링 | technology | 39 | 0.200 | 1.000 | 1.000 | 1.000 | low_precision |
-| ko-tech-search | 검색 개선 | technology | 640 | 0.400 | 0.273 | 1.000 | 0.405 | low_recall, low_ndcg |
-| ko-search-quality-improvement | 검색 품질 개선 | technology | 709 | 0.400 | 0.667 | 1.000 | 0.578 | low_recall, low_ndcg |
 | ko-architecture-serverless | 서버리스 | architecture | 57 | 0.400 | 1.000 | 0.500 | 0.611 | low_ndcg |
-| architecture-streaming-pipeline | streaming data pipeline | architecture | 107 | 0.400 | 0.750 | 0.500 | 0.632 | low_recall, low_ndcg |
-| ko-search-elasticsearch-index | Elasticsearch 인덱스 구조 | technology | 48 | 0.400 | 0.500 | 1.000 | 0.683 | low_recall, low_ndcg |
+| architecture-streaming-pipeline | streaming data pipeline | architecture | 107 | 0.400 | 1.000 | 0.500 | 0.686 | low_ndcg |
 | ko-data-log-platform | 로그 플랫폼 | architecture | 577 | 0.400 | 0.600 | 1.000 | 0.801 | low_recall |
+| ko-search-elasticsearch-index | Elasticsearch 인덱스 구조 | technology | 48 | 0.400 | 0.750 | 1.000 | 0.801 | low_recall |
+| ko-search-quality-improvement | 검색 품질 개선 | technology | 709 | 0.600 | 0.500 | 1.000 | 0.641 | low_recall, low_ndcg |
 | ko-problem-cost-optimization | 비용 최적화 | problem | 483 | 0.800 | 0.545 | 0.500 | 0.545 | low_recall, low_ndcg |
+| ko-tech-search | 검색 개선 | technology | 640 | 0.800 | 0.364 | 1.000 | 0.609 | low_recall, low_ndcg |
 | tech-lambda | Lambda | technology | 102 | 0.800 | 0.800 | 0.500 | 0.699 | low_ndcg |
 
 ## Details
-
-### ko-event-driven-commerce
-
-- query: 이벤트 기반 상품 조회
-- category: architecture
-- reasons: low_precision, low_recall, low_ndcg
-- scores: p@5=0.200, r@10=0.333, mrr=1.000, ndcg@10=0.674
-
-| rank | expected | title | company/source |
-| ---: | --- | --- | --- |
-| 1 | yes:3 | [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4) | 29CM / 29CM TEAM |
-| 2 | - | [Building event-driven architecture for member system](https://techblog.woowahan.com/10320/) | Woowa Brothers / Woowa Tech Blog |
-| 3 | - | [Mastering millisecond latency and millions of events: The event-driven architecture behind the Amazon Key Suite](https://aws.amazon.com/blogs/architecture/mastering-millisecond-latency-and-millions-of-events-the-event-driven-architecture-behind-the-amazon-key-suite/) | AWS / AWS Architecture Blog |
-| 4 | - | [Build a multi-tenant configuration system with tagged storage patterns](https://aws.amazon.com/blogs/architecture/build-a-multi-tenant-configuration-system-with-tagged-storage-patterns/) | AWS / AWS Architecture Blog |
-| 5 | - | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog |
-| 6 | - | [VLOps:Event-driven MLOps & Omni-Evaluator](https://d2.naver.com/helloworld/0931890) | NAVER / NAVER D2 |
-| 7 | - | [postgres_fdw로 마이그레이션 생산성 높이기](https://techblog.woowahan.com/20371/) | Woowa Brothers / Woowa Tech Blog |
-| 8 | - | [오픈마켓 여행 플랫폼의 실전 API 연동 노하우](https://dev.gmarket.com/115) | Gmarket / Gmarket Tech Blog |
-| 9 | - | [[배민스토어] 배민스토어에 이벤트 기반 아키텍처를 곁들인…](https://techblog.woowahan.com/13101/) | Woowa Brothers / Woowa Tech Blog |
-| 10 | - | [(youtube)Event Streaming 도입과 앞으로의 활용](https://medium.com/29cm/youtube-event-streaming-%EB%8F%84%EC%9E%85%EA%B3%BC-%EC%95%9E%EC%9C%BC%EB%A1%9C%EC%9D%98-%ED%99%9C%EC%9A%A9-806f2002586a?source=rss----fbd022693005---4) | 29CM / 29CM TEAM |
 
 ### architecture-cross-region-resilience
 
@@ -106,79 +83,6 @@
 | 9 | - | [스타트업 엔지니어의 AWS 비용 최적화 경험기](https://tech.inflab.com/20240227-finops-for-startup/) | Inflab / Inflab Tech Blog |
 | 10 | - | [Streamlined monitoring and debugging for Amazon EMR on EC2](https://aws.amazon.com/blogs/big-data/streamlined-monitoring-and-debugging-for-amazon-emr-on-ec2/) | AWS / AWS Big Data Blog |
 
-### ko-problem-data-consistency
-
-- query: 낙관적 락
-- category: problem
-- reasons: low_precision
-- scores: p@5=0.200, r@10=1.000, mrr=1.000, ndcg@10=1.000
-
-| rank | expected | title | company/source |
-| ---: | --- | --- | --- |
-| 1 | yes:3 | [뱅크샐러드가 게임을 만들 때 데이터 정합성을 유지하는 법 (feat. 낙관적 락)](https://blog.banksalad.com/tech/banksalad-optimistic-lock/) | Banksalad / Banksalad Blog |
-| 2 | - | [프로모션 시스템 엿보기: 파일럿 프로젝트](https://techblog.woowahan.com/10795/) | Woowa Brothers / Woowa Tech Blog |
-| 3 | - | [Spring Session + Custom Session Repository 기반 세션 저장소의 메모리 누수 해결](https://hyperconnect.github.io/2023/01/09/redis-session.html) | Hyperconnect / Hyperconnect Tech Blog |
-
-### ko-tech-eks-autoscaling
-
-- query: EKS 오토스케일링
-- category: technology
-- reasons: low_precision
-- scores: p@5=0.200, r@10=1.000, mrr=1.000, ndcg@10=1.000
-
-| rank | expected | title | company/source |
-| ---: | --- | --- | --- |
-| 1 | yes:3 | [Job 워크로드를 위한 EKS Node Group 오토스케일링 도입기](https://medium.com/daangn/job-%EC%9B%8C%ED%81%AC%EB%A1%9C%EB%93%9C%EB%A5%BC-%EC%9C%84%ED%95%9C-eks-node-group-%EC%98%A4%ED%86%A0%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%A7%81-%EB%8F%84%EC%9E%85%EA%B8%B0-a6a28376d153?source=rss----4505f82a2dbd---4) | Daangn / Daangn Tech Blog |
-| 2 | - | [AI-powered event response for Amazon EKS](https://aws.amazon.com/blogs/architecture/ai-powered-event-response-for-amazon-eks/) | AWS / AWS Architecture Blog |
-| 3 | - | [How Generali Malaysia optimizes operations with Amazon EKS](https://aws.amazon.com/blogs/architecture/how-generali-malaysia-optimizes-operations-with-amazon-eks/) | AWS / AWS Architecture Blog |
-| 4 | - | [Optimizing storage performance for Amazon EKS on AWS Outposts](https://aws.amazon.com/blogs/compute/optimizing-storage-performance-for-amazon-eks-on-aws-outposts/) | AWS / AWS Compute Blog |
-| 5 | - | [Spark on Kubernetes로 이관하기](https://techblog.woowahan.com/10291/) | Woowa Brothers / Woowa Tech Blog |
-| 6 | - | [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/) | Woowa Brothers / Woowa Tech Blog |
-| 7 | - | [Deloitte optimizes EKS environment provisioning and achieves 89% faster testing environments using Amazon EKS and vCluster](https://aws.amazon.com/blogs/architecture/deloitte-optimizes-eks-environment-provisioning-and-achieves-89-faster-testing-environments-using-amazon-eks-and-vcluster/) | AWS / AWS Architecture Blog |
-| 8 | - | [EKS Bottlerocket AMI에서 DCGM 오류로 GPU 노드 반복 교체 문제 해결기](https://tech.inflab.com/20250827-bottlerocket-ami-gpu-issue/) | Inflab / Inflab Tech Blog |
-| 9 | - | [How Kaltura Accelerates CI/CD Using AWS CodeBuild-hosted Runners](https://aws.amazon.com/blogs/devops/how-kaltura-accelerates-ci-cd-using-aws-codebuild-hosted-runners/) | AWS / AWS DevOps Blog |
-| 10 | - | [How HotelTrader cut inter-AZ cost 95% and latency by 49% with Valkey GLIDE on Amazon ElastiCache](https://aws.amazon.com/blogs/database/how-hoteltrader-cut-inter-az-cost-95-and-latency-by-49-with-valkey-glide-on-amazon-elasticache/) | AWS / AWS Database Blog |
-
-### ko-tech-search
-
-- query: 검색 개선
-- category: technology
-- reasons: low_recall, low_ndcg
-- scores: p@5=0.400, r@10=0.273, mrr=1.000, ndcg@10=0.405
-
-| rank | expected | title | company/source |
-| ---: | --- | --- | --- |
-| 1 | yes:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog |
-| 2 | - | [Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/156) | NHN Cloud / NHN Cloud Meetup |
-| 3 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup |
-| 4 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog |
-| 5 | yes:3 | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog |
-| 6 | - | [Real-time Service Configuration으로 Consul을 신주소 서비스에 적용한 사례](https://techblog.woowahan.com/2586/) | Woowa Brothers / Woowa Tech Blog |
-| 7 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog |
-| 8 | yes:3 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering |
-| 9 | - | [Building the future: highlights from Dropbox’s 2025 summer intern class](https://dropbox.tech/culture/highlights-from-dropbox-2025-summer-intern-class) | Dropbox / Dropbox Tech Blog |
-| 10 | - | [Announcing aggregations on Amazon ElastiCache](https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/) | AWS / AWS Database Blog |
-
-### ko-search-quality-improvement
-
-- query: 검색 품질 개선
-- category: technology
-- reasons: low_recall, low_ndcg
-- scores: p@5=0.400, r@10=0.667, mrr=1.000, ndcg@10=0.578
-
-| rank | expected | title | company/source |
-| ---: | --- | --- | --- |
-| 1 | yes:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog |
-| 2 | - | [Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/156) | NHN Cloud / NHN Cloud Meetup |
-| 3 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup |
-| 4 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog |
-| 5 | yes:3 | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog |
-| 6 | yes:2 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering |
-| 7 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog |
-| 8 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog |
-| 9 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog |
-| 10 | yes:2 | [네이버 통합검색 AIB 도입과 웹 성능 변화 분석](https://d2.naver.com/helloworld/4241703) | NAVER / NAVER D2 |
-
 ### ko-architecture-serverless
 
 - query: 서버리스
@@ -195,16 +99,16 @@
 | 5 | - | [More room to build: serverless services now support payloads up to 1 MB](https://aws.amazon.com/blogs/compute/more-room-to-build-serverless-services-now-support-payloads-up-to-1-mb/) | AWS / AWS Compute Blog |
 | 6 | yes:3 | [Modernizing KYC with AWS serverless solutions and agentic AI for financial services](https://aws.amazon.com/blogs/architecture/modernizing-kyc-with-aws-serverless-solutions-and-agentic-ai-for-financial-services/) | AWS / AWS Architecture Blog |
 | 7 | - | [Google Cloud Next 2024 참관 후기 2편 - Google Cloud Serverless for Java developer](https://tech.kakaopay.com/post/2024-google-cloud-next-2/) | Kakao Pay / Kakao Pay Tech Blog |
-| 8 | - | [Building an end-to-end agentic SRE using AWS DevOps Agent](https://aws.amazon.com/blogs/devops/building-an-end-to-end-agentic-sre-using-aws-devops-agent/) | AWS / AWS DevOps Blog |
-| 9 | - | [서버리스에서 쿠버네티스로 - Airflow 운영 경험기](https://helloworld.kurly.com/blog/airflow-1/) | Kurly / Kurly Tech Blog |
+| 8 | - | [서버리스에서 쿠버네티스로 - Airflow 운영 경험기](https://helloworld.kurly.com/blog/airflow-1/) | Kurly / Kurly Tech Blog |
+| 9 | - | [Building an end-to-end agentic SRE using AWS DevOps Agent](https://aws.amazon.com/blogs/devops/building-an-end-to-end-agentic-sre-using-aws-devops-agent/) | AWS / AWS DevOps Blog |
 | 10 | - | [6,000 AWS accounts, three people, one platform: Lessons learned](https://aws.amazon.com/blogs/architecture/6000-aws-accounts-three-people-one-platform-lessons-learned/) | AWS / AWS Architecture Blog |
 
 ### architecture-streaming-pipeline
 
 - query: streaming data pipeline
 - category: architecture
-- reasons: low_recall, low_ndcg
-- scores: p@5=0.400, r@10=0.750, mrr=0.500, ndcg@10=0.632
+- reasons: low_ndcg
+- scores: p@5=0.400, r@10=1.000, mrr=0.500, ndcg@10=0.686
 
 | rank | expected | title | company/source |
 | ---: | --- | --- | --- |
@@ -217,27 +121,7 @@
 | 7 | yes:3 | [Building Jetflow: a framework for flexible, performant data pipelines at Cloudflare](https://blog.cloudflare.com/building-jetflow-a-framework-for-flexible-performant-data-pipelines-at-cloudflare/) | Cloudflare / Cloudflare Engineering |
 | 8 | - | [Announcing aggregations on Amazon ElastiCache](https://aws.amazon.com/blogs/database/announcing-aggregations-on-amazon-elasticache/) | AWS / AWS Database Blog |
 | 9 | - | [Inside the feature store powering real-time AI in Dropbox Dash](https://dropbox.tech/machine-learning/feature-store-powering-realtime-ai-in-dropbox-dash) | Dropbox / Dropbox Tech Blog |
-| 10 | - | [프로젝트 관리를 위한 JIRA 활용기](https://dev.gmarket.com/43) | Gmarket / Gmarket Tech Blog |
-
-### ko-search-elasticsearch-index
-
-- query: Elasticsearch 인덱스 구조
-- category: technology
-- reasons: low_recall, low_ndcg
-- scores: p@5=0.400, r@10=0.500, mrr=1.000, ndcg@10=0.683
-
-| rank | expected | title | company/source |
-| ---: | --- | --- | --- |
-| 1 | yes:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog |
-| 2 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog |
-| 3 | - | [Elasticsearch 병렬 테스트를 향한 여정](https://techblog.woowahan.com/18486/) | Woowa Brothers / Woowa Tech Blog |
-| 4 | - | [Trino로 타임아웃 개선하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/391) | NHN Cloud / NHN Cloud Meetup |
-| 5 | yes:3 | [검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화](https://techblog.woowahan.com/20161/) | Woowa Brothers / Woowa Tech Blog |
-| 6 | - | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering |
-| 7 | - | [우리 서비스와 연결된 MCP Server 빠르게 구현해보기: MCP 해커톤 후기](https://techblog.woowahan.com/22342/) | Woowa Brothers / Woowa Tech Blog |
-| 8 | - | [실시간 마케팅을 위한 PoC 개발기](https://techblog.woowahan.com/22043/) | Woowa Brothers / Woowa Tech Blog |
-| 9 | - | [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4) | 29CM / 29CM TEAM |
-| 10 | - | [데이터카탈로그에서 DataHub를 이용하는 방법](https://techblog.woowahan.com/21434/) | Woowa Brothers / Woowa Tech Blog |
+| 10 | yes:2 | [Streaming CloudWatch metrics to VPC-based OpenTelemetry collectors using Lambda](https://aws.amazon.com/blogs/architecture/streaming-cloudwatch-metrics-to-vpc-based-opentelemetry-collectors-using-lambda/) | AWS / AWS Architecture Blog |
 
 ### ko-data-log-platform
 
@@ -259,6 +143,46 @@
 | 9 | - | [입사 후, 벌써 1년](https://techblog.woowahan.com/2632/) | Woowa Brothers / Woowa Tech Blog |
 | 10 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup |
 
+### ko-search-elasticsearch-index
+
+- query: Elasticsearch 인덱스 구조
+- category: technology
+- reasons: low_recall
+- scores: p@5=0.400, r@10=0.750, mrr=1.000, ndcg@10=0.801
+
+| rank | expected | title | company/source |
+| ---: | --- | --- | --- |
+| 1 | yes:3 | [실시간 인덱싱을 위한 Elasticsearch 구조를 찾아서](https://techblog.woowahan.com/7425/) | Woowa Brothers / Woowa Tech Blog |
+| 2 | yes:2 | [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/) | Woowa Brothers / Woowa Tech Blog |
+| 3 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog |
+| 4 | - | [Elasticsearch 병렬 테스트를 향한 여정](https://techblog.woowahan.com/18486/) | Woowa Brothers / Woowa Tech Blog |
+| 5 | - | [Trino로 타임아웃 개선하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/391) | NHN Cloud / NHN Cloud Meetup |
+| 6 | yes:3 | [검색 성능 개선을 위한 Elasticsearch 인덱스 구조와 쿼리 최적화](https://techblog.woowahan.com/20161/) | Woowa Brothers / Woowa Tech Blog |
+| 7 | - | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering |
+| 8 | - | [우리 서비스와 연결된 MCP Server 빠르게 구현해보기: MCP 해커톤 후기](https://techblog.woowahan.com/22342/) | Woowa Brothers / Woowa Tech Blog |
+| 9 | - | [실시간 마케팅을 위한 PoC 개발기](https://techblog.woowahan.com/22043/) | Woowa Brothers / Woowa Tech Blog |
+| 10 | - | [쿠폰, 어디에 쓸 수 있어요? — 이벤트 기반 적용 상품 조회 시스템 구축](https://medium.com/29cm/%EC%BF%A0%ED%8F%B0-%EC%96%B4%EB%94%94%EC%97%90-%EC%93%B8-%EC%88%98-%EC%9E%88%EC%96%B4%EC%9A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%A0%81%EC%9A%A9-%EC%83%81%ED%92%88-%EC%A1%B0%ED%9A%8C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95-4dc35eb97c1f?source=rss----fbd022693005---4) | 29CM / 29CM TEAM |
+
+### ko-search-quality-improvement
+
+- query: 검색 품질 개선
+- category: technology
+- reasons: low_recall, low_ndcg
+- scores: p@5=0.600, r@10=0.500, mrr=1.000, ndcg@10=0.641
+
+| rank | expected | title | company/source |
+| ---: | --- | --- | --- |
+| 1 | yes:3 | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog |
+| 2 | yes:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog |
+| 3 | yes:2 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering |
+| 4 | - | [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/) | Woowa Brothers / Woowa Tech Blog |
+| 5 | - | [Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/156) | NHN Cloud / NHN Cloud Meetup |
+| 6 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup |
+| 7 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog |
+| 8 | - | [SEO 주도 개발 실천기: 구글이 인정한 ‘좋은 URL’ 99% 달성 여정](https://medium.com/wantedjobs/seo-%EC%A3%BC%EB%8F%84-%EA%B0%9C%EB%B0%9C-%EC%8B%A4%EC%B2%9C%EA%B8%B0-%EA%B5%AC%EA%B8%80%EC%9D%B4-%EC%9D%B8%EC%A0%95%ED%95%9C-%EC%A2%8B%EC%9D%80-url-99-%EB%8B%AC%EC%84%B1-%EC%97%AC%EC%A0%95-7e494b56d39b?source=rss----fb47eceee74c---4) | Wantedlab / Wantedlab Tech Blog |
+| 9 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog |
+| 10 | - | [[AI 트렌드] 매출 성장의 비결로 떠오른 검색· 추천 기술, Seargest](https://www.upstage.ai/blog/ko/2023-ai-tech-trend-seargest) | Upstage / Upstage Blog |
+
 ### ko-problem-cost-optimization
 
 - query: 비용 최적화
@@ -278,6 +202,26 @@
 | 8 | yes:3 | [우아한 Cloud FinOps 여정](https://techblog.woowahan.com/22855/) | Woowa Brothers / Woowa Tech Blog |
 | 9 | - | [데이터분석가로서 업무 과정과 경험, 배움을 공유합니다](https://techblog.woowahan.com/2686/) | Woowa Brothers / Woowa Tech Blog |
 | 10 | - | [Data Product (3) 데이터로 실제 운영 효율화가 가능할까?](https://tech.socarcorp.kr/data/2025/02/11/weather-wash.html) | SOCAR / SOCAR Tech Blog |
+
+### ko-tech-search
+
+- query: 검색 개선
+- category: technology
+- reasons: low_recall, low_ndcg
+- scores: p@5=0.800, r@10=0.364, mrr=1.000, ndcg@10=0.609
+
+| rank | expected | title | company/source |
+| ---: | --- | --- | --- |
+| 1 | yes:3 | [Using LLMs to amplify human labeling and improve Dash search relevance](https://dropbox.tech/machine-learning/llm-human-labeling-improving-search-relevance-dropbox-dash) | Dropbox / Dropbox Tech Blog |
+| 2 | yes:3 | [MongoDB Atlas Search 정렬이슈 해결기](https://tech.inflab.com/202211-mongodb-atlas-search/) | Inflab / Inflab Tech Blog |
+| 3 | yes:3 | [How we rebuilt the search architecture for high availability in GitHub Enterprise Server](https://github.blog/engineering/architecture-optimization/how-we-rebuilt-the-search-architecture-for-high-availability-in-github-enterprise-server/) | GitHub / GitHub Engineering |
+| 4 | yes:3 | [배민상회와 검색플랫폼 연동기](https://techblog.woowahan.com/11732/) | Woowa Brothers / Woowa Tech Blog |
+| 5 | - | [Log&Crash Search의 Network Insight 기능 소개 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/156) | NHN Cloud / NHN Cloud Meetup |
+| 6 | - | [TOAST Log&Crash Search의 데이터 무결성 검증 기능 사용하기 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/254) | NHN Cloud / NHN Cloud Meetup |
+| 7 | - | [Full-text, exact-match, range, and hybrid search on Amazon ElastiCache](https://aws.amazon.com/blogs/database/enhanced-search-for-amazon-elasticache/) | AWS / AWS Database Blog |
+| 8 | - | [Real-time Service Configuration으로 Consul을 신주소 서비스에 적용한 사례](https://techblog.woowahan.com/2586/) | Woowa Brothers / Woowa Tech Blog |
+| 9 | - | [CDC & CDC Sink Platform 개발 2편 - CDC Sink Platform 개발 및 CQRS 패턴의 적용](https://hyperconnect.github.io/2021/03/22/cdc-sink-platform.html) | Hyperconnect / Hyperconnect Tech Blog |
+| 10 | - | [Building the future: highlights from Dropbox’s 2025 summer intern class](https://dropbox.tech/culture/highlights-from-dropbox-2025-summer-intern-class) | Dropbox / Dropbox Tech Blog |
 
 ### tech-lambda
 
