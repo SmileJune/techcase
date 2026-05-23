@@ -1,0 +1,31 @@
+name: AI Implement Approved Idea
+
+on:
+  issue_comment:
+    types:
+      - created
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: ai-implement-approved-idea-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  implement:
+    if: >-
+      github.event.issue.pull_request == null &&
+      contains(github.event.comment.body, '/ai approve')
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      DEVLOOP_APPROVERS: ${{ vars.DEVLOOP_APPROVERS }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create approved DevLoop PR scaffold
+        run: python scripts/ai/implement_idea.py

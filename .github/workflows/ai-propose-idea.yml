@@ -1,0 +1,80 @@
+name: AI Propose Idea
+
+on:
+  workflow_dispatch:
+    inputs:
+      proposal_mode:
+        description: Use api for one low-cost generated idea or manual for supplied fields.
+        required: false
+        default: api
+        type: choice
+        options:
+          - api
+          - manual
+      idea_title:
+        description: Manual mode only. Idea title.
+        required: false
+        type: string
+      problem:
+        description: Manual mode only. User or maintainer problem.
+        required: false
+        type: string
+      rationale:
+        description: Manual mode only. Why this fits TechCase now.
+        required: false
+        type: string
+      scope:
+        description: Manual mode only. Small, reviewable proposed scope.
+        required: false
+        type: string
+      non_goals:
+        description: Manual mode only. Explicit non-goals.
+        required: false
+        type: string
+      risks:
+        description: Manual mode only. Risks and guardrails.
+        required: false
+        type: string
+      validation:
+        description: Manual mode only. Human validation steps.
+        required: false
+        type: string
+      dry_run:
+        description: Print the generated Issue payload without creating an Issue.
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: ai-propose-idea
+  cancel-in-progress: false
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4.1-mini' }}
+      DEVLOOP_PROPOSAL_MODE: ${{ inputs.proposal_mode }}
+      DEVLOOP_DRY_RUN: ${{ inputs.dry_run }}
+      DEVLOOP_IDEA_TITLE: ${{ inputs.idea_title }}
+      DEVLOOP_IDEA_PROBLEM: ${{ inputs.problem }}
+      DEVLOOP_IDEA_RATIONALE: ${{ inputs.rationale }}
+      DEVLOOP_IDEA_SCOPE: ${{ inputs.scope }}
+      DEVLOOP_IDEA_NON_GOALS: ${{ inputs.non_goals }}
+      DEVLOOP_IDEA_RISKS: ${{ inputs.risks }}
+      DEVLOOP_IDEA_VALIDATION: ${{ inputs.validation }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create DevLoop idea Issue
+        run: python scripts/ai/propose_idea.py
