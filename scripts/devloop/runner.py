@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Local DevLoop runner for mini PC based Codex CLI implementation.
 
-This runner watches DevLoop Issues for a human `/ai implement` command, checks
-out the matching `ai/issue-*` PR branch, and can run `codex exec` locally.
+This runner watches DevLoop Issues or matching PRs for human `/ai ...` commands,
+checks out the matching `ai/issue-*` PR branch, and can run `codex exec`
+locally.
 
 It is intentionally conservative:
 - default mode is dry-run
@@ -31,7 +32,8 @@ from typing import Any
 
 
 GITHUB_API = "https://api.github.com"
-IMPLEMENT_COMMAND = "/ai implement"
+DEFAULT_IMPLEMENT_COMMANDS = ("/ai implement", "/ai approve")
+DEFAULT_REVISE_COMMAND = "/ai revise"
 START_MARKER = "<!-- devloop-runner:start -->"
 DONE_MARKER = "<!-- devloop-runner:done -->"
 FORBIDDEN_PATH_PREFIXES = (
@@ -51,6 +53,13 @@ class Candidate:
     issue: dict[str, Any]
     command_comment: dict[str, Any]
     pull_request: dict[str, Any]
+    command_kind: str
+    command_thread_number: int
+
+
+@dataclass
+class RunnerState:
+    processed_comment_ids: set[int]
 
 
 def env(name: str, default: str | None = None) -> str | None:
@@ -58,6 +67,25 @@ def env(name: str, default: str | None = None) -> str | None:
     if value is None or value == "":
         return default
     return value
+
+
+def load_env_file() -> None:
+    configured = os.environ.get("DEVLOOP_ENV_FILE")
+    candidates = [
+        Path(configured).expanduser() if configured else None,
+        Path.home() / ".config" / "devloop" / "techcase.env",
+    ]
+    for path in candidates:
+        if not path or not path.exists():
+            continue
+        for line in path.read_text(encoding="utf-8").splitlines():
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#") or "=" not in stripped:
+                continue
+            key, value = stripped.split("=", 1)
+            key = key.strip()
+            if key and key not in os.environ:
+                os.environ[key] = value.strip().strip('"').strip("'")
 
 
 def run_command(
@@ -93,8 +121,40 @@ def codex_binary() -> str:
     )
 
 
+def state_path() -> Path:
+    configured = env("DEVLOOP_STATE_FILE")
+    if configured:
+        return Path(configured).expanduser()
+    return Path.home() / ".local" / "state" / "devloop" / "techcase-runner.json"
+
+
+def load_state() -> RunnerState:
+    path = state_path()
+    if not path.exists():
+        return RunnerState(processed_comment_ids=set())
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return RunnerState(
+        processed_comment_ids={int(value) for value in data.get("processed_comment_ids", [])}
+    )
+
+
+def save_state(state: RunnerState) -> None:
+    path = state_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(
+            {"processed_comment_ids": sorted(state.processed_comment_ids)},
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+
 class GitHubClient:
-    def __init__(self, repo: str, token: str) -> None:
+    def __init__(self, repo: str, token: str | None) -> None:
         self.repo = repo
         self.token = token
 
@@ -105,15 +165,17 @@ class GitHubClient:
         payload: dict[str, Any] | None = None,
     ) -> dict[str, Any] | list[Any]:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
+        headers = {
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+        if self.token:
+            headers["Authorization"] = f"Bearer {self.token}"
         request = urllib.request.Request(
             f"{GITHUB_API}{path}",
             data=data,
             method=method,
-            headers={
-                "Accept": "application/vnd.github+json",
-                "Authorization": f"Bearer {self.token}",
-                "X-GitHub-Api-Version": "2022-11-28",
-            },
+            headers=headers,
         )
         try:
             with urllib.request.urlopen(request, timeout=60) as response:
@@ -123,10 +185,10 @@ class GitHubClient:
             body = exc.read().decode("utf-8", errors="replace")
             raise RuntimeError(f"GitHub API {method} {path} failed: HTTP {exc.code}: {body}") from exc
 
-    def list_open_devloop_issues(self) -> list[dict[str, Any]]:
+    def list_devloop_issues(self) -> list[dict[str, Any]]:
         query = urllib.parse.urlencode(
             {
-                "state": "open",
+                "state": "all",
                 "labels": "devloop,ai-proposed",
                 "per_page": "100",
             }
@@ -152,6 +214,9 @@ class GitHubClient:
         return result
 
     def comment(self, issue_number: int, body: str) -> None:
+        if not self.token:
+            print(f"Skipping GitHub comment on issue #{issue_number}: no token configured.")
+            return
         self.request(
             "POST",
             f"/repos/{self.repo}/issues/{issue_number}/comments",
@@ -168,16 +233,51 @@ def is_allowed_approver(comment: dict[str, Any]) -> bool:
     commenter = comment["user"]["login"].lower()
     if allowed_users:
         return commenter in allowed_users
-    return comment.get("author_association") in {"OWNER", "MEMBER", "COLLABORATOR"}
+    allowed_associations = {"OWNER", "MEMBER", "COLLABORATOR"}
+    if env("DEVLOOP_ALLOW_UNAUTHENTICATED_APPROVERS", "false").lower() == "true":
+        allowed_associations.add("NONE")
+    return comment.get("author_association") in allowed_associations
 
 
-def last_implement_command(comments: list[dict[str, Any]]) -> dict[str, Any] | None:
+def implement_commands() -> set[str]:
+    configured = env("DEVLOOP_IMPLEMENT_COMMANDS")
+    if not configured:
+        return set(DEFAULT_IMPLEMENT_COMMANDS)
+    return {command.strip() for command in configured.split(",") if command.strip()}
+
+
+def revise_command() -> str:
+    return env("DEVLOOP_REVISE_COMMAND", DEFAULT_REVISE_COMMAND) or DEFAULT_REVISE_COMMAND
+
+
+def comment_command_body(comment: dict[str, Any]) -> str:
+    return (comment.get("body") or "").strip()
+
+
+def is_implement_command(comment: dict[str, Any]) -> bool:
+    commands = implement_commands()
+    return comment_command_body(comment) in commands
+
+
+def is_revise_command(comment: dict[str, Any]) -> bool:
+    body = comment_command_body(comment)
+    command = revise_command()
+    return body == command or body.startswith(f"{command}\n")
+
+
+def command_sort_key(comment: dict[str, Any]) -> tuple[str, int]:
+    return (str(comment.get("created_at", "")), int(comment.get("id", 0)))
+
+
+def last_runner_command(comments: list[dict[str, Any]]) -> tuple[str, dict[str, Any]] | None:
     matching = [
-        comment
+        ("revise" if is_revise_command(comment) else "implement", comment)
         for comment in comments
-        if (comment.get("body") or "").strip() == IMPLEMENT_COMMAND and is_allowed_approver(comment)
+        if (is_implement_command(comment) or is_revise_command(comment)) and is_allowed_approver(comment)
     ]
-    return matching[-1] if matching else None
+    if not matching:
+        return None
+    return sorted(matching, key=lambda item: command_sort_key(item[1]))[-1]
 
 
 def has_runner_marker_after(comments: list[dict[str, Any]], marker: str, created_at: str) -> bool:
@@ -197,26 +297,55 @@ def find_issue_pr(issue_number: int, pulls: list[dict[str, Any]]) -> dict[str, A
     return None
 
 
-def find_candidates(client: GitHubClient, force: bool = False) -> list[Candidate]:
+def find_candidates(
+    client: GitHubClient,
+    state: RunnerState,
+    force: bool = False,
+) -> list[Candidate]:
     pulls = client.list_open_pull_requests()
     candidates: list[Candidate] = []
-    for issue in client.list_open_devloop_issues():
+    for issue in client.list_devloop_issues():
         issue_number = int(issue["number"])
-        comments = client.list_comments(issue_number)
-        command = last_implement_command(comments)
-        if not command:
-            continue
-
-        if not force and (
-            has_runner_marker_after(comments, START_MARKER, command["created_at"])
-            or has_runner_marker_after(comments, DONE_MARKER, command["created_at"])
-        ):
-            continue
-
+        issue_comments = client.list_comments(issue_number)
         pull = find_issue_pr(issue_number, pulls)
         if not pull:
             continue
-        candidates.append(Candidate(issue=issue, command_comment=command, pull_request=pull))
+
+        pr_number = int(pull["number"])
+        pr_comments = client.list_comments(pr_number) if pr_number != issue_number else []
+        command_candidates: list[tuple[str, dict[str, Any], int, list[dict[str, Any]]]] = []
+        issue_command = last_runner_command(issue_comments)
+        if issue_command:
+            command_candidates.append((*issue_command, issue_number, issue_comments))
+        pr_command = last_runner_command(pr_comments)
+        if pr_command:
+            command_candidates.append((*pr_command, pr_number, pr_comments))
+        if not command_candidates:
+            continue
+
+        command_kind, command, command_thread_number, command_comments = sorted(
+            command_candidates,
+            key=lambda item: command_sort_key(item[1]),
+        )[-1]
+        command_id = int(command["id"])
+        if not force and command_id in state.processed_comment_ids:
+            continue
+
+        if not force and (
+            has_runner_marker_after(command_comments, START_MARKER, command["created_at"])
+            or has_runner_marker_after(command_comments, DONE_MARKER, command["created_at"])
+        ):
+            continue
+
+        candidates.append(
+            Candidate(
+                issue=issue,
+                command_comment=command,
+                pull_request=pull,
+                command_kind=command_kind,
+                command_thread_number=command_thread_number,
+            )
+        )
     return candidates
 
 
@@ -257,7 +386,40 @@ def plan_path_for_issue(workspace: Path, issue_number: int) -> Path:
     return workspace / "docs" / "ai-ideas" / f"issue-{issue_number}.md"
 
 
-def build_codex_prompt(issue_number: int, plan_path: Path) -> str:
+def revise_feedback(comment: dict[str, Any]) -> str:
+    body = comment_command_body(comment)
+    command = revise_command()
+    if body == command:
+        return "사용자가 구체적인 보완 지시 없이 기존 PR을 다시 검토하고 품질을 개선해 달라고 요청했습니다."
+    return body.removeprefix(command).strip()
+
+
+def build_codex_prompt(
+    issue_number: int,
+    plan_path: Path,
+    command_kind: str,
+    command_comment: dict[str, Any],
+) -> str:
+    if command_kind == "revise":
+        feedback = revise_feedback(command_comment)
+        return textwrap.dedent(
+            f"""
+            `AI_POLICY.md`, `AGENTS.md`, and `{plan_path.relative_to(plan_path.parents[2])}`를 읽고
+            승인된 DevLoop 아이디어 #{issue_number}의 현재 PR 구현을 보충해줘.
+
+            사용자 피드백:
+            {feedback}
+
+            필수 제약:
+            - 현재 브랜치의 기존 구현을 통째로 폐기하지 말고 필요한 보충/수정 커밋만 만든다.
+            - 승인된 아이디어와 사용자 피드백 범위 밖으로 확장하지 않는다.
+            - 피드백이 인증, 인가, 결제, 데이터베이스 마이그레이션, 인프라 설정 변경을 요구하면 구현하지 말고 그 이유를 마지막 메시지에 남긴다.
+            - 자동 머지나 main 직접 push는 하지 않는다.
+            - 구현 후 관련 테스트나 정적 검사를 실행한다.
+            - 커밋이나 push는 하지 않는다. 변경과 검증 결과만 남긴다.
+            """
+        ).strip()
+
     return textwrap.dedent(
         f"""
         `AI_POLICY.md`, `AGENTS.md`, and `{plan_path.relative_to(plan_path.parents[2])}`를 읽고
@@ -274,7 +436,13 @@ def build_codex_prompt(issue_number: int, plan_path: Path) -> str:
     ).strip()
 
 
-def run_codex(workspace: Path, issue_number: int, model: str | None) -> Path:
+def run_codex(
+    workspace: Path,
+    issue_number: int,
+    command_kind: str,
+    command_comment: dict[str, Any],
+    model: str | None,
+) -> Path:
     plan_path = plan_path_for_issue(workspace, issue_number)
     if not plan_path.exists():
         raise RuntimeError(f"Expected scaffold file does not exist: {plan_path}")
@@ -293,12 +461,18 @@ def run_codex(workspace: Path, issue_number: int, model: str | None) -> Path:
     ]
     if model:
         command.extend(["--model", model])
-    command.append(build_codex_prompt(issue_number, plan_path))
+    command.append(build_codex_prompt(issue_number, plan_path, command_kind, command_comment))
     run_command(command, cwd=workspace, capture_output=False)
     return output_path
 
 
-def commit_and_push(workspace: Path, issue_number: int, branch: str, push: bool) -> str:
+def commit_and_push(
+    workspace: Path,
+    issue_number: int,
+    command_kind: str,
+    branch: str,
+    push: bool,
+) -> str:
     files = changed_files(workspace)
     if not files:
         return "No changes were produced by Codex."
@@ -310,7 +484,8 @@ def commit_and_push(workspace: Path, issue_number: int, branch: str, push: bool)
         )
 
     run_command(["git", "add", "-A"], cwd=workspace, capture_output=False)
-    run_command(["git", "commit", "-m", f"Implement DevLoop idea #{issue_number}"], cwd=workspace)
+    action = "Revise" if command_kind == "revise" else "Implement"
+    run_command(["git", "commit", "-m", f"{action} DevLoop idea #{issue_number}"], cwd=workspace)
     if push:
         run_command(["git", "push", "origin", f"HEAD:{branch}"], cwd=workspace, capture_output=False)
         return f"Committed and pushed changes to `{branch}`."
@@ -331,34 +506,41 @@ def process_candidate(
     pr_url = str(candidate.pull_request.get("html_url"))
 
     if not execute_codex:
-        print(f"[dry-run] Would implement issue #{issue_number} on {branch}: {pr_url}")
+        print(f"[dry-run] Would {candidate.command_kind} issue #{issue_number} on {branch}: {pr_url}")
         return
 
     assert_clean_workspace(workspace)
     client.comment(
-        issue_number,
+        candidate.command_thread_number,
         textwrap.dedent(
             f"""
             {START_MARKER}
-            DevLoop runner가 미니 PC에서 구현을 시작합니다.
+            DevLoop runner가 미니 PC에서 {'피드백 반영' if candidate.command_kind == 'revise' else '구현'}을 시작합니다.
 
             - PR: {pr_url}
             - 브랜치: `{branch}`
+            - 명령: `{comment_command_body(candidate.command_comment).splitlines()[0]}`
             """
         ).strip(),
     )
     checkout_branch(workspace, branch)
-    output_path = run_codex(workspace, issue_number, model)
+    output_path = run_codex(
+        workspace=workspace,
+        issue_number=issue_number,
+        command_kind=candidate.command_kind,
+        command_comment=candidate.command_comment,
+        model=model,
+    )
     files = changed_files(workspace)
 
     if commit:
-        result = commit_and_push(workspace, issue_number, branch, push)
+        result = commit_and_push(workspace, issue_number, candidate.command_kind, branch, push)
     else:
         result = "Codex 실행은 완료했지만 commit 옵션이 꺼져 있어 커밋하지 않았습니다."
 
     file_lines = "\n".join(f"- `{file}`" for file in files) if files else "- 변경 파일 없음"
     client.comment(
-        issue_number,
+        candidate.command_thread_number,
         textwrap.dedent(
             f"""
             {DONE_MARKER}
@@ -366,6 +548,7 @@ def process_candidate(
 
             - PR: {pr_url}
             - 브랜치: `{branch}`
+            - 명령: `{comment_command_body(candidate.command_comment).splitlines()[0]}`
             - 결과: {result}
             - Codex 마지막 메시지: `{output_path}`
 
@@ -376,6 +559,11 @@ def process_candidate(
     )
 
 
+def mark_processed(state: RunnerState, candidate: Candidate) -> None:
+    state.processed_comment_ids.add(int(candidate.command_comment["id"]))
+    save_state(state)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the local DevLoop Codex CLI runner.")
     parser.add_argument("--repo", default=env("GITHUB_REPOSITORY"))
@@ -384,6 +572,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--once", action="store_true")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--execute-codex", action="store_true")
+    parser.add_argument("--mark-existing", action="store_true")
     parser.add_argument("--commit", action="store_true")
     parser.add_argument("--push", action="store_true")
     parser.add_argument("--model", default=env("DEVLOOP_CODEX_MODEL"))
@@ -391,21 +580,31 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    load_env_file()
     args = parse_args()
     if not args.repo:
         raise RuntimeError("GITHUB_REPOSITORY or --repo is required.")
     token = env("GITHUB_TOKEN") or env("GH_TOKEN")
     if not token:
-        raise RuntimeError("GITHUB_TOKEN, GH_TOKEN, or equivalent local runner token is required.")
+        print("No GitHub token configured; using unauthenticated read-only GitHub API.")
 
     workspace = Path(args.workspace).resolve()
     client = GitHubClient(args.repo, token)
+    state = load_state()
 
     while True:
-        candidates = find_candidates(client, force=args.force)
+        candidates = find_candidates(client, state=state, force=args.force)
         if not candidates:
             print("No approved DevLoop implementation commands found.")
         for candidate in candidates:
+            if args.mark_existing:
+                mark_processed(state, candidate)
+                print(
+                    "Marked existing DevLoop implementation command as processed: "
+                    f"issue #{candidate.issue['number']}"
+                )
+                continue
+
             process_candidate(
                 client=client,
                 candidate=candidate,
@@ -415,6 +614,8 @@ def main() -> int:
                 push=args.push,
                 model=args.model,
             )
+            if args.execute_codex:
+                mark_processed(state, candidate)
 
         if args.once:
             break
