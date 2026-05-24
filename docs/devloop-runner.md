@@ -8,7 +8,8 @@ with Codex CLI.
 1. DevLoop creates an idea Issue.
 2. A human comments `/ai approve`.
 3. GitHub Actions creates an `ai/issue-*` scaffold PR.
-4. A human comments `/ai implement` on the Issue.
+4. The mini PC runner sees `/ai approve` or `/ai implement` after the scaffold
+   PR exists.
 5. The mini PC runner detects the command.
 6. The runner checks out the matching PR branch locally.
 7. The runner invokes `codex exec` with `--sandbox workspace-write`.
@@ -39,8 +40,11 @@ Optional environment variables:
   directory.
 - `DEVLOOP_RUNNER_INTERVAL`: polling interval in seconds. Defaults to `300`.
 - `DEVLOOP_APPROVERS`: comma-separated GitHub usernames allowed to use
-  `/ai implement`.
+  implementation commands.
 - `DEVLOOP_CODEX_MODEL`: optional Codex model override.
+- `DEVLOOP_IMPLEMENT_COMMANDS`: comma-separated comment commands that trigger
+  local implementation after a scaffold PR exists. Defaults to
+  `/ai implement,/ai approve`.
 - `CODEX_BIN`: optional full path to the Codex CLI executable. Useful for
   systemd, cron, or SSH non-interactive shells where `~/.local/bin` is not on
   `PATH`.
@@ -118,6 +122,8 @@ GITHUB_REPOSITORY=SmileJune/techcase
 DEVLOOP_WORKSPACE=/home/godhkekf24/devloop/techcase-runner
 CODEX_BIN=/home/godhkekf24/.local/bin/codex
 DEVLOOP_APPROVERS=SmileJune
+# Optional. Defaults to /ai implement,/ai approve:
+# DEVLOOP_IMPLEMENT_COMMANDS=/ai implement,/ai approve
 # Optional. Add a fine-grained token if you want runner status comments:
 # GH_TOKEN=github_pat_...
 # Optional state file override:
@@ -137,9 +143,12 @@ journalctl --user -u techcase-devloop.service -n 100 --no-pager
 
 ## Safety Notes
 
-- The runner only responds to `/ai implement`, not `/ai approve`.
-- The runner records processed `/ai implement` comment ids in a local state file
-  so a systemd timer does not repeat the same implementation command.
+- The runner only starts implementation after a matching scaffold PR exists.
+  By default it accepts `/ai approve` and `/ai implement`; set
+  `DEVLOOP_IMPLEMENT_COMMANDS=/ai implement` if implementation should require a
+  second explicit command.
+- The runner records processed implementation command ids in a local state file
+  so a systemd timer does not repeat the same command.
 - The runner uses `codex exec --sandbox workspace-write`.
 - The runner refuses to commit changes under `.github/workflows/`, `infra/`,
   and `apps/backend/alembic/`.

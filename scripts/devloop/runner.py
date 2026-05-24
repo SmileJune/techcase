@@ -31,7 +31,7 @@ from typing import Any
 
 
 GITHUB_API = "https://api.github.com"
-IMPLEMENT_COMMAND = "/ai implement"
+DEFAULT_IMPLEMENT_COMMANDS = ("/ai implement", "/ai approve")
 START_MARKER = "<!-- devloop-runner:start -->"
 DONE_MARKER = "<!-- devloop-runner:done -->"
 FORBIDDEN_PATH_PREFIXES = (
@@ -235,11 +235,19 @@ def is_allowed_approver(comment: dict[str, Any]) -> bool:
     return comment.get("author_association") in allowed_associations
 
 
+def implement_commands() -> set[str]:
+    configured = env("DEVLOOP_IMPLEMENT_COMMANDS")
+    if not configured:
+        return set(DEFAULT_IMPLEMENT_COMMANDS)
+    return {command.strip() for command in configured.split(",") if command.strip()}
+
+
 def last_implement_command(comments: list[dict[str, Any]]) -> dict[str, Any] | None:
+    commands = implement_commands()
     matching = [
         comment
         for comment in comments
-        if (comment.get("body") or "").strip() == IMPLEMENT_COMMAND and is_allowed_approver(comment)
+        if (comment.get("body") or "").strip() in commands and is_allowed_approver(comment)
     ]
     return matching[-1] if matching else None
 
