@@ -33,3 +33,7 @@ Idea selection rules:
 - Prefer ideas that can be validated without production access.
 - Prefer ideas that are easy to review and easy to revert.
 - Avoid vague platform rewrites, broad redesigns, or multi-week projects.
+- Do not repeat or closely paraphrase recent DevLoop proposals. If recent
+  proposals focus on result cards, keyword highlights, snippet display, or
+  contributor guidelines, choose a materially different area such as evaluation,
+  source metadata, onboarding, failure handling, or maintainer workflow.
