@@ -26,6 +26,7 @@ import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
+from shutil import which
 from typing import Any
 
 
@@ -71,6 +72,24 @@ def run_command(
         check=check,
         capture_output=capture_output,
         text=True,
+    )
+
+
+def codex_binary() -> str:
+    configured = env("CODEX_BIN")
+    if configured:
+        return configured
+
+    found = which("codex")
+    if found:
+        return found
+
+    local_bin = Path.home() / ".local" / "bin" / "codex"
+    if local_bin.exists():
+        return str(local_bin)
+
+    raise RuntimeError(
+        "codex executable was not found. Install Codex CLI or set CODEX_BIN to its full path."
     )
 
 
@@ -263,7 +282,7 @@ def run_codex(workspace: Path, issue_number: int, model: str | None) -> Path:
     output_dir = Path(tempfile.mkdtemp(prefix="devloop-codex-"))
     output_path = output_dir / f"issue-{issue_number}-last-message.md"
     command = [
-        "codex",
+        codex_binary(),
         "exec",
         "--sandbox",
         "workspace-write",

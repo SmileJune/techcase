@@ -37,6 +37,9 @@ Optional environment variables:
 - `DEVLOOP_APPROVERS`: comma-separated GitHub usernames allowed to use
   `/ai implement`.
 - `DEVLOOP_CODEX_MODEL`: optional Codex model override.
+- `CODEX_BIN`: optional full path to the Codex CLI executable. Useful for
+  systemd, cron, or SSH non-interactive shells where `~/.local/bin` is not on
+  `PATH`.
 
 Use a dedicated clone for the runner. The runner refuses to start work when the
 workspace is dirty.
