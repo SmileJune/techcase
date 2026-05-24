@@ -14,6 +14,8 @@ with Codex CLI.
 6. The runner checks out the matching PR branch locally.
 7. The runner invokes `codex exec` with `--sandbox workspace-write`.
 8. The runner can commit and push changes back to the same PR branch.
+9. A human can leave `/ai revise` feedback on the Issue or PR, and the runner
+   adds a follow-up commit on the same PR branch.
 
 ## Required Local Setup
 
@@ -45,6 +47,8 @@ Optional environment variables:
 - `DEVLOOP_IMPLEMENT_COMMANDS`: comma-separated comment commands that trigger
   local implementation after a scaffold PR exists. Defaults to
   `/ai implement,/ai approve`.
+- `DEVLOOP_REVISE_COMMAND`: optional feedback command override. Defaults to
+  `/ai revise`.
 - `CODEX_BIN`: optional full path to the Codex CLI executable. Useful for
   systemd, cron, or SSH non-interactive shells where `~/.local/bin` is not on
   `PATH`.
@@ -89,11 +93,24 @@ python3 scripts/devloop/runner.py \
   --push
 ```
 
+## Revise An Existing PR
+
+Leave feedback on the original DevLoop Issue or on the matching scaffold PR:
+
+```text
+/ai revise
+검색 평가 데이터는 좋은데 MySQL 쿼리가 너무 넓어서 relevance가 낮습니다.
+MySQL 운영 성능 대신 더 구체적인 쿼리 2개로 나눠 주세요.
+```
+
+The runner will keep the existing PR branch, run Codex with the feedback, and
+push a follow-up `Revise DevLoop idea #...` commit to the same PR.
+
 ## Mark Existing Commands
 
-Before enabling a timer on a repository that already has `/ai implement`
-comments, mark the current commands as processed so the runner only handles new
-commands:
+Before enabling a timer on a repository that already has `/ai implement`,
+`/ai approve`, or `/ai revise` comments, mark the current commands as processed
+so the runner only handles new commands:
 
 ```bash
 python3 scripts/devloop/runner.py \
@@ -147,6 +164,10 @@ journalctl --user -u techcase-devloop.service -n 100 --no-pager
   By default it accepts `/ai approve` and `/ai implement`; set
   `DEVLOOP_IMPLEMENT_COMMANDS=/ai implement` if implementation should require a
   second explicit command.
+- The runner accepts `/ai revise` on the Issue or matching PR after the first
+  PR exists, even if the original DevLoop Issue is already closed. Revision
+  prompts explicitly preserve existing PR work and apply only the requested
+  feedback.
 - The runner records processed implementation command ids in a local state file
   so a systemd timer does not repeat the same command.
 - The runner uses `codex exec --sandbox workspace-write`.
@@ -155,3 +176,16 @@ journalctl --user -u techcase-devloop.service -n 100 --no-pager
 - The runner does not merge PRs.
 - The runner does not push to `main`; it pushes only to the existing
   `ai/issue-*` PR branch.
+
+## Comment Shortcuts
+
+GitHub does not currently support repository-defined slash-command autocomplete
+inside Issue or PR comments. GitHub's built-in slash commands include
+`/saved-replies`, which can insert saved replies from your user account.
+Practical alternatives:
+
+- Use browser or OS text replacement snippets such as `;revise` ->
+  `/ai revise`.
+- Use GitHub saved replies for common DevLoop commands, then type
+  `/saved-replies` in the comment box and choose the saved reply.
+- Keep the command examples in this document and paste them into comments.
