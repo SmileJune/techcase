@@ -93,7 +93,7 @@ def github_request(
     path: str,
     token: str,
     payload: dict[str, Any] | None = None,
-) -> dict[str, Any]:
+) -> dict[str, Any] | list[Any]:
     data = None if payload is None else json.dumps(payload).encode("utf-8")
     request = urllib.request.Request(
         f"{GITHUB_API}{path}",
@@ -186,7 +186,46 @@ def manual_idea_from_env() -> dict[str, str]:
     return {field: require_env(env_name) for field, env_name in env_names.items()}
 
 
-def api_idea() -> dict[str, str]:
+def list_recent_devloop_issues(repo: str | None, token: str | None) -> list[dict[str, Any]]:
+    if not repo or not token:
+        return []
+
+    limit = int(env("DEVLOOP_RECENT_ISSUE_LIMIT", "10"))
+    query = urllib.parse.urlencode(
+        {
+            "state": "all",
+            "labels": "devloop,ai-proposed",
+            "per_page": str(limit),
+            "sort": "created",
+            "direction": "desc",
+        }
+    )
+    result = github_request("GET", f"/repos/{repo}/issues?{query}", token)
+    if not isinstance(result, list):
+        raise RuntimeError("Unexpected GitHub issues response.")
+    return [issue for issue in result if "pull_request" not in issue]
+
+
+def recent_issue_context(issues: list[dict[str, Any]]) -> str:
+    if not issues:
+        return "No previous DevLoop proposals were available."
+
+    lines = []
+    for issue in issues:
+        body = str(issue.get("body") or "")
+        excerpt = " ".join(body.split())[:500]
+        lines.append(
+            "\n".join(
+                [
+                    f"- #{issue.get('number')} ({issue.get('state')}): {issue.get('title')}",
+                    f"  excerpt: {excerpt}",
+                ]
+            )
+        )
+    return "\n".join(lines)
+
+
+def api_idea(recent_context: str) -> dict[str, str]:
     prompt = PROMPT_PATH.read_text(encoding="utf-8")
     context = read_repo_context()
     model = env("OPENAI_MODEL", "gpt-4.1-mini")
@@ -212,6 +251,10 @@ def api_idea() -> dict[str, str]:
                         Repository context:
 
                         {context}
+
+                        Recent DevLoop proposals that must not be repeated or closely paraphrased:
+
+                        {recent_context}
 
                         Return a JSON object with exactly these string fields:
                         title, problem, rationale, scope, non_goals, risks, validation.
@@ -243,12 +286,12 @@ def validate_idea(idea: dict[str, Any]) -> dict[str, str]:
     return normalized
 
 
-def load_idea() -> dict[str, str]:
+def load_idea(recent_context: str) -> dict[str, str]:
     mode = env("DEVLOOP_PROPOSAL_MODE", "api").lower()
     if mode == "manual":
         return validate_idea(manual_idea_from_env())
     if mode == "api":
-        return api_idea()
+        return api_idea(recent_context)
     raise RuntimeError("DEVLOOP_PROPOSAL_MODE must be 'manual' or 'api'.")
 
 
@@ -285,7 +328,7 @@ def build_issue_body(idea: dict[str, str]) -> str:
 def search_existing_issue(repo: str, token: str, fingerprint: str) -> str | None:
     query = urllib.parse.urlencode(
         {
-            "q": f"repo:{repo} is:issue is:open {fingerprint}",
+            "q": f"repo:{repo} is:issue {fingerprint}",
             "per_page": "1",
         }
     )
@@ -333,7 +376,10 @@ def ensure_label(repo: str, token: str, name: str, color: str, description: str)
 
 def main() -> int:
     dry_run = env("DEVLOOP_DRY_RUN", "false").lower() == "true"
-    idea = load_idea()
+    repo = env("GITHUB_REPOSITORY")
+    token = env("GITHUB_TOKEN") or env("GH_TOKEN")
+    recent_context = recent_issue_context(list_recent_devloop_issues(repo, token))
+    idea = load_idea(recent_context)
     title = f"[DevLoop] {idea['title']}"
     body = build_issue_body(idea)
     fingerprint = body.rsplit("`", 2)[1]
@@ -343,11 +389,13 @@ def main() -> int:
         return 0
 
     repo = require_env("GITHUB_REPOSITORY")
-    token = require_env("GITHUB_TOKEN")
+    token = env("GITHUB_TOKEN") or env("GH_TOKEN")
+    if not token:
+        raise RuntimeError("GITHUB_TOKEN or GH_TOKEN is required.")
 
     existing = search_existing_issue(repo, token, fingerprint)
     if existing:
-        print(f"Matching open DevLoop issue already exists: {existing}")
+        print(f"Matching DevLoop issue already exists: {existing}")
         return 0
 
     ensure_label(repo, token, "devloop", "5319e7", "Managed by the DevLoop MVP workflow.")
