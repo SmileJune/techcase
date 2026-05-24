@@ -53,11 +53,35 @@ class Candidate:
     pull_request: dict[str, Any]
 
 
+@dataclass
+class RunnerState:
+    processed_comment_ids: set[int]
+
+
 def env(name: str, default: str | None = None) -> str | None:
     value = os.environ.get(name)
     if value is None or value == "":
         return default
     return value
+
+
+def load_env_file() -> None:
+    configured = os.environ.get("DEVLOOP_ENV_FILE")
+    candidates = [
+        Path(configured).expanduser() if configured else None,
+        Path.home() / ".config" / "devloop" / "techcase.env",
+    ]
+    for path in candidates:
+        if not path or not path.exists():
+            continue
+        for line in path.read_text(encoding="utf-8").splitlines():
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#") or "=" not in stripped:
+                continue
+            key, value = stripped.split("=", 1)
+            key = key.strip()
+            if key and key not in os.environ:
+                os.environ[key] = value.strip().strip('"').strip("'")
 
 
 def run_command(
@@ -93,8 +117,40 @@ def codex_binary() -> str:
     )
 
 
+def state_path() -> Path:
+    configured = env("DEVLOOP_STATE_FILE")
+    if configured:
+        return Path(configured).expanduser()
+    return Path.home() / ".local" / "state" / "devloop" / "techcase-runner.json"
+
+
+def load_state() -> RunnerState:
+    path = state_path()
+    if not path.exists():
+        return RunnerState(processed_comment_ids=set())
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return RunnerState(
+        processed_comment_ids={int(value) for value in data.get("processed_comment_ids", [])}
+    )
+
+
+def save_state(state: RunnerState) -> None:
+    path = state_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(
+            {"processed_comment_ids": sorted(state.processed_comment_ids)},
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+
 class GitHubClient:
-    def __init__(self, repo: str, token: str) -> None:
+    def __init__(self, repo: str, token: str | None) -> None:
         self.repo = repo
         self.token = token
 
@@ -105,15 +161,17 @@ class GitHubClient:
         payload: dict[str, Any] | None = None,
     ) -> dict[str, Any] | list[Any]:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
+        headers = {
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+        if self.token:
+            headers["Authorization"] = f"Bearer {self.token}"
         request = urllib.request.Request(
             f"{GITHUB_API}{path}",
             data=data,
             method=method,
-            headers={
-                "Accept": "application/vnd.github+json",
-                "Authorization": f"Bearer {self.token}",
-                "X-GitHub-Api-Version": "2022-11-28",
-            },
+            headers=headers,
         )
         try:
             with urllib.request.urlopen(request, timeout=60) as response:
@@ -152,6 +210,9 @@ class GitHubClient:
         return result
 
     def comment(self, issue_number: int, body: str) -> None:
+        if not self.token:
+            print(f"Skipping GitHub comment on issue #{issue_number}: no token configured.")
+            return
         self.request(
             "POST",
             f"/repos/{self.repo}/issues/{issue_number}/comments",
@@ -168,7 +229,10 @@ def is_allowed_approver(comment: dict[str, Any]) -> bool:
     commenter = comment["user"]["login"].lower()
     if allowed_users:
         return commenter in allowed_users
-    return comment.get("author_association") in {"OWNER", "MEMBER", "COLLABORATOR"}
+    allowed_associations = {"OWNER", "MEMBER", "COLLABORATOR"}
+    if env("DEVLOOP_ALLOW_UNAUTHENTICATED_APPROVERS", "false").lower() == "true":
+        allowed_associations.add("NONE")
+    return comment.get("author_association") in allowed_associations
 
 
 def last_implement_command(comments: list[dict[str, Any]]) -> dict[str, Any] | None:
@@ -197,7 +261,11 @@ def find_issue_pr(issue_number: int, pulls: list[dict[str, Any]]) -> dict[str, A
     return None
 
 
-def find_candidates(client: GitHubClient, force: bool = False) -> list[Candidate]:
+def find_candidates(
+    client: GitHubClient,
+    state: RunnerState,
+    force: bool = False,
+) -> list[Candidate]:
     pulls = client.list_open_pull_requests()
     candidates: list[Candidate] = []
     for issue in client.list_open_devloop_issues():
@@ -205,6 +273,9 @@ def find_candidates(client: GitHubClient, force: bool = False) -> list[Candidate
         comments = client.list_comments(issue_number)
         command = last_implement_command(comments)
         if not command:
+            continue
+        command_id = int(command["id"])
+        if not force and command_id in state.processed_comment_ids:
             continue
 
         if not force and (
@@ -376,6 +447,11 @@ def process_candidate(
     )
 
 
+def mark_processed(state: RunnerState, candidate: Candidate) -> None:
+    state.processed_comment_ids.add(int(candidate.command_comment["id"]))
+    save_state(state)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the local DevLoop Codex CLI runner.")
     parser.add_argument("--repo", default=env("GITHUB_REPOSITORY"))
@@ -384,6 +460,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--once", action="store_true")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--execute-codex", action="store_true")
+    parser.add_argument("--mark-existing", action="store_true")
     parser.add_argument("--commit", action="store_true")
     parser.add_argument("--push", action="store_true")
     parser.add_argument("--model", default=env("DEVLOOP_CODEX_MODEL"))
@@ -391,21 +468,31 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    load_env_file()
     args = parse_args()
     if not args.repo:
         raise RuntimeError("GITHUB_REPOSITORY or --repo is required.")
     token = env("GITHUB_TOKEN") or env("GH_TOKEN")
     if not token:
-        raise RuntimeError("GITHUB_TOKEN, GH_TOKEN, or equivalent local runner token is required.")
+        print("No GitHub token configured; using unauthenticated read-only GitHub API.")
 
     workspace = Path(args.workspace).resolve()
     client = GitHubClient(args.repo, token)
+    state = load_state()
 
     while True:
-        candidates = find_candidates(client, force=args.force)
+        candidates = find_candidates(client, state=state, force=args.force)
         if not candidates:
             print("No approved DevLoop implementation commands found.")
         for candidate in candidates:
+            if args.mark_existing:
+                mark_processed(state, candidate)
+                print(
+                    "Marked existing DevLoop implementation command as processed: "
+                    f"issue #{candidate.issue['number']}"
+                )
+                continue
+
             process_candidate(
                 client=client,
                 candidate=candidate,
@@ -415,6 +502,8 @@ def main() -> int:
                 push=args.push,
                 model=args.model,
             )
+            if args.execute_codex:
+                mark_processed(state, candidate)
 
         if args.once:
             break

@@ -1,0 +1,14 @@
+[Unit]
+Description=TechCase DevLoop local Codex runner
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/devloop/techcase-runner
+EnvironmentFile=-%h/.config/devloop/techcase.env
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 %h/.local/bin/techcase-devloop-runner.py --once --execute-codex --commit --push
+
+[Install]
+WantedBy=default.target
