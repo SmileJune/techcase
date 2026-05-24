@@ -28,6 +28,7 @@ type SearchResultItem = {
   caseSolution?: string | null;
   contentType?: string | null;
   score: number;
+  matchedKeywords?: string[];
   technologies: string[];
   architectureKeywords: string[];
   problemKeywords: string[];
@@ -210,6 +211,12 @@ function stripHighlightTags(value: string): string {
   return value.replaceAll("<em>", "").replaceAll("</em>", "");
 }
 
+function highlightedTerms(value: string): string[] {
+  const terms = value.matchAll(/<em>(.*?)<\/em>/g);
+
+  return Array.from(terms, (match) => stripHighlightTags(match[1]).trim()).filter(Boolean);
+}
+
 function splitHighlight(value: string): HighlightPart[] {
   return value.split(/(<em>|<\/em>)/).reduce(
     (state, part) => {
@@ -322,10 +329,6 @@ function uniqueKeywords(keywords: string[]): string[] {
 }
 
 function bestSnippet(item: SearchResultItem): string {
-  if (item.caseSummary) {
-    return item.caseSummary;
-  }
-
   const highlight =
     item.highlights.caseSummary?.[0] ??
     item.highlights.summary?.[0] ??
@@ -333,10 +336,36 @@ function bestSnippet(item: SearchResultItem): string {
     item.highlights.title?.[0];
 
   if (highlight) {
-    return stripHighlightTags(highlight);
+    return highlight;
   }
 
   return item.caseSummary ?? item.summary ?? "요약 정보가 아직 없습니다.";
+}
+
+function matchedKeywordSet(item: SearchResultItem): Set<string> {
+  const keywords = [
+    ...(item.matchedKeywords ?? []),
+    ...Object.values(item.highlights ?? {}).flatMap((snippets) =>
+      snippets.flatMap((snippet) => highlightedTerms(snippet)),
+    ),
+  ];
+
+  return new Set(keywords.map((keyword) => keyword.trim().toLowerCase()).filter(Boolean));
+}
+
+function isMatchedKeyword(keyword: string, matchedKeywords: Set<string>): boolean {
+  const normalizedKeyword = keyword.trim().toLowerCase();
+
+  if (!normalizedKeyword) {
+    return false;
+  }
+
+  return Array.from(matchedKeywords).some(
+    (matchedKeyword) =>
+      matchedKeyword === normalizedKeyword ||
+      matchedKeyword.includes(normalizedKeyword) ||
+      normalizedKeyword.includes(matchedKeyword),
+  );
 }
 
 function loadFavoriteItems(): FavoriteItem[] {
@@ -958,7 +987,9 @@ function ResultCard({
         </a>
       </h2>
       <section className="case-summary" aria-label="사례 요약">
-        <p>{bestSnippet(item)}</p>
+        <p>
+          <HighlightedText value={bestSnippet(item)} />
+        </p>
       </section>
       <CaseDetails item={item} />
       <KeywordList item={item} />
@@ -1308,6 +1339,7 @@ function KeywordList({ item }: { item: SearchResultItem }) {
   const technologyKeywords = uniqueKeywords(item.technologies);
   const problemKeywords = uniqueKeywords(item.problemKeywords);
   const architectureKeywords = uniqueKeywords(item.architectureKeywords);
+  const matchedKeywords = matchedKeywordSet(item);
 
   if (
     technologyKeywords.length === 0 &&
@@ -1319,9 +1351,24 @@ function KeywordList({ item }: { item: SearchResultItem }) {
 
   return (
     <div className="keyword-groups">
-      <KeywordGroup label="기술" keywords={technologyKeywords} limit={3} />
-      <KeywordGroup label="문제" keywords={problemKeywords} limit={2} />
-      <KeywordGroup label="구조" keywords={architectureKeywords} limit={2} />
+      <KeywordGroup
+        label="기술"
+        keywords={technologyKeywords}
+        limit={3}
+        matchedKeywords={matchedKeywords}
+      />
+      <KeywordGroup
+        label="문제"
+        keywords={problemKeywords}
+        limit={2}
+        matchedKeywords={matchedKeywords}
+      />
+      <KeywordGroup
+        label="구조"
+        keywords={architectureKeywords}
+        limit={2}
+        matchedKeywords={matchedKeywords}
+      />
     </div>
   );
 }
@@ -1330,10 +1377,12 @@ function KeywordGroup({
   label,
   keywords,
   limit,
+  matchedKeywords,
 }: {
   label: string;
   keywords: string[];
   limit: number;
+  matchedKeywords: Set<string>;
 }) {
   if (keywords.length === 0) {
     return null;
@@ -1346,9 +1395,15 @@ function KeywordGroup({
     <div className="keyword-group">
       <span className="keyword-group-label">{label}</span>
       <div className="result-keywords">
-        {visibleKeywords.map((keyword) => (
-          <span key={`${label}-${keyword}`}>{keyword}</span>
-        ))}
+        {visibleKeywords.map((keyword) => {
+          const isMatched = isMatchedKeyword(keyword, matchedKeywords);
+
+          return (
+            <span className={isMatched ? "is-matched" : undefined} key={`${label}-${keyword}`}>
+              {keyword}
+            </span>
+          );
+        })}
         {hiddenCount > 0 ? <span className="keyword-more">+{hiddenCount}</span> : null}
       </div>
     </div>

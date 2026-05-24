@@ -867,6 +867,12 @@ a {
   padding: 5px 8px;
 }
 
+.result-keywords span.is-matched {
+  background: #fff1a8;
+  color: #17201c;
+  font-weight: 760;
+}
+
 .result-keywords .keyword-more {
   background: #eef2ef;
   color: var(--muted);
