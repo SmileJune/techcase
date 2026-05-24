@@ -27,8 +27,9 @@ work:
    ```
 
 7. Only after approval may AI create a branch and PR.
-8. The MVP implementation creates a PR scaffold only. It must not change service
-   code automatically.
+8. The GitHub Actions implementation creates a PR scaffold only.
+9. A human may then comment `/ai implement` to allow the local mini PC runner to
+   continue that PR branch with Codex CLI.
 
 ## Hard Rules
 
@@ -54,9 +55,22 @@ work:
 ## Approval Rules
 
 - The approval signal is a GitHub Issue comment containing `/ai approve`.
+- The implementation signal is a GitHub Issue comment containing `/ai implement`.
 - The workflow should only act on Issues labeled for DevLoop proposals.
 - Optional repository variable `DEVLOOP_APPROVERS` can restrict who may approve.
   Use a comma-separated list of GitHub usernames.
+
+## Continuing An Approved DevLoop PR
+
+When asked to continue an approved DevLoop PR:
+
+1. Confirm the current branch starts with `ai/issue-`.
+2. Read `docs/ai-ideas/issue-N.md`.
+3. Read `AI_POLICY.md`.
+4. Implement only the approved scope.
+5. Run relevant tests.
+6. Commit to the same branch.
+7. Push the branch so the existing PR updates.
 
 ## Suggested Agent Behavior
 

@@ -18,6 +18,8 @@ Allowed:
 - Create an `ai/` branch after approval.
 - Open a PR scaffold for the approved idea.
 - Add documentation-only planning artifacts for the approved idea.
+- Detect `/ai implement` through a local mini PC runner.
+- Run Codex CLI locally on an approved `ai/issue-*` PR branch.
 - Use manual proposal mode when a human wants to provide a Codex-drafted idea
   instead of spending API credits.
 
@@ -33,6 +35,8 @@ Not allowed:
 - Secret creation, rotation, or disclosure.
 - OpenAI API calls from the approved implementation workflow.
 - More than one AI-generated idea per proposal workflow run.
+- Local runner commits without a human `/ai implement` command.
+- Local runner pushes to `main`.
 
 ## Required GitHub Configuration
 
@@ -77,6 +81,17 @@ The implementation workflow only responds to Issue comments whose trimmed body i
 ```
 
 The Issue must also carry the `devloop` and `ai-proposed` labels.
+
+## Implementation Signal
+
+The local mini PC runner only continues implementation after a human comments:
+
+```text
+/ai implement
+```
+
+The runner should work on the existing `ai/issue-*` PR branch and must not merge
+the PR.
 
 ## Human Review Expectations
 

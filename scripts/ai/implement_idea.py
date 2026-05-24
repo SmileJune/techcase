@@ -197,7 +197,7 @@ def create_pr(repo: str, token: str, base: str, branch: str, issue: dict[str, An
                 f"""
                 ## 승인된 아이디어
 
-                Closes #{number}
+                Refs #{number}
 
                 ## 변경 사항
 
