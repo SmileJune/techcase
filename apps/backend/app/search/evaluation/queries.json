@@ -1313,6 +1313,166 @@
           "relevance": 1
         }
       ]
+    },
+    {
+      "id": "ko-tech-kafka",
+      "query": "카프카",
+      "category": "technology",
+      "intent": "한글 기술명으로 Kafka 메시징, 이벤트 처리, 검색 색인 파이프라인 적용 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://techblog.woowahan.com/20156/",
+          "title": "카프카 컨슈머에 동적 쓰로틀링 적용하기",
+          "relevance": 3
+        },
+        {
+          "url": "https://hyperconnect.github.io/2022/10/14/grafana-with-ksqlDB.html",
+          "title": "카프카 생태계 기반의 비즈니스 메트릭 생성하기",
+          "relevance": 3
+        },
+        {
+          "url": "https://dev.gmarket.com/35",
+          "title": "확장성 높은 카프카 구성을 위한 서비스 설계",
+          "relevance": 3
+        },
+        {
+          "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-2/",
+          "title": "컬리 검색이 카프카를 들여다본 이야기 2",
+          "relevance": 3
+        },
+        {
+          "url": "https://helloworld.kurly.com/blog/search-system-with-kafka-1/",
+          "title": "컬리 검색이 카프카를 들여다본 이야기 1",
+          "relevance": 3
+        }
+      ]
+    },
+    {
+      "id": "ko-tech-kubernetes",
+      "query": "쿠버네티스",
+      "category": "technology",
+      "intent": "한글 기술명으로 Kubernetes 운영, 오퍼레이터 구현, 관리형 Kubernetes 서비스 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://meetup.nhncloud.com/posts/318",
+          "title": "NHN Kubernetes Service(NKS) Certified Kubernetes 획득 소개 : NHN Cloud Meetup",
+          "relevance": 3
+        },
+        {
+          "url": "https://dev.gmarket.com/65",
+          "title": "쿠버네티스 오퍼레이터 적용하기",
+          "relevance": 3
+        },
+        {
+          "url": "https://dev.gmarket.com/112",
+          "title": "쿠버네티스 오퍼레이터를 Java로 개발해보기",
+          "relevance": 3
+        },
+        {
+          "url": "https://dev.gmarket.com/102",
+          "title": "쿠버네티스 오퍼레이터를 Golang으로 개발해보기",
+          "relevance": 2
+        },
+        {
+          "url": "https://meetup.nhncloud.com/posts/361",
+          "title": "KCSP(공인 쿠버네티스 서비스 제공사) 자격을 획득했습니다 : NHN Cloud Meetup",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-tech-mysql-operations",
+      "query": "MySQL 운영 성능",
+      "category": "technology",
+      "intent": "한글/영문 혼합 검색어로 MySQL 업그레이드, 인덱스 튜닝, 장애와 성능 개선 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://medium.com/naver-cloud-platform/mysql-%EB%A9%94%EC%9D%B4%EC%A0%80-%EB%B2%84%EC%A0%84-%EC%97%85%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%93%9C%ED%95%98%EA%B8%B0-mysql-5-mysql-8-%EB%84%A4%EC%9D%B4%EB%B2%84-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%94%8C%EB%9E%AB%ED%8F%BC-cloud-db-for-mysql-%EC%8B%A4%EC%8A%B5-958a0ec9b525?source=rss----c7f2bfeb6b98---4",
+          "title": "MySQL 메이저 버전 업그레이드(MySQL 5 → MySQL 8) — 네이버 클라우드 플랫폼 Cloud DB for MySQL 실습",
+          "relevance": 3
+        },
+        {
+          "url": "https://medium.com/zigbang/mysql-%EC%9D%B8%EB%8D%B1%EC%8A%A4-%ED%8A%9C%EB%8B%9D-18e183e9246d?source=rss----2f055286701b---4",
+          "title": "MYSQL 인덱스 튜닝",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/6550/",
+          "title": "Aurora MySQL vs Aurora PostgreSQL",
+          "relevance": 2
+        },
+        {
+          "url": "https://tech.devsisters.com/posts/cro-mysql-online-alter",
+          "title": "MySQL online alter부터 CPU 100% 장애까지",
+          "relevance": 3
+        },
+        {
+          "url": "https://meetup.nhncloud.com/posts/56",
+          "title": "MySQL 5.7 에 대해서 소개합니다. - 1편 : NHN Cloud Meetup",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-problem-large-traffic",
+      "query": "대용량 트래픽",
+      "category": "problem",
+      "intent": "한글 문제 상황 검색어로 대규모 트래픽 처리, 스케일링, 병목 해결 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://techblog.woowahan.com/2667/",
+          "title": "배달의민족 최전방 시스템! ‘가게노출 시스템’을 소개합니다.",
+          "relevance": 3
+        },
+        {
+          "url": "https://techblog.woowahan.com/17163/",
+          "title": "[다시 보기] 4월 우아한테크세미나: Java의 미래, Virtual Thread",
+          "relevance": 2
+        },
+        {
+          "url": "https://dev.gmarket.com/60",
+          "title": "Gmarket Hadoop Platform Baikal 소개",
+          "relevance": 2
+        },
+        {
+          "url": "https://dev.gmarket.com/11",
+          "title": "막내 개발자의 Sell POD PD 생활",
+          "relevance": 2
+        }
+      ]
+    },
+    {
+      "id": "ko-problem-performance-bottleneck",
+      "query": "병목 개선",
+      "category": "problem",
+      "intent": "한글 문제 상황 검색어로 성능 병목을 분석하고 개선한 실제 사례를 찾는다.",
+      "expectedResults": [
+        {
+          "url": "https://tech.kakaopay.com/post/improve-service-performance/",
+          "title": "카카오페이 온라인 결제 서비스 2.5배 성능 개선기",
+          "relevance": 3
+        },
+        {
+          "url": "https://www.datadoghq.com/blog/engineering/using-datadog-apm-to-find-bottlenecks-and-performance-benchmarking/",
+          "title": "Using Datadog APM to improve the performance of Homebrew",
+          "relevance": 3
+        },
+        {
+          "url": "https://hyperconnect.github.io/2023/05/30/Python-Performance-Tips.html",
+          "title": "고성능 ML 백엔드를 위한 10가지 Python 성능 최적화 팁",
+          "relevance": 2
+        },
+        {
+          "url": "https://hyperconnect.github.io/2025/03/28/flink-e2e-latency.html",
+          "title": "Apache Flink 어플리케이션의 End-to-End Latency 병목 찾아내기",
+          "relevance": 3
+        },
+        {
+          "url": "https://dev.gmarket.com/88",
+          "title": "Jenkins 성능 개선 part1 - 캐싱 적용",
+          "relevance": 2
+        }
+      ]
     }
   ]
 }
