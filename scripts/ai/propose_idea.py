@@ -33,8 +33,13 @@ DEFAULT_CONTEXT_FILES = (
     "README.md",
     "AI_POLICY.md",
     "AGENTS.md",
+    "docs/development.md",
+    "docs/architecture.md",
     "docs/search-design.md",
     "docs/search-evaluation.md",
+    "docs/source-collection-strategy.md",
+    "docs/scheduler.md",
+    "docs/devloop-runner.md",
 )
 FORBIDDEN_SCOPE_TERMS = (
     "authentication",
@@ -47,9 +52,14 @@ FORBIDDEN_SCOPE_TERMS = (
     "database migration",
     "db migration",
     "alembic",
-    "terraform",
-    "infrastructure",
-    "deploy",
+    "terraform apply",
+    "terraform import",
+    "terraform state",
+    "infrastructure provisioning",
+    "production deployment",
+    "deployment configuration",
+    "secret",
+    "secrets",
     "automatic merge",
     "auto merge",
     "main branch push",
@@ -142,7 +152,7 @@ def read_limited_file(path: Path, max_chars: int) -> str:
 
 
 def read_repo_context() -> str:
-    total_limit = int(env("DEVLOOP_MAX_CONTEXT_CHARS", "18000"))
+    total_limit = int(env("DEVLOOP_MAX_CONTEXT_CHARS", "26000"))
     per_file_limit = int(env("DEVLOOP_MAX_CONTEXT_FILE_CHARS", "6000"))
     configured = env("DEVLOOP_CONTEXT_FILES")
     files = (

@@ -45,8 +45,17 @@ improvements first, such as:
 
 - Search quality evaluation and observability.
 - Result explanation, snippets, and relevance signals.
+- Frontend search experience, including empty states, loading/error states,
+  facets, result comparison, responsiveness, and accessibility.
+- Backend API clarity, request validation, pagination/filter edge cases, focused
+  service tests, and error handling.
+- Crawler and source quality, including source metadata, duplicate detection,
+  feed/sitemap failure handling, and source health reports.
 - Source quality, deduplication, and metadata clarity.
 - Documentation and onboarding for maintainers.
+- Operations runbooks, scheduler verification, local health checks, cost
+  awareness, and infrastructure guardrail documentation that does not change
+  production configuration.
 - Small UX improvements that do not require auth, billing, migrations, or
   infrastructure changes.
 
