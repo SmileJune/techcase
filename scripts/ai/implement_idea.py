@@ -121,29 +121,27 @@ def create_plan_file(repo: str, token: str, branch: str, issue: dict[str, Any]) 
     title = issue["title"]
     body = issue.get("body") or ""
     path = f"docs/ai-ideas/issue-{number}.md"
-    content = textwrap.dedent(
-        f"""
-        # DevLoop 아이디어 #{number}: {title}
-
-        이 파일은 GitHub Issue에서 사람이 승인한 뒤 생성된 PR scaffold입니다.
-        의도적으로 실제 서비스 코드는 수정하지 않습니다.
-
-        ## 승인된 이슈
-
-        - 이슈: #{number}
-        - 제목: {title}
-
-        ## 원본 제안
-
-        {body}
-
-        ## 구현 메모
-
-        - 승인된 범위 안에서만 변경합니다.
-        - 인증, 결제, 데이터베이스 마이그레이션, 인프라는 건드리지 않습니다.
-        - 자동 머지는 활성화하지 않습니다.
-        - 사람 리뷰를 요청하기 전에 검증 메모를 남깁니다.
-        """
+    content = "\n\n".join(
+        [
+            f"# DevLoop 아이디어 #{number}: {title}",
+            (
+                "이 파일은 GitHub Issue에서 사람이 승인한 뒤 생성된 PR scaffold입니다.\n"
+                "의도적으로 실제 서비스 코드는 수정하지 않습니다."
+            ),
+            "## 승인된 이슈",
+            f"- 이슈: #{number}\n- 제목: {title}",
+            "## 원본 제안",
+            body.strip(),
+            "## 구현 메모",
+            "\n".join(
+                [
+                    "- 승인된 범위 안에서만 변경합니다.",
+                    "- 인증, 결제, 데이터베이스 마이그레이션, 인프라는 건드리지 않습니다.",
+                    "- 자동 머지는 활성화하지 않습니다.",
+                    "- 사람 리뷰를 요청하기 전에 검증 메모를 남깁니다.",
+                ]
+            ),
+        ]
     ).strip() + "\n"
 
     encoded = base64.b64encode(content.encode("utf-8")).decode("ascii")
@@ -202,6 +200,8 @@ def create_pr(repo: str, token: str, base: str, branch: str, issue: dict[str, An
                 ## 변경 사항
 
                 - 승인된 아이디어에 대한 문서 전용 PR scaffold로 `{plan_path}`를 추가했습니다.
+                - 이 PR은 `/ai implement` 실행 전 준비 단계입니다.
+                - 후속 DevLoop runner 구현이 완료되면 PR 제목과 본문은 실제 변경 사항, 변경 파일, 검증 결과 중심으로 갱신됩니다.
 
                 ## 의도적으로 제외한 것
 
@@ -213,6 +213,7 @@ def create_pr(repo: str, token: str, base: str, branch: str, issue: dict[str, An
 
                 - 이 PR이 승인된 scaffold만 포함하는지 확인합니다.
                 - 후속 구현이 `AI_POLICY.md` 범위 안에 있는지 확인합니다.
+                - `/ai implement` 후에는 runner 완료 댓글과 갱신된 PR 본문의 검증 결과를 확인합니다.
                 """
             ).strip(),
         },

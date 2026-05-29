@@ -36,6 +36,7 @@ DEFAULT_IMPLEMENT_COMMANDS = ("/ai implement", "/ai approve")
 DEFAULT_REVISE_COMMAND = "/ai revise"
 START_MARKER = "<!-- devloop-runner:start -->"
 DONE_MARKER = "<!-- devloop-runner:done -->"
+LAST_MESSAGE_PR_LIMIT = 4000
 FORBIDDEN_PATH_PREFIXES = (
     ".github/workflows/",
     "infra/",
@@ -221,6 +222,31 @@ class GitHubClient:
             "POST",
             f"/repos/{self.repo}/issues/{issue_number}/comments",
             {"body": body},
+        )
+
+    def update_pull_request(
+        self,
+        pull_request_number: int,
+        *,
+        title: str | None = None,
+        body: str | None = None,
+    ) -> None:
+        if not self.token:
+            print(f"Skipping PR update for #{pull_request_number}: no token configured.")
+            return
+
+        payload: dict[str, Any] = {}
+        if title:
+            payload["title"] = title
+        if body:
+            payload["body"] = body
+        if not payload:
+            return
+
+        self.request(
+            "PATCH",
+            f"/repos/{self.repo}/pulls/{pull_request_number}",
+            payload,
         )
 
 
@@ -417,6 +443,10 @@ def build_codex_prompt(
             - 자동 머지나 main 직접 push는 하지 않는다.
             - 구현 후 관련 테스트나 정적 검사를 실행한다.
             - 커밋이나 push는 하지 않는다. 변경과 검증 결과만 남긴다.
+            - 마지막 메시지는 아래 Markdown 섹션을 반드시 포함한다.
+              - `## 변경 요약`: 사용자가 리뷰해야 할 실제 변경을 bullet로 쓴다.
+              - `## 검증`: 실행한 명령과 결과를 bullet로 쓴다.
+              - `## 미실행/위험`: 실행하지 못한 검증, 남은 위험, 사람 확인 필요 사항을 쓴다.
             """
         ).strip()
 
@@ -432,6 +462,10 @@ def build_codex_prompt(
         - 자동 머지나 main 직접 push는 하지 않는다.
         - 구현 후 관련 테스트나 정적 검사를 실행한다.
         - 커밋이나 push는 하지 않는다. 변경과 검증 결과만 남긴다.
+        - 마지막 메시지는 아래 Markdown 섹션을 반드시 포함한다.
+          - `## 변경 요약`: 사용자가 리뷰해야 할 실제 변경을 bullet로 쓴다.
+          - `## 검증`: 실행한 명령과 결과를 bullet로 쓴다.
+          - `## 미실행/위험`: 실행하지 못한 검증, 남은 위험, 사람 확인 필요 사항을 쓴다.
         """
     ).strip()
 
@@ -492,6 +526,179 @@ def commit_and_push(
     return "Committed changes locally. Push was skipped."
 
 
+def read_last_message(output_path: Path) -> str:
+    if not output_path.exists():
+        return ""
+    return output_path.read_text(encoding="utf-8", errors="replace").strip()
+
+
+def markdown_heading_text(line: str) -> str | None:
+    stripped = line.strip()
+    if stripped.startswith("#"):
+        return stripped.lstrip("#").strip()
+    if stripped.startswith("**") and stripped.endswith("**"):
+        return stripped.strip("*").strip()
+    return None
+
+
+def extract_markdown_section(text: str, heading: str) -> str:
+    lines = text.splitlines()
+    start_index: int | None = None
+    for index, line in enumerate(lines):
+        current_heading = markdown_heading_text(line)
+        if current_heading == heading:
+            start_index = index + 1
+            break
+
+    if start_index is None:
+        return ""
+
+    collected: list[str] = []
+    for line in lines[start_index:]:
+        if markdown_heading_text(line):
+            break
+        collected.append(line)
+
+    return "\n".join(collected).strip()
+
+
+def last_message_excerpt(last_message: str) -> str:
+    if not last_message:
+        return "Codex 마지막 메시지가 비어 있습니다."
+    if len(last_message) <= LAST_MESSAGE_PR_LIMIT:
+        return last_message
+    return last_message[:LAST_MESSAGE_PR_LIMIT].rstrip() + "\n\n[truncated]"
+
+
+def first_line(value: str) -> str:
+    lines = value.splitlines()
+    return lines[0] if lines else ""
+
+
+def markdown_code_block(value: str, language: str = "") -> str:
+    fence = "```"
+    while fence in value:
+        fence += "`"
+    suffix = language if language else ""
+    return f"{fence}{suffix}\n{value}\n{fence}"
+
+
+def implementation_pr_title(issue: dict[str, Any]) -> str:
+    title = str(issue.get("title") or "").strip()
+    if not title:
+        return f"[DevLoop] 승인된 아이디어 #{issue['number']} 구현"
+    return title if title.startswith("[DevLoop]") else f"[DevLoop] {title}"
+
+
+def markdown_file_list(files: list[str]) -> str:
+    if not files:
+        return "- 변경 파일 없음"
+    return "\n".join(f"- `{file}`" for file in files)
+
+
+def section_or_fallback(value: str, fallback: str) -> str:
+    return value.strip() if value.strip() else fallback
+
+
+def build_implemented_pr_body(
+    *,
+    issue_number: int,
+    branch: str,
+    command_kind: str,
+    command_body: str,
+    result: str,
+    files: list[str],
+    last_message: str,
+) -> str:
+    summary = section_or_fallback(
+        extract_markdown_section(last_message, "변경 요약"),
+        "Codex 마지막 메시지에서 `변경 요약` 섹션을 찾지 못했습니다.",
+    )
+    verification = section_or_fallback(
+        extract_markdown_section(last_message, "검증"),
+        "Codex 마지막 메시지에서 `검증` 섹션을 찾지 못했습니다.",
+    )
+    risks = section_or_fallback(
+        extract_markdown_section(last_message, "미실행/위험"),
+        "별도 미실행 검증 또는 남은 위험이 기록되지 않았습니다.",
+    )
+
+    return "\n\n".join(
+        [
+            "## 승인된 아이디어",
+            f"Refs #{issue_number}",
+            "## 변경 사항",
+            summary,
+            "## 변경 파일",
+            markdown_file_list(files),
+            "## 검증",
+            verification,
+            "## 의도적으로 제외한 것",
+            "\n".join(
+                [
+                    "- 승인된 Issue와 사용자 피드백 범위 밖의 변경은 포함하지 않습니다.",
+                    "- 자동 머지는 없습니다.",
+                    "- 인증, 결제, 데이터베이스 마이그레이션, 인프라 변경은 없습니다.",
+                ]
+            ),
+            "## 미실행 / 위험",
+            risks,
+            "## DevLoop 실행 정보",
+            "\n".join(
+                [
+                    f"- 브랜치: `{branch}`",
+                    f"- 명령: `{first_line(command_body)}`",
+                    f"- 실행 종류: `{command_kind}`",
+                    f"- runner 결과: {result}",
+                ]
+            ),
+            "\n".join(
+                [
+                    "<details>",
+                    "<summary>Codex 마지막 메시지</summary>",
+                    "",
+                    markdown_code_block(last_message_excerpt(last_message), "markdown"),
+                    "",
+                    "</details>",
+                ]
+            ),
+        ]
+    )
+
+
+def build_completion_comment(
+    *,
+    pr_url: str,
+    branch: str,
+    command_body: str,
+    result: str,
+    pr_update_result: str,
+    output_path: Path,
+    summary: str,
+    verification: str,
+    files: list[str],
+) -> str:
+    return "\n\n".join(
+        [
+            DONE_MARKER,
+            "DevLoop runner 실행이 완료되었습니다.",
+            "\n".join(
+                [
+                    f"- PR: {pr_url}",
+                    f"- 브랜치: `{branch}`",
+                    f"- 명령: `{first_line(command_body)}`",
+                    f"- 결과: {result}",
+                    f"- PR 갱신: {pr_update_result}",
+                    f"- Codex 마지막 메시지: `{output_path}`",
+                ]
+            ),
+            "변경 요약:\n" + summary,
+            "검증:\n" + verification,
+            "변경 파일:\n" + markdown_file_list(files),
+        ]
+    )
+
+
 def process_candidate(
     client: GitHubClient,
     candidate: Candidate,
@@ -502,6 +709,7 @@ def process_candidate(
     model: str | None,
 ) -> None:
     issue_number = int(candidate.issue["number"])
+    pr_number = int(candidate.pull_request["number"])
     branch = str((candidate.pull_request.get("head") or {}).get("ref"))
     pr_url = str(candidate.pull_request.get("html_url"))
 
@@ -519,7 +727,7 @@ def process_candidate(
 
             - PR: {pr_url}
             - 브랜치: `{branch}`
-            - 명령: `{comment_command_body(candidate.command_comment).splitlines()[0]}`
+            - 명령: `{first_line(comment_command_body(candidate.command_comment))}`
             """
         ).strip(),
     )
@@ -538,24 +746,50 @@ def process_candidate(
     else:
         result = "Codex 실행은 완료했지만 commit 옵션이 꺼져 있어 커밋하지 않았습니다."
 
-    file_lines = "\n".join(f"- `{file}`" for file in files) if files else "- 변경 파일 없음"
+    last_message = read_last_message(output_path)
+    pr_body = build_implemented_pr_body(
+        issue_number=issue_number,
+        branch=branch,
+        command_kind=candidate.command_kind,
+        command_body=comment_command_body(candidate.command_comment),
+        result=result,
+        files=files,
+        last_message=last_message,
+    )
+    pr_title = (
+        implementation_pr_title(candidate.issue)
+        if candidate.command_kind == "implement"
+        else None
+    )
+    try:
+        client.update_pull_request(pr_number, title=pr_title, body=pr_body)
+        pr_update_result = "PR 제목/본문을 실제 변경과 검증 결과로 갱신했습니다."
+    except Exception as exc:
+        pr_update_result = f"PR 제목/본문 갱신 실패: {exc}"
+        print(pr_update_result)
+
+    summary = section_or_fallback(
+        extract_markdown_section(last_message, "변경 요약"),
+        "Codex 마지막 메시지에서 `변경 요약` 섹션을 찾지 못했습니다.",
+    )
+    verification = section_or_fallback(
+        extract_markdown_section(last_message, "검증"),
+        "Codex 마지막 메시지에서 `검증` 섹션을 찾지 못했습니다.",
+    )
+
     client.comment(
         candidate.command_thread_number,
-        textwrap.dedent(
-            f"""
-            {DONE_MARKER}
-            DevLoop runner 실행이 완료되었습니다.
-
-            - PR: {pr_url}
-            - 브랜치: `{branch}`
-            - 명령: `{comment_command_body(candidate.command_comment).splitlines()[0]}`
-            - 결과: {result}
-            - Codex 마지막 메시지: `{output_path}`
-
-            변경 파일:
-            {file_lines}
-            """
-        ).strip(),
+        build_completion_comment(
+            pr_url=pr_url,
+            branch=branch,
+            command_body=comment_command_body(candidate.command_comment),
+            result=result,
+            pr_update_result=pr_update_result,
+            output_path=output_path,
+            summary=summary,
+            verification=verification,
+            files=files,
+        ),
     )
 
 

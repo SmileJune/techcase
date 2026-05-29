@@ -17,6 +17,11 @@ with Codex CLI.
 9. A human can leave `/ai revise` feedback on the Issue or PR, and the runner
    adds a follow-up commit on the same PR branch.
 
+After Codex finishes, the runner also updates the PR description with the actual
+implementation summary, changed files, validation results, and any remaining
+risk notes. This keeps the PR from looking like a scaffold-only change after
+implementation commits have been added.
+
 ## Required Local Setup
 
 Install and authenticate these on the mini PC:
@@ -92,6 +97,24 @@ python3 scripts/devloop/runner.py \
   --commit \
   --push
 ```
+
+When execution completes, the runner expects the Codex final message to include
+these sections:
+
+```markdown
+## 변경 요약
+- What changed and what a reviewer should inspect.
+
+## 검증
+- Commands that were run and their results.
+
+## 미실행/위험
+- Checks that could not be run, residual risk, or human follow-up needed.
+```
+
+The runner copies those sections into the PR body and completion comment. If a
+section is missing, the PR body records that gap explicitly so the missing
+evidence is visible during review.
 
 ## Revise An Existing PR
 
@@ -173,6 +196,9 @@ journalctl --user -u techcase-devloop.service -n 100 --no-pager
 - The runner uses `codex exec --sandbox workspace-write`.
 - The runner refuses to commit changes under `.github/workflows/`, `infra/`,
   and `apps/backend/alembic/`.
+- After implementation, the runner rewrites the initial scaffold PR body so it
+  reflects the actual diff and validation evidence instead of only saying that a
+  scaffold was created.
 - The runner does not merge PRs.
 - The runner does not push to `main`; it pushes only to the existing
   `ai/issue-*` PR branch.
